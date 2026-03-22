@@ -1,0 +1,13 @@
+{
+  "name": "wod-timer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "app:prepare": "node ./scripts/prepare-app.mjs",
+    "app:dev": "npm run app:prepare && tauri dev",
+    "app:build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.1"
+  }
+}

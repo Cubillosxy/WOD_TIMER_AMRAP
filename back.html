@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOD Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="clock">CLOCK</button>
+                <button class="mode-btn" data-mode="timer">TIME CAP</button>
+                <button class="mode-btn" data-mode="fortime">FOR TIME</button>
+                <button class="mode-btn" data-mode="amrap">AMRAP</button>
+                <button class="mode-btn" data-mode="emom">EMOM</button>
+                <button class="mode-btn" data-mode="tabata">TABATA</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="status-label">PREPARE</div>
+            <div class="timer-display">00:00:00</div>
+            <div class="round-info"></div>
+
+            <div class="settings-panel">
+                <div class="input-group" id="group-timer-time">
+                    <label for="input-timer-time">CAP (MIN)</label>
+                    <input type="number" id="input-timer-time" value="5" min="1" max="99">
+                </div>
+                <div class="input-group" id="group-amrap-time">
+                    <label for="input-amrap-time">TIME (MIN)</label>
+                    <input type="number" id="input-amrap-time" value="10" min="1" max="99">
+                </div>
+                <div class="input-group" id="group-emom-interval">
+                    <label for="input-emom-interval">EVERY (SEC)</label>
+                    <input type="number" id="input-emom-interval" value="60" step="30" min="30">
+                </div>
+                <div class="input-group" id="group-emom-rounds">
+                    <label for="input-emom-rounds">ROUNDS</label>
+                    <input type="number" id="input-emom-rounds" value="10" min="1" max="99">
+                </div>
+            </div>
+        </main>
+
+        <div class="controls-container">
+            <button class="btn-secondary" id="btn-reset">RESET</button>
+            <button class="btn-primary" id="btn-start">START</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="background_3d.js"></script>
+    <script src="audio_manager.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
