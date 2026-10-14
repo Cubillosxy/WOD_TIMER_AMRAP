@@ -7,6 +7,7 @@ const rootDir = resolve(__dirname, "..");
 const distDir = resolve(rootDir, "dist");
 
 const filesToCopy = [
+  "assets",
   "audio_manager.js",
   "back.html",
   "background_3d.js",

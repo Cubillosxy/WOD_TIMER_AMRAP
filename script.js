@@ -2,407 +2,554 @@ class WodTimer {
     constructor() {
         this.audio = new AudioManager();
 
-        // DOM Elements
-        this.display = document.querySelector('.timer-display');
-        this.statusLabel = document.querySelector('.status-label');
-        this.roundInfo = document.querySelector('.round-info');
-        this.startBtn = document.getElementById('btn-start');
-        this.resetBtn = document.getElementById('btn-reset');
-        this.settingsPanel = document.querySelector('.settings-panel');
+        // Elementos principales de vista
+        this.app = document.getElementById('app');
+        this.viewHome = document.getElementById('view-home');
+        this.viewTimer = document.getElementById('view-timer');
+        this.settingsView = document.getElementById('settings-view');
+        this.runningView = document.getElementById('running-view');
 
-        // State
-        this.mode = 'clock';
-        this.state = 'idle';
+        // Topbar
+        this.timerTitle = document.getElementById('timer-title');
+        this.btnBack = document.getElementById('btn-back');
+        this.btnMute = document.getElementById('btn-mute');
+        this.iconSoundOn = document.querySelector('.icon-sound-on');
+        this.iconSoundOff = document.querySelector('.icon-sound-off');
+        this.btnFullscreen = document.getElementById('btn-fullscreen');
+        this.iconFsEnter = document.querySelector('.icon-fullscreen-enter');
+        this.iconFsExit = document.querySelector('.icon-fullscreen-exit');
+
+        // Settings
+        this.presetsContainer = document.getElementById('presets-container');
+        this.btnStart = document.getElementById('btn-start');
+
+        // Inputs
+        this.inputTabataWork = document.getElementById('input-tabata-work');
+        this.inputTabataRest = document.getElementById('input-tabata-rest');
+        this.inputTabataRounds = document.getElementById('input-tabata-rounds');
+        this.inputFortimeCap = document.getElementById('input-fortime-cap');
+        this.inputEmomInterval = document.getElementById('input-emom-interval');
+        this.inputEmomRounds = document.getElementById('input-emom-rounds');
+        this.inputAmrapTime = document.getElementById('input-amrap-time');
+
+        // Display
+        this.displayClock = document.getElementById('timer-clock');
+        this.displaySubheader = document.getElementById('timer-subheader');
+        this.displayRoundInfo = document.getElementById('timer-round-info');
+        this.activeControls = document.getElementById('active-controls');
+        this.btnTogglePause = document.getElementById('btn-toggle-pause');
+        this.btnReset = document.getElementById('btn-reset');
+        this.btnRestart = document.getElementById('btn-restart');
+
+        // Estado del Timer
+        this.mode = 'clock';       // clock | tabata | fortime | emom | amrap
+        this.state = 'idle';       // idle | prepare | work | rest | finished
+        this.isPaused = false;
         this.interval = null;
-        this.startTime = null;
-        this.endTime = null;
+        this.clockInterval = null;
+
+        // Tiempos
+        this.prepareTime = 10;
         this.remainingTime = 0;
-        this.elapsedTime = 0; // For stopwatch accumulation
+        this.elapsedTime = 0;
+        this.lastFrameTime = 0;
+        this.startTime = 0;
 
-        // Multi-State Persistence
-        this.savedStates = {}; // Stores { mode: { state, remaining, elapsed, round, paused } }
-
-        // Settings defaults
+        // Configuración persistente
         this.settings = {
-            timerTime: 5,
-            amrapTime: 10,
-            emomInterval: 60,
-            emomRounds: 10,
-            tabataWork: 20,
-            tabataRest: 10,
-            tabataRounds: 8
+            tabata: { work: 20, rest: 10, rounds: 8 },
+            fortime: { cap: 10 },
+            emom: { interval: 60, rounds: 10 },
+            amrap: { time: 10 }
         };
 
-        // Runtime variables
         this.currentRound = 1;
-        this.prepareTime = 10;
-        this.isPaused = false;
 
+        // Presets rápidos de entrenamiento
+        this.presets = {
+            tabata: [
+                { label: '8 RNDS (4M)', work: 20, rest: 10, rounds: 8 },
+                { label: '10 RNDS (5M)', work: 20, rest: 10, rounds: 10 },
+                { label: '12 RNDS (6M)', work: 20, rest: 10, rounds: 12 },
+                { label: '16 RNDS (8M)', work: 20, rest: 10, rounds: 16 }
+            ],
+            fortime: [
+                { label: '5 MIN', cap: 5 },
+                { label: '10 MIN', cap: 10 },
+                { label: '15 MIN', cap: 15 },
+                { label: '20 MIN', cap: 20 },
+                { label: 'SIN CAP', cap: 0 }
+            ],
+            emom: [
+                { label: '10 RNDS (10M)', interval: 60, rounds: 10 },
+                { label: '12 RNDS (12M)', interval: 60, rounds: 12 },
+                { label: '15 RNDS (15M)', interval: 60, rounds: 15 },
+                { label: '20 RNDS (20M)', interval: 60, rounds: 20 }
+            ],
+            amrap: [
+                { label: '5 MIN', time: 5 },
+                { label: '10 MIN', time: 10 },
+                { label: '12 MIN', time: 12 },
+                { label: '15 MIN', time: 15 },
+                { label: '20 MIN', time: 20 }
+            ]
+        };
+
+        this.init();
+    }
+
+    init() {
         this.bindEvents();
-        this.updateClock();
-        setInterval(() => {
-            if (this.mode === 'clock' && this.state === 'idle') this.updateClock();
-        }, 1000);
+        this.readInputs();
     }
 
     bindEvents() {
-        this.startBtn.addEventListener('click', () => this.toggleStart());
-        this.resetBtn.addEventListener('click', () => this.reset());
-
-        document.querySelectorAll('.mode-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.switchMode(e.target.dataset.mode));
+        // Clic en los cuadros del menú de inicio
+        document.querySelectorAll('.timer-btn-menu').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const mode = e.currentTarget.dataset.mode;
+                this.audio.init();
+                this.navigateToMode(mode);
+            });
         });
 
-        document.getElementById('input-timer-time')?.addEventListener('change', (e) => this.settings.timerTime = parseInt(e.target.value));
-        document.getElementById('input-amrap-time')?.addEventListener('change', (e) => this.settings.amrapTime = parseInt(e.target.value));
-        document.getElementById('input-emom-interval')?.addEventListener('change', (e) => this.settings.emomInterval = parseInt(e.target.value));
-        document.getElementById('input-emom-rounds')?.addEventListener('change', (e) => this.settings.emomRounds = parseInt(e.target.value));
-    }
+        // Volver al menú de inicio
+        this.btnBack.addEventListener('click', () => this.navigateToHome());
 
-    switchMode(newMode) {
-        if (this.mode === newMode) return;
-
-        // 1. Save current state (if not clock)
-        if (this.mode !== 'clock') {
-            this.saveCurrentState();
-        }
-
-        this.mode = newMode;
-
-        // Update UI Tabs
-        document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`[data-mode="${newMode}"]`).classList.add('active');
-
-        // 2. Try to restore state
-        if (this.savedStates[newMode]) {
-            this.restoreState(newMode);
-        } else {
-            // No saved state, reset to fresh
-            this.reset();
-        }
-
-        this.updateSettingsVisibility();
-    }
-
-    saveCurrentState() {
-        // If it's running, pause it first
-        if (this.state !== 'idle' && !this.isPaused) {
-            this.pause();
-        }
-
-        // Store vital stats
-        this.savedStates[this.mode] = {
-            state: this.state,
-            remainingTime: this.remainingTime,
-            elapsedTime: this.elapsedTime, // For stopwatch
-            currentRound: this.currentRound,
-            isPaused: true // Always saved as paused
-        };
-    }
-
-    restoreState(mode) {
-        const saved = this.savedStates[mode];
-        if (!saved || saved.state === 'idle') {
-            this.reset();
-            return;
-        }
-
-        clearInterval(this.interval); // Safety
-
-        this.state = saved.state;
-        this.remainingTime = saved.remainingTime;
-        this.elapsedTime = saved.elapsedTime || 0;
-        this.currentRound = saved.currentRound;
-        this.isPaused = true; // Always restore as paused
-
-        // UI Update
-        this.startBtn.textContent = 'RESUME';
-        this.startBtn.classList.remove('running');
-        this.updateUIState(this.state);
-
-        // Display Time Update
-        if (this.mode === 'fortime') {
-            this.display.textContent = this.formatTime(Math.floor(this.elapsedTime));
-        } else {
-            this.display.textContent = this.formatTime(Math.ceil(this.remainingTime));
-        }
-
-        // Visual warning check
-        if (this.remainingTime <= 5 && this.remainingTime > 0 && this.mode !== 'fortime') {
-            document.body.classList.add('state-warning');
-        } else {
-            document.body.classList.remove('state-warning');
-        }
-    }
-
-    updateSettingsVisibility() {
-        const inputs = document.querySelectorAll('.input-group');
-        inputs.forEach(el => el.style.display = 'none');
-
-        this.settingsPanel.classList.remove('active');
-
-        // Only show settings if in IDLE state (fresh start)
-        // If resumed (PAUSED/WORK), hide settings to avoid confusion
-        if (this.state !== 'idle') return;
-
-        if (this.mode === 'timer') {
-            document.querySelector('#group-timer-time').style.display = 'flex';
-            this.settingsPanel.classList.add('active');
-            this.display.textContent = this.formatTime(this.settings.timerTime * 60);
-        } else if (this.mode === 'amrap') {
-            document.querySelector('#group-amrap-time').style.display = 'flex';
-            this.settingsPanel.classList.add('active');
-            this.display.textContent = this.formatTime(this.settings.amrapTime * 60);
-        } else if (this.mode === 'emom') {
-            document.querySelector('#group-emom-interval').style.display = 'flex';
-            document.querySelector('#group-emom-rounds').style.display = 'flex';
-            this.settingsPanel.classList.add('active');
-            this.display.textContent = this.formatTime(this.settings.emomInterval);
-        } else if (this.mode === 'tabata') {
-            this.display.textContent = "20 / 10";
-        } else if (this.mode === 'fortime') {
-            this.display.textContent = "00:00";
-        } else if (this.mode === 'clock') {
-            this.updateClock();
-        }
-    }
-
-    toggleStart() {
-        if (this.mode === 'clock') return;
-
-        this.audio.init();
-
-        if (this.state === 'idle' || this.state === 'finished') {
+        // Botón Start
+        this.btnStart.addEventListener('click', () => {
+            this.audio.init();
             this.startWorkout();
-        } else {
-            if (this.isPaused) {
-                this.resume();
-            } else {
-                this.pause();
+        });
+
+        // Click en el reloj gigante para Pausar / Reanudar
+        this.displayClock.addEventListener('click', () => {
+            if (this.mode === 'clock') return;
+            this.togglePause();
+        });
+
+        // Botonera de pausa y reset
+        this.btnTogglePause.addEventListener('click', () => this.togglePause());
+        this.btnReset.addEventListener('click', () => this.resetWorkout());
+        this.btnRestart.addEventListener('click', () => this.startWorkout());
+
+        // Botón de sonido
+        this.btnMute.addEventListener('click', () => this.toggleSound());
+
+        // Botón de pantalla completa
+        this.btnFullscreen.addEventListener('click', () => this.toggleFullscreen());
+        document.addEventListener('fullscreenchange', () => this.updateFullscreenIcon());
+
+        // Escuchar cambios en los inputs para actualizar la configuración
+        const bindInput = (el, fn) => el && el.addEventListener('input', fn);
+        bindInput(this.inputTabataWork, () => this.settings.tabata.work = parseInt(this.inputTabataWork.value) || 20);
+        bindInput(this.inputTabataRest, () => this.settings.tabata.rest = parseInt(this.inputTabataRest.value) || 10);
+        bindInput(this.inputTabataRounds, () => this.settings.tabata.rounds = parseInt(this.inputTabataRounds.value) || 8);
+        bindInput(this.inputFortimeCap, () => this.settings.fortime.cap = parseInt(this.inputFortimeCap.value) || 0);
+        bindInput(this.inputEmomInterval, () => this.settings.emom.interval = parseInt(this.inputEmomInterval.value) || 60);
+        bindInput(this.inputEmomRounds, () => this.settings.emom.rounds = parseInt(this.inputEmomRounds.value) || 10);
+        bindInput(this.inputAmrapTime, () => this.settings.amrap.time = parseInt(this.inputAmrapTime.value) || 10);
+
+        // Atajos de teclado
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT') return;
+
+            if (e.code === 'Space') {
+                e.preventDefault();
+                if (this.viewTimer.style.display !== 'none') {
+                    if (this.mode !== 'clock') {
+                        if (this.state === 'idle') {
+                            this.startWorkout();
+                        } else {
+                            this.togglePause();
+                        }
+                    }
+                }
+            } else if (e.code === 'Escape') {
+                if (this.viewTimer.style.display !== 'none') {
+                    this.navigateToHome();
+                }
+            } else if (e.key === 'r' || e.key === 'R') {
+                if (this.viewTimer.style.display !== 'none' && this.mode !== 'clock') {
+                    this.resetWorkout();
+                }
+            } else if (e.key === 'f' || e.key === 'F') {
+                this.toggleFullscreen();
             }
+        });
+    }
+
+    readInputs() {
+        if (this.inputTabataWork) this.settings.tabata.work = parseInt(this.inputTabataWork.value);
+        if (this.inputTabataRest) this.settings.tabata.rest = parseInt(this.inputTabataRest.value);
+        if (this.inputTabataRounds) this.settings.tabata.rounds = parseInt(this.inputTabataRounds.value);
+        if (this.inputFortimeCap) this.settings.fortime.cap = parseInt(this.inputFortimeCap.value);
+        if (this.inputEmomInterval) this.settings.emom.interval = parseInt(this.inputEmomInterval.value);
+        if (this.inputEmomRounds) this.settings.emom.rounds = parseInt(this.inputEmomRounds.value);
+        if (this.inputAmrapTime) this.settings.amrap.time = parseInt(this.inputAmrapTime.value);
+    }
+
+    // =========================================
+    // NAVEGACIÓN Y VISTAS
+    // =========================================
+    navigateToMode(mode) {
+        this.mode = mode;
+        const titles = {
+            clock: 'CLOCK',
+            tabata: 'TABATA',
+            fortime: 'FOR TIME',
+            emom: 'EMOM',
+            amrap: 'AMRAP'
+        };
+        this.timerTitle.textContent = titles[mode] || mode.toUpperCase();
+
+        const applyDOMUpdate = () => {
+            this.viewHome.style.display = 'none';
+            this.viewHome.classList.remove('active');
+            this.viewTimer.style.display = 'flex';
+            this.viewTimer.classList.add('active');
+            this.setupModeView();
+        };
+
+        if (document.startViewTransition) {
+            document.startViewTransition(applyDOMUpdate);
+        } else {
+            applyDOMUpdate();
         }
     }
 
+    navigateToHome() {
+        // Detener timer en curso si volvemos al menú
+        this.stopLoops();
+        this.resetStateFlags();
+
+        const applyDOMUpdate = () => {
+            this.viewTimer.style.display = 'none';
+            this.viewTimer.classList.remove('active');
+            this.viewHome.style.display = 'flex';
+            this.viewHome.classList.add('active');
+        };
+
+        if (document.startViewTransition) {
+            document.startViewTransition(applyDOMUpdate);
+        } else {
+            applyDOMUpdate();
+        }
+    }
+
+    setupModeView() {
+        this.stopLoops();
+        this.resetStateFlags();
+
+        // Ocultar todos los campos específicos
+        document.querySelectorAll('.mode-fields').forEach(f => f.style.display = 'none');
+
+        if (this.mode === 'clock') {
+            // Clock no tiene configuración, entra directo a mostrar la hora
+            this.settingsView.style.display = 'none';
+            this.runningView.style.display = 'flex';
+            this.activeControls.style.display = 'none';
+            this.btnRestart.style.display = 'none';
+            this.displayRoundInfo.textContent = '';
+            this.startLiveClock();
+        } else {
+            // Mostrar vista de configuración previa
+            this.settingsView.style.display = 'flex';
+            this.runningView.style.display = 'none';
+            this.renderPresets();
+
+            const fieldEl = document.getElementById(`fields-${this.mode}`);
+            if (fieldEl) fieldEl.style.display = 'flex';
+        }
+    }
+
+    renderPresets() {
+        this.presetsContainer.innerHTML = '';
+        const list = this.presets[this.mode];
+        if (!list || list.length === 0) return;
+
+        list.forEach((preset, index) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'timer-preset-chip';
+            if (index === 0) btn.classList.add('active');
+            btn.textContent = preset.label;
+            btn.addEventListener('click', () => {
+                this.presetsContainer.querySelectorAll('.timer-preset-chip').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.applyPreset(preset);
+            });
+            this.presetsContainer.appendChild(btn);
+        });
+    }
+
+    applyPreset(preset) {
+        if (this.mode === 'tabata') {
+            this.inputTabataWork.value = preset.work;
+            this.inputTabataRest.value = preset.rest;
+            this.inputTabataRounds.value = preset.rounds;
+            this.settings.tabata = { work: preset.work, rest: preset.rest, rounds: preset.rounds };
+        } else if (this.mode === 'fortime') {
+            this.inputFortimeCap.value = preset.cap;
+            this.settings.fortime.cap = preset.cap;
+        } else if (this.mode === 'emom') {
+            this.inputEmomInterval.value = preset.interval;
+            this.inputEmomRounds.value = preset.rounds;
+            this.settings.emom = { interval: preset.interval, rounds: preset.rounds };
+        } else if (this.mode === 'amrap') {
+            this.inputAmrapTime.value = preset.time;
+            this.settings.amrap.time = preset.time;
+        }
+    }
+
+    // =========================================
+    // RELOJ EN TIEMPO REAL (CLOCK)
+    // =========================================
+    startLiveClock() {
+        const update = () => {
+            const now = new Date();
+            this.displayClock.textContent = now.toLocaleTimeString([], { hour12: false });
+            
+            // Subheader con fecha en formato limpio
+            const options = { weekday: 'long', month: 'short', day: 'numeric' };
+            this.displaySubheader.textContent = now.toLocaleDateString([], options).toUpperCase();
+        };
+
+        update();
+        this.clockInterval = setInterval(update, 1000);
+    }
+
+    // =========================================
+    // FLUJO DE ENTRENAMIENTO (WORKOUT)
+    // =========================================
     startWorkout() {
-        this.resetRuntime();
+        this.stopLoops();
+        this.readInputs();
+
+        // Ocultar configuración y mostrar pantalla activa
+        this.settingsView.style.display = 'none';
+        this.runningView.style.display = 'flex';
+        this.btnRestart.style.display = 'none';
+        this.activeControls.style.display = 'flex';
+        this.btnTogglePause.textContent = 'PAUSE';
+
+        this.currentRound = 1;
+        this.elapsedTime = 0;
+        this.isPaused = false;
+        document.body.classList.remove('state-paused', 'state-warning', 'state-finished');
+
+        // Fase 1: PREPARE (10 segundos)
         this.state = 'prepare';
         this.remainingTime = this.prepareTime;
-        this.elapsedTime = 0; // Reset stopwatch
-        this.updateUIState('prepare');
-        this.startLoop();
-    }
+        this.setUIState('prepare', 'PREPARE');
+        this.displayClock.textContent = Math.ceil(this.remainingTime).toString();
+        this.displayRoundInfo.textContent = 'GET READY';
 
-    pause() {
-        this.isPaused = true;
-        clearInterval(this.interval);
-        this.startBtn.textContent = 'RESUME';
-        this.startBtn.classList.remove('running');
-    }
-
-    resume() {
-        this.isPaused = false;
-        this.startBtn.textContent = 'PAUSE';
-        this.startBtn.classList.add('running');
-        this.lastFrameTime = performance.now();
-
-        if (this.mode === 'fortime') {
-            this.startTime = performance.now(); // Reset start reference
-            this.runForTimeLoop();
-        } else {
-            this.loop();
-            this.interval = setInterval(() => this.loop(), 100);
-        }
-    }
-
-    startLoop() {
-        this.isPaused = false;
-        this.startBtn.textContent = 'PAUSE';
-        this.startBtn.classList.add('running');
         this.lastFrameTime = performance.now();
         this.interval = setInterval(() => this.loop(), 100);
     }
 
     loop() {
+        if (this.isPaused) return;
+
         const now = performance.now();
         const delta = (now - this.lastFrameTime) / 1000;
         this.lastFrameTime = now;
 
-        if (this.remainingTime > 0) {
-            this.checkAudioCues(this.remainingTime, this.remainingTime - delta);
-
+        if (this.state === 'prepare') {
+            const prevSec = Math.ceil(this.remainingTime);
             this.remainingTime -= delta;
-            if (this.remainingTime < 0) this.remainingTime = 0;
+            const currentSec = Math.ceil(this.remainingTime);
 
-            // Visual Warning for last 5 seconds
+            if (currentSec !== prevSec && currentSec > 0) {
+                if (currentSec === 3 || currentSec === 2) {
+                    this.audio.playShortBeep();
+                } else if (currentSec === 1) {
+                    this.audio.playLongBeep();
+                }
+            }
+
+            if (this.remainingTime <= 0) {
+                this.startWorkoutPhase();
+                return;
+            }
+
+            this.displayClock.textContent = Math.max(1, Math.ceil(this.remainingTime)).toString();
+            return;
+        }
+
+        // FASE FOR TIME (Cronómetro hacia arriba)
+        if (this.mode === 'fortime' && this.state === 'work') {
+            this.elapsedTime += delta;
+            this.displayClock.textContent = this.formatTime(Math.floor(this.elapsedTime));
+
+            const capSeconds = (this.settings.fortime.cap || 0) * 60;
+            if (capSeconds > 0) {
+                const remainingToCap = capSeconds - this.elapsedTime;
+                if (remainingToCap <= 3 && remainingToCap > 0) {
+                    const prevSec = Math.ceil(remainingToCap + delta);
+                    const currSec = Math.ceil(remainingToCap);
+                    if (currSec !== prevSec) {
+                        if (currSec === 3 || currSec === 2) {
+                            this.audio.playShortBeep();
+                        } else if (currSec === 1) {
+                            this.audio.playLongBeep();
+                        }
+                    }
+                    document.body.classList.add('state-warning');
+                } else {
+                    document.body.classList.remove('state-warning');
+                }
+
+                if (this.elapsedTime >= capSeconds) {
+                    this.finish();
+                    return;
+                }
+            }
+            return;
+        }
+
+        // FASES CON CUENTA REGRESIVA (TABATA, AMRAP, EMOM)
+        if (this.remainingTime > 0) {
+            const prevSec = Math.ceil(this.remainingTime);
+            this.remainingTime -= delta;
+            const currentSec = Math.ceil(this.remainingTime);
+
+            if (currentSec !== prevSec && currentSec > 0) {
+                if (currentSec === 3 || currentSec === 2) {
+                    this.audio.playShortBeep();
+                } else if (currentSec === 1) {
+                    this.audio.playLongBeep();
+                }
+            }
+
             if (this.remainingTime <= 5 && this.remainingTime > 0) {
                 document.body.classList.add('state-warning');
             } else {
                 document.body.classList.remove('state-warning');
             }
 
-            this.display.textContent = this.formatTime(Math.ceil(this.remainingTime));
+            this.displayClock.textContent = this.formatTime(Math.ceil(this.remainingTime));
         } else {
-            this.handlePhaseTransition();
+            this.handleTransition();
         }
     }
 
-    checkAudioCues(prevTime, newTime) {
-        const currentSec = Math.ceil(newTime);
-        const prevSec = Math.ceil(prevTime);
+    startWorkoutPhase() {
+        this.state = 'work';
+        this.setUIState('work', 'WORK');
 
-        if (currentSec !== prevSec) {
-            if (currentSec <= 5 && currentSec > 0) {
-                this.audio.playCountdown();
-            }
+        if (this.mode === 'tabata') {
+            this.remainingTime = this.settings.tabata.work;
+            this.displayRoundInfo.textContent = `ROUND ${this.currentRound} / ${this.settings.tabata.rounds}`;
+        } else if (this.mode === 'fortime') {
+            this.elapsedTime = 0;
+            const cap = this.settings.fortime.cap;
+            this.displaySubheader.textContent = cap > 0 ? `TIME CAP: ${cap}:00` : 'FOR TIME';
+            this.displayRoundInfo.textContent = '';
+        } else if (this.mode === 'emom') {
+            this.remainingTime = this.settings.emom.interval;
+            this.displayRoundInfo.textContent = `ROUND ${this.currentRound} / ${this.settings.emom.rounds}`;
+        } else if (this.mode === 'amrap') {
+            this.remainingTime = this.settings.amrap.time * 60;
+            this.displaySubheader.textContent = `AMRAP ${this.settings.amrap.time}:00`;
+            this.displayRoundInfo.textContent = '';
         }
+
+        this.lastFrameTime = performance.now();
     }
 
-    handlePhaseTransition() {
-        if (this.state === 'prepare') {
-            this.audio.playGo();
-
-            if (this.mode === 'fortime') {
-                this.state = 'work';
-                this.startTime = performance.now();
-                this.elapsedTime = 0;
-                this.runForTimeLoop();
-                return;
-            }
-
-            this.startNextRound();
-        }
-        else if (this.state === 'work') {
-            if (this.mode === 'tabata') {
-                if (this.currentRound >= this.settings.tabataRounds) {
+    handleTransition() {
+        if (this.mode === 'tabata') {
+            if (this.state === 'work') {
+                if (this.currentRound >= this.settings.tabata.rounds) {
                     this.finish();
                 } else {
                     this.state = 'rest';
-                    this.remainingTime = this.settings.tabataRest;
-                    this.audio.playRest();
-                    this.updateUIState('rest');
+                    this.remainingTime = this.settings.tabata.rest;
+                    this.setUIState('rest', 'REST');
+                    this.displayRoundInfo.textContent = `ROUND ${this.currentRound} / ${this.settings.tabata.rounds}`;
                 }
-            }
-            else if (this.mode === 'emom') {
-                if (this.currentRound >= this.settings.emomRounds) {
-                    this.finish();
-                } else {
-                    this.currentRound++;
-                    this.remainingTime = this.settings.emomInterval;
-                    this.audio.playGo();
-                    this.updateUIState('work');
-                }
-            }
-            else if (this.mode === 'amrap' || this.mode === 'timer') {
-                this.finish();
-            }
-        }
-        else if (this.state === 'rest') {
-            if (this.mode === 'tabata') {
+            } else if (this.state === 'rest') {
                 this.currentRound++;
                 this.state = 'work';
-                this.remainingTime = this.settings.tabataWork;
-                this.audio.playGo();
-                this.updateUIState('work');
+                this.remainingTime = this.settings.tabata.work;
+                this.setUIState('work', 'WORK');
+                this.displayRoundInfo.textContent = `ROUND ${this.currentRound} / ${this.settings.tabata.rounds}`;
+            }
+        } else if (this.mode === 'emom') {
+            if (this.currentRound >= this.settings.emom.rounds) {
+                this.finish();
+            } else {
+                this.currentRound++;
+                this.remainingTime = this.settings.emom.interval;
+                this.setUIState('work', 'WORK');
+                this.displayRoundInfo.textContent = `ROUND ${this.currentRound} / ${this.settings.emom.rounds}`;
+            }
+        } else if (this.mode === 'amrap') {
+            this.finish();
+        }
+    }
+
+    togglePause() {
+        if (this.state === 'finished' || this.state === 'idle') return;
+
+        this.isPaused = !this.isPaused;
+        this.btnTogglePause.textContent = this.isPaused ? 'RESUME' : 'PAUSE';
+
+        if (this.isPaused) {
+            document.body.classList.add('state-paused');
+            this.displayRoundInfo.dataset.prevInfo = this.displayRoundInfo.textContent;
+            this.displayRoundInfo.textContent = 'PAUSED';
+        } else {
+            document.body.classList.remove('state-paused');
+            this.lastFrameTime = performance.now();
+            if (this.displayRoundInfo.dataset.prevInfo) {
+                this.displayRoundInfo.textContent = this.displayRoundInfo.dataset.prevInfo;
             }
         }
     }
 
-    runForTimeLoop() {
-        clearInterval(this.interval);
-        this.updateUIState('work');
-
-        this.interval = setInterval(() => {
-            if (this.isPaused) return;
-
-            const now = performance.now();
-            const currentDelta = (now - this.startTime) / 1000;
-            const totalElapsed = this.elapsedTime + currentDelta;
-
-            // Note: We don't update this.elapsedTime continuously, only on pause.
-            // But to save state correctly on "switchMode" without pausing explicitly in UI, 
-            // saveCurrentState() calls pause(), which updates elapsedTime.
-
-            this.display.textContent = this.formatTime(Math.floor(totalElapsed));
-        }, 100);
-    }
-
-    // Override pause to capture elapsed time for stopwatch
-    pause() {
-        this.isPaused = true;
-        clearInterval(this.interval);
-        this.startBtn.textContent = 'RESUME';
-        this.startBtn.classList.remove('running');
-
-        if (this.mode === 'fortime' && this.state === 'work') {
-            const now = performance.now();
-            this.elapsedTime += (now - this.startTime) / 1000;
-        }
-    }
-
-    startNextRound() {
-        this.state = 'work';
-        this.updateUIState('work');
-
-        if (this.mode === 'timer') {
-            this.remainingTime = this.settings.timerTime * 60;
-        } else if (this.mode === 'amrap') {
-            this.remainingTime = this.settings.amrapTime * 60;
-        } else if (this.mode === 'emom') {
-            this.remainingTime = this.settings.emomInterval;
-        } else if (this.mode === 'tabata') {
-            this.remainingTime = this.settings.tabataWork;
-        }
+    resetWorkout() {
+        this.stopLoops();
+        this.resetStateFlags();
+        this.setupModeView();
     }
 
     finish() {
+        this.stopLoops();
         this.state = 'finished';
-        clearInterval(this.interval);
-        this.display.textContent = 'DONE';
         this.audio.playComplete();
-        this.startBtn.textContent = 'START';
-        this.startBtn.classList.remove('running');
-        this.statusLabel.textContent = 'FINISHED';
-        this.statusLabel.className = 'status-label visible';
-        document.body.className = 'state-finished';
+        this.setUIState('finished', 'FINISHED');
+        this.displayClock.textContent = 'DONE';
+        this.displayRoundInfo.textContent = 'WORKOUT COMPLETED';
 
-        // Clear saved state for this mode on finish
-        delete this.savedStates[this.mode];
+        this.activeControls.style.display = 'none';
+        this.btnRestart.style.display = 'block';
     }
 
-    reset() {
-        clearInterval(this.interval);
+    setUIState(phase, subheaderText) {
+        document.body.className = `bg-black state-${phase}`;
+        this.displaySubheader.textContent = subheaderText;
+    }
+
+    resetStateFlags() {
         this.state = 'idle';
         this.isPaused = false;
         this.currentRound = 1;
-        this.elapsedTime = 0;
         this.remainingTime = 0;
-
-        this.startBtn.textContent = 'START';
-        this.startBtn.classList.remove('running');
-        this.updateSettingsVisibility();
-        this.roundInfo.textContent = '';
-        this.statusLabel.classList.remove('visible');
-        document.body.className = '';
-        document.body.classList.remove('state-warning');
-
-        delete this.savedStates[this.mode]; // Clear memory
-    }
-
-    resetRuntime() {
-        this.currentRound = 1;
         this.elapsedTime = 0;
+        document.body.className = 'bg-black';
     }
 
-    updateUIState(phase) {
-        document.body.className = `state-${phase}`;
-        this.statusLabel.textContent = phase.toUpperCase();
-        this.statusLabel.classList.add('visible');
-
-        if (this.mode === 'emom' || this.mode === 'tabata') {
-            const total = this.mode === 'tabata' ? this.settings.tabataRounds : this.settings.emomRounds;
-            this.roundInfo.textContent = `ROUND ${this.currentRound} / ${total}`;
-        } else {
-            this.roundInfo.textContent = '';
+    stopLoops() {
+        if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+        if (this.clockInterval) {
+            clearInterval(this.clockInterval);
+            this.clockInterval = null;
         }
     }
 
@@ -412,10 +559,43 @@ class WodTimer {
         return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
     }
 
-    updateClock() {
-        const now = new Date();
-        this.display.textContent = now.toLocaleTimeString([], { hour12: false });
+    // =========================================
+    // UTILIDADES (SONIDO Y PANTALLA COMPLETA)
+    // =========================================
+    toggleSound() {
+        this.audio.init();
+        this.audio.isMuted = !this.audio.isMuted;
+        if (this.audio.isMuted) {
+            this.iconSoundOn.style.display = 'none';
+            this.iconSoundOff.style.display = 'block';
+        } else {
+            this.iconSoundOn.style.display = 'block';
+            this.iconSoundOff.style.display = 'none';
+        }
+    }
+
+    toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            }
+        }
+    }
+
+    updateFullscreenIcon() {
+        if (document.fullscreenElement) {
+            this.iconFsEnter.style.display = 'none';
+            this.iconFsExit.style.display = 'block';
+        } else {
+            this.iconFsEnter.style.display = 'block';
+            this.iconFsExit.style.display = 'none';
+        }
     }
 }
 
-const timer = new WodTimer();
+// Inicializar app
+document.addEventListener('DOMContentLoaded', () => {
+    window.appTimer = new WodTimer();
+});
