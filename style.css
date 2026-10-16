@@ -59,11 +59,27 @@ html, body {
     background-color: #000000;
 }
 
+/* Viñeta de contraste para destacar elementos sobre las partículas */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.85) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .app-root {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 2;
+    background: transparent;
 }
 
 /* =========================================
@@ -119,7 +135,9 @@ html, body {
     width: 100%;
     padding: 1.35rem 2.5rem;
     border: 4px solid var(--border-color);
-    background-color: transparent;
+    background-color: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--text-color);
     font-family: var(--font-mono);
     font-size: clamp(1.8rem, 4vw, 3.1rem);
@@ -131,18 +149,20 @@ html, body {
     outline: none;
     user-select: none;
     text-align: center;
-    transition: background-color 0.12s ease, color 0.12s ease;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 
 .timer-btn-menu:hover,
 .timer-btn-menu:focus-visible {
     background-color: #ffffff;
     color: #000000;
+    transform: translateY(-2px);
 }
 
 .timer-btn-menu:active {
     background-color: #dddddd;
     color: #000000;
+    transform: translateY(0);
 }
 
 .home-footer {
@@ -273,14 +293,16 @@ html, body {
 .timer-preset-chip {
     padding: 0.55rem 1.25rem;
     border: 2px solid var(--border-color);
-    background: transparent;
+    background-color: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: #ffffff;
     font-family: var(--font-mono);
     font-size: clamp(1rem, 1.8vw, 1.35rem);
     text-transform: uppercase;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.12s, color 0.12s;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
     border-radius: 0;
     outline: none;
 }
@@ -289,6 +311,7 @@ html, body {
 .timer-preset-chip.active {
     background-color: #ffffff;
     color: #000000;
+    transform: translateY(-1px);
 }
 
 .timer-settings-form {
@@ -322,17 +345,21 @@ html, body {
 .timer-setting-row .label-left {
     text-align: right;
     color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .timer-setting-row .label-right {
     text-align: left;
     color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .timer-setting-input {
     width: clamp(8.5rem, 18vw, 18rem);
     padding: 0.85rem 1.2rem;
-    background: transparent;
+    background-color: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 4px solid var(--border-color);
     border-radius: 0;
     color: #ffffff;
@@ -343,7 +370,7 @@ html, body {
     outline: none;
     -moz-appearance: textfield;
     appearance: textfield;
-    transition: background-color 0.12s, color 0.12s;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .timer-setting-input::-webkit-outer-spin-button,
@@ -364,6 +391,7 @@ html, body {
     margin-top: -0.5rem;
     margin-bottom: 1.5rem;
     letter-spacing: 0.05em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* BOTON START (CUADRO PRINCIPAL) */
@@ -373,7 +401,9 @@ html, body {
     width: clamp(13rem, 26vw, 24rem);
     padding: 1.25rem 2.5rem;
     border: 4px solid var(--border-color);
-    background-color: transparent;
+    background-color: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #ffffff;
     font-family: var(--font-mono);
     font-size: clamp(1.6rem, 3.2vw, 2.5rem);
@@ -383,7 +413,7 @@ html, body {
     cursor: pointer;
     border-radius: 0;
     outline: none;
-    transition: background-color 0.12s ease, color 0.12s ease;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
     text-align: center;
 }
 
@@ -391,11 +421,13 @@ html, body {
 .timer-btn-start:focus-visible {
     background-color: #ffffff;
     color: #000000;
+    transform: translateY(-2px);
 }
 
 .timer-btn-start:active {
     background-color: #dddddd;
     color: #000000;
+    transform: translateY(0);
 }
 
 /* =========================================
@@ -419,6 +451,7 @@ html, body {
     min-height: 2.5rem;
     color: #ffffff;
     text-align: center;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
     transition: color 0.2s ease;
 }
 
@@ -433,6 +466,7 @@ html, body {
     text-align: center;
     font-variant-numeric: tabular-nums;
     margin: 0.2rem 0;
+    text-shadow: 0 0 45px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 255, 255, 0.12);
     transition: color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
 }
 
@@ -465,7 +499,9 @@ html, body {
 .timer-btn-control {
     padding: 0.95rem 2.2rem;
     border: 3px solid var(--border-color);
-    background: transparent;
+    background-color: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: #ffffff;
     font-family: var(--font-mono);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
@@ -475,13 +511,18 @@ html, body {
     cursor: pointer;
     border-radius: 0;
     outline: none;
-    transition: background-color 0.12s ease, color 0.12s ease;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
 
 .timer-btn-control:hover,
 .timer-btn-control:focus-visible {
     background-color: #ffffff;
     color: #000000;
+    transform: translateY(-2px);
+}
+
+.timer-btn-control:active {
+    transform: translateY(0);
 }
 
 /* =========================================

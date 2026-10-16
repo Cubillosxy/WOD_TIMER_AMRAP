@@ -203,6 +203,11 @@ class WodTimer {
         };
         this.timerTitle.textContent = titles[mode] || mode.toUpperCase();
 
+        if (window.particleBg) {
+            window.particleBg.nextShape();
+            window.particleBg.triggerShockwave(0, 0, 220);
+        }
+
         const applyDOMUpdate = () => {
             this.viewHome.style.display = 'none';
             this.viewHome.classList.remove('active');
@@ -222,6 +227,10 @@ class WodTimer {
         // Detener timer en curso si volvemos al menú
         this.stopLoops();
         this.resetStateFlags();
+
+        if (window.particleBg) {
+            window.particleBg.triggerShockwave(0, 0, 180);
+        }
 
         const applyDOMUpdate = () => {
             this.viewTimer.style.display = 'none';
@@ -345,6 +354,10 @@ class WodTimer {
         this.displayClock.textContent = Math.ceil(this.remainingTime).toString();
         this.displayRoundInfo.textContent = 'GET READY';
 
+        if (window.particleBg) {
+            window.particleBg.triggerShockwave(0, 0, 260);
+        }
+
         this.lastFrameTime = performance.now();
         this.interval = setInterval(() => this.loop(), 100);
     }
@@ -364,8 +377,10 @@ class WodTimer {
             if (currentSec !== prevSec && currentSec > 0) {
                 if (currentSec === 3 || currentSec === 2) {
                     this.audio.playShortBeep();
+                    if (window.particleBg) window.particleBg.triggerShockwave(0, 0, 160);
                 } else if (currentSec === 1) {
                     this.audio.playLongBeep();
+                    if (window.particleBg) window.particleBg.triggerShockwave(0, 0, 320);
                 }
             }
 
@@ -392,8 +407,10 @@ class WodTimer {
                     if (currSec !== prevSec) {
                         if (currSec === 3 || currSec === 2) {
                             this.audio.playShortBeep();
+                            if (window.particleBg) window.particleBg.triggerShockwave(0, 0, 160);
                         } else if (currSec === 1) {
                             this.audio.playLongBeep();
+                            if (window.particleBg) window.particleBg.triggerShockwave(0, 0, 320);
                         }
                     }
                     document.body.classList.add('state-warning');
@@ -418,8 +435,10 @@ class WodTimer {
             if (currentSec !== prevSec && currentSec > 0) {
                 if (currentSec === 3 || currentSec === 2) {
                     this.audio.playShortBeep();
+                    if (window.particleBg) window.particleBg.triggerShockwave(0, 0, 160);
                 } else if (currentSec === 1) {
                     this.audio.playLongBeep();
+                    if (window.particleBg) window.particleBg.triggerShockwave(0, 0, 320);
                 }
             }
 
@@ -523,6 +542,10 @@ class WodTimer {
         this.setUIState('finished', 'FINISHED');
         this.displayClock.textContent = 'DONE';
         this.displayRoundInfo.textContent = 'WORKOUT COMPLETED';
+
+        if (window.particleBg) {
+            window.particleBg.triggerShockwave(0, 0, 450);
+        }
 
         this.activeControls.style.display = 'none';
         this.btnRestart.style.display = 'block';
