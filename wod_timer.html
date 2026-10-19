@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer CrossFit - TABATA, EMOM, AMRAP - WOD Timer</title>
+    <title>AMRAP BOX - WOD Timer (Clock, Tabata, EMOM, AMRAP)</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="assets/icon-192.png">
+    <meta name="theme-color" content="#000000">
     <link rel="preload" href="assets/fonts/iosevka-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/iosevka-semibold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/iosevka-bold.woff2" as="font" type="font/woff2" crossorigin>
@@ -19,6 +24,14 @@
         <!-- VISTA 1: MENU PRINCIPAL DE INICIO CON CUADROS -->
         <section id="view-home" class="view-section active">
             <div class="menu-container">
+                <!-- LOGO/CABECERA DE MARCA PRINCIPAL AL INICIO -->
+                <header class="home-brand-header">
+                    <picture>
+                        <source srcset="assets/amrapbox-banner.webp" type="image/webp">
+                        <img src="assets/amrapbox-banner.jpeg" alt="AMRAP BOX - Functional & CrossFit" class="home-brand-banner">
+                    </picture>
+                </header>
+
                 <nav class="timer-nav">
                     <ul class="timer-menu-list">
                         <li>
@@ -40,9 +53,17 @@
                 </nav>
             </div>
             
-            <footer class="home-footer">
-                <span class="brand-tag">WOD TIMER</span>
-            </footer>
+            <!-- BADGE PRO CON TEXTURA DE FIBRA DE CARBONO EN ESQUINA -->
+            <aside class="home-corner-badge" aria-label="AMRAP BOX Gym" title="AMRAP BOX Functional & CrossFit">
+                <picture>
+                    <source srcset="assets/logo-pro-square.webp" type="image/webp">
+                    <img src="assets/logo-pro-square.jpeg" alt="AMRAP BOX Pro Logo" class="corner-badge-img">
+                </picture>
+                <div class="corner-badge-text">
+                    <span class="corner-badge-title">AMRAP BOX</span>
+                    <span class="corner-badge-sub">Functional &amp; CrossFit</span>
+                </div>
+            </aside>
         </section>
 
         <!-- VISTA 2: TIMER SELECCIONADO (CLOCK, TABATA, FOR TIME, EMOM, AMRAP) -->
@@ -57,6 +78,7 @@
                             <line x1="16" y1="12" x2="8" y2="12"></line>
                         </svg>
                     </button>
+                    <img src="assets/icon-64.png" class="topbar-brand-icon" alt="AMRAP BOX Icon" width="28" height="28">
                     <h2 id="timer-title" class="timer-header-title">CLOCK</h2>
                 </div>
                 <div class="topbar-right">
@@ -183,7 +205,24 @@
 
                     <button id="btn-restart" class="timer-btn-start" type="button" style="display: none;">RESTART</button>
                 </div>
+            </main>
         </section>
+
+        <!-- FOOTER DEDICATORIA GLOBAL (PRESENTE EN TODO LADO) -->
+        <footer class="global-footer">
+            <div class="footer-credit">
+                <span class="footer-text">made in Monterrey</span>
+                <span class="flag-icon" aria-label="Colombia" title="Colombia">
+                    <svg class="flag-co" viewBox="0 0 900 600" width="18" height="12" aria-hidden="true">
+                        <rect width="900" height="600" fill="#FCD116" />
+                        <rect width="900" height="300" y="300" fill="#003893" />
+                        <rect width="900" height="150" y="450" fill="#CE1126" />
+                    </svg>
+                </span>
+                <span class="footer-text">By Edwin C</span>
+                <img src="assets/icon-64.png" class="footer-gym-icon" alt="AMRAP BOX Gym" title="AMRAP BOX">
+            </div>
+        </footer>
     </div>
 
     <!-- AUDIO ELEMENTS (SONIDOS DE CUENTA Y CAMBIO) -->
