@@ -142,6 +142,8 @@ body::after {
 
 .timer-nav {
     width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
 }
 
 .timer-menu-list {
@@ -150,20 +152,25 @@ body::after {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 0.85rem;
     width: 100%;
+    align-items: center;
 }
 
 .timer-menu-list li {
     width: 100%;
 }
 
-/* CUADROS PRINCIPALES DE SELECCIÓN */
+/* CUADROS PRINCIPALES DE SELECCIÓN (~240 x 60) */
 .timer-btn-menu {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 1.35rem 2.5rem;
-    border: 4px solid var(--border-color);
+    height: 60px;
+    min-height: 60px;
+    padding: 0.35rem 1rem;
+    border: 3px solid var(--border-color);
     background-color: rgba(10, 10, 10, 0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -173,6 +180,7 @@ body::after {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    line-height: 1;
     cursor: pointer;
     border-radius: 0;
     outline: none;
@@ -715,15 +723,15 @@ body.state-finished .timer-clock {
 .footer-credit {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.85rem;
+    gap: 0.45rem;
+    padding: 0.3rem 0.75rem;
     background: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 9999px;
     font-family: var(--font-mono);
-    font-size: clamp(0.72rem, 1.3vw, 0.84rem);
+    font-size: clamp(0.64rem, 1.1vw, 0.74rem);
     font-weight: 500;
     color: rgba(255, 255, 255, 0.62);
     letter-spacing: 0.04em;
@@ -745,6 +753,20 @@ body.state-finished .timer-clock {
     line-height: 1;
 }
 
+.footer-author-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 229, 255, 0.45);
+    text-underline-offset: 2px;
+    font-weight: 600;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.footer-author-link:hover {
+    color: #00e5ff;
+    text-decoration-color: #00e5ff;
+}
+
 .flag-icon {
     display: inline-flex;
     align-items: center;
@@ -753,46 +775,40 @@ body.state-finished .timer-clock {
 
 .flag-co {
     display: block;
-    width: 18px;
-    height: 12px;
-    border-radius: 2px;
+    width: 14px;
+    height: 9.3px;
+    border-radius: 1.5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     overflow: hidden;
 }
 
-.footer-gym-icon {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    display: block;
-    border-radius: 3px;
-    filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.55));
+.footer-robot-icon {
+    font-size: 0.9em;
+    line-height: 1;
+    display: inline-block;
     transition: transform 0.25s ease;
+    user-select: none;
+    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.4));
 }
 
-.footer-credit:hover .footer-gym-icon {
-    transform: scale(1.2) rotate(6deg);
+.footer-credit:hover .footer-robot-icon {
+    transform: scale(1.25) rotate(8deg);
 }
 
 @media (max-width: 600px) {
     .global-footer {
-        padding: 0.4rem 0.8rem;
+        padding: 0.35rem 0.6rem;
     }
 
     .footer-credit {
-        padding: 0.28rem 0.65rem;
-        gap: 0.4rem;
-        font-size: 0.72rem;
+        padding: 0.24rem 0.55rem;
+        gap: 0.35rem;
+        font-size: 0.64rem;
     }
 
     .flag-co {
-        width: 16px;
-        height: 10px;
-    }
-
-    .footer-gym-icon {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 8px;
     }
 }
 
