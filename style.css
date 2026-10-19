@@ -758,11 +758,18 @@ body.state-finished .timer-clock {
     color: inherit;
     text-decoration: none;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     transition: color 0.15s ease;
 }
 
 .footer-author-link:hover {
     color: #00e5ff;
+}
+
+.footer-author-link:hover .footer-robot-icon {
+    transform: scale(1.25) rotate(8deg);
 }
 
 .flag-icon {
@@ -773,9 +780,9 @@ body.state-finished .timer-clock {
 
 .flag-co {
     display: block;
-    width: 14px;
-    height: 9.3px;
-    border-radius: 1.5px;
+    width: 12px;
+    height: 8px;
+    border-radius: 1px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     overflow: hidden;
 }
@@ -787,10 +794,6 @@ body.state-finished .timer-clock {
     transition: transform 0.25s ease;
     user-select: none;
     filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.4));
-}
-
-.footer-credit:hover .footer-robot-icon {
-    transform: scale(1.25) rotate(8deg);
 }
 
 @media (max-width: 600px) {
@@ -805,8 +808,8 @@ body.state-finished .timer-clock {
     }
 
     .flag-co {
-        width: 12px;
-        height: 8px;
+        width: 11px;
+        height: 7.3px;
     }
 }
 
