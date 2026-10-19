@@ -142,7 +142,7 @@ body::after {
 
 .timer-nav {
     width: 100%;
-    max-width: 240px;
+    max-width: 280px;
     margin: 0 auto;
 }
 
@@ -161,7 +161,7 @@ body::after {
     width: 100%;
 }
 
-/* CUADROS PRINCIPALES DE SELECCIÓN (~240 x 60) */
+/* CUADROS PRINCIPALES DE SELECCIÓN (~280 x 60) */
 .timer-btn-menu {
     display: flex;
     align-items: center;
@@ -169,18 +169,19 @@ body::after {
     width: 100%;
     height: 60px;
     min-height: 60px;
-    padding: 0.35rem 1rem;
+    padding: 0.35rem 1.2rem;
     border: 3px solid var(--border-color);
     background-color: rgba(10, 10, 10, 0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: var(--text-color);
     font-family: var(--font-mono);
-    font-size: clamp(1.8rem, 4vw, 3.1rem);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     line-height: 1;
+    white-space: nowrap;
     cursor: pointer;
     border-radius: 0;
     outline: none;
@@ -755,16 +756,13 @@ body.state-finished .timer-clock {
 
 .footer-author-link {
     color: inherit;
-    text-decoration: underline;
-    text-decoration-color: rgba(0, 229, 255, 0.45);
-    text-underline-offset: 2px;
+    text-decoration: none;
     font-weight: 600;
-    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    transition: color 0.15s ease;
 }
 
 .footer-author-link:hover {
     color: #00e5ff;
-    text-decoration-color: #00e5ff;
 }
 
 .flag-icon {
