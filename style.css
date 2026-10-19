@@ -117,26 +117,26 @@ body::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.2rem;
     pointer-events: none;
     user-select: none;
 }
 
 .home-brand-banner {
-    width: 85%;
-    max-width: 360px;
+    width: 90%;
+    max-width: 400px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.75));
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.28)) drop-shadow(0 4px 18px rgba(0, 0, 0, 0.8));
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 @media (max-width: 600px) {
     .home-brand-banner {
-        max-width: 270px;
+        max-width: 290px;
     }
     .home-brand-header {
-        margin-bottom: 1.4rem;
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -252,6 +252,25 @@ body::after {
 }
 
 @media (max-width: 840px) {
+    .home-corner-badge {
+        bottom: 1rem;
+        right: 1.2rem;
+        padding: 0.3rem 0.6rem 0.3rem 0.3rem;
+        gap: 0.5rem;
+    }
+    .corner-badge-img {
+        width: 38px;
+        height: 38px;
+    }
+    .corner-badge-title {
+        font-size: 0.78rem;
+    }
+    .corner-badge-sub {
+        font-size: 0.54rem;
+    }
+}
+
+@media (max-width: 600px) {
     .home-corner-badge {
         display: none;
     }
@@ -774,5 +793,40 @@ body.state-finished .timer-clock {
     .footer-gym-icon {
         width: 16px;
         height: 16px;
+    }
+}
+
+/* Optimización para dispositivos en horizontal / pantallas compactas (gym racks) */
+@media (max-height: 540px) {
+    .home-brand-header {
+        margin-bottom: 0.9rem;
+    }
+
+    .home-brand-banner {
+        max-width: 220px;
+    }
+
+    .timer-menu-list {
+        gap: 0.7rem;
+    }
+
+    .timer-btn-menu {
+        padding: 0.7rem 1.4rem;
+        font-size: 1.4rem;
+        border-width: 2px;
+    }
+
+    .home-corner-badge {
+        display: none;
+    }
+
+    .global-footer {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .footer-credit {
+        padding: 0.2rem 0.55rem;
+        font-size: 0.68rem;
+        gap: 0.35rem;
     }
 }
