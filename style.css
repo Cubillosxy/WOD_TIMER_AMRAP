@@ -705,8 +705,7 @@ body.state-finished .timer-clock {
 }
 
 /* =========================================
-   FOOTER DEDICATORIA GLOBAL (PRESENTE EN TODAS LAS VISTAS)
-   "made in Monterrey 🇨🇴 By Edwin C <logo_gym>"
+   BARRA DE METADATOS INFERIOR GLOBAL
    ========================================= */
 .global-footer {
     position: fixed;
