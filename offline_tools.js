@@ -1,6 +1,8 @@
 class OfflineToolsManager {
     constructor() {
-        // Playlists organizadas por categoría (archivos comprimidos en assets/media/)
+        // =========================================
+        // 1. MÚSICA Y VIDEOS (PLAYLISTS)
+        // =========================================
         const challengeTracks = [
             {
                 id: 'ch-daledon',
@@ -131,9 +133,325 @@ class OfflineToolsManager {
             ]
         };
 
+        // =========================================
+        // 2. MOVILIDAD Y ACTIVACIÓN DINÁMICA
+        // =========================================
+        this.mobilityData = {
+            walks: [
+                {
+                    code: 'MOB-01',
+                    title: 'Animal Flow & Caminatas de Locomoción',
+                    duration: '8 MIN · FLUJO CONTINUO',
+                    focus: 'Hombros, core, cadera y tobillo (sin estiramiento pasivo)',
+                    steps: [
+                        '20m Bear Crawl (Caminata de oso: rodillas a 3 cm del suelo, espalda plana)',
+                        '15m Inchworm + Push-Up (Caminata de gusano llegando a plancha y flexión)',
+                        '20m Spiderman Lunge Walk + Rotación Torácica (codo al empeine + brazo al cielo)',
+                        '15m Duck Walk (Caminata en sentadilla profunda manteniendo talones apoyados)',
+                        '20m Crab Walk (Caminata de cangrejo activando tríceps y extensión de cadera)'
+                    ],
+                    equipment: 'Pista / pasillo despejado del box.'
+                },
+                {
+                    code: 'MOB-02',
+                    title: 'Caminata Overhead & Bisagra Dinámica',
+                    duration: '6 MIN · 2 RONDAS',
+                    focus: 'Estabilidad escapular, isquiotibiales y recepción en squat',
+                    steps: [
+                        '20m Frankenstein Walk (patada frontal a mano contraria sin doblar columna)',
+                        '20m Overhead Plate Walk (caminata en puntas y talones con disco sobre la cabeza)',
+                        '15m Lunge Walk con twist sobre pierna delantera usando soporte o disco',
+                        '10 Kang Squats (Good Morning hacia sentadilla profunda y regreso controlado)'
+                    ],
+                    equipment: 'Disco de 15 lb o 10 lb, soporte para lunges.'
+                },
+                {
+                    code: 'MOB-03',
+                    title: 'Flow de Cuerda & Desplazamiento Lateral',
+                    duration: '7 MIN · EMOM DINÁMICO',
+                    focus: 'Activación de tren inferior, agarre y ritmo cardíaco',
+                    steps: [
+                        'Min 1: 40 seg Sentadilla isométrica activa con movimiento de Battle Rope',
+                        'Min 2: 20m Desplazamiento lateral en cuarto de sentadilla + salto vertical cada 4 pasos',
+                        'Min 3: 10 Scapular Pull-Ups colgado en estructura + 20 seg Hang activo',
+                        'Repetir secuencia 2 veces sin pausa larga'
+                    ],
+                    equipment: 'Cuerda grande (Battle Rope) y estructura de dominadas.'
+                }
+            ],
+            partner: [
+                {
+                    code: 'PMOB-01',
+                    title: 'Movilidad en Parejas · Squat & Thoracic Pass',
+                    duration: '8 MIN · PAREJAS',
+                    focus: 'Apertura de cadera bajo carga compartida y rotación dorsal',
+                    steps: [
+                        '90 seg Sentadilla isométrica espalda con espalda + pase lateral de Wall Ball',
+                        '10/10 Rotaciones torácicas en cuadrupedia con resistencia suave del compañero',
+                        '60 seg Peso muerto rumano en espejo con banda elástica azul tirando hacia el compañero',
+                        '12 Pase de balón medicinal por encima de la cabeza y entre las piernas (cadena posterior)'
+                    ],
+                    equipment: 'Balón medicinal (15 lb o 10 lb) y banda elástica azul o naranja.'
+                },
+                {
+                    code: 'PMOB-02',
+                    title: 'Partner Shoulder & Core Reactivo',
+                    duration: '7 MIN · PAREJAS',
+                    focus: 'Estabilidad de hombro para gymnastic / barbell y anti-rotación',
+                    steps: [
+                        '60 seg Plancha alta frente a frente: toque de mano cruzada + paso a Downward Dog',
+                        '10/10 Apertura de hombros en estructura asistida por compañero (agarre supino/prono)',
+                        '8/8 Sotts Press asistido con barra vacía: compañero corrige verticalidad de codos',
+                        '60 seg Pallof Press isométrico en pareja con banda elástica negra o azul'
+                    ],
+                    equipment: 'Barra de 20 kg o 15 kg, banda elástica negra/azul, estructura y colchonetas.'
+                }
+            ],
+            bands_kb: [
+                {
+                    code: 'BMOB-01',
+                    title: 'Activación Articular con Bandas & Kettlebell',
+                    duration: '8 MIN · PRE-WOD PESADO',
+                    focus: 'Desbloqueo de tobillo/cadera para Squat Clean, Snatch y Thrusters',
+                    steps: [
+                        '15 Dislocaciones de hombro + 15 Band Pull-Aparts con banda elástica naranja',
+                        '60 seg Goblet Squat Pry con Kettlebell (empujar rodillas con codos abriendo cadera)',
+                        '12/12 Monster Walk lateral y diagonal con banda elástica azul o negra en rodillas',
+                        '8/8 Kettlebell Arm-Bar + Windmill controlado en colchoneta'
+                    ],
+                    equipment: 'Kettlebell de 14 kg o 12 kg, bandas elásticas (negra, azul, naranja), colchoneta.'
+                },
+                {
+                    code: 'BMOB-02',
+                    title: 'Activación de Hombro, Anillas y Core',
+                    duration: '6 MIN · PRE-GIMNÁSTICOS',
+                    focus: 'Preparación para Pull-ups, Toes to Bar, Ring Dips y HSPU',
+                    steps: [
+                        '10 Scapular Push-ups + 8 Rollouts controlados con Rueda Abdominal (Ab Wheel)',
+                        '10 Ring Support Swings suaves en anillas (bloqueo de codos y depresión escapular)',
+                        '12 Press externo de manguito rotador con banda naranja anclada al rack',
+                        '5 Wall Walks progresivos o Pike Push-ups en soportes de HSPU'
+                    ],
+                    equipment: 'Anillas, rueda abdominal, colchoneta, banda naranja y soportes HSPU.'
+                }
+            ]
+        };
+
+        // =========================================
+        // 3. RUTINAS DE EJERCICIOS (WODS EXIGENTES)
+        // =========================================
+        this.wodsData = {
+            partner: [
+                {
+                    code: 'PARTNER WOD #01 · REAL BOX',
+                    title: 'Trifecta 45s Switch & Cash-Out',
+                    format: '3 BLOQUES · PAREJAS · ALTA EXIGENCIA',
+                    rmRef: '65% – 70% 1RM Cluster / Power Clean',
+                    blocks: [
+                        {
+                            name: 'BLOQUE A · 24 RONDAS (Switch cada 45 seg · Time Cap 18 min)',
+                            desc: 'Un compañero trabaja mientras el otro descansa. Cada 45 segundos suena cambio obligatorio y el compañero continúa exactamente donde quedó el anterior hasta completar 24 rondas:',
+                            items: [
+                                '4 Wall Balls (balón al target)',
+                                '4 Pull-Ups (PRO: Chest-to-Bar)',
+                                '4 American Kettlebell Swings (sobre la cabeza)',
+                                '4 Burpees pecho al piso'
+                            ]
+                        },
+                        {
+                            name: 'BLOQUE B · AMRAP 12 MINUTOS',
+                            desc: 'Máximas rondas en 12 minutos (Clusters repartidos libremente, V-Ups al mismo tiempo):',
+                            items: [
+                                '11 Squat Clusters con barra (Squat Clean + Thruster)',
+                                '11 V-Ups Sincronizados en colchoneta'
+                            ]
+                        },
+                        {
+                            name: 'BLOQUE C · CASH-OUT FOR TIME (Cap 6 min)',
+                            desc: 'Completar entre los dos para cerrar el entrenamiento:',
+                            items: [
+                                '39 Power Cleans (repartidos)',
+                                '45 Toes to Bar (pies a la barra)'
+                            ]
+                        }
+                    ],
+                    weights: {
+                        pro: 'Barra 135 / 95 lb (20kg + 45lb por lado H · 15kg + 25+5lb por lado M) · KB 24 / 20 kg · Wall Ball 20 / 15 lb',
+                        open: 'Barra 95 / 65 lb (20kg + 25lb por lado H · 15kg + 15lb por lado M) · KB 20 / 14 kg · Wall Ball 15 / 10 lb'
+                    },
+                    equipment: 'Barra olímpica (20/15 kg), discos (45, 25, 15, 5 lb), Wall Ball (20/15/10 lb), Kettlebell (24/20/14 kg), estructura de dominadas y colchonetas.'
+                },
+                {
+                    code: 'PARTNER WOD #02',
+                    title: 'Rope, Sandbag & Synchro Devil',
+                    format: 'FOR TIME · CAP 26 MIN · PAREJAS',
+                    rmRef: '75% 1RM Deadlift / DB Pesadas',
+                    blocks: [
+                        {
+                            name: 'BUY-IN COMPARTIDO',
+                            desc: 'En pista abierta y máquina antes de tocar las mancuernas:',
+                            items: [
+                                '800m Run juntos cargando 1 Saco con agarre (20 kg / 10 kg)',
+                                '60 Cal SkiErg o Bicicleta de CrossFit (repartidas)'
+                            ]
+                        },
+                        {
+                            name: '4 RONDAS POR TIEMPO',
+                            desc: 'Un compañero trabaja en cuerda/saco mientras el otro sostiene isometría o alternan:',
+                            items: [
+                                '4 Trepar la cuerda grande (Rope Climbs, repartidas)',
+                                '16 Devil Press Sincronizados con mancuernas',
+                                '30m Sandbag Bear Hug Carry con Sandbag pesado',
+                                '20 Ab Wheel Rollouts (rueda abdominal, repartidos)'
+                            ]
+                        }
+                    ],
+                    weights: {
+                        pro: 'Mancuernas 50 / 35 lb · Sandbag 75 lb + Saco 30 kg · Cuerda sin salto',
+                        open: 'Mancuernas 35 / 20 lb · Saco con agarre 20 / 10 kg · Rope Climb o 12 Pull-ups con banda negra/azul'
+                    },
+                    equipment: 'Cuerda grande para escalar, Sandbag de 75 lb, sacos con agarres (30/20/10 kg), mancuernas (50/35/20 lb), rueda abdominal, SkiErg o CrossFit Bike y pista abierta.'
+                },
+                {
+                    code: 'PARTNER WOD #03',
+                    title: 'Sled & Ring Engine',
+                    format: 'EMOM 24 MIN (6 RONDAS) · PAREJAS',
+                    rmRef: '80% 1RM Snatch / Carga Pesada en Trineo',
+                    blocks: [
+                        {
+                            name: 'ESTACIONES DE 4 MINUTOS (TRABAJO EN RELEVO)',
+                            desc: 'Completar la tarea de cada minuto entre los dos:',
+                            items: [
+                                'Min 1: 40m Sled Push + Pull en pista (20m empuje / 20m arrastre)',
+                                'Min 2: 14 Ring Dips en anillas (PRO: 8 Ring Muscle-Ups) + 12 Box Jump Overs',
+                                'Min 3: 10 Squat Snatches con barra olímpica (70–75% RM)',
+                                'Min 4: Máximas calorías en Remo (RowErg) + 30 seg Battle Rope Squat Waves'
+                            ]
+                        }
+                    ],
+                    weights: {
+                        pro: 'Barra Snatch 135 / 95 lb · Sled con 4x45 lb + 2x35 lb · Cajón 24 / 20"',
+                        open: 'Barra Snatch 95 / 65 lb · Sled con 2x45 lb + 2x25 lb · Anillas con banda azul/negra'
+                    },
+                    equipment: 'Sled push/pull, discos (45, 35, 25 lb), anillas, cajón (box), barra olímpica (20/15 kg), remo y cuerda grande para sentadilla con movimiento.'
+                }
+            ],
+            individual: [
+                {
+                    code: 'INDIVIDUAL WOD #01',
+                    title: 'Heavy Barbell & Ring Complex',
+                    format: 'FUERZA 10 MIN + FOR TIME 15 MIN',
+                    rmRef: '80% – 85% 1RM Clean & Jerk',
+                    blocks: [
+                        {
+                            name: 'PARTE A · EMOM 8 MIN (FUERZA OLÍMPICA)',
+                            desc: '1 Complejo cada minuto subiendo del 75% al 85% de tu 1RM:',
+                            items: [
+                                '1 Power Clean + 1 Hang Squat Clean + 1 Split Jerk'
+                            ]
+                        },
+                        {
+                            name: 'PARTE B · 21 - 15 - 9 FOR TIME (Cap 14 min)',
+                            desc: 'Después de cada ronda realiza 1 subida a la cuerda grande y 40m de carrera con saco:',
+                            items: [
+                                'Thrusters con barra olímpica',
+                                'Toes to Bar en estructura',
+                                'Handstand Push-Ups en soportes (HSPU)',
+                                'Entre rondas: 1 Rope Climb + 40m Carry con saco de 20/30 kg'
+                            ]
+                        }
+                    ],
+                    weights: {
+                        pro: 'Thrusters 115 / 80 lb (20kg + 35lb/lado H · 15kg + 20lb/lado M · ~65% RM) · Saco 30 / 20 kg',
+                        open: 'Thrusters 85 / 55 lb (20kg + 20lb/lado H · 15kg + 10lb/lado M · ~55% RM) · Saco 20 / 10 kg'
+                    },
+                    equipment: 'Barra de 20 kg / 15 kg, discos (45, 35, 25, 15, 10, 5 lb), estructura, soportes para HSPU, cuerda grande para escalar y sacos con agarres (30/20/10 kg).'
+                },
+                {
+                    code: 'INDIVIDUAL WOD #02',
+                    title: 'Triple Erg & Kettlebell Hell',
+                    format: 'AMRAP 20 MINUTOS · MOTOR PURO',
+                    rmRef: '70% Capacidad Aeróbica / KB Pesada',
+                    blocks: [
+                        {
+                            name: 'SECUENCIA CONTINUA DURANTE 20 MINUTOS',
+                            desc: 'Mantén ritmo constante sin caer por debajo de 1000 cal/h en máquinas:',
+                            items: [
+                                '15 Cal SkiErg',
+                                '15 American Kettlebell Swings',
+                                '15 Cal Bicicleta de CrossFit',
+                                '15 Goblet Walking Lunges (usando soportes o paso profundo)',
+                                '15 Cal Remo (RowErg)',
+                                '12 Ab Wheel Rollouts en colchoneta'
+                            ]
+                        }
+                    ],
+                    weights: {
+                        pro: 'Kettlebell 24 kg (H) / 20 kg (M)',
+                        open: 'Kettlebell 20 kg (H) / 14 kg o 12 kg (M)'
+                    },
+                    equipment: 'SkiErg, bicicleta de CrossFit, remo, pesas rusas (24, 20, 14, 12 kg), rueda para abdomen y colchoneta.'
+                },
+                {
+                    code: 'INDIVIDUAL WOD #03',
+                    title: 'Sandbag, DBs & Battle Rope Chipper',
+                    format: 'FOR TIME · CAP 18 MIN',
+                    rmRef: 'Mancuernas Pesadas (55 lb / 15 kg)',
+                    blocks: [
+                        {
+                            name: 'CHIPPER DE ALTA DENSIDAD',
+                            desc: 'Completar en orden de principio a fin:',
+                            items: [
+                                '800m Run en pista o campo abierto',
+                                '40 Wall Balls (20 / 15 lb)',
+                                '30 Dumbbell Box Step-Overs con par de mancuernas',
+                                '20 Sandbag Cleans sobre el hombro con Sandbag de 75 lb (o saco de 30/20 kg)',
+                                '60 seg acumulados de Sentadilla isométrica batiendo cuerda grande (Battle Rope)',
+                                '15 Bar Muscle-Ups o 25 Chest-to-Bar Pull-Ups'
+                            ]
+                        }
+                    ],
+                    weights: {
+                        pro: 'Mancuernas 55 / 35 lb (o par de 15 kg M) · Sandbag 75 lb · Wall Ball 20 / 15 lb',
+                        open: 'Mancuernas 35 / 20 lb · Saco con agarres 20 / 10 kg · Wall Ball 15 / 10 lb'
+                    },
+                    equipment: 'Pista abierta, Wall Ball (20/15/10 lb), cajón (box), mancuernas (55–20 lb o 15 kg), Sandbag 75 lb / sacos (20/10 kg), cuerda grande y estructura.'
+                }
+            ]
+        };
+
+        // =========================================
+        // 4. SERIE DE 100 ENTRENAMIENTOS HYROX (#001 – #100)
+        // =========================================
+        this.hyroxCatalog = this.buildHyrox100Catalog();
+        this.hyroxMode = 'individual'; // 'individual' | 'partner'
+        this.hyroxFilter = 'recent';   // 'recent' | 'all'
+        this.hyroxSearch = '';
+        this.selectedHyroxNumber = 1;
+
+        // =========================================
+        // 5. ESTADO DE NAVEGACIÓN Y CALCULADORAS
+        // =========================================
+        this.activeModule = 'music';   // 'music' | 'mobility' | 'wods' | 'hyrox' | 'calc'
+        this.selectedCategory = 'tabata';
+        this.mobilityCategory = 'walks';
+        this.wodsCategory = 'partner';
+        this.calcCategory = 'rm';      // 'rm' | 'bmi'
+
+        // Estado de Calculadora RM e IMC
+        this.rmState = {
+            oneRm: 185,
+            unit: 'lb',     // 'lb' | 'kg'
+            barKg: 20,      // 20 (H) | 15 (M)
+            customPct: 75
+        };
+        this.bmiState = {
+            heightCm: 174,
+            weightKg: 76
+        };
+
         // Estado del panel y reproductor
         this.isOpen = false;
-        this.selectedCategory = 'tabata';
         this.playingCategory = 'tabata';
         this.playingIndex = -1;
         this.currentTrack = null;
@@ -141,7 +459,7 @@ class OfflineToolsManager {
         this.autoAdvance = true;
         this.isSeeking = false;
 
-        // Bóveda persistente (IndexedDB + Blob URL en memoria) para descomprimir/preparar 1 sola vez
+        // Bóveda persistente (IndexedDB + Blob URL en memoria)
         this.dbName = 'wod_offline_media_vault_v1';
         this.storeName = 'tracks';
         this.dbPromise = null;
@@ -156,10 +474,13 @@ class OfflineToolsManager {
         this.collapseBtn = document.getElementById('offline-tools-collapse');
         this.overlay = document.getElementById('offline-tools-overlay');
         this.statusDot = document.getElementById('offline-status-dot');
+        this.sectionTitleEl = document.getElementById('offline-section-title');
+        this.moduleNav = document.getElementById('offline-module-nav');
         this.tabsContainer = document.getElementById('offline-music-tabs');
         this.trackListEl = document.getElementById('offline-track-list');
 
         // Reproductor interno
+        this.playerDock = document.getElementById('offline-player-dock');
         this.videoStage = document.getElementById('player-video-stage');
         this.mediaEl = document.getElementById('workout-media-video');
         this.btnVideoFs = document.getElementById('btn-video-fullscreen');
@@ -174,7 +495,7 @@ class OfflineToolsManager {
         this.btnToggle = document.getElementById('btn-player-toggle');
         this.btnNext = document.getElementById('btn-player-next');
 
-        // Mini barra externa (visible en toda parte cuando el menú está cerrado)
+        // Mini barra externa
         this.miniBar = document.getElementById('offline-mini-bar');
         this.miniPlayBtn = document.getElementById('mini-bar-play');
         this.miniExpandBtn = document.getElementById('mini-bar-expand');
@@ -189,8 +510,108 @@ class OfflineToolsManager {
     init() {
         if (!this.panel || !this.mediaEl) return;
         this.initVaultKeys();
-        this.renderTrackList();
+        this.renderSubTabs();
+        this.renderModuleBody();
         this.bindEvents();
+    }
+
+    // =========================================
+    // GENERADOR DE LOS 100 HYROX NUMERADOS (#001 – #100)
+    // =========================================
+    buildHyrox100Catalog() {
+        // Los eventos más recientes primero (#001 Madrid, #002 Tokio, #003 Barcelona...) + serie completa hasta #100
+        const cities = [
+            { city: 'HYROX Madrid', tag: 'ESPAÑA · TEMPORADA RECIENTE', focus: 'Simulación Oficial Estándar · Pista Abierta', variant: 'standard' },
+            { city: 'HYROX Tokio', tag: 'JAPÓN · TEMPORADA RECIENTE', focus: 'Edición Velocidad & Transiciones Explosivas', variant: 'speed' },
+            { city: 'HYROX Barcelona', tag: 'ESPAÑA · TEMPORADA RECIENTE', focus: 'Edición Resistencia & Sled Heavy Drive', variant: 'heavy_sled' },
+            { city: 'HYROX Chicago', tag: 'USA · MAJOR SERIES', focus: 'Campeonato Norteamericano · Engine & Bike Split', variant: 'bike_mix' },
+            { city: 'HYROX Berlín', tag: 'ALEMANIA · TEMPLO RÁPIDO', focus: 'Ritmo de Récord Mundial · Negative Split Runs', variant: 'standard' },
+            { city: 'HYROX Londres', tag: 'UK · EXCEL ARENA', focus: 'Alta Densidad de Pierna & Grip Overload', variant: 'grip' },
+            { city: 'HYROX Ciudad de México', tag: 'MÉXICO · ALTITUD 2240M', focus: 'Capacidad Aeróbica en Hipoxia & Wall Ball Unbroken', variant: 'altitude' },
+            { city: 'HYROX Milán', tag: 'ITALIA · POWER EDITION', focus: 'Trineo Pesado + Kettlebell Farmers Intenso', variant: 'heavy_sled' },
+            { city: 'HYROX Ámsterdam', tag: 'PAÍSES BAJOS · ENGINE', focus: 'Triple Ergómetro (SkiErg + Remo + CrossFit Bike)', variant: 'bike_mix' },
+            { city: 'HYROX Las Vegas', tag: 'USA · CHAMPIONSHIP', focus: 'Final de Temporada · Estándar Pro Exigente', variant: 'standard' },
+            { city: 'HYROX París', tag: 'FRANCIA · GRAND PALAIS', focus: 'Compromiso Muscular de Tren Inferior', variant: 'grip' },
+            { city: 'HYROX Monterrey Box', tag: 'COLOMBIA · EDICIÓN ESPECIAL', focus: 'Adaptación Exigente con Cuerda, Sled y Sandbag 75 lb', variant: 'box_special' }
+        ];
+
+        const extraVenues = [
+            'Hamburgo', 'Múnich', 'Colonia', 'Frankfurt', 'Stuttgart', 'Karlsruhe',
+            'Viena', 'Zúrich', 'Ginebra', 'Estocolmo', 'Copenhague', 'Oslo',
+            'Helsinki', 'Varsovia', 'Katowice', 'Praga', 'Budapest', 'Dublín',
+            'Mánchester', 'Birmingham', 'Glasgow', 'Cardiff', 'Valencia', 'Málaga',
+            'Bilbao', 'Sevilla', 'Lisboa', 'Oporto', 'Roma', 'Turín',
+            'Bolonia', 'Rimini', 'Bruselas', 'Róterdam', 'Maastricht', 'Niza',
+            'Lyon', 'Burdeos', 'Toulouse', 'Nueva York', 'Dallas', 'Houston',
+            'Miami', 'Los Ángeles', 'Anaheim', 'San Diego', 'Seattle', 'Denver',
+            'Boston', 'Atlanta', 'Washington DC', 'Toronto', 'Vancouver', 'Montreal',
+            'Monterrey MX', 'Guadalajara', 'Bogotá', 'Medellín', 'Cali', 'Santiago',
+            'Buenos Aires', 'São Paulo', 'Río de Janeiro', 'Lima', 'Sídney', 'Melbourne',
+            'Brisbane', 'Perth', 'Auckland', 'Singapur', 'Hong Kong', 'Seúl',
+            'Busan', 'Taipéi', 'Osaka', 'Yokohama', 'Dubái', 'Abu Dabi',
+            'Doha', 'Riad', 'Ciudad del Cabo', 'Johannesburgo', 'El Cairo', 'Estambul',
+            'Atenas', 'Nicosia', 'Mallorca', 'Ibiza'
+        ];
+
+        const catalog = [];
+        for (let i = 1; i <= 100; i++) {
+            const numStr = String(i).padStart(3, '0');
+            let base;
+            if (i <= cities.length) {
+                base = cities[i - 1];
+            } else {
+                const venueName = extraVenues[(i - cities.length - 1) % extraVenues.length];
+                const variants = ['standard', 'speed', 'heavy_sled', 'bike_mix', 'grip', 'box_special'];
+                const v = variants[i % variants.length];
+                const focusMap = {
+                    standard: 'Simulación Oficial 8x1km + 8 Estaciones',
+                    speed: 'Intervalos Rápidos 8x600m + Estaciones Explosivas',
+                    heavy_sled: 'Sobrecarga de Trineo & Sandbag 75 lb',
+                    bike_mix: 'Híbrido Pista Abierta + SkiErg / Remo / Bike',
+                    grip: 'Resistencia de Agarre, Cuerda y Farmers Carry',
+                    box_special: 'Edición Especial de Box · Fuerza + Metcon'
+                };
+                base = {
+                    city: `HYROX ${venueName}`,
+                    tag: `SERIE MUNDIAL #${numStr} / 100`,
+                    focus: focusMap[v],
+                    variant: v
+                };
+            }
+
+            const runDist = base.variant === 'speed' ? '800m Run en pista/campo abierto' : '1000m Run en pista/campo abierto';
+            const station5Machine = base.variant === 'bike_mix'
+                ? '1000m Remo (o 60 Cal Bicicleta de CrossFit)'
+                : '1000m Remo (RowErg)';
+            const station4Move = base.variant === 'box_special'
+                ? '80m Burpee Broad Jumps + 2 Subidas a Cuerda Grande'
+                : '80m Burpee Broad Jumps en pista/pasillo';
+
+            catalog.push({
+                number: i,
+                code: `#${numStr} / 100`,
+                title: base.city,
+                tag: base.tag,
+                focus: base.focus,
+                runNote: `Intercalar **${runDist}** antes de cada una de las 8 estaciones numeradas:`,
+                stations: [
+                    { num: '01', name: '1000m SkiErg', ind: '1000m completos manteniendo damper 6–8', part: '1000m entre los dos (relevos cada 250m)' },
+                    { num: '02', name: '50m Sled Push (Empuje de Trineo)', ind: '50m en tramos de 12.5m o 25m en pista', part: '50m repartidos (cambio cada 12.5m)' },
+                    { num: '03', name: '50m Sled Pull (Arrastre con Cuerda)', ind: '50m tracción con cuerda grande y trineo', part: '50m repartidos (tracción explosiva de cadera)' },
+                    { num: '04', name: station4Move, ind: '80m continuos midiendo zancada profunda', part: '80m alternando cada 10 saltos con el compañero' },
+                    { num: '05', name: station5Machine, ind: '1000m a ritmo de umbral (< 1:55/500m)', part: '1000m en relevos de 250m a máxima potencia' },
+                    { num: '06', name: '200m Farmers Carry', ind: '200m en pista con par de Kettlebells o Mancuernas', part: '200m repartidos en tramos de 50m sin soltar al suelo' },
+                    { num: '07', name: '100m Sandbag Lunges', ind: '100m zancadas tocando rodilla atrás (con soporte si necesitas)', part: '100m pasando el Sandbag al hombro sin tocar el piso' },
+                    { num: '08', name: '100 Wall Balls', ind: '100 repeticiones rompiendo paralelo al target', part: '100 repeticiones en series de 15–20 (cambio rápido)' }
+                ],
+                weights: {
+                    pro: 'Sled Push: 4x45 lb + 2x35 lb (H) / 3x45 lb (M) · Sled Pull: 3x45 lb + 25 lb (H) / 2x45 lb + 25 lb (M) · Farmers: 2x24 kg KB o 2x55 lb DB (H) / 2x20 kg KB (M) · Lunges: Sandbag 75 lb (H) / Saco 20 kg (M) · Wall Ball: 20 lb (H) / 15 lb (M)',
+                    open: 'Sled Push: 3x45 lb (H) / 2x45 lb (M) · Sled Pull: 2x45 lb (H) / 1x45 lb + 25 lb (M) · Farmers: 2x20 kg KB (H) / 2x14 kg o 12 kg KB (M) · Lunges: Saco 20 kg (H) / Saco 10 kg (M) · Wall Ball: 15 lb (H) / 10 lb (M)'
+                },
+                equipment: 'Pista o campo abierto, SkiErg, Sled push/pull + cuerda grande, discos (45, 35, 25 lb), Remo / CrossFit Bike, Kettlebells (24, 20, 14, 12 kg) o Mancuernas (55 lb), Sandbag 75 lb / sacos con agarres (30, 20, 10 kg) y Wall Balls (20, 15, 10 lb).'
+            });
+        }
+        return catalog;
     }
 
     // =========================================
@@ -242,7 +663,7 @@ class OfflineToolsManager {
             req.onsuccess = () => {
                 if (Array.isArray(req.result)) {
                     req.result.forEach(k => this.markTrackReady(k));
-                    this.renderTrackList();
+                    if (this.activeModule === 'music') this.renderModuleBody();
                 }
             };
         } catch {}
@@ -278,14 +699,6 @@ class OfflineToolsManager {
         });
     }
 
-    /**
-     * Obtiene la URL reproducible de una pista:
-     * 1. Si ya está en memoria en esta sesión, la devuelve al instante.
-     * 2. Si ya fue descomprimida/preparada antes en IndexedDB, la carga sin volver a descomprimir.
-     * 3. Si es la primera vez, la descarga/descomprime (soporta .gz vía DecompressionStream),
-     *    la guarda en IndexedDB para siempre y devuelve el ObjectURL.
-     * 4. Si se abre por protocolo file:// (donde fetch no aplica), usa el stream comprimido directo y lo marca listo.
-     */
     async resolvePlayableUrl(track) {
         const src = track.src;
 
@@ -305,7 +718,7 @@ class OfflineToolsManager {
         if (window.location.protocol !== 'file:') {
             try {
                 this.unpackingSrc = src;
-                this.renderTrackList();
+                if (this.activeModule === 'music') this.renderModuleBody();
                 if (this.trackSubEl) {
                     this.trackSubEl.textContent = 'Preparando y guardando en caché local...';
                 }
@@ -349,6 +762,9 @@ class OfflineToolsManager {
         return src;
     }
 
+    // =========================================
+    // EVENTOS E INTERACCIÓN DE MÓDULOS
+    // =========================================
     bindEvents() {
         // Abrir / cerrar menú lateral
         this.fab?.addEventListener('click', () => this.togglePanel(true));
@@ -356,16 +772,18 @@ class OfflineToolsManager {
         this.overlay?.addEventListener('click', () => this.togglePanel(false));
         this.miniExpandBtn?.addEventListener('click', () => this.togglePanel(true));
 
-        // Pestañas de categoría
-        this.tabsContainer?.querySelectorAll('.offline-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                const cat = tab.dataset.category;
-                if (!cat) return;
-                this.selectedCategory = cat;
-                this.tabsContainer.querySelectorAll('.offline-tab').forEach(t => {
-                    t.classList.toggle('active', t.dataset.category === cat);
+        // Navegación principal de módulos (Music, Movilidad, Rutinas, HYROX, Calc)
+        this.moduleNav?.querySelectorAll('.offline-mod-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mod = btn.dataset.module;
+                if (!mod) return;
+                this.activeModule = mod;
+                this.moduleNav.querySelectorAll('.offline-mod-btn').forEach(b => {
+                    b.classList.toggle('active', b.dataset.module === mod);
                 });
-                this.renderTrackList();
+                this.updateHeaderTitle();
+                this.renderSubTabs();
+                this.renderModuleBody();
             });
         });
 
@@ -383,16 +801,13 @@ class OfflineToolsManager {
             this.playNext();
         });
 
-        // Botón AUTO (salto automático hacia abajo en la lista actual)
         this.btnAuto?.addEventListener('click', () => {
             this.autoAdvance = !this.autoAdvance;
             this.btnAuto.classList.toggle('active', this.autoAdvance);
         });
 
-        // Click en el video para Play/Pause
         this.mediaEl.addEventListener('click', () => this.togglePlay());
 
-        // Pantalla completa para el video
         this.btnVideoFs?.addEventListener('click', (e) => {
             e.stopPropagation();
             if (this.mediaEl.requestFullscreen) {
@@ -402,7 +817,6 @@ class OfflineToolsManager {
             }
         });
 
-        // Seek bar interactiva
         this.seekBar?.addEventListener('input', () => {
             this.isSeeking = true;
             const dur = this.mediaEl.duration || 0;
@@ -420,28 +834,123 @@ class OfflineToolsManager {
             this.isSeeking = false;
         });
 
-        // Eventos del elemento multimedia
         this.mediaEl.addEventListener('timeupdate', () => this.onTimeUpdate());
         this.mediaEl.addEventListener('loadedmetadata', () => this.onTimeUpdate());
         this.mediaEl.addEventListener('play', () => {
             this.isPlaying = true;
             this.updatePlayButtons();
-            this.renderTrackList();
+            if (this.activeModule === 'music') this.renderModuleBody();
         });
         this.mediaEl.addEventListener('pause', () => {
             this.isPlaying = false;
             this.updatePlayButtons();
-            this.renderTrackList();
+            if (this.activeModule === 'music') this.renderModuleBody();
         });
         this.mediaEl.addEventListener('ended', () => {
             this.isPlaying = false;
             this.updatePlayButtons();
             if (this.autoAdvance) {
                 this.playNext(true);
-            } else {
-                this.renderTrackList();
+            } else if (this.activeModule === 'music') {
+                this.renderModuleBody();
             }
         });
+    }
+
+    updateHeaderTitle() {
+        if (!this.sectionTitleEl) return;
+        const titles = {
+            music: 'Workout Music <span>🎵</span>',
+            mobility: 'Movilidad & Activación <span>🤸</span>',
+            wods: 'Rutinas Exigentes <span>🏋️</span>',
+            hyrox: 'HYROX 100 Series <span>⚡</span>',
+            calc: 'Calculadoras Box <span>🧮</span>'
+        };
+        this.sectionTitleEl.innerHTML = titles[this.activeModule] || titles.music;
+    }
+
+    renderSubTabs() {
+        if (!this.tabsContainer) return;
+
+        let tabs = [];
+        let activeKey = '';
+
+        if (this.activeModule === 'music') {
+            tabs = [
+                { key: 'tabata', label: 'Tabata Songs' },
+                { key: 'challenges', label: 'Challenge Songs' },
+                { key: 'music', label: 'Music' }
+            ];
+            activeKey = this.selectedCategory;
+        } else if (this.activeModule === 'mobility') {
+            tabs = [
+                { key: 'walks', label: 'Caminatas' },
+                { key: 'partner', label: 'En Parejas' },
+                { key: 'bands_kb', label: 'Bandas & KB' }
+            ];
+            activeKey = this.mobilityCategory;
+        } else if (this.activeModule === 'wods') {
+            tabs = [
+                { key: 'partner', label: '🤝 Partner WODs' },
+                { key: 'individual', label: '🔥 Individuales' }
+            ];
+            activeKey = this.wodsCategory;
+        } else if (this.activeModule === 'hyrox') {
+            tabs = [
+                { key: 'individual', label: '🏃 Individual' },
+                { key: 'partner', label: '🤝 Partner (Doubles)' }
+            ];
+            activeKey = this.hyroxMode;
+        } else if (this.activeModule === 'calc') {
+            tabs = [
+                { key: 'rm', label: '🏋️ % RM & Discos' },
+                { key: 'bmi', label: '⚖️ IMC & Peso Ideal' }
+            ];
+            activeKey = this.calcCategory;
+        }
+
+        this.tabsContainer.style.gridTemplateColumns = `repeat(${tabs.length}, 1fr)`;
+        this.tabsContainer.innerHTML = tabs.map(t => `
+            <button class="offline-tab ${t.key === activeKey ? 'active' : ''}" data-subkey="${t.key}" type="button" role="tab">
+                ${t.label}
+            </button>
+        `).join('');
+
+        this.tabsContainer.querySelectorAll('.offline-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const k = btn.dataset.subkey;
+                if (!k) return;
+                if (this.activeModule === 'music') this.selectedCategory = k;
+                else if (this.activeModule === 'mobility') this.mobilityCategory = k;
+                else if (this.activeModule === 'wods') this.wodsCategory = k;
+                else if (this.activeModule === 'hyrox') this.hyroxMode = k;
+                else if (this.activeModule === 'calc') this.calcCategory = k;
+                this.renderSubTabs();
+                this.renderModuleBody();
+            });
+        });
+    }
+
+    renderModuleBody() {
+        if (!this.trackListEl) return;
+
+        // Mostrar reproductor completo en Music o cuando haya una canción cargada
+        if (this.playerDock) {
+            const showPlayer = this.activeModule === 'music' || Boolean(this.currentTrack);
+            this.playerDock.style.display = showPlayer ? 'flex' : 'none';
+        }
+
+        if (this.activeModule === 'music') {
+            this.renderTrackList();
+        } else if (this.activeModule === 'mobility') {
+            this.renderMobilityList();
+        } else if (this.activeModule === 'wods') {
+            this.renderWodsList();
+        } else if (this.activeModule === 'hyrox') {
+            this.renderHyroxView();
+        } else if (this.activeModule === 'calc') {
+            this.renderCalcView();
+        }
     }
 
     togglePanel(forceState) {
@@ -451,8 +960,10 @@ class OfflineToolsManager {
         this.dock?.classList.toggle('panel-open', this.isOpen);
     }
 
+    // =========================================
+    // RENDER: MÚSICA
+    // =========================================
     renderTrackList() {
-        if (!this.trackListEl) return;
         const list = this.playlists[this.selectedCategory] || [];
 
         this.trackListEl.innerHTML = list.map((track, idx) => {
@@ -498,7 +1009,6 @@ class OfflineToolsManager {
             `;
         }).join('');
 
-        // Eventos click en cada tarjeta
         this.trackListEl.querySelectorAll('.offline-track-card').forEach(card => {
             card.addEventListener('click', () => {
                 const idx = parseInt(card.dataset.index, 10);
@@ -507,6 +1017,371 @@ class OfflineToolsManager {
         });
     }
 
+    // =========================================
+    // RENDER: MOVILIDAD Y ACTIVACIÓN
+    // =========================================
+    renderMobilityList() {
+        const list = this.mobilityData[this.mobilityCategory] || [];
+        this.trackListEl.innerHTML = list.map(item => `
+            <article class="wod-routine-card">
+                <div class="wod-card-top">
+                    <span class="wod-code-badge">${item.code}</span>
+                    <span class="wod-format-badge">${item.duration}</span>
+                </div>
+                <h4 class="wod-card-title">${item.title}</h4>
+                <p class="wod-focus-note">🎯 <strong>Enfoque:</strong> ${item.focus}</p>
+                <ul class="wod-steps-list">
+                    ${item.steps.map(s => `<li>${s}</li>`).join('')}
+                </ul>
+                <div class="wod-equip-footer">
+                    <span class="equip-label">🧰 Material requerido:</span> ${item.equipment}
+                </div>
+            </article>
+        `).join('');
+    }
+
+    // =========================================
+    // RENDER: RUTINAS EXIGENTES (PARTNER / INDIVIDUAL)
+    // =========================================
+    renderWodsList() {
+        const list = this.wodsData[this.wodsCategory] || [];
+        this.trackListEl.innerHTML = list.map(wod => `
+            <article class="wod-routine-card">
+                <div class="wod-card-top">
+                    <span class="wod-code-badge">${wod.code}</span>
+                    <span class="wod-rm-pill">📊 ${wod.rmRef}</span>
+                </div>
+                <h4 class="wod-card-title">${wod.title}</h4>
+                <div class="wod-format-sub">${wod.format}</div>
+
+                <div class="wod-blocks-wrap">
+                    ${wod.blocks.map(b => `
+                        <div class="wod-block-box">
+                            <div class="wod-block-header">${b.name}</div>
+                            <p class="wod-block-desc">${b.desc}</p>
+                            <ul class="wod-steps-list">
+                                ${b.items.map(it => `<li>${it}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="wod-weights-grid">
+                    <div class="weight-tier tier-pro">
+                        <span class="tier-badge">🔥 PRO / RX</span>
+                        <p>${wod.weights.pro}</p>
+                    </div>
+                    <div class="weight-tier tier-open">
+                        <span class="tier-badge">⚡ OPEN / SCALED</span>
+                        <p>${wod.weights.open}</p>
+                    </div>
+                </div>
+
+                <div class="wod-equip-footer">
+                    <span class="equip-label">🧰 Material requerido:</span> ${wod.equipment}
+                </div>
+            </article>
+        `).join('');
+    }
+
+    // =========================================
+    // RENDER: HYROX (#001 – #100)
+    // =========================================
+    renderHyroxView() {
+        const currentWorkout = this.hyroxCatalog.find(h => h.number === this.selectedHyroxNumber) || this.hyroxCatalog[0];
+        const quickList = this.hyroxCatalog.slice(0, 12);
+
+        this.trackListEl.innerHTML = `
+            <div class="hyrox-selector-bar">
+                <div class="hyrox-selector-top">
+                    <span class="hyrox-counter-label">CATÁLOGO 100 HYROX OFICIALES</span>
+                    <select id="hyrox-select-100" class="hyrox-select-input" aria-label="Seleccionar HYROX #001 a #100">
+                        ${this.hyroxCatalog.map(h => `
+                            <option value="${h.number}" ${h.number === currentWorkout.number ? 'selected' : ''}>
+                                ${h.code} — ${h.title}
+                            </option>
+                        `).join('')}
+                    </select>
+                </div>
+                <div class="hyrox-quick-chips">
+                    ${quickList.map(h => `
+                        <button type="button" class="hyrox-chip ${h.number === currentWorkout.number ? 'active' : ''}" data-hnum="${h.number}">
+                            #${String(h.number).padStart(2, '0')} ${h.title.replace('HYROX ', '')}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+
+            <article class="wod-routine-card hyrox-featured-card">
+                <div class="wod-card-top">
+                    <span class="wod-code-badge hyrox-badge">⚡ ${currentWorkout.code}</span>
+                    <span class="wod-rm-pill">${this.hyroxMode === 'partner' ? '🤝 VERSIÓN PARTNER (DOUBLES)' : '🏃 VERSIÓN INDIVIDUAL'}</span>
+                </div>
+                <h4 class="wod-card-title">${currentWorkout.title}</h4>
+                <div class="wod-format-sub">${currentWorkout.tag} · ${currentWorkout.focus}</div>
+
+                <div class="hyrox-run-banner">
+                    🏃 <strong>Protocolo de Carrera:</strong> ${currentWorkout.runNote.replace(/\*\*(.*?)\*\*/g, '$1')}
+                    ${this.hyroxMode === 'partner' ? '<br><em>En Partner: los dos corren juntos cada tramo y dividen el trabajo de las estaciones.</em>' : ''}
+                </div>
+
+                <div class="hyrox-stations-list">
+                    ${currentWorkout.stations.map(st => `
+                        <div class="hyrox-station-row">
+                            <span class="station-num">${st.num}</span>
+                            <div class="station-body">
+                                <div class="station-name">${st.name}</div>
+                                <div class="station-spec">
+                                    ${this.hyroxMode === 'partner' ? `<strong>Partner:</strong> ${st.part}` : `<strong>Individual:</strong> ${st.ind}`}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="wod-weights-grid">
+                    <div class="weight-tier tier-pro">
+                        <span class="tier-badge">🔥 PESOS PRO (BOX)</span>
+                        <p>${currentWorkout.weights.pro}</p>
+                    </div>
+                    <div class="weight-tier tier-open">
+                        <span class="tier-badge">⚡ PESOS OPEN (BOX)</span>
+                        <p>${currentWorkout.weights.open}</p>
+                    </div>
+                </div>
+
+                <div class="wod-equip-footer">
+                    <span class="equip-label">🧰 Material requerido:</span> ${currentWorkout.equipment}
+                </div>
+            </article>
+        `;
+
+        const selectEl = document.getElementById('hyrox-select-100');
+        selectEl?.addEventListener('change', () => {
+            this.selectedHyroxNumber = parseInt(selectEl.value, 10) || 1;
+            this.renderHyroxView();
+        });
+
+        this.trackListEl.querySelectorAll('.hyrox-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                this.selectedHyroxNumber = parseInt(chip.dataset.hnum, 10) || 1;
+                this.renderHyroxView();
+            });
+        });
+    }
+
+    // =========================================
+    // RENDER: CALCULADORAS (% RM + DISCOS & IMC)
+    // =========================================
+    calculatePlateLoad(targetLb, barKg) {
+        const barLb = barKg === 20 ? 45 : 35;
+        let perSide = (targetLb - barLb) / 2;
+        if (perSide <= 0) return 'Solo barra vacía (' + barKg + ' kg / ' + barLb + ' lb)';
+
+        const availablePlates = [45, 35, 25, 15, 10, 5];
+        const loaded = [];
+        for (const p of availablePlates) {
+            while (perSide >= p - 0.01) {
+                loaded.push(`${p}lb`);
+                perSide -= p;
+            }
+        }
+        return loaded.length
+            ? `Por lado: ${loaded.join(' + ')} (Barra ${barKg}kg)`
+            : `Barra ${barKg}kg (ajuste menor a disco de 5lb)`;
+    }
+
+    renderCalcView() {
+        if (this.calcCategory === 'rm') {
+            const { oneRm, unit, barKg, customPct } = this.rmState;
+            const targetVal = Math.round(oneRm * (customPct / 100));
+            const targetLb = unit === 'lb' ? targetVal : Math.round(targetVal * 2.20462);
+            const targetKg = unit === 'kg' ? targetVal : Math.round(targetVal / 2.20462);
+            const plateBreakdown = this.calculatePlateLoad(targetLb, barKg);
+            const percentages = [95, 90, 85, 80, 75, 70, 65, 60, 50];
+
+            this.trackListEl.innerHTML = `
+                <div class="calc-card">
+                    <div class="calc-row-grid">
+                        <label class="calc-field">
+                            <span>Tu 1RM Máximo</span>
+                            <input type="number" id="calc-rm-input" class="calc-input" value="${oneRm}" min="10" max="1000">
+                        </label>
+                        <div class="calc-field">
+                            <span>Unidad</span>
+                            <div class="calc-seg-group">
+                                <button type="button" class="calc-seg-btn ${unit === 'lb' ? 'active' : ''}" data-unit="lb">LB</button>
+                                <button type="button" class="calc-seg-btn ${unit === 'kg' ? 'active' : ''}" data-unit="kg">KG</button>
+                            </div>
+                        </div>
+                        <div class="calc-field">
+                            <span>Barra Olímpica</span>
+                            <div class="calc-seg-group">
+                                <button type="button" class="calc-seg-btn ${barKg === 20 ? 'active' : ''}" data-bar="20">20kg (H)</button>
+                                <button type="button" class="calc-seg-btn ${barKg === 15 ? 'active' : ''}" data-bar="15">15kg (M)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-slider-box">
+                        <div class="calc-slider-header">
+                            <span>Porcentaje Objetivo: <strong>${customPct}% RM</strong></span>
+                            <span class="calc-highlight-val">${targetLb} lb · ${targetKg} kg</span>
+                        </div>
+                        <input type="range" id="calc-rm-slider" class="player-seek-bar" min="40" max="105" step="5" value="${customPct}">
+                        <div class="calc-plate-hint">🏋️ ${plateBreakdown}</div>
+                    </div>
+
+                    <div class="calc-rm-table">
+                        ${percentages.map(pct => {
+                            const valLb = unit === 'lb'
+                                ? Math.round(oneRm * (pct / 100))
+                                : Math.round(oneRm * (pct / 100) * 2.20462);
+                            const valKg = Math.round(valLb / 2.20462);
+                            const activeRow = pct === customPct ? 'active' : '';
+                            return `
+                                <div class="calc-rm-cell ${activeRow}" data-pct="${pct}">
+                                    <span class="rm-cell-pct">${pct}%</span>
+                                    <strong class="rm-cell-main">${valLb} lb</strong>
+                                    <span class="rm-cell-sub">${valKg} kg</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
+            const rmInput = document.getElementById('calc-rm-input');
+            const rmSlider = document.getElementById('calc-rm-slider');
+
+            rmInput?.addEventListener('input', () => {
+                this.rmState.oneRm = Math.max(1, parseFloat(rmInput.value) || 0);
+                this.renderCalcView();
+                const el = document.getElementById('calc-rm-input');
+                if (el) {
+                    el.focus();
+                    el.setSelectionRange(el.value.length, el.value.length);
+                }
+            });
+
+            rmSlider?.addEventListener('input', () => {
+                this.rmState.customPct = parseInt(rmSlider.value, 10) || 75;
+                this.renderCalcView();
+            });
+
+            this.trackListEl.querySelectorAll('[data-unit]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const newUnit = btn.dataset.unit;
+                    if (newUnit && newUnit !== this.rmState.unit) {
+                        this.rmState.oneRm = newUnit === 'kg'
+                            ? Math.round(this.rmState.oneRm / 2.20462)
+                            : Math.round(this.rmState.oneRm * 2.20462);
+                        this.rmState.unit = newUnit;
+                        this.renderCalcView();
+                    }
+                });
+            });
+
+            this.trackListEl.querySelectorAll('[data-bar]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.rmState.barKg = parseInt(btn.dataset.bar, 10) || 20;
+                    this.renderCalcView();
+                });
+            });
+
+            this.trackListEl.querySelectorAll('.calc-rm-cell').forEach(cell => {
+                cell.addEventListener('click', () => {
+                    this.rmState.customPct = parseInt(cell.dataset.pct, 10) || 75;
+                    this.renderCalcView();
+                });
+            });
+        } else {
+            // Calculadora de IMC y Rango de Peso Adecuado
+            const { heightCm, weightKg } = this.bmiState;
+            const hMeters = Math.max(0.5, heightCm / 100);
+            const bmi = weightKg / (hMeters * hMeters);
+            const bmiStr = bmi.toFixed(1);
+
+            const minHealthyKg = (18.5 * hMeters * hMeters).toFixed(1);
+            const maxHealthyKg = (24.9 * hMeters * hMeters).toFixed(1);
+            const minAthleteKg = (20.5 * hMeters * hMeters).toFixed(1);
+            const maxAthleteKg = (26.5 * hMeters * hMeters).toFixed(1);
+
+            let statusLabel = 'Peso Adecuado / Saludable';
+            let statusColor = '#00e676';
+            if (bmi < 18.5) {
+                statusLabel = 'Bajo Peso (por debajo del rango)';
+                statusColor = '#38bdf8';
+            } else if (bmi >= 25 && bmi <= 26.8) {
+                statusLabel = 'Rango Atleta Fuerza / Ligero Sobrepeso IMC';
+                statusColor = '#fbbf24';
+            } else if (bmi > 26.8) {
+                statusLabel = 'Por encima del rango recomendado';
+                statusColor = '#f87171';
+            }
+
+            this.trackListEl.innerHTML = `
+                <div class="calc-card">
+                    <div class="calc-row-grid two-cols">
+                        <label class="calc-field">
+                            <span>Altura (cm)</span>
+                            <input type="number" id="calc-bmi-height" class="calc-input" value="${heightCm}" min="100" max="230">
+                        </label>
+                        <label class="calc-field">
+                            <span>Peso Actual (kg)</span>
+                            <input type="number" id="calc-bmi-weight" class="calc-input" value="${weightKg}" min="30" max="220" step="0.5">
+                        </label>
+                    </div>
+
+                    <div class="bmi-result-banner" style="border-color: ${statusColor}">
+                        <div class="bmi-score-col">
+                            <span class="bmi-kicker">TU IMC ACTUAL</span>
+                            <strong class="bmi-number" style="color: ${statusColor}">${bmiStr}</strong>
+                            <span class="bmi-status-pill" style="color: ${statusColor}">${statusLabel}</span>
+                        </div>
+                    </div>
+
+                    <div class="bmi-ranges-box">
+                        <div class="bmi-range-item">
+                            <span class="range-title">✅ Rango de Peso Adecuado (Estándar 18.5 – 24.9)</span>
+                            <strong class="range-values">${minHealthyKg} kg — ${maxHealthyKg} kg</strong>
+                        </div>
+                        <div class="bmi-range-item athlete">
+                            <span class="range-title">🏋️ Rango Atleta Box / Masa Muscular (20.5 – 26.5)</span>
+                            <strong class="range-values">${minAthleteKg} kg — ${maxAthleteKg} kg</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const hInput = document.getElementById('calc-bmi-height');
+            const wInput = document.getElementById('calc-bmi-weight');
+
+            hInput?.addEventListener('input', () => {
+                this.bmiState.heightCm = Math.max(100, parseFloat(hInput.value) || 170);
+                this.renderCalcView();
+                const el = document.getElementById('calc-bmi-height');
+                if (el) {
+                    el.focus();
+                    el.setSelectionRange(el.value.length, el.value.length);
+                }
+            });
+
+            wInput?.addEventListener('input', () => {
+                this.bmiState.weightKg = Math.max(25, parseFloat(wInput.value) || 70);
+                this.renderCalcView();
+                const el = document.getElementById('calc-bmi-weight');
+                if (el) {
+                    el.focus();
+                    el.setSelectionRange(el.value.length, el.value.length);
+                }
+            });
+        }
+    }
+
+    // =========================================
+    // CONTROLES DE REPRODUCCIÓN AUDIO / VIDEO
+    // =========================================
     async selectAndPlay(category, index) {
         const list = this.playlists[category] || [];
         const track = list[index];
@@ -525,14 +1400,16 @@ class OfflineToolsManager {
         this.playingIndex = index;
         this.currentTrack = track;
 
-        // Mostrar u ocultar visor de video según tipo de archivo
+        if (this.playerDock) {
+            this.playerDock.style.display = 'flex';
+        }
+
         if (track.mediaType === 'video') {
             this.videoStage.style.display = 'block';
         } else {
             this.videoStage.style.display = 'none';
         }
 
-        // Mostrar u ocultar banner de reto en el reproductor
         if (track.challenge) {
             this.challengeBanner.style.display = 'block';
             this.challengeBanner.innerHTML = `<strong>⚡ Reto:</strong> ${track.challenge}`;
@@ -541,13 +1418,11 @@ class OfflineToolsManager {
             this.challengeBanner.textContent = '';
         }
 
-        // Actualizar textos en reproductor y mini-barra
         this.trackTitleEl.textContent = track.title;
         this.trackSubEl.textContent = `${track.artist} · ${track.mediaType.toUpperCase()}`;
         this.miniTitleEl.textContent = track.title;
         this.miniBar.style.display = 'flex';
 
-        // Resolver URL desde bóveda local (descomprime/guarda solo la primera vez)
         const playableUrl = await this.resolvePlayableUrl(track);
         if (this.currentTrack !== track) return;
 
@@ -559,7 +1434,7 @@ class OfflineToolsManager {
             this.updatePlayButtons();
         });
 
-        this.renderTrackList();
+        if (this.activeModule === 'music') this.renderTrackList();
     }
 
     togglePlay() {
@@ -584,7 +1459,7 @@ class OfflineToolsManager {
             this.selectAndPlay(this.playingCategory, nextIdx);
         } else if (!fromAutoEnded) {
             this.selectAndPlay(this.playingCategory, 0);
-        } else {
+        } else if (this.activeModule === 'music') {
             this.renderTrackList();
         }
     }

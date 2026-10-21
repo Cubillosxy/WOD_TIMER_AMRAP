@@ -197,6 +197,26 @@
                     <time id="timer-clock" class="timer-clock" role="button" tabindex="0" title="Click o Espacio para Pausar / Reanudar">00:00</time>
                     <div id="timer-round-info" class="timer-round-info"></div>
 
+                    <!-- CRONÓMETRO MINIMALISTA OCULTO POR DEFECTO (EXCLUSIVO DE MODO CLOCK) -->
+                    <div id="clock-stopwatch-zone" class="clock-stopwatch-zone" style="display: none;">
+                        <button id="btn-clock-stopwatch-toggle" class="clock-stopwatch-trigger" type="button" aria-label="Mostrar u ocultar cronómetro" title="Mostrar / ocultar cronómetro básico">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="9" y1="2" x2="15" y2="2"></line>
+                                <line x1="12" y1="2" x2="12" y2="5"></line>
+                                <line x1="12" y1="14" x2="15.5" y2="10.5"></line>
+                                <circle cx="12" cy="14" r="8"></circle>
+                            </svg>
+                        </button>
+                        <div id="clock-stopwatch-box" class="clock-stopwatch-box" style="display: none;">
+                            <time id="clock-stopwatch-display" class="clock-stopwatch-display">00:00.0</time>
+                            <div class="clock-stopwatch-actions">
+                                <button id="btn-sw-start" class="clock-sw-btn" type="button">START</button>
+                                <button id="btn-sw-pause" class="clock-sw-btn" type="button">PAUSE</button>
+                                <button id="btn-sw-reset" class="clock-sw-btn" type="button">RESET</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- BOTONERA DE CONTROL RÁPIDO -->
                     <div id="active-controls" class="timer-controls" style="display: none;">
                         <button id="btn-toggle-pause" class="timer-btn-control" type="button">PAUSE</button>
@@ -210,7 +230,7 @@
 
         <!-- MENU OCULTABLE IZQUIERDO: OFFLINE TOOLS & MINI REPRODUCTOR -->
         <div class="offline-dock" id="offline-dock">
-            <button class="offline-fab" id="offline-tools-fab" type="button" aria-label="Abrir Offline Tools" title="Abrir Offline Tools · Workout Music">
+            <button class="offline-fab" id="offline-tools-fab" type="button" aria-label="Abrir Offline Tools" title="Abrir Offline Tools">
                 <div class="collapse-content">
                     <span class="collapse-text">OFFLINE</span>
                     <div class="collapse-arrows">
@@ -255,17 +275,41 @@
                         <span class="offline-header-kicker">OFFLINE TOOLS</span>
                         <span class="offline-status-dot" id="offline-status-dot" title="100% Offline Ready"></span>
                     </div>
-                    <h3 class="offline-panel-title">Workout Music <span>🎵</span></h3>
+                    <h3 class="offline-panel-title" id="offline-section-title">Workout Music <span>🎵</span></h3>
                 </header>
 
-                <!-- Pestañas de categorías -->
+                <!-- Menú principal de módulos Offline Tools -->
+                <nav class="offline-module-nav" id="offline-module-nav" aria-label="Secciones de Offline Tools">
+                    <button class="offline-mod-btn active" data-module="music" type="button">
+                        <span class="mod-icon">🎵</span>
+                        <span class="mod-label">Music</span>
+                    </button>
+                    <button class="offline-mod-btn" data-module="mobility" type="button">
+                        <span class="mod-icon">🤸</span>
+                        <span class="mod-label">Movilidad</span>
+                    </button>
+                    <button class="offline-mod-btn" data-module="wods" type="button">
+                        <span class="mod-icon">🏋️</span>
+                        <span class="mod-label">Rutinas</span>
+                    </button>
+                    <button class="offline-mod-btn" data-module="hyrox" type="button">
+                        <span class="mod-icon">⚡</span>
+                        <span class="mod-label">HYROX</span>
+                    </button>
+                    <button class="offline-mod-btn" data-module="calc" type="button">
+                        <span class="mod-icon">🧮</span>
+                        <span class="mod-label">Calc</span>
+                    </button>
+                </nav>
+
+                <!-- Sub-pestañas dinámicas según el módulo activo -->
                 <div class="offline-tabs" id="offline-music-tabs" role="tablist">
                     <button class="offline-tab active" data-category="tabata" type="button" role="tab">Tabata Songs</button>
                     <button class="offline-tab" data-category="challenges" type="button" role="tab">Challenge Songs</button>
                     <button class="offline-tab" data-category="music" type="button" role="tab">Music</button>
                 </div>
 
-                <!-- Lista de canciones de la categoría activa -->
+                <!-- Cuerpo dinámico del módulo activo -->
                 <div class="offline-panel-body" id="offline-track-list">
                     <!-- Inyectado dinámicamente por offline_tools.js -->
                 </div>

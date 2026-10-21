@@ -41,6 +41,20 @@ class WodTimer {
         this.btnReset = document.getElementById('btn-reset');
         this.btnRestart = document.getElementById('btn-restart');
 
+        // Cronómetro minimalista dentro de CLOCK
+        this.swZone = document.getElementById('clock-stopwatch-zone');
+        this.btnSwToggle = document.getElementById('btn-clock-stopwatch-toggle');
+        this.swBox = document.getElementById('clock-stopwatch-box');
+        this.swDisplay = document.getElementById('clock-stopwatch-display');
+        this.btnSwStart = document.getElementById('btn-sw-start');
+        this.btnSwPause = document.getElementById('btn-sw-pause');
+        this.btnSwReset = document.getElementById('btn-sw-reset');
+        this.swVisible = false;
+        this.swRunning = false;
+        this.swElapsedMs = 0;
+        this.swLastTick = 0;
+        this.swInterval = null;
+
         // Estado del Timer
         this.mode = 'clock';       // clock | tabata | fortime | emom | amrap
         this.state = 'idle';       // idle | prepare | work | rest | finished
@@ -133,6 +147,12 @@ class WodTimer {
         this.btnTogglePause.addEventListener('click', () => this.togglePause());
         this.btnReset.addEventListener('click', () => this.resetWorkout());
         this.btnRestart.addEventListener('click', () => this.startWorkout());
+
+        // Cronómetro minimalista debajo de CLOCK
+        this.btnSwToggle?.addEventListener('click', () => this.toggleClockStopwatch());
+        this.btnSwStart?.addEventListener('click', () => this.startClockStopwatch());
+        this.btnSwPause?.addEventListener('click', () => this.pauseClockStopwatch());
+        this.btnSwReset?.addEventListener('click', () => this.resetClockStopwatch());
 
         // Botón de sonido
         this.btnMute.addEventListener('click', () => this.toggleSound());
@@ -270,8 +290,16 @@ class WodTimer {
             this.activeControls.style.display = 'none';
             this.btnRestart.style.display = 'none';
             this.displayRoundInfo.textContent = '';
+            if (this.swZone) {
+                this.swZone.style.display = 'flex';
+                this.swVisible = false;
+                if (this.swBox) this.swBox.style.display = 'none';
+                this.btnSwToggle?.classList.remove('active');
+                this.renderClockStopwatch();
+            }
             this.startLiveClock();
         } else {
+            if (this.swZone) this.swZone.style.display = 'none';
             // Mostrar vista de configuración previa
             this.settingsView.style.display = 'flex';
             this.runningView.style.display = 'none';
@@ -322,7 +350,7 @@ class WodTimer {
     }
 
     // =========================================
-    // RELOJ EN TIEMPO REAL (CLOCK)
+    // RELOJ EN TIEMPO REAL (CLOCK) Y CRONÓMETRO BÁSICO
     // =========================================
     startLiveClock() {
         const update = () => {
@@ -336,6 +364,62 @@ class WodTimer {
 
         update();
         this.clockInterval = setInterval(update, 1000);
+    }
+
+    toggleClockStopwatch() {
+        this.swVisible = !this.swVisible;
+        if (this.swBox) {
+            this.swBox.style.display = this.swVisible ? 'flex' : 'none';
+        }
+        this.btnSwToggle?.classList.toggle('active', this.swVisible);
+    }
+
+    startClockStopwatch() {
+        if (this.swRunning) return;
+        this.swRunning = true;
+        this.swLastTick = performance.now();
+        this.btnSwStart?.classList.add('active');
+        this.btnSwPause?.classList.remove('active');
+        this.swInterval = setInterval(() => {
+            const now = performance.now();
+            this.swElapsedMs += (now - this.swLastTick);
+            this.swLastTick = now;
+            this.renderClockStopwatch();
+        }, 80);
+    }
+
+    pauseClockStopwatch() {
+        if (!this.swRunning) return;
+        this.swRunning = false;
+        if (this.swInterval) {
+            clearInterval(this.swInterval);
+            this.swInterval = null;
+        }
+        this.btnSwStart?.classList.remove('active');
+        this.btnSwPause?.classList.add('active');
+        this.renderClockStopwatch();
+    }
+
+    resetClockStopwatch() {
+        this.swRunning = false;
+        if (this.swInterval) {
+            clearInterval(this.swInterval);
+            this.swInterval = null;
+        }
+        this.swElapsedMs = 0;
+        this.btnSwStart?.classList.remove('active');
+        this.btnSwPause?.classList.remove('active');
+        this.renderClockStopwatch();
+    }
+
+    renderClockStopwatch() {
+        if (!this.swDisplay) return;
+        const totalTenths = Math.floor(this.swElapsedMs / 100);
+        const tenths = totalTenths % 10;
+        const totalSecs = Math.floor(totalTenths / 10);
+        const secs = totalSecs % 60;
+        const mins = Math.floor(totalSecs / 60);
+        this.swDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${tenths}`;
     }
 
     // =========================================
@@ -584,6 +668,11 @@ class WodTimer {
             clearInterval(this.clockInterval);
             this.clockInterval = null;
         }
+        if (this.swInterval) {
+            clearInterval(this.swInterval);
+            this.swInterval = null;
+        }
+        this.swRunning = false;
     }
 
     formatTime(seconds) {

@@ -1043,8 +1043,8 @@ body.state-finished .timer-clock {
 .offline-panel {
     position: fixed;
     top: 0;
-    left: -400px;
-    width: 400px;
+    left: -435px;
+    width: 435px;
     height: 100vh;
     height: 100dvh;
     background: rgba(11, 15, 23, 0.96);
@@ -1661,4 +1661,653 @@ body.state-finished .timer-clock {
     .mini-bar-title {
         max-width: 105px;
     }
+}
+
+/* =========================================
+   CRONÓMETRO MINIMALISTA EN MODO CLOCK
+   ========================================= */
+.clock-stopwatch-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.clock-stopwatch-trigger {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    opacity: 0.65;
+}
+
+.clock-stopwatch-trigger:hover,
+.clock-stopwatch-trigger.active {
+    opacity: 1;
+    color: var(--accent-cyan);
+    border-color: rgba(59, 176, 214, 0.45);
+    background: rgba(59, 176, 214, 0.1);
+    box-shadow: 0 0 12px rgba(59, 176, 214, 0.2);
+}
+
+.clock-stopwatch-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(13, 17, 23, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clock-stopwatch-display {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 1px;
+    min-width: 78px;
+    text-align: center;
+}
+
+.clock-stopwatch-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.clock-sw-btn {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clock-sw-btn:hover {
+    color: var(--text-main);
+    border-color: var(--accent-cyan);
+}
+
+.clock-sw-btn.active {
+    background: rgba(59, 176, 214, 0.2);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+/* =========================================
+   OFFLINE TOOLS — NAVEGACIÓN DE 5 MÓDULOS
+   ========================================= */
+.offline-module-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.28);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    flex-shrink: 0;
+}
+
+.offline-mod-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 4px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.offline-mod-btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-main);
+}
+
+.offline-mod-btn.active {
+    background: rgba(59, 176, 214, 0.15);
+    border-color: rgba(59, 176, 214, 0.45);
+    color: var(--text-main);
+    box-shadow: 0 2px 10px rgba(59, 176, 214, 0.16);
+}
+
+.mod-icon {
+    font-size: 0.98rem;
+    line-height: 1;
+}
+
+.mod-label {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   TARJETAS DE MOVILIDAD, WODS Y HYROX
+   ========================================= */
+.wod-routine-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.wod-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.wod-code-badge {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: rgba(59, 176, 214, 0.18);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(59, 176, 214, 0.32);
+    letter-spacing: 0.6px;
+}
+
+.wod-code-badge.hyrox-badge {
+    background: rgba(250, 204, 21, 0.16);
+    color: #facc15;
+    border-color: rgba(250, 204, 21, 0.38);
+}
+
+.wod-rm-pill,
+.wod-format-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #fde68a;
+    background: rgba(245, 158, 11, 0.14);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+.wod-card-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 0.4px;
+}
+
+.wod-format-sub {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
+}
+
+.wod-focus-note {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.wod-blocks-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.wod-block-box {
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.28);
+    border-left: 2.5px solid var(--accent-cyan);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wod-block-header {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
+}
+
+.wod-block-desc {
+    margin: 0;
+    font-size: 0.68rem;
+    line-height: 1.32;
+    color: var(--text-muted);
+}
+
+.wod-steps-list {
+    margin: 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: var(--text-main);
+}
+
+.wod-weights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.weight-tier {
+    padding: 6px 8px;
+    border-radius: 7px;
+    font-size: 0.68rem;
+    line-height: 1.35;
+}
+
+.weight-tier p {
+    margin: 2px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.weight-tier.tier-pro {
+    background: rgba(239, 68, 68, 0.11);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+.weight-tier.tier-open {
+    background: rgba(59, 176, 214, 0.1);
+    border: 1px solid rgba(59, 176, 214, 0.25);
+}
+
+.tier-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #fff;
+}
+
+.wod-equip-footer {
+    padding-top: 6px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.12);
+    font-size: 0.67rem;
+    line-height: 1.35;
+    color: var(--text-muted);
+}
+
+.equip-label {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* =========================================
+   SECCIÓN HYROX (#001 – #100)
+   ========================================= */
+.hyrox-selector-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    background: rgba(250, 204, 21, 0.06);
+    border: 1px solid rgba(250, 204, 21, 0.22);
+}
+
+.hyrox-selector-top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hyrox-counter-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #facc15;
+    letter-spacing: 1px;
+}
+
+.hyrox-select-input {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(9, 13, 20, 0.95);
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+
+.hyrox-quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.hyrox-chip {
+    padding: 3px 7px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.hyrox-chip:hover {
+    color: var(--text-main);
+    border-color: rgba(250, 204, 21, 0.45);
+}
+
+.hyrox-chip.active {
+    background: rgba(250, 204, 21, 0.18);
+    border-color: #facc15;
+    color: #facc15;
+}
+
+.hyrox-run-banner {
+    padding: 7px 9px;
+    border-radius: 7px;
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px solid rgba(0, 230, 118, 0.25);
+    font-size: 0.69rem;
+    line-height: 1.35;
+    color: #d1fae5;
+}
+
+.hyrox-stations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hyrox-station-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.station-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background: rgba(250, 204, 21, 0.16);
+    color: #facc15;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.station-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.station-name {
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.station-spec {
+    font-size: 0.67rem;
+    line-height: 1.3;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   CALCULADORAS (% RM + DISCOS & IMC)
+   ========================================= */
+.calc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding: 12px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.calc-row-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 1.1fr;
+    gap: 7px;
+}
+
+.calc-row-grid.two-cols {
+    grid-template-columns: 1fr 1fr;
+}
+
+.calc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.calc-input {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 7px;
+    border: 1px solid rgba(59, 176, 214, 0.32);
+    background: rgba(0, 0, 0, 0.45);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 0.86rem;
+    font-weight: 700;
+    outline: none;
+}
+
+.calc-seg-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.calc-seg-btn {
+    padding: 6px 4px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.calc-seg-btn.active {
+    background: rgba(59, 176, 214, 0.2);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.calc-slider-box {
+    padding: 9px 10px;
+    border-radius: 9px;
+    background: rgba(59, 176, 214, 0.09);
+    border: 1px solid rgba(59, 176, 214, 0.26);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.calc-slider-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--text-main);
+}
+
+.calc-highlight-val {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+}
+
+.calc-plate-hint {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: #00e676;
+}
+
+.calc-rm-table {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.calc-rm-cell {
+    padding: 7px 6px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.calc-rm-cell:hover,
+.calc-rm-cell.active {
+    border-color: var(--accent-cyan);
+    background: rgba(59, 176, 214, 0.15);
+}
+
+.rm-cell-pct {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.rm-cell-main {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-main);
+}
+
+.rm-cell-sub {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.bmi-result-banner {
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(0, 230, 118, 0.35);
+    text-align: center;
+}
+
+.bmi-score-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.bmi-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.bmi-number {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.bmi-status-pill {
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.bmi-ranges-box {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.bmi-range-item {
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(0, 230, 118, 0.08);
+    border: 1px solid rgba(0, 230, 118, 0.24);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.bmi-range-item.athlete {
+    background: rgba(59, 176, 214, 0.09);
+    border-color: rgba(59, 176, 214, 0.28);
+}
+
+.range-title {
+    font-size: 0.66rem;
+    color: var(--text-muted);
+}
+
+.range-values {
+    font-family: var(--font-mono);
+    font-size: 0.86rem;
+    color: var(--text-main);
 }
