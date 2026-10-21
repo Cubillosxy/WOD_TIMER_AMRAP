@@ -134,7 +134,7 @@ class OfflineToolsManager {
         };
 
         // =========================================
-        // 2. MOVILIDAD Y ACTIVACIÓN DINÁMICA
+        // 2. MOVILIDAD Y CALENTAMIENTOS CF-L2 (DESPLEGABLES + BUSCADOR)
         // =========================================
         this.mobilityData = {
             walks: [
@@ -142,282 +142,250 @@ class OfflineToolsManager {
                     code: 'MOB-01',
                     title: 'Animal Flow & Caminatas de Locomoción',
                     duration: '8 MIN · FLUJO CONTINUO',
-                    focus: 'Hombros, core, cadera y tobillo (sin estiramiento pasivo)',
+                    focus: 'Hombros activos, zona media, cadera y tobillo (sin estiramiento pasivo)',
                     steps: [
-                        '20m Bear Crawl (Caminata de oso: rodillas a 3 cm del suelo, espalda plana)',
-                        '15m Inchworm + Push-Up (Caminata de gusano llegando a plancha y flexión)',
-                        '20m Spiderman Lunge Walk + Rotación Torácica (codo al empeine + brazo al cielo)',
-                        '15m Duck Walk (Caminata en sentadilla profunda manteniendo talones apoyados)',
-                        '20m Crab Walk (Caminata de cangrejo activando tríceps y extensión de cadera)'
+                        '20m Bear Crawl (Paso del oso: rodillas a 3 cm del suelo, columna neutral)',
+                        '15m Inchworm + Push-Up + 5 Air Squats (secuencia oficial CF-L2)',
+                        '20m Spiderman Lunge Walk + Rotación Torácica (codo al empeine + brazo al techo)',
+                        '15m Duck Walk (Caminata en sentadilla profunda con talones apoyados)',
+                        '20m Crab Walk (Caminata de cangrejo activando hombros y extensión de cadera)'
                     ],
-                    equipment: 'Pista / pasillo despejado del box.'
+                    equipment: 'Pista o pasillo despejado del box.'
                 },
                 {
                     code: 'MOB-02',
-                    title: 'Caminata Overhead & Bisagra Dinámica',
+                    title: 'Caminata Overhead, Kang Squat & Bisagra',
                     duration: '6 MIN · 2 RONDAS',
-                    focus: 'Estabilidad escapular, isquiotibiales y recepción en squat',
+                    focus: 'Estabilidad escapular sobre plano frontal, cadena posterior y squat',
                     steps: [
-                        '20m Frankenstein Walk (patada frontal a mano contraria sin doblar columna)',
-                        '20m Overhead Plate Walk (caminata en puntas y talones con disco sobre la cabeza)',
-                        '15m Lunge Walk con twist sobre pierna delantera usando soporte o disco',
-                        '10 Kang Squats (Good Morning hacia sentadilla profunda y regreso controlado)'
+                        '20m Frankenstein Walk (patada frontal a mano contraria manteniendo columna neutral)',
+                        '20m Overhead Plate Walk (caminata activando hombros con disco arriba)',
+                        '15m Walking Lunge con rotación torácica sobre pierna delantera',
+                        '10 Kang Squats (Good Morning hacia sentadilla profunda + extensión de cadera)'
                     ],
                     equipment: 'Disco de 15 lb o 10 lb, soporte para lunges.'
                 },
                 {
                     code: 'MOB-03',
-                    title: 'Flow de Cuerda & Desplazamiento Lateral',
+                    title: 'Flow de Cuerda Grande & Desplazamiento Reactivo',
                     duration: '7 MIN · EMOM DINÁMICO',
-                    focus: 'Activación de tren inferior, agarre y ritmo cardíaco',
+                    focus: 'Activación de tren inferior, agarre y pulso pre-metcon',
                     steps: [
-                        'Min 1: 40 seg Sentadilla isométrica activa con movimiento de Battle Rope',
-                        'Min 2: 20m Desplazamiento lateral en cuarto de sentadilla + salto vertical cada 4 pasos',
-                        'Min 3: 10 Scapular Pull-Ups colgado en estructura + 20 seg Hang activo',
+                        'Min 1: 40 seg Sentadilla isométrica activa con movimiento de cuerda grande (Battle Rope)',
+                        'Min 2: 20m Desplazamiento lateral defensivo en cuarto de squat + salto vertical cada 4 pasos',
+                        'Min 3: 10 Scapular Pull-Ups en estructura + 20 seg Hang activo (agarre prono)',
                         'Repetir secuencia 2 veces sin pausa larga'
                     ],
                     equipment: 'Cuerda grande (Battle Rope) y estructura de dominadas.'
+                },
+                {
+                    code: 'MOB-04',
+                    title: 'Progresión CF-L2: Peso Corporal Básico (BBW)',
+                    duration: '8 MIN · 3 RONDAS PROGRESIVAS',
+                    focus: 'Rango completo de movimiento (ROM) en empuje, tracción y sentadilla',
+                    steps: [
+                        'Ronda 1: 10 Air Squats + 8 Push-ups + 10 Sit-ups + 5 Pull-ups estrictos',
+                        'Ronda 2: 10 Estocadas (Lunges) + 6 Dips estrictos en anillas + 8 V-Ups + 8 Kipping swings',
+                        'Ronda 3: 12 Squats de parada angosta (progresión Pistol a cajón) + 5 Pike Push-ups en cajón',
+                        'Finalizar con 200m de trote en técnica Pose Running en pista abierta'
+                    ],
+                    equipment: 'Estructura, anillas, cajón (box), colchoneta y pista abierta.'
+                },
+                {
+                    code: 'MOB-05',
+                    title: 'Locomoción de Tobillo, Pistols & Soportes HSPU',
+                    duration: '7 MIN · CONTROL ARTICULAR',
+                    focus: 'Dorsiflexión de tobillo, rodilla en línea con pies y trípode invertido',
+                    steps: [
+                        '15m Caminata en puntas + 15m Caminata en talones con hombros activos',
+                        '12 Squats de parada angosta + 8 Pistols controlados a cajón por pierna',
+                        '30 seg Handstand Hold en pared o Pike Hold en soportes de HSPU',
+                        '10 Cossack Squats alternados abriendo aductores y manteniendo talón en el suelo'
+                    ],
+                    equipment: 'Cajón (box) y soportes para Handstand Push-Up.'
+                },
+                {
+                    code: 'MOB-06',
+                    title: 'Sled Walk & Activación de Cadena Posterior',
+                    duration: '6 MIN · CARGA LIGERA',
+                    focus: 'Tracción de isquiotibiales, glúteos y temperatura central',
+                    steps: [
+                        '25m Caminata hacia atrás arrastrando Trineo (Retro Sled Walk para rodillas)',
+                        '25m Marcha frontal empuje de Trineo con brazos bloqueados',
+                        '12 Inchworms con pausa de 2 segundos en perro boca abajo (Downward Dog)',
+                        '15 Russian Kettlebell Swings ligeros enfocando bisagra y extensión violenta de cadera'
+                    ],
+                    equipment: 'Sled push/pull, disco de 25 o 45 lb, Kettlebell de 12 o 14 kg.'
                 }
             ],
             partner: [
                 {
                     code: 'PMOB-01',
-                    title: 'Movilidad en Parejas · Squat & Thoracic Pass',
-                    duration: '8 MIN · PAREJAS',
-                    focus: 'Apertura de cadera bajo carga compartida y rotación dorsal',
+                    title: 'Partner Squat Therapy & Pase Torácico',
+                    duration: '8 MIN · EN PAREJAS',
+                    focus: 'Apertura de cadera bajo carga compartida y columna neutral',
                     steps: [
                         '90 seg Sentadilla isométrica espalda con espalda + pase lateral de Wall Ball',
-                        '10/10 Rotaciones torácicas en cuadrupedia con resistencia suave del compañero',
-                        '60 seg Peso muerto rumano en espejo con banda elástica azul tirando hacia el compañero',
-                        '12 Pase de balón medicinal por encima de la cabeza y entre las piernas (cadena posterior)'
+                        '10/10 Squat frente a frente sosteniendo banda azul para mantener torso vertical',
+                        '12 Pases de balón medicinal por encima de la cabeza y entre las piernas',
+                        '10/10 Rotaciones torácicas en cuadrupedia con guía táctil del compañero'
                     ],
                     equipment: 'Balón medicinal (15 lb o 10 lb) y banda elástica azul o naranja.'
                 },
                 {
                     code: 'PMOB-02',
-                    title: 'Partner Shoulder & Core Reactivo',
-                    duration: '7 MIN · PAREJAS',
-                    focus: 'Estabilidad de hombro para gymnastic / barbell y anti-rotación',
+                    title: 'Partner Shoulder, Sotts Press & Core Reactivo',
+                    duration: '7 MIN · EN PAREJAS',
+                    focus: 'Hombros activos para levantamientos sobre la cabeza y anti-rotación',
                     steps: [
-                        '60 seg Plancha alta frente a frente: toque de mano cruzada + paso a Downward Dog',
-                        '10/10 Apertura de hombros en estructura asistida por compañero (agarre supino/prono)',
-                        '8/8 Sotts Press asistido con barra vacía: compañero corrige verticalidad de codos',
-                        '60 seg Pallof Press isométrico en pareja con banda elástica negra o azul'
+                        '60 seg Plancha alta frente a frente: toque de hombro cruzado + paso a Downward Dog',
+                        '8/8 Sotts Press con barra vacía: compañero verifica codos y línea media del pie',
+                        '60 seg Pallof Press isométrico en pareja con banda elástica negra o azul',
+                        '10/10 Aperturas escapulares asistidas colgados en estructura'
                     ],
                     equipment: 'Barra de 20 kg o 15 kg, banda elástica negra/azul, estructura y colchonetas.'
+                },
+                {
+                    code: 'PMOB-03',
+                    title: 'Espejo de Levantamiento Olímpico (Drill CF-L2)',
+                    duration: '8 MIN · EN PAREJAS',
+                    focus: 'Corrección visual en tiempo real de extensión de cadera y estante frontal',
+                    steps: [
+                        '5 Front Squats con pausa de 3 seg abajo (compañero verifica codos altos)',
+                        '5 Deadlift-Shrugs lentos + 5 rápidos (sincronización tras extender cadera)',
+                        '5 Saltos a posición Split Jerk con manos golpeando arriba',
+                        '5 Hang Squat Cleans + Push Jerks en espejo con barra vacía'
+                    ],
+                    equipment: 'Barras olímpicas de 20 kg y 15 kg.'
+                },
+                {
+                    code: 'PMOB-04',
+                    title: 'Tracción en Pareja con Cuerda & Banda Negra',
+                    duration: '6 MIN · EN PAREJAS',
+                    focus: 'Reclutamiento de dorsal, bíceps y cadena posterior antes de tirones',
+                    steps: [
+                        '12/12 Remo inclinado en pareja resistido con banda elástica negra',
+                        '40 seg Sentadilla frente a frente batiendo cuerda grande en ondas alternas',
+                        '10/10 Buenos días (Good Mornings) con banda elástica azul en cuello y pies',
+                        '30 seg Isometría de Chin-up / Hang activo asistido por compañero'
+                    ],
+                    equipment: 'Banda elástica negra y azul, cuerda grande y estructura.'
+                },
+                {
+                    code: 'PMOB-05',
+                    title: 'Partner Med-Ball Clean & Reacción (Progresión CF-L2)',
+                    duration: '7 MIN · EN PAREJAS',
+                    focus: 'Pull-under rápido sin girar el balón medicinal y recepción en squat',
+                    steps: [
+                        '8 Deadlifts + Encogimiento rápido con balón medicinal frente al compañero',
+                        '8 Pull-unders a Front Squat sólido con balón (sin soltar las manos)',
+                        '10 Medicine-Ball Cleans completos lanzando pase de pecho al levantarse',
+                        '10 Sit-ups en colchoneta con pase de balón sobre la cabeza al chocar manos'
+                    ],
+                    equipment: 'Balón medicinal de 20, 15 o 10 lb y colchonetas.'
+                },
+                {
+                    code: 'PMOB-06',
+                    title: 'Sincronización de Cadera & Saco en Parejas',
+                    duration: '6 MIN · EN PAREJAS',
+                    focus: 'Transferencia de fuerza del centro a las extremidades con carga',
+                    steps: [
+                        '10 Pases laterales de saco con agarre (10 o 20 kg) desde bisagra de cadera',
+                        '12 Zancadas sincronizadas sosteniendo banda naranja en tensión sobre la cabeza',
+                        '8/8 Peso muerto a una pierna asistido con mano en hombro del compañero',
+                        '40 seg Plancha lateral chocando mano libre arriba'
+                    ],
+                    equipment: 'Saco con agarre de 10 o 20 kg, banda naranja y colchoneta.'
                 }
             ],
             bands_kb: [
                 {
                     code: 'BMOB-01',
-                    title: 'Activación Articular con Bandas & Kettlebell',
-                    duration: '8 MIN · PRE-WOD PESADO',
-                    focus: 'Desbloqueo de tobillo/cadera para Squat Clean, Snatch y Thrusters',
+                    title: 'Complejo de Barra CF-L2 (Weightlifting Complex)',
+                    duration: '8 MIN · 2 RONDAS PROGRESIVAS',
+                    focus: 'Preparación integral para Clean, Jerk, Thruster y Snatch (5 a 8 reps por ejercicio)',
                     steps: [
-                        '15 Dislocaciones de hombro + 15 Band Pull-Aparts con banda elástica naranja',
-                        '60 seg Goblet Squat Pry con Kettlebell (empujar rodillas con codos abriendo cadera)',
-                        '12/12 Monster Walk lateral y diagonal con banda elástica azul o negra en rodillas',
-                        '8/8 Kettlebell Arm-Bar + Windmill controlado en colchoneta'
+                        'Ronda 1 (Clean/Rack): 6 Deadlifts + 6 Hang Power Cleans + 6 Front Squats + 6 Strict Press + 6 Thrusters',
+                        'Ronda 2 (Snatch/OHS): 6 Snatch Deadlifts + 6 Hang Power Snatches + 6 Overhead Squats + 6 Full Snatches',
+                        'Mantener barra cerca del plano frontal y peso en los talones en cada recepción'
                     ],
-                    equipment: 'Kettlebell de 14 kg o 12 kg, bandas elásticas (negra, azul, naranja), colchoneta.'
+                    equipment: 'Barra olímpica vacía de 20 kg (H) o 15 kg (M).'
                 },
                 {
                     code: 'BMOB-02',
-                    title: 'Activación de Hombro, Anillas y Core',
-                    duration: '6 MIN · PRE-GIMNÁSTICOS',
-                    focus: 'Preparación para Pull-ups, Toes to Bar, Ring Dips y HSPU',
+                    title: 'Complejo de Kettlebell & Goblet Pry (CF-L2)',
+                    duration: '7 MIN · FLUJO ARTICULAR',
+                    focus: 'Desbloqueo de cadera, estabilidad de hombro y Turkish Get-Up',
                     steps: [
-                        '10 Scapular Push-ups + 8 Rollouts controlados con Rueda Abdominal (Ab Wheel)',
-                        '10 Ring Support Swings suaves en anillas (bloqueo de codos y depresión escapular)',
-                        '12 Press externo de manguito rotador con banda naranja anclada al rack',
-                        '5 Wall Walks progresivos o Pike Push-ups en soportes de HSPU'
+                        '60 seg Goblet Squat Pry (empujar rodillas hacia afuera con los codos en el fondo)',
+                        '8/8 Kettlebell Single-Arm Swings + 6/6 Kettlebell Cleans al rack',
+                        '6/6 Kettlebell Clean & Push Press bloqueando costillas abajo',
+                        '6/6 Kettlebell Snatches fluidos + 2/2 Turkish Get-Ups (Parada turca controlada)'
                     ],
-                    equipment: 'Anillas, rueda abdominal, colchoneta, banda naranja y soportes HSPU.'
+                    equipment: 'Kettlebell de 14 kg o 12 kg (H/M) y colchoneta.'
+                },
+                {
+                    code: 'BMOB-03',
+                    title: 'Complejo de Mancuernas & Banda Elástica (CF-L2)',
+                    duration: '7 MIN · 2 RONDAS',
+                    focus: 'Control unilateral de hombros, cadera y activación de glúteo medio',
+                    steps: [
+                        '15 Dislocaciones de hombro + 15 Pull-Aparts con banda elástica naranja',
+                        '12/12 Monster Walk lateral con banda azul o negra sobre tobillos/rodillas',
+                        'Con 1 o 2 mancuernas: 6 Deadlifts + 6 Hang Power Cleans + 6 Front Squats + 6 Push Press',
+                        '4/4 Dumbbell Overhead Squats + 2/2 Turkish Get-Ups con mancuerna ligera'
+                    ],
+                    equipment: 'Mancuernas de 20–25 lb, bandas elásticas (negra, azul, naranja).'
+                },
+                {
+                    code: 'BMOB-04',
+                    title: 'Complejo de Gimnasia en Anillas & Soportes (CF-L2)',
+                    duration: '8 MIN · HABILIDAD GIMNÁSTICA',
+                    focus: 'Hombros activos en suspensión, apoyo en anillas y línea media',
+                    steps: [
+                        'En Anillas: 8 Ring Rows supinos + 15 seg Ring Support (bloqueo arriba) + 10 seg L-Sit intento',
+                        'En Anillas: 4 Skin the Cat controlados (o Inverted Hang) + 8 Ring Swings',
+                        'En Soportes de HSPU / Parallettes: 8 Dive Bomber Push-ups + 6 Shoot-throughs a Frog Stand',
+                        '8 Rollouts controlados con Rueda Abdominal (Ab Wheel) manteniendo pelvis neutra'
+                    ],
+                    equipment: 'Anillas, soportes de HSPU/lunges, rueda abdominal y colchoneta.'
+                },
+                {
+                    code: 'BMOB-05',
+                    title: 'Distracción Articular con Banda Negra & Azul',
+                    duration: '6 MIN · MOVILIDAD ESPECÍFICA',
+                    focus: 'Liberación de cápsula de hombro, dorsal, flexor de cadera y tobillo',
+                    steps: [
+                        '45 seg/lado Distracción de dorsal y hombro con banda negra anclada alta en el rack',
+                        '45 seg/lado Distracción de tobillo en dorsiflexión con banda negra baja y pie sobre cajón',
+                        '45 seg/lado Apertura de flexor de cadera (Couch Stretch activo) con glúteo contraído',
+                        '12 Press externo de manguito rotador (90/90) con banda naranja'
+                    ],
+                    equipment: 'Bandas elásticas negra, azul y naranja, estructura y cajón.'
+                },
+                {
+                    code: 'BMOB-06',
+                    title: 'Activación Explosiva para Días Pesados (Heavy Day Prep)',
+                    duration: '8 MIN · PRE-1RM / 3RM / 5RM',
+                    focus: 'Potenciación del sistema nervioso central sin fatigar antes de cargar barra',
+                    steps: [
+                        '3x5 Saltos al cajón (Box Jumps) aterrizando en squat parcial silencioso y extendiendo cadera',
+                        '3x8 Lanzamientos explosivos de Wall Ball alto o Slam contra pared',
+                        '2x10 seg Sprint máximo en Bicicleta de CrossFit o SkiErg (descanso 50 seg)',
+                        '3 series de aproximación progresiva con barra antes de la primera serie al 80% RM'
+                    ],
+                    equipment: 'Cajón, Wall Ball (20/15 lb), CrossFit Bike o SkiErg y barra olímpica.'
                 }
             ]
         };
 
         // =========================================
-        // 3. RUTINAS DE EJERCICIOS (WODS EXIGENTES)
+        // 3. 60 RUTINAS EXIGENTES (30 PARTNER + 30 INDIVIDUAL)
+        //    Con Trifecta 45s Switch & Cash-Out al final (#30)
         // =========================================
         this.wodsData = {
-            partner: [
-                {
-                    code: 'PARTNER WOD #01 · REAL BOX',
-                    title: 'Trifecta 45s Switch & Cash-Out',
-                    format: '3 BLOQUES · PAREJAS · ALTA EXIGENCIA',
-                    rmRef: '65% – 70% 1RM Cluster / Power Clean',
-                    blocks: [
-                        {
-                            name: 'BLOQUE A · 24 RONDAS (Switch cada 45 seg · Time Cap 18 min)',
-                            desc: 'Un compañero trabaja mientras el otro descansa. Cada 45 segundos suena cambio obligatorio y el compañero continúa exactamente donde quedó el anterior hasta completar 24 rondas:',
-                            items: [
-                                '4 Wall Balls (balón al target)',
-                                '4 Pull-Ups (PRO: Chest-to-Bar)',
-                                '4 American Kettlebell Swings (sobre la cabeza)',
-                                '4 Burpees pecho al piso'
-                            ]
-                        },
-                        {
-                            name: 'BLOQUE B · AMRAP 12 MINUTOS',
-                            desc: 'Máximas rondas en 12 minutos (Clusters repartidos libremente, V-Ups al mismo tiempo):',
-                            items: [
-                                '11 Squat Clusters con barra (Squat Clean + Thruster)',
-                                '11 V-Ups Sincronizados en colchoneta'
-                            ]
-                        },
-                        {
-                            name: 'BLOQUE C · CASH-OUT FOR TIME (Cap 6 min)',
-                            desc: 'Completar entre los dos para cerrar el entrenamiento:',
-                            items: [
-                                '39 Power Cleans (repartidos)',
-                                '45 Toes to Bar (pies a la barra)'
-                            ]
-                        }
-                    ],
-                    weights: {
-                        pro: 'Barra 135 / 95 lb (20kg + 45lb por lado H · 15kg + 25+5lb por lado M) · KB 24 / 20 kg · Wall Ball 20 / 15 lb',
-                        open: 'Barra 95 / 65 lb (20kg + 25lb por lado H · 15kg + 15lb por lado M) · KB 20 / 14 kg · Wall Ball 15 / 10 lb'
-                    },
-                    equipment: 'Barra olímpica (20/15 kg), discos (45, 25, 15, 5 lb), Wall Ball (20/15/10 lb), Kettlebell (24/20/14 kg), estructura de dominadas y colchonetas.'
-                },
-                {
-                    code: 'PARTNER WOD #02',
-                    title: 'Rope, Sandbag & Synchro Devil',
-                    format: 'FOR TIME · CAP 26 MIN · PAREJAS',
-                    rmRef: '75% 1RM Deadlift / DB Pesadas',
-                    blocks: [
-                        {
-                            name: 'BUY-IN COMPARTIDO',
-                            desc: 'En pista abierta y máquina antes de tocar las mancuernas:',
-                            items: [
-                                '800m Run juntos cargando 1 Saco con agarre (20 kg / 10 kg)',
-                                '60 Cal SkiErg o Bicicleta de CrossFit (repartidas)'
-                            ]
-                        },
-                        {
-                            name: '4 RONDAS POR TIEMPO',
-                            desc: 'Un compañero trabaja en cuerda/saco mientras el otro sostiene isometría o alternan:',
-                            items: [
-                                '4 Trepar la cuerda grande (Rope Climbs, repartidas)',
-                                '16 Devil Press Sincronizados con mancuernas',
-                                '30m Sandbag Bear Hug Carry con Sandbag pesado',
-                                '20 Ab Wheel Rollouts (rueda abdominal, repartidos)'
-                            ]
-                        }
-                    ],
-                    weights: {
-                        pro: 'Mancuernas 50 / 35 lb · Sandbag 75 lb + Saco 30 kg · Cuerda sin salto',
-                        open: 'Mancuernas 35 / 20 lb · Saco con agarre 20 / 10 kg · Rope Climb o 12 Pull-ups con banda negra/azul'
-                    },
-                    equipment: 'Cuerda grande para escalar, Sandbag de 75 lb, sacos con agarres (30/20/10 kg), mancuernas (50/35/20 lb), rueda abdominal, SkiErg o CrossFit Bike y pista abierta.'
-                },
-                {
-                    code: 'PARTNER WOD #03',
-                    title: 'Sled & Ring Engine',
-                    format: 'EMOM 24 MIN (6 RONDAS) · PAREJAS',
-                    rmRef: '80% 1RM Snatch / Carga Pesada en Trineo',
-                    blocks: [
-                        {
-                            name: 'ESTACIONES DE 4 MINUTOS (TRABAJO EN RELEVO)',
-                            desc: 'Completar la tarea de cada minuto entre los dos:',
-                            items: [
-                                'Min 1: 40m Sled Push + Pull en pista (20m empuje / 20m arrastre)',
-                                'Min 2: 14 Ring Dips en anillas (PRO: 8 Ring Muscle-Ups) + 12 Box Jump Overs',
-                                'Min 3: 10 Squat Snatches con barra olímpica (70–75% RM)',
-                                'Min 4: Máximas calorías en Remo (RowErg) + 30 seg Battle Rope Squat Waves'
-                            ]
-                        }
-                    ],
-                    weights: {
-                        pro: 'Barra Snatch 135 / 95 lb · Sled con 4x45 lb + 2x35 lb · Cajón 24 / 20"',
-                        open: 'Barra Snatch 95 / 65 lb · Sled con 2x45 lb + 2x25 lb · Anillas con banda azul/negra'
-                    },
-                    equipment: 'Sled push/pull, discos (45, 35, 25 lb), anillas, cajón (box), barra olímpica (20/15 kg), remo y cuerda grande para sentadilla con movimiento.'
-                }
-            ],
-            individual: [
-                {
-                    code: 'INDIVIDUAL WOD #01',
-                    title: 'Heavy Barbell & Ring Complex',
-                    format: 'FUERZA 10 MIN + FOR TIME 15 MIN',
-                    rmRef: '80% – 85% 1RM Clean & Jerk',
-                    blocks: [
-                        {
-                            name: 'PARTE A · EMOM 8 MIN (FUERZA OLÍMPICA)',
-                            desc: '1 Complejo cada minuto subiendo del 75% al 85% de tu 1RM:',
-                            items: [
-                                '1 Power Clean + 1 Hang Squat Clean + 1 Split Jerk'
-                            ]
-                        },
-                        {
-                            name: 'PARTE B · 21 - 15 - 9 FOR TIME (Cap 14 min)',
-                            desc: 'Después de cada ronda realiza 1 subida a la cuerda grande y 40m de carrera con saco:',
-                            items: [
-                                'Thrusters con barra olímpica',
-                                'Toes to Bar en estructura',
-                                'Handstand Push-Ups en soportes (HSPU)',
-                                'Entre rondas: 1 Rope Climb + 40m Carry con saco de 20/30 kg'
-                            ]
-                        }
-                    ],
-                    weights: {
-                        pro: 'Thrusters 115 / 80 lb (20kg + 35lb/lado H · 15kg + 20lb/lado M · ~65% RM) · Saco 30 / 20 kg',
-                        open: 'Thrusters 85 / 55 lb (20kg + 20lb/lado H · 15kg + 10lb/lado M · ~55% RM) · Saco 20 / 10 kg'
-                    },
-                    equipment: 'Barra de 20 kg / 15 kg, discos (45, 35, 25, 15, 10, 5 lb), estructura, soportes para HSPU, cuerda grande para escalar y sacos con agarres (30/20/10 kg).'
-                },
-                {
-                    code: 'INDIVIDUAL WOD #02',
-                    title: 'Triple Erg & Kettlebell Hell',
-                    format: 'AMRAP 20 MINUTOS · MOTOR PURO',
-                    rmRef: '70% Capacidad Aeróbica / KB Pesada',
-                    blocks: [
-                        {
-                            name: 'SECUENCIA CONTINUA DURANTE 20 MINUTOS',
-                            desc: 'Mantén ritmo constante sin caer por debajo de 1000 cal/h en máquinas:',
-                            items: [
-                                '15 Cal SkiErg',
-                                '15 American Kettlebell Swings',
-                                '15 Cal Bicicleta de CrossFit',
-                                '15 Goblet Walking Lunges (usando soportes o paso profundo)',
-                                '15 Cal Remo (RowErg)',
-                                '12 Ab Wheel Rollouts en colchoneta'
-                            ]
-                        }
-                    ],
-                    weights: {
-                        pro: 'Kettlebell 24 kg (H) / 20 kg (M)',
-                        open: 'Kettlebell 20 kg (H) / 14 kg o 12 kg (M)'
-                    },
-                    equipment: 'SkiErg, bicicleta de CrossFit, remo, pesas rusas (24, 20, 14, 12 kg), rueda para abdomen y colchoneta.'
-                },
-                {
-                    code: 'INDIVIDUAL WOD #03',
-                    title: 'Sandbag, DBs & Battle Rope Chipper',
-                    format: 'FOR TIME · CAP 18 MIN',
-                    rmRef: 'Mancuernas Pesadas (55 lb / 15 kg)',
-                    blocks: [
-                        {
-                            name: 'CHIPPER DE ALTA DENSIDAD',
-                            desc: 'Completar en orden de principio a fin:',
-                            items: [
-                                '800m Run en pista o campo abierto',
-                                '40 Wall Balls (20 / 15 lb)',
-                                '30 Dumbbell Box Step-Overs con par de mancuernas',
-                                '20 Sandbag Cleans sobre el hombro con Sandbag de 75 lb (o saco de 30/20 kg)',
-                                '60 seg acumulados de Sentadilla isométrica batiendo cuerda grande (Battle Rope)',
-                                '15 Bar Muscle-Ups o 25 Chest-to-Bar Pull-Ups'
-                            ]
-                        }
-                    ],
-                    weights: {
-                        pro: 'Mancuernas 55 / 35 lb (o par de 15 kg M) · Sandbag 75 lb · Wall Ball 20 / 15 lb',
-                        open: 'Mancuernas 35 / 20 lb · Saco con agarres 20 / 10 kg · Wall Ball 15 / 10 lb'
-                    },
-                    equipment: 'Pista abierta, Wall Ball (20/15/10 lb), cajón (box), mancuernas (55–20 lb o 15 kg), Sandbag 75 lb / sacos (20/10 kg), cuerda grande y estructura.'
-                }
-            ]
+            partner: this.buildPartnerWods30(),
+            individual: this.buildIndividualWods30()
         };
 
         // =========================================
@@ -425,9 +393,17 @@ class OfflineToolsManager {
         // =========================================
         this.hyroxCatalog = this.buildHyrox100Catalog();
         this.hyroxMode = 'individual'; // 'individual' | 'partner'
-        this.hyroxFilter = 'recent';   // 'recent' | 'all'
-        this.hyroxSearch = '';
         this.selectedHyroxNumber = 1;
+        this.hyroxDropdownOpen = false;
+        this.expandedHyroxSet = new Set([1]);
+
+        // Buscadores y estado de desplegables
+        this.searchQueries = {
+            mobility: '',
+            wods: '',
+            hyrox: ''
+        };
+        this.expandedCards = new Set();
 
         // =========================================
         // 5. ESTADO DE NAVEGACIÓN Y CALCULADORAS
@@ -438,14 +414,17 @@ class OfflineToolsManager {
         this.wodsCategory = 'partner';
         this.calcCategory = 'rm';      // 'rm' | 'bmi'
 
-        // Estado de Calculadora RM e IMC
+        // Estado de Calculadora RM e IMC (permite borrar y escribir libremente)
         this.rmState = {
+            oneRmRaw: '185',
             oneRm: 185,
             unit: 'lb',     // 'lb' | 'kg'
             barKg: 20,      // 20 (H) | 15 (M)
             customPct: 75
         };
         this.bmiState = {
+            heightRaw: '174',
+            weightRaw: '76',
             heightCm: 174,
             weightKg: 76
         };
@@ -516,10 +495,749 @@ class OfflineToolsManager {
     }
 
     // =========================================
+    // CATÁLOGO DE 30 PARTNER WODS (CON TRIFECTA AL FINAL #30)
+    // =========================================
+    buildPartnerWods30() {
+        const specs = [
+            {
+                title: 'Rope, Sandbag & Synchro Devil',
+                format: 'FOR TIME · CAP 26 MIN · PAREJAS',
+                rmRef: '75% 1RM Deadlift / DB 50-35 lb',
+                blocks: [
+                    { name: 'BUY-IN COMPARTIDO', desc: 'En pista abierta y máquina antes de las mancuernas:', items: ['800m Run juntos cargando 1 Saco con agarre (20 / 10 kg)', '60 Cal SkiErg o Bicicleta de CrossFit (repartidas)'] },
+                    { name: '4 RONDAS POR TIEMPO', desc: 'Alternar cuerda y saco; Devil Press sincronizados:', items: ['4 Trepar la cuerda grande (Rope Climbs)', '16 Devil Press Sincronizados con mancuernas', '30m Sandbag Bear Hug Carry (75 lb)', '20 Ab Wheel Rollouts (rueda abdominal)'] }
+                ],
+                pro: 'DB 50 / 35 lb · Sandbag 75 lb · Cuerda sin salto',
+                open: 'DB 35 / 20 lb · Saco 20 / 10 kg · 12 Pull-ups con banda negra/azul',
+                equip: 'Cuerda grande para escalar, Sandbag 75 lb, sacos (20/10 kg), mancuernas (50/35/20 lb), rueda abdominal, SkiErg/Bike y pista.'
+            },
+            {
+                title: 'Sled & Ring Muscle Engine',
+                format: 'EMOM 24 MIN (6 RONDAS) · PAREJAS',
+                rmRef: '75% – 80% 1RM Squat Snatch',
+                blocks: [
+                    { name: 'ESTACIONES DE 4 MINUTOS (RELEVO)', desc: 'Completar la tarea de cada minuto entre ambos:', items: ['Min 1: 40m Sled Push + Pull en pista (20m empuje / 20m arrastre)', 'Min 2: 14 Ring Dips en anillas (PRO: 8 Ring Muscle-Ups) + 12 Box Jump Overs', 'Min 3: 10 Squat Snatches con barra olímpica', 'Min 4: Máx Cal Remo + 30s Battle Rope Squat Waves'] }
+                ],
+                pro: 'Barra 135 / 95 lb (20kg+45lb/lado H · 15kg+25+5lb/lado M) · Sled 4x45+2x35 lb',
+                open: 'Barra 95 / 65 lb (20kg+25lb/lado H · 15kg+15lb/lado M) · Anillas con banda azul',
+                equip: 'Sled push/pull, discos (45, 35, 25, 15, 5 lb), anillas, cajón, barra olímpica (20/15 kg), remo y cuerda grande.'
+            },
+            {
+                title: 'Synchro Fran & Heavy Clean Ladder',
+                format: '2 BLOQUES · FOR TIME + RM · PAREJAS',
+                rmRef: '60% RM Thruster + 85% RM Clean',
+                blocks: [
+                    { name: 'BLOQUE A · FOR TIME (Cap 12 min)', desc: 'Formato 42 - 30 - 18 repartido tras 400m Run juntos:', items: ['Thrusters con barra olímpica', 'Pull-Ups (PRO: Chest-to-Bar)', 'Al inicio de cada serie: 15 Burpees sincronizados sobre la barra'] },
+                    { name: 'BLOQUE B · VENTANA DE 8 MINUTOS', desc: 'Establecer entre ambos:', items: ['1RM Pesado de Squat Clean + Hang Squat Clean + Jerk (sumatoria de la pareja)'] }
+                ],
+                pro: 'Thrusters 115 / 80 lb (20kg+35lb/lado H · 15kg+20lb/lado M) · C2B Pull-Ups',
+                open: 'Thrusters 85 / 55 lb (20kg+20lb/lado H · 15kg+10lb/lado M) · Pull-Ups con banda',
+                equip: 'Barras de 20 kg y 15 kg, discos (45 a 5 lb), estructura de dominadas y pista abierta.'
+            },
+            {
+                title: 'Triple Erg & Sandbag Mile',
+                format: 'FOR TIME · CAP 30 MIN · PAREJAS',
+                rmRef: 'Carga Continua · Sandbag 75 lb / Sacos',
+                blocks: [
+                    { name: 'CHIPPER DE RESISTENCIA MUSCULAR', desc: 'Un compañero trabaja en máquina mientras el otro sostiene el Sandbag o Saco al pecho (si el saco toca el piso: 10 Burpees cada uno):', items: ['1500m SkiErg + 400m Run con Saco (30/20 kg)', '100 Cal Bicicleta de CrossFit + 400m Run con Sandbag (75 lb)', '1500m Remo (RowErg) + 80 Wall Balls (20/15 lb)', '60 Toes to Bar + 40m Caminata en Lunges con soporte'] }
+                ],
+                pro: 'Sandbag 75 lb + Saco 30 kg · Wall Ball 20 / 15 lb',
+                open: 'Sacos con agarres 20 / 10 kg · Wall Ball 15 / 10 lb',
+                equip: 'SkiErg, CrossFit Bike, Remo, Sandbag 75 lb, sacos (30/20/10 kg), Wall Balls (20/15/10 lb), estructura y pista.'
+            },
+            {
+                title: 'Dumbbell DT & Rope Climb Relay',
+                format: '10 RONDAS RELEVO (5 C/U) · PAREJAS',
+                rmRef: 'Mancuernas Pesadas (55 lb / 15 kg)',
+                blocks: [
+                    { name: '10 RONDAS I-GO-YOU-GO (Cap 20 min)', desc: 'El compañero A completa una ronda entera a sprint mientras B descansa:', items: ['12 Dumbbell Deadlifts', '9 Dumbbell Hang Power Cleans', '6 Dumbbell Push Jerks', '1 Subida a la cuerda grande (Rope Climb) + 20m Sprint'] }
+                ],
+                pro: 'Par de Mancuernas de 55 lb (H) / Par de 15 kg o 35 lb (M)',
+                open: 'Par de Mancuernas de 35 lb (H) / 20 lb (M) · 6 Strict Pull-ups con banda',
+                equip: 'Mancuernas (55, 35, 20 lb y par de 15 kg), cuerda grande para escalar y pista.'
+            },
+            {
+                title: 'Diane Synchro & Sled Drag',
+                format: 'FOR TIME · CAP 22 MIN · PAREJAS',
+                rmRef: '75% – 80% 1RM Deadlift',
+                blocks: [
+                    { name: 'PARTE 1 · 21 - 15 - 9 (POR PAREJA)', desc: 'Deadlifts en relevos, HSPU y Ab Wheel:', items: ['42 - 30 - 18 Deadlifts pesados con barra', '21 - 15 - 9 Handstand Push-Ups en soportes', '21 - 15 - 9 Rollouts con Rueda Abdominal'] },
+                    { name: 'PARTE 2 · CASH-OUT EN PISTA', desc: 'Sin descanso al terminar la barra:', items: ['100m Sled Pull/Push pesado cambiando cada 25m'] }
+                ],
+                pro: 'Deadlift 225 / 155 lb (20kg+2x45lb/lado H · 15kg+45+15lb/lado M) · HSPU en soportes',
+                open: 'Deadlift 165 / 115 lb · Pike Push-ups en cajón o soportes',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15 lb), soportes HSPU, rueda abdominal, colchoneta y Sled.'
+            },
+            {
+                title: 'Kettlebell Complex & Box Jump Storm',
+                format: 'AMRAP 20 MINUTOS · PAREJAS',
+                rmRef: 'Kettlebells 24 / 20 / 14 kg',
+                blocks: [
+                    { name: 'ROTACIÓN CONTINUA EN PAREJA', desc: 'Un compañero completa los Swings mientras el otro sostiene plancha; resto repartido:', items: ['24 American Kettlebell Swings', '20 Box Jump Overs (24 / 20")', '16 Goblet Squats profundos con Kettlebell', '12 Strict Ring Dips en anillas', '200m Run juntos en pista abierta'] }
+                ],
+                pro: 'Kettlebell 24 kg (H) / 20 kg (M) · Ring Dips libres',
+                open: 'Kettlebell 20 kg (H) / 14 o 12 kg (M) · Ring Dips con banda azul/naranja',
+                equip: 'Kettlebells (24, 20, 14, 12 kg), cajón (box), anillas, bandas y pista abierta.'
+            },
+            {
+                title: 'Battle Rope Hold & Thruster Pyramid',
+                format: 'FOR TIME · CAP 24 MIN · PAREJAS',
+                rmRef: '65% – 75% 1RM Thruster Ascendente',
+                blocks: [
+                    { name: 'PIRÁMIDE DE CARGA CON CASTIGO ISOMÉTRICO', desc: 'Las repeticiones de barra solo cuentan mientras el compañero mantiene Sentadilla activa batiendo la cuerda grande (Battle Rope):', items: ['30 Thrusters (95 / 65 lb) + 30 Pull-Ups', '20 Thrusters (115 / 80 lb) + 20 Chest-to-Bar Pull-Ups', '10 Thrusters (135 / 95 lb) + 10 Bar Muscle-Ups (o 20 C2B)'] }
+                ],
+                pro: 'Barras 95→115→135 lb (H) / 65→80→95 lb (M)',
+                open: 'Barras 75→95→105 lb (H) / 45→55→65 lb (M) · Pull-Ups con banda',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15, 10, 5 lb), cuerda grande (Battle Rope) y estructura.'
+            },
+            {
+                title: 'Overhead Squat & Row Relay',
+                format: '5 RONDAS POR TIEMPO · CAP 22 MIN',
+                rmRef: '70% 1RM Overhead Squat',
+                blocks: [
+                    { name: '5 RONDAS COMPARTIDAS', desc: 'Cada ronda inicia con remo y cierra con OHS y Toes to Bar:', items: ['500m Remo (cambio a los 250m)', '16 Overhead Squats con barra olímpica', '20 Toes to Bar Sincronizados en estructura', '16 Burpees saltando lateralmente la barra'] }
+                ],
+                pro: 'Barra OHS 115 / 80 lb (20kg+35lb/lado H · 15kg+20lb/lado M)',
+                open: 'Barra OHS 75 / 55 lb (20kg+15lb/lado H · 15kg+10lb/lado M)',
+                equip: 'Remo (RowErg), barra 20/15 kg, discos (35, 25, 15, 10, 5 lb) y estructura.'
+            },
+            {
+                title: 'Heavy Sandbag & SkiErg Chipper',
+                format: 'FOR TIME · CAP 25 MIN · PAREJAS',
+                rmRef: 'Sandbag 75 lb + Sacos 30/20 kg',
+                blocks: [
+                    { name: 'CHIPPER EN PAREJA', desc: 'Dividir repeticiones según fortaleza:', items: ['100 Cal SkiErg', '80 Wall Balls (20 / 15 lb)', '60 Sandbag Over-the-Shoulder Cleans (75 lb / 30 kg)', '40 Dumbbell Snatches alternados (55 / 35 lb)', '200m Lunges en pista pasando el saco al hombro'] }
+                ],
+                pro: 'Sandbag 75 lb · Mancuerna 55 / 35 lb · Wall Ball 20 / 15 lb',
+                open: 'Saco 30 / 20 kg · Mancuerna 40 / 25 lb · Wall Ball 15 / 10 lb',
+                equip: 'SkiErg, Wall Balls, Sandbag 75 lb, sacos (30/20 kg), mancuernas (55/40/35/25 lb) y pista.'
+            },
+            {
+                title: 'Elizabeth & Bike Interval Grinder',
+                format: '4 SERIES · 4 MIN ON / 1 MIN OFF',
+                rmRef: '75% 1RM Power Clean',
+                blocks: [
+                    { name: '4 INTERVALOS DE 4 MINUTOS', desc: 'Completar el Buy-in en cada intervalo y acumular máximas rondas de Elizabeth en el tiempo restante:', items: ['Buy-in: 24 Cal Bicicleta de CrossFit + 2 Subidas a Cuerda Grande', 'AMRAP restante: 9 Squat Cleans + 9 Ring Dips en anillas'] }
+                ],
+                pro: 'Squat Clean 135 / 95 lb · Ring Dips estrictos o kipping libres',
+                open: 'Squat Clean 95 / 65 lb · Ring Dips con banda negra/azul',
+                equip: 'Bicicleta de CrossFit, cuerda grande para escalar, barra 20/15 kg, discos (45, 25, 15, 5 lb) y anillas.'
+            },
+            {
+                title: 'The 100s Partner Benchmark',
+                format: 'FOR TIME · CAP 28 MIN · PAREJAS',
+                rmRef: '60% 1RM Push Press / Sumo High Pull',
+                blocks: [
+                    { name: 'COMPLETAR EN ORDEN (CON 200M RUN CADA 100 REPS)', desc: 'Un compañero trabaja mientras el otro sostiene Kettlebell en Rack:', items: ['100 Wall Balls', '100 Sumo Deadlift High Pulls con barra', '100 Box Jumps (24 / 20")', '100 Push Press con barra', '100 Cal Remo (RowErg)'] }
+                ],
+                pro: 'Barra 95 / 65 lb · KB Hold 24 / 20 kg · Wall Ball 20 / 15 lb',
+                open: 'Barra 75 / 45 lb · KB Hold 14 / 12 kg · Wall Ball 15 / 10 lb',
+                equip: 'Barra 20/15 kg, discos (25, 15, 10, 5 lb), Wall Balls, cajón, Kettlebells, remo y pista.'
+            },
+            {
+                title: 'Heavy Back Squat & Synchro Burpee Box',
+                format: 'FUERZA 10M + METCON 14M · PAREJAS',
+                rmRef: '80% – 85% 1RM Back Squat',
+                blocks: [
+                    { name: 'PARTE A · DÍA PESADO EN RACK (10 MIN)', desc: 'Compartiendo rack, subir carga progresivamente:', items: ['5 - 5 - 3 - 3 - 3 Back Squat pesado desde el rack'] },
+                    { name: 'PARTE B · AMRAP 14 MINUTOS', desc: 'Piernas bajo fatiga tras sentadilla pesada:', items: ['12 Burpee Box Jump Overs sincronizados', '16 Kettlebell Goblet Lunges en soportes', '20 V-Ups en colchoneta', '200m Sled Sprint ligero en pista'] }
+                ],
+                pro: 'Back Squat al 85% RM · KB 24 / 20 kg · Cajón 24 / 20"',
+                open: 'Back Squat al 75% RM · KB 20 / 14 kg · Step-overs permitidos',
+                equip: 'Estructura/rack, barra 20/15 kg, discos (45 a 5 lb), cajón, Kettlebells, soportes lunges, colchoneta y Sled.'
+            },
+            {
+                title: 'Amanda & SkiErg Partner Remix',
+                format: 'FOR TIME · CAP 20 MIN · PAREJAS',
+                rmRef: '75% 1RM Squat Snatch',
+                blocks: [
+                    { name: 'ESQUEMA 18 - 14 - 10 COMPARTIDO', desc: 'Antes de cada ronda realizar 30 Cal SkiErg entre los dos:', items: ['Ring Muscle-Ups en anillas (o 2x Pull-Ups + Ring Dips)', 'Squat Snatches con barra olímpica', 'Cash-out final: 60m Overhead Walking Lunge con disco de 45 / 25 lb'] }
+                ],
+                pro: 'Barra Snatch 135 / 95 lb · Ring Muscle-Ups · Disco 45 / 25 lb',
+                open: 'Barra Snatch 95 / 65 lb · Pull-Ups + Ring Dips con banda · Disco 25 / 15 lb',
+                equip: 'SkiErg, anillas, estructura, barra 20/15 kg, discos (45, 35, 25, 15, 5 lb) y pista.'
+            },
+            {
+                title: 'Mary & Heavy Dumbbell Carry',
+                format: 'AMRAP 20 MINUTOS · PAREJAS',
+                rmRef: 'Gimnasia Alta Habilidad + DB 55 lb',
+                blocks: [
+                    { name: 'RELEVO POR RONDAS COMPLETAS CON FARMERS HOLD', desc: 'Mientras el compañero A completa 1 ronda de Mary, el compañero B camina 50m en Farmers Carry con mancuernas pesadas:', items: ['5 Handstand Push-Ups en soportes', '10 Pistols alternados (o a cajón con control)', '15 Pull-Ups en estructura'] }
+                ],
+                pro: 'HSPU en soportes libres · Pistols libres · Farmers 2x55 lb (H) / 2x15 kg (M)',
+                open: 'HSPU desde cajón · Pistols asistidos con banda en rack · Farmers 2x35 / 25 lb',
+                equip: 'Soportes HSPU, cajón, estructura, bandas (azul/naranja) y mancuernas (55, 35, 25 lb y 15 kg).'
+            },
+            {
+                title: 'Grace, Isabel & Rope Cash-Out',
+                format: 'FOR TIME · CAP 18 MIN · PAREJAS',
+                rmRef: '70% 1RM Clean & Jerk / Snatch',
+                blocks: [
+                    { name: 'DOBLE BENCHMARK DE BARRA + CUERDA', desc: 'Repartir repeticiones en series rápidas de 3 a 5:', items: ['30 Clean & Jerks por tiempo (Grace)', '2 min Rest & cambio de discos', '30 Power Snatches por tiempo (Isabel)', 'Directo a: 8 Subidas a la cuerda grande (Rope Climbs) + 400m Run'] }
+                ],
+                pro: 'Barra 135 / 95 lb (20kg+45lb/lado H · 15kg+25+5lb/lado M)',
+                open: 'Barra 95 / 65 lb (20kg+25lb/lado H · 15kg+15lb/lado M)',
+                equip: 'Barra 20/15 kg, discos (45, 25, 15, 5 lb), cuerda grande para escalar y pista.'
+            },
+            {
+                title: 'Fight Gone Bad Partner Edition',
+                format: '3 RONDAS · 5 ESTACIONES DE 1 MIN',
+                rmRef: 'Máxima Densidad de Repeticiones',
+                blocks: [
+                    { name: 'TRABAJO SIMULTÁNEO / RELEVO A LOS 30 SEG', desc: '1 minuto por estación para sumar el máximo puntaje de la pareja (1 min descanso entre rondas):', items: ['Estación 1: Wall Balls (20 / 15 lb)', 'Estación 2: Sumo Deadlift High Pull (75 / 55 lb)', 'Estación 3: Box Jumps (24 / 20")', 'Estación 4: Push Press (75 / 55 lb)', 'Estación 5: Calorías en Remo + Bicicleta de CrossFit'] }
+                ],
+                pro: 'Barra 75 / 55 lb · Wall Ball 20 / 15 lb · Cajón 24 / 20"',
+                open: 'Barra 55 / 35 lb · Wall Ball 15 / 10 lb · Cajón 20"',
+                equip: 'Barra 20/15 kg, discos (15, 10, 5 lb), Wall Balls, cajón, remo y bicicleta de CrossFit.'
+            },
+            {
+                title: 'Sled Pull, Battle Rope & Cluster 24',
+                format: 'EMOM 24 MIN · PAREJAS',
+                rmRef: '75% 1RM Squat Clean Thruster',
+                blocks: [
+                    { name: 'ROTACIÓN DE 3 MINUTOS (8 VUELTAS)', desc: 'Ambos trabajan dentro del minuto:', items: ['Min 1: 30m Sled Pull con cuerda grande + 30m Sprint', 'Min 2: 8 Squat Clusters pesados (4 cada uno)', 'Min 3: 45 seg Battle Rope Squat Waves + 12 Ab Wheel Rollouts'] }
+                ],
+                pro: 'Clusters 135 / 95 lb · Sled Pull con 3x45 lb + 35 lb',
+                open: 'Clusters 95 / 65 lb · Sled Pull con 2x45 lb',
+                equip: 'Sled, cuerda grande, barra 20/15 kg, discos (45, 35, 25, 15, 5 lb), rueda abdominal y colchoneta.'
+            },
+            {
+                title: 'Helen & Kettlebell Snatch Relay',
+                format: '6 RONDAS POR TIEMPO · CAP 22 MIN',
+                rmRef: 'Kettlebell 24 / 20 / 14 kg',
+                blocks: [
+                    { name: '6 RONDAS (CORREN JUNTOS, DIVIDEN EL RESTO)', desc: 'Mantener ritmo alto de carrera en pista abierta:', items: ['400m Run juntos en pista', '24 American Kettlebell Swings', '16 Single-Arm Kettlebell Snatches', '16 Pull-Ups en estructura (PRO: Chest-to-Bar)'] }
+                ],
+                pro: 'Kettlebell 24 kg (H) / 20 kg (M) · C2B Pull-Ups',
+                open: 'Kettlebell 20 kg (H) / 14 o 12 kg (M) · Pull-Ups o banda',
+                equip: 'Pista abierta, Kettlebells (24, 20, 14, 12 kg), estructura y bandas.'
+            },
+            {
+                title: 'Sandbag Bear Complex & Ski/Row',
+                format: 'FOR TIME · CAP 25 MIN · PAREJAS',
+                rmRef: '70% 1RM Bear Complex + Sandbag 75 lb',
+                blocks: [
+                    { name: '3 BLOQUES DE CARGA Y MOTOR', desc: '1 Bear Complex = Power Clean + Front Squat + Push Press + Back Squat + Push Press:', items: ['Bloque 1: 1000m Remo + 14 ciclos de Bear Complex con barra', 'Bloque 2: 1000m SkiErg + 100m Sandbag Carry (75 lb) + 40 Toes to Bar', 'Bloque 3: 800m Run juntos + 14 ciclos de Bear Complex'] }
+                ],
+                pro: 'Barra Bear Complex 115 / 80 lb · Sandbag 75 lb',
+                open: 'Barra Bear Complex 85 / 55 lb · Saco con agarres 20 / 10 kg',
+                equip: 'Remo, SkiErg, barra 20/15 kg, discos (35, 25, 15, 10, 5 lb), Sandbag 75 lb / sacos, estructura y pista.'
+            },
+            {
+                title: 'Synchro Dumbbell Thruster & Rope',
+                format: 'AMRAP 18 MINUTOS · PAREJAS',
+                rmRef: 'Mancuernas 50 / 35 lb (o 15 kg)',
+                blocks: [
+                    { name: 'AMRAP 18 MIN DE ALTA TENSIÓN', desc: 'Thrusters y V-Ups 100% sincronizados:', items: ['10 Dumbbell Thrusters Sincronizados (par de mancuernas)', '2 Subidas a la cuerda grande (Rope Climbs, 1 cada uno)', '14 V-Ups Sincronizados en colchoneta', '20 Cal Bicicleta de CrossFit (10 c/u a sprint)'] }
+                ],
+                pro: 'Par de Mancuernas 50 / 35 lb (o 15 kg) · Rope Climb sin salto',
+                open: 'Par de Mancuernas 35 / 20 lb · 10 Pull-Ups con banda negra/azul',
+                equip: 'Mancuernas (50, 35, 20 lb y 15 kg), cuerda grande para escalar, colchonetas y CrossFit Bike.'
+            },
+            {
+                title: 'Heavy Front Squat & Wall Ball 150',
+                format: 'FOR TIME · CAP 20 MIN · PAREJAS',
+                rmRef: '75% – 80% 1RM Front Squat',
+                blocks: [
+                    { name: 'BARRA DESDE EL PISO (SIN RACK)', desc: 'Cada vez que la barra toca el piso durante los Front Squats, ambos hacen 6 Burpees:', items: ['150 Wall Balls repartidos (en series mínimas de 15)', '30 Front Squats pesados (tomados con Squat Clean del piso)', '60 Chest-to-Bar Pull-Ups', '800m Run final cargando balón medicinal'] }
+                ],
+                pro: 'Front Squat 165 / 115 lb (20kg+45+15lb/lado H · 15kg+35+5lb/lado M) · WB 20 / 15 lb',
+                open: 'Front Squat 115 / 75 lb · Pull-Ups regulares · WB 15 / 10 lb',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15, 5 lb), Wall Balls (20/15/10 lb), estructura y pista.'
+            },
+            {
+                title: 'Band Resisted Sprints & Ring Dip Ladder',
+                format: '10 RONDAS POR TIEMPO · CAP 20 MIN',
+                rmRef: 'Potencia Explosiva + Gimnasia',
+                blocks: [
+                    { name: 'ESCALERA 2-4-6-8-10-10-8-6-4-2', desc: 'Entre cada escalón de gimnasia realizan sprint resistido con banda negra en cintura:', items: ['Ring Dips en anillas + Strict Pull-Ups en estructura', '40m Partner Band-Resisted Sprint en pista con banda negra', '10 Kettlebell Goblet Squats (24 / 20 kg) al terminar cada sprint'] }
+                ],
+                pro: 'Anillas libres (o con disco en cintura) · KB 24 / 20 kg · Banda negra',
+                open: 'Anillas asistidas con banda azul · KB 20 / 14 kg · Banda azul',
+                equip: 'Anillas, estructura, bandas elásticas (negra y azul), Kettlebells (24/20/14 kg) y pista.'
+            },
+            {
+                title: 'Deadlift, Sled & Ab-Wheel Grinder',
+                format: '4 RONDAS POR TIEMPO · CAP 24 MIN',
+                rmRef: '75% 1RM Deadlift + Trineo',
+                blocks: [
+                    { name: 'CADENA POSTERIOR Y CORE EXTREMO', desc: 'Dividir repeticiones en mitades iguales:', items: ['20 Deadlifts con barra olímpica', '50m Sled Push pesado en pista', '24 Ab Wheel Rollouts en colchoneta', '30 Box Jump Overs con paso rápido', '500m SkiErg'] }
+                ],
+                pro: 'Deadlift 225 / 155 lb · Sled 4x45 lb + 2x25 lb · Cajón 24 / 20"',
+                open: 'Deadlift 155 / 105 lb · Sled 2x45 lb + 2x25 lb · Cajón 20"',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15 lb), Sled, rueda abdominal, colchoneta, cajón y SkiErg.'
+            },
+            {
+                title: 'Clean & Jerk Pyramid + Triple Erg',
+                format: 'FOR TIME · CAP 25 MIN · PAREJAS',
+                rmRef: '65% → 75% → 85% 1RM Clean & Jerk',
+                blocks: [
+                    { name: '3 ETAPAS CON SUBIDA DE DISCOS', desc: 'Completar calorías en máquinas antes de cada bloque de barra:', items: ['Etapa 1: 40 Cal Remo + 20 Clean & Jerks (115 / 80 lb)', 'Etapa 2: 40 Cal SkiErg + 14 Clean & Jerks (145 / 100 lb)', 'Etapa 3: 40 Cal CrossFit Bike + 8 Clean & Jerks (175 / 120 lb)'] }
+                ],
+                pro: 'Barras 115 → 145 → 175 lb (H) / 80 → 100 → 120 lb (M)',
+                open: 'Barras 85 → 105 → 125 lb (H) / 55 → 70 → 85 lb (M)',
+                equip: 'Remo, SkiErg, CrossFit Bike, barra 20/15 kg y discos (45, 35, 25, 15, 10, 5 lb).'
+            },
+            {
+                title: 'Sandbag Lunges, Rope & Synchro Burpees',
+                format: 'AMRAP 22 MINUTOS · PAREJAS',
+                rmRef: 'Sandbag 75 lb + Sacos 30/20 kg',
+                blocks: [
+                    { name: 'GIRO CONTINUO DE 22 MINUTOS', desc: 'No soltar el saco al suelo durante los 50m de Lunges:', items: ['50m Sandbag Walking Lunges (cambiando al hombro)', '3 Subidas a la cuerda grande (Rope Climbs)', '16 Synchro Burpees pecho al suelo', '20 Kettlebell Swings pesados (24 / 20 kg)'] }
+                ],
+                pro: 'Sandbag 75 lb / Saco 30 kg · KB 24 / 20 kg · Rope Climb',
+                open: 'Saco 20 / 10 kg · KB 20 / 14 kg · 12 Pull-Ups con banda',
+                equip: 'Sandbag 75 lb, sacos (30/20/10 kg), cuerda grande para escalar, Kettlebells y pista.'
+            },
+            {
+                title: 'Overhead Lunges, T2B & Battle Rope',
+                format: '5 RONDAS POR TIEMPO · CAP 20 MIN',
+                rmRef: 'Disco 45 / 25 lb + Mancuernas 50 lb',
+                blocks: [
+                    { name: '5 RONDAS EN PAREJA', desc: 'Un compañero hace Battle Rope mientras el otro hace Toes to Bar:', items: ['40m Overhead Walking Lunges con disco de 45 / 25 lb', '24 Toes to Bar (mientras el compañero bate la cuerda grande en squat)', '16 Dumbbell Hang Squat Cleans (50 / 35 lb)', '200m Sprint juntos en pista'] }
+                ],
+                pro: 'Disco 45 / 25 lb · Mancuernas 50 / 35 lb (o 15 kg) · T2B estrictos/kipping',
+                open: 'Disco 25 / 15 lb · Mancuernas 35 / 20 lb · Knees-to-Elbows',
+                equip: 'Discos (45, 25, 15 lb), estructura, cuerda grande (Battle Rope), mancuernas y pista.'
+            },
+            {
+                title: 'Holleyman Partner Adaptation',
+                format: '30 RONDAS RELEVO (15 C/U) · CAP 26M',
+                rmRef: '80% 1RM Power Clean',
+                blocks: [
+                    { name: '30 RONDAS I-GO-YOU-GO (1 RONDA CADA UNO)', desc: 'Rondas explosivas y cortas con carga exigente en la barra:', items: ['5 Wall Balls (20 / 15 lb)', '3 Handstand Push-Ups en soportes', '1 Power Clean o Squat Clean pesado con barra'] }
+                ],
+                pro: 'Power Clean 185 / 125 lb (20kg+2x35lb/lado H · 15kg+45lb/lado M) · WB 20 / 15 lb',
+                open: 'Power Clean 135 / 95 lb · Pike HSPU en soportes · WB 15 / 10 lb',
+                equip: 'Wall Balls (20/15/10 lb), soportes HSPU, barra 20/15 kg y discos (45, 35, 25, 15, 5 lb).'
+            },
+            {
+                title: '1 Mile Track Relay & Barbell Complex',
+                format: 'FOR TIME · CAP 24 MIN · PAREJAS',
+                rmRef: '70% 1RM Thruster / Hang Clean',
+                blocks: [
+                    { name: '4 RONDAS DE PISTA Y BARRA', desc: 'En cada ronda corren 400m juntos cargando 1 balón medicinal:', items: ['400m Run en pista con Wall Ball (20 / 15 lb)', '12 Hang Power Cleans con barra', '12 Front Squats con barra', '12 Push Jerks con barra', '12 Burpees saltando la barra'] }
+                ],
+                pro: 'Barra 115 / 80 lb (20kg+35lb/lado H · 15kg+20lb/lado M) · WB 20 / 15 lb',
+                open: 'Barra 85 / 55 lb (20kg+20lb/lado H · 15kg+10lb/lado M) · WB 15 / 10 lb',
+                equip: 'Pista abierta, Wall Balls (20/15/10 lb), barra 20/15 kg y discos (35, 25, 15, 10, 5 lb).'
+            },
+            {
+                isRealBox: true,
+                title: 'Trifecta 45s Switch & Cash-Out',
+                format: '3 BLOQUES · PAREJAS · ALTA EXIGENCIA',
+                rmRef: '65% – 70% 1RM Cluster / Power Clean',
+                blocks: [
+                    {
+                        name: 'BLOQUE A · 24 RONDAS (Switch cada 45 seg · Time Cap 18 min)',
+                        desc: 'Un compañero trabaja mientras el otro descansa. Cada 45 segundos suena cambio obligatorio y el compañero continúa exactamente donde quedó el anterior hasta completar 24 rondas:',
+                        items: [
+                            '4 Wall Balls (balón al target)',
+                            '4 Pull-Ups (PRO: Chest-to-Bar)',
+                            '4 American Kettlebell Swings (sobre la cabeza)',
+                            '4 Burpees pecho al piso'
+                        ]
+                    },
+                    {
+                        name: 'BLOQUE B · AMRAP 12 MINUTOS',
+                        desc: 'Máximas rondas en 12 minutos (Clusters repartidos libremente, V-Ups al mismo tiempo):',
+                        items: [
+                            '11 Squat Clusters con barra (Squat Clean + Thruster)',
+                            '11 V-Ups Sincronizados en colchoneta'
+                        ]
+                    },
+                    {
+                        name: 'BLOQUE C · CASH-OUT FOR TIME (Cap 6 min)',
+                        desc: 'Completar entre los dos para cerrar el entrenamiento:',
+                        items: [
+                            '39 Power Cleans (repartidos)',
+                            '45 Toes to Bar (pies a la barra)'
+                        ]
+                    }
+                ],
+                pro: 'Barra 135 / 95 lb (20kg + 45lb por lado H · 15kg + 25+5lb por lado M) · KB 24 / 20 kg · Wall Ball 20 / 15 lb',
+                open: 'Barra 95 / 65 lb (20kg + 25lb por lado H · 15kg + 15lb por lado M) · KB 20 / 14 kg · Wall Ball 15 / 10 lb',
+                equip: 'Barra olímpica (20/15 kg), discos (45, 25, 15, 5 lb), Wall Ball (20/15/10 lb), Kettlebell (24/20/14 kg), estructura de dominadas y colchonetas.'
+            }
+        ];
+
+        return specs.map((s, idx) => {
+            const num = String(idx + 1).padStart(2, '0');
+            return {
+                id: `pwod-${num}`,
+                code: s.isRealBox ? `PARTNER WOD #${num} · REAL BOX` : `PARTNER WOD #${num}`,
+                title: s.title,
+                format: s.format,
+                rmRef: s.rmRef,
+                blocks: s.blocks,
+                weights: { pro: s.pro, open: s.open },
+                equipment: s.equip
+            };
+        });
+    }
+
+    // =========================================
+    // CATÁLOGO DE 30 INDIVIDUAL WODS (CF-L2 & BOX INVENTORY)
+    // =========================================
+    buildIndividualWods30() {
+        const specs = [
+            {
+                title: 'Heavy Clean & Jerk 3RM + 21-15-9',
+                format: 'FUERZA 12 MIN + FOR TIME 14 MIN',
+                rmRef: '80% – 85% 1RM Clean & Jerk (CF-L2)',
+                blocks: [
+                    { name: 'PARTE A · DÍA PESADO (3-3-3-3-3)', desc: 'Plan oficial CF-L2: 5 series ascendentes buscando 3RM con técnica sólida:', items: ['3 Squat Clean & Split Jerk (descanso 2–3 min entre series)'] },
+                    { name: 'PARTE B · 21 - 15 - 9 FOR TIME', desc: 'Después de cada ronda realiza 1 subida a la cuerda grande y 40m de carrera con saco:', items: ['Thrusters con barra olímpica', 'Toes to Bar en estructura', 'Handstand Push-Ups en soportes (HSPU)', 'Entre rondas: 1 Rope Climb + 40m Carry con saco (30/20 kg)'] }
+                ],
+                pro: 'Thrusters 115 / 80 lb (20kg+35lb/lado H · 15kg+20lb/lado M) · Saco 30 / 20 kg',
+                open: 'Thrusters 85 / 55 lb (20kg+20lb/lado H · 15kg+10lb/lado M) · Saco 20 / 10 kg',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15, 10, 5 lb), estructura, soportes HSPU, cuerda grande y sacos (30/20/10 kg).'
+            },
+            {
+                title: 'Triple Erg & Kettlebell Hell',
+                format: 'AMRAP 20 MINUTOS · MOTOR PURO',
+                rmRef: '70% Capacidad Aeróbica / KB 24-20 kg',
+                blocks: [
+                    { name: 'SECUENCIA CONTINUA DURANTE 20 MINUTOS', desc: 'Mantén ritmo constante en las 3 máquinas y control de zona media:', items: ['15 Cal SkiErg', '15 American Kettlebell Swings', '15 Cal Bicicleta de CrossFit', '16 Goblet Walking Lunges (con soportes o paso libre)', '15 Cal Remo (RowErg)', '12 Ab Wheel Rollouts en colchoneta'] }
+                ],
+                pro: 'Kettlebell 24 kg (H) / 20 kg (M)',
+                open: 'Kettlebell 20 kg (H) / 14 kg o 12 kg (M)',
+                equip: 'SkiErg, bicicleta de CrossFit, remo, pesas rusas (24, 20, 14, 12 kg), rueda abdominal y colchoneta.'
+            },
+            {
+                title: 'Sandbag, DBs & Battle Rope Chipper',
+                format: 'FOR TIME · CAP 18 MIN',
+                rmRef: 'Mancuernas 55 lb / 15 kg + Sandbag 75 lb',
+                blocks: [
+                    { name: 'CHIPPER DE ALTA DENSIDAD', desc: 'Completar de principio a fin manteniendo columna neutral:', items: ['800m Run en pista o campo abierto', '40 Wall Balls (20 / 15 lb)', '30 Dumbbell Box Step-Overs con par de mancuernas', '20 Sandbag Cleans sobre el hombro con Sandbag de 75 lb', '60 seg acumulados de Sentadilla batiendo cuerda grande (Battle Rope)', '15 Bar Muscle-Ups o 25 Chest-to-Bar Pull-Ups'] }
+                ],
+                pro: 'Mancuernas 55 / 35 lb (o par de 15 kg M) · Sandbag 75 lb · Wall Ball 20 / 15 lb',
+                open: 'Mancuernas 35 / 20 lb · Saco con agarres 20 / 10 kg · Wall Ball 15 / 10 lb',
+                equip: 'Pista abierta, Wall Ball (20/15/10 lb), cajón, mancuernas, Sandbag 75 lb / sacos, cuerda grande y estructura.'
+            },
+            {
+                title: 'Fran + Heavy Front Squat Finisher',
+                format: 'BENCHMARK < 6 MIN + FUERZA 10 MIN',
+                rmRef: '60% RM Thruster + 85% RM Front Squat',
+                blocks: [
+                    { name: 'BLOQUE 1 · "FRAN" FOR TIME (Cap 7 min)', desc: 'Clásico par complementario CF-L2 (empuje inferior + tracción superior):', items: ['21 - 15 - 9 Thrusters con barra', '21 - 15 - 9 Pull-Ups en estructura'] },
+                    { name: 'BLOQUE 2 · TRAS 4 MIN DE DESCANSO', desc: 'En ventana de 8 minutos desde el rack:', items: ['5 - 3 - 3 - 1 - 1 Front Squat pesado al 80%–90% 1RM'] }
+                ],
+                pro: 'Fran 95 / 65 lb (20kg+25lb/lado H · 15kg+15lb/lado M)',
+                open: 'Fran 65 / 45 lb · Pull-Ups con banda azul/negra',
+                equip: 'Barra olímpica 20/15 kg, discos (45, 35, 25, 15, 10, 5 lb), estructura/rack y bandas.'
+            },
+            {
+                title: 'Diane & Sled Push Sprint',
+                format: 'FOR TIME · CAP 12 MIN',
+                rmRef: '75% 1RM Deadlift + HSPU',
+                blocks: [
+                    { name: '21 - 15 - 9 CON SLED EN CADA RONDA', desc: 'Al terminar cada serie de HSPU empujar el trineo en pista:', items: ['21 - 15 - 9 Deadlifts con barra olímpica', '21 - 15 - 9 Handstand Push-Ups en soportes', 'Después de cada ronda: 25m Sled Push pesado + 25m Sprint'] }
+                ],
+                pro: 'Deadlift 225 / 155 lb (20kg+2x45lb/lado H · 15kg+45+15lb/lado M) · HSPU en soportes',
+                open: 'Deadlift 155 / 105 lb · HSPU elevados desde cajón (progresión CF-L2)',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15 lb), soportes HSPU, cajón, Sled y pista.'
+            },
+            {
+                title: 'Mary CF-L2 Gymnastics Benchmark',
+                format: 'AMRAP 20 MINUTOS · GIMNASIA PURA',
+                rmRef: 'Peso Corporal · Alta Habilidad (CF-L2 p.76)',
+                blocks: [
+                    { name: 'AMRAP 20 MINUTOS (META: 8 A 15+ RONDAS)', desc: 'Triplet gimnástico de empuje invertido, sentadilla unilateral y tracción:', items: ['5 Handstand Push-Ups en soportes', '10 Pistols alternados (rompiendo paralelo con talón apoyado)', '15 Pull-Ups en estructura'] }
+                ],
+                pro: 'HSPU libres · Pistols libres (o con KB 12 kg si +12 rondas) · Kipping/Butterfly Pull-Ups',
+                open: '5 HSPU desde cajón + 10 Pistols a cajón o con banda en rack + 10 Pull-Ups con banda',
+                equip: 'Soportes HSPU, cajón, estructura y bandas elásticas (negra, azul, naranja).'
+            },
+            {
+                title: 'Elizabeth & Rope Climb Couplet',
+                format: 'FOR TIME · CAP 12 MIN',
+                rmRef: '70% – 75% 1RM Squat Clean',
+                blocks: [
+                    { name: '21 - 15 - 9 + CUERDA GRANDE', desc: 'Recibir cada Clean en Front Squat profundo y bloquear codos en anillas:', items: ['21 - 15 - 9 Squat Cleans con barra olímpica', '21 - 15 - 9 Ring Dips en anillas', 'Al final de cada ronda: 1 Subida a la cuerda grande (Rope Climb)'] }
+                ],
+                pro: 'Barra 135 / 95 lb (20kg+45lb/lado H · 15kg+25+5lb/lado M) · Anillas libres',
+                open: 'Barra 95 / 65 lb · Ring Dips con banda azul/negra · 12-9-6 si novato',
+                equip: 'Barra 20/15 kg, discos (45, 25, 15, 5 lb), anillas, bandas y cuerda grande para escalar.'
+            },
+            {
+                title: 'Amanda & SkiErg Conditioning',
+                format: 'FOR TIME · CAP 14 MIN',
+                rmRef: '75% 1RM Squat Snatch (CF-L2 p.54)',
+                blocks: [
+                    { name: 'ESQUEMA 9 - 7 - 5 CON SKIERG', desc: 'Alta habilidad gimnástica y levantamiento olímpico:', items: ['Buy-in: 500m SkiErg a ritmo fuerte', '9 - 7 - 5 Ring Muscle-Ups en anillas', '9 - 7 - 5 Squat Snatches con barra olímpica', 'Cash-out: 400m Run en pista abierta'] }
+                ],
+                pro: 'Squat Snatch 135 / 95 lb · Ring Muscle-Ups',
+                open: 'Squat Snatch 95 / 65 lb · 18-14-10 Pull-Ups + Ring Dips con banda',
+                equip: 'SkiErg, anillas, estructura, barra 20/15 kg, discos (45, 25, 15, 5 lb) y pista.'
+            },
+            {
+                title: 'Heavy Hang Squat Clean Pyramid (CF-L2)',
+                format: 'DÍA PESADO · 9 SERIES (22 MIN)',
+                rmRef: '80% → 95%+ 1RM Hang Squat Clean',
+                blocks: [
+                    { name: 'PIRÁMIDE DE FUERZA 5-5-3-3-3-1-1-1-1', desc: 'Esquema oficial CF-L2 (p.63): enfocarse en extensión violenta de cadera y codos altos al recibir:', items: ['2 series de 5 reps (75%–80% RM)', '3 series de 3 reps (82%–88% RM)', '4 series de 1 rep buscando máximo del día (90%–100% RM)', 'Entre series: 8 Ab Wheel Rollouts sin fatigar piernas'] }
+                ],
+                pro: 'Subida libre hasta récord de 1RM con collares puestos',
+                open: 'Mantener 5x3 al 80% RM perfeccionando recepción en squat profundo',
+                equip: 'Barra olímpica 20/15 kg, todos los discos (45, 35, 25, 15, 10, 5 lb), rueda abdominal y colchoneta.'
+            },
+            {
+                title: 'Row, Thruster & T2B Classic (CF-L2 WOD 3)',
+                format: '5 RONDAS POR TIEMPO · CAP 18 MIN',
+                rmRef: '55% – 60% 1RM Thruster (Volumen Alto)',
+                blocks: [
+                    { name: '5 RONDAS POR TIEMPO (CF-L2 p.63)', desc: 'Triplet modal mixto (M-W-G) de resistencia metabólica:', items: ['250m Remo (RowErg)', '25 Thrusters con barra ligera/media', '15 Toes to Bar en estructura'] }
+                ],
+                pro: 'Barra 75 / 55 lb (o 45 lb unbroken a sprint)',
+                open: 'Barra vacía 20 kg / 15 kg · 12 Knees-to-Elbows',
+                equip: 'Remo (RowErg), barra 20/15 kg, discos (15, 10, 5 lb) y estructura.'
+            },
+            {
+                title: 'Overhead Walking Lunge & Core (CF-L2 WOD 9)',
+                format: 'AMRAP 12 MINUTOS',
+                rmRef: 'Disco 45 / 25 lb + Mancuernas',
+                blocks: [
+                    { name: 'AMRAP 12 MINUTOS DE ESTABILIDAD MEDIA', desc: 'Hombros activos empujando el disco/mancuerna hacia arriba:', items: ['50m Overhead Walking Lunge con disco de 45 / 25 lb', '20 V-Ups en colchoneta + 10 Ab Wheel Rollouts', '15 Cal Bicicleta de CrossFit'] }
+                ],
+                pro: 'Disco de 45 lb (H) / 25 lb (M) con codos bloqueados',
+                open: 'Disco de 25 lb (H) / 15 o 10 lb (M)',
+                equip: 'Discos (45, 25, 15, 10 lb), colchoneta, rueda abdominal, CrossFit Bike y pista.'
+            },
+            {
+                title: '1 Mile Run & 50 Pull-Ups (CF-L2 WOD 8)',
+                format: '3 RONDAS POR TIEMPO · CAP 28 MIN',
+                rmRef: 'Resistencia de Agarre & Carrera',
+                blocks: [
+                    { name: '3 RONDAS DE LARGO ALIENTO', desc: 'Gestionar las 50 dominadas en series inteligentes desde la ronda 1:', items: ['800m Run en pista abierta + 500m Remo (equivalente a 1 milla mixta)', '50 Pull-Ups en estructura (o 35 Chest-to-Bar)'] }
+                ],
+                pro: 'Pull-Ups libres (PRO+: con saco de 10 kg en carrera)',
+                open: '30 Pull-Ups asistidos con banda negra/azul + 15 Ring Rows',
+                equip: 'Pista o campo abierto, remo, estructura, anillas y bandas elásticas.'
+            },
+            {
+                title: 'Rope Climb, Pistol & SkiErg 20',
+                format: 'AMRAP 20 MINUTOS',
+                rmRef: 'Gimnasia + Potencia de Tracción',
+                blocks: [
+                    { name: 'AMRAP 20 MIN (ADAPTACIÓN CF-L2 WOD 5)', desc: 'Rotación constante de tracción vertical, pierna unilateral y cardio:', items: ['2 Subidas a la cuerda grande (Rope Climbs)', '20 Pistols alternados (o a cajón)', '20 Cal SkiErg'] }
+                ],
+                pro: '2 Rope Climbs sin salto + 20 Pistols libres',
+                open: '1 Rope Climb (o 8 Strict Pull-Ups con banda) + 16 Pistols a cajón',
+                equip: 'Cuerda grande para escalar, cajón, estructura, bandas y SkiErg.'
+            },
+            {
+                title: 'Helen en Pista Abierta',
+                format: '3 RONDAS POR TIEMPO · CAP 14 MIN',
+                rmRef: 'Kettlebell 24 / 14 kg',
+                blocks: [
+                    { name: '3 RONDAS A SPRINT', desc: 'Clásico triplet de referencia CrossFit:', items: ['400m Run en pista abierta', '21 American Kettlebell Swings', '12 Pull-Ups en estructura'] }
+                ],
+                pro: 'Kettlebell 24 kg (H) / 14 kg o 20 kg (M)',
+                open: 'Kettlebell 20 kg (H) / 12 kg (M) · Pull-Ups con banda',
+                equip: 'Pista abierta, Kettlebells (24, 20, 14, 12 kg), estructura y bandas.'
+            },
+            {
+                title: 'Grace & Heavy Sandbag Carry',
+                format: 'FOR TIME · CAP 10 MIN',
+                rmRef: '70% – 75% 1RM Clean & Jerk',
+                blocks: [
+                    { name: '30 CLEAN & JERKS + SANDBAG INTERCALADO', desc: 'Cada 10 repeticiones de Clean & Jerk realiza 50m de carrera con Sandbag:', items: ['10 Clean & Jerks + 50m Sandbag Carry (75 lb)', '10 Clean & Jerks + 50m Sandbag Carry (75 lb)', '10 Clean & Jerks + 50m Sled Sprint final'] }
+                ],
+                pro: 'Barra 135 / 95 lb (20kg+45lb/lado H · 15kg+25+5lb/lado M) · Sandbag 75 lb',
+                open: 'Barra 95 / 65 lb · Saco con agarres 20 / 10 kg',
+                equip: 'Barra 20/15 kg, discos (45, 25, 15, 5 lb), Sandbag 75 lb / sacos, Sled y pista.'
+            },
+            {
+                title: 'Dumbbell Devil, Box & Battle Rope',
+                format: '4 RONDAS POR TIEMPO · CAP 18 MIN',
+                rmRef: 'Mancuernas 50 / 35 lb (o 15 kg)',
+                blocks: [
+                    { name: '4 RONDAS DE POTENCIA Y PULSO', desc: 'Mantener espalda plana al levantar las mancuernas desde el suelo:', items: ['10 Dumbbell Devil Press (par de mancuernas)', '15 Box Jump Overs (24 / 20")', '40 seg Sentadilla activa batiendo cuerda grande (Battle Rope)', '200m Run en pista abierta'] }
+                ],
+                pro: 'Par de Mancuernas 50 lb (H) / Par de 15 kg o 35 lb (M)',
+                open: 'Par de Mancuernas 35 lb (H) / 20 lb (M)',
+                equip: 'Mancuernas (50, 35, 20 lb y 15 kg), cajón, cuerda grande y pista.'
+            },
+            {
+                title: 'Heavy Push Jerk 7x1 + Wall Ball/Row',
+                format: 'DÍA PESADO 12M + SPRINT 8M',
+                rmRef: '85% – 95% 1RM Push Jerk / Split Jerk',
+                blocks: [
+                    { name: 'PARTE A · 7 SERIES DE 1 REP (CF-L2 p.63)', desc: 'Tomado desde el rack, buscando máxima carga con dip-drive vertical:', items: ['1-1-1-1-1-1-1 Push Jerk o Split Jerk pesado'] },
+                    { name: 'PARTE B · FOR TIME (Cap 8 min)', desc: 'Pareja explosiva de pierna y respiración:', items: ['1000m Remo (RowErg)', '75 Wall Balls (20 / 15 lb)'] }
+                ],
+                pro: 'Jerk al 90%+ 1RM · Wall Ball 20 / 15 lb',
+                open: 'Jerk técnico al 80% 1RM · Wall Ball 15 / 10 lb',
+                equip: 'Estructura/rack, barra 20/15 kg, discos (45 a 5 lb), remo y Wall Balls.'
+            },
+            {
+                title: 'Sled Push/Pull & Ring Dip EMOM 16',
+                format: 'EMOM 16 MINUTOS (4 RONDAS)',
+                rmRef: 'Trineo Pesado + Gimnasia',
+                blocks: [
+                    { name: '4 ESTACIONES DE 1 MINUTO', desc: '40 segundos de trabajo intenso y 20 segundos de transición:', items: ['Min 1: 30m Sled Push pesado en pista', 'Min 2: 12 Ring Dips en anillas + 6 Strict Pull-Ups', 'Min 3: 30m Sled Pull con cuerda grande', 'Min 4: 16 Cal Bicicleta de CrossFit'] }
+                ],
+                pro: 'Sled 4x45 lb (H) / 2x45+35 lb (M) · Anillas libres',
+                open: 'Sled 2x45+25 lb (H) / 1x45+25 lb (M) · Anillas con banda azul',
+                equip: 'Sled push/pull, cuerda grande, discos (45, 35, 25 lb), anillas, estructura, bandas y CrossFit Bike.'
+            },
+            {
+                title: 'Kettlebell Fran & Ab-Wheel',
+                format: '21 - 15 - 9 FOR TIME · CAP 12 MIN',
+                rmRef: 'Doble Kettlebell 24 / 20 / 14 kg',
+                blocks: [
+                    { name: '21 - 15 - 9 CON DOBLE KETTLEBELL / MANCUERNA', desc: 'Estímulo de estabilidad unilateral de hombro y core:', items: ['21 - 15 - 9 Double KB / DB Thrusters', '21 - 15 - 9 Chest-to-Bar Pull-Ups', '15 - 12 - 9 Ab Wheel Rollouts en colchoneta'] }
+                ],
+                pro: '2x24 o 20 kg KB (o 2x50 lb DB) H · 2x14 kg KB (o 2x15 kg DB) M',
+                open: '2x14 o 12 kg KB (o 2x30 lb DB) · Pull-Ups regulares o con banda',
+                equip: 'Kettlebells (24, 20, 14, 12 kg) o mancuernas, estructura, rueda abdominal y colchoneta.'
+            },
+            {
+                title: 'Cindy con Chaleco/Saco (20 Min)',
+                format: 'AMRAP 20 MINUTOS',
+                rmRef: 'Benchmark Clásico de Gimnasia',
+                blocks: [
+                    { name: 'AMRAP 20 MINUTOS (CADA 5 RONDAS: 200M RUN CON SACO)', desc: 'Mantener calidad de rango de movimiento en las 20 minutos:', items: ['5 Pull-Ups en estructura', '10 Push-Ups pecho al piso', '15 Air Squats profundos', 'Cada 5 rondas completadas: 200m Run cargando saco de 20 / 10 kg'] }
+                ],
+                pro: 'Saco de 20 kg (H) / 10 kg (M) cada 5 rondas · 18+ rondas objetivo',
+                open: 'Pull-Ups con banda azul/naranja · Carrera sin saco',
+                equip: 'Estructura, bandas elásticas, sacos con agarres (20/10 kg) y pista.'
+            },
+            {
+                title: 'Heavy Deadlift 5x5 & Ski/Burpee Sprint',
+                format: 'FUERZA 12M + METCON 10M',
+                rmRef: '80% – 85% 1RM Deadlift (CF-L2 p.36)',
+                blocks: [
+                    { name: 'PARTE A · 5 SERIES DE 5 REPS', desc: 'Día pesado de cadena posterior manteniendo curvatura lumbar:', items: ['5 x 5 Deadlifts pesados (descanso 2 min entre series)'] },
+                    { name: 'PARTE B · 4 RONDAS SPRINT (Cap 10 min)', desc: 'Explosividad metabólica corta:', items: ['15 Cal SkiErg', '12 Burpees saltando sobre la barra', '10 Kettlebell Swings pesados (24 / 20 kg)'] }
+                ],
+                pro: 'Deadlift 5x5 al 82% RM · KB 24 / 20 kg',
+                open: 'Deadlift 5x5 al 75% RM · KB 20 / 14 kg',
+                equip: 'Barra 20/15 kg, discos (45 a 5 lb), SkiErg y Kettlebells (24/20/14 kg).'
+            },
+            {
+                title: 'JT Gymnastics & Push-Up Benchmark',
+                format: '21 - 15 - 9 FOR TIME · CAP 14 MIN',
+                rmRef: 'Triplet de Empuje Superior (CF-L2 p.50)',
+                blocks: [
+                    { name: '21 - 15 - 9 EMPUJE EXTREMO + RUN', desc: 'Gestionar la fatiga de tríceps y hombros desde la serie de 21:', items: ['Buy-in: 400m Run en pista abierta', '21 - 15 - 9 Handstand Push-Ups en soportes', '21 - 15 - 9 Ring Dips en anillas', '21 - 15 - 9 Push-Ups en soportes (déficit)', 'Cash-out: 400m Run en pista abierta'] }
+                ],
+                pro: 'HSPU en soportes + Ring Dips libres + Deficit Push-Ups',
+                open: 'Pike HSPU en cajón + Ring Dips con banda + Push-Ups regulares',
+                equip: 'Soportes HSPU/lunges, anillas, cajón, bandas y pista abierta.'
+            },
+            {
+                title: 'Barbell Cluster & CrossFit Bike Death By',
+                format: 'EMOM HASTA EL FALLO (O 16 MIN)',
+                rmRef: '70% 1RM Squat Clean Thruster',
+                blocks: [
+                    { name: 'ALTERNAR MINUTOS PARES E IMPARES', desc: 'Subir 1 repetición cada vuelta hasta completar 8 rondas (16 min):', items: ['Min Impar: 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 Squat Clusters con barra', 'Min Par: 12 / 10 Cal Bicicleta de CrossFit + 6 Toes to Bar'] }
+                ],
+                pro: 'Barra Cluster 135 / 95 lb (20kg+45lb/lado H · 15kg+25+5lb/lado M)',
+                open: 'Barra Cluster 95 / 65 lb · Knees-to-Elbows',
+                equip: 'Barra 20/15 kg, discos (45, 25, 15, 5 lb), CrossFit Bike y estructura.'
+            },
+            {
+                title: 'Sandbag 75, Rope & Wall Ball Triplet',
+                format: '4 RONDAS POR TIEMPO · CAP 20 MIN',
+                rmRef: 'Sandbag 75 lb + Wall Ball 20 lb',
+                blocks: [
+                    { name: '4 RONDAS DE FUERZA FUNCIONAL', desc: 'Objetos no convencionales y tracción vertical:', items: ['50m Sandbag Carry al pecho o al hombro (75 lb / 30 kg)', '30 Wall Balls (20 / 15 lb)', '2 Subidas a la cuerda grande (Rope Climbs)', '15 V-Ups en colchoneta'] }
+                ],
+                pro: 'Sandbag 75 lb (H) / Saco 30 kg (M) · Wall Ball 20 / 15 lb',
+                open: 'Saco 20 / 10 kg · Wall Ball 15 / 10 lb · 10 Pull-Ups con banda',
+                equip: 'Sandbag 75 lb, sacos (30/20/10 kg), Wall Balls, cuerda grande, colchoneta y pista.'
+            },
+            {
+                title: 'Overhead Squat 5x3 & Dumbbell Snatch',
+                format: 'FUERZA 12M + AMRAP 10M',
+                rmRef: '80% 1RM Overhead Squat',
+                blocks: [
+                    { name: 'PARTE A · 5 SERIES DE 3 REPS', desc: 'Hombros activos empujando la barra y axilas al frente:', items: ['5 x 3 Overhead Squats desde el rack'] },
+                    { name: 'PARTE B · AMRAP 10 MINUTOS', desc: 'Velocidad de cadera y salto al cajón:', items: ['16 Dumbbell Snatches alternados (55 / 35 lb)', '12 Box Jump Overs (24 / 20")', '30 seg Battle Rope Squat Waves'] }
+                ],
+                pro: 'OHS al 80% RM · Mancuerna 55 / 35 lb (o 15 kg)',
+                open: 'OHS técnico · Mancuerna 35 / 20 lb',
+                equip: 'Rack, barra 20/15 kg, discos (45 a 5 lb), mancuernas (55/35/20 lb), cajón y cuerda grande.'
+            },
+            {
+                title: '5K Row / Run Duathlon & Core',
+                format: 'FOR TIME · CAP 30 MIN',
+                rmRef: 'Resistencia Monoestructural Alta (>3200m CF-L2)',
+                blocks: [
+                    { name: '3 BLOQUES DE FONDO Y GIMNASIA', desc: 'Entrenamiento de umbral aeróbico largo:', items: ['1000m Remo + 800m Run + 30 Toes to Bar', '750m Remo + 600m Run + 25 Ab Wheel Rollouts', '500m Remo + 400m Run + 20 Burpees a target'] }
+                ],
+                pro: 'Ritmo < 1:52/500m en Remo · Toes to Bar sin banda',
+                open: 'Ritmo constante · 20 Knees-to-Elbows por ronda',
+                equip: 'Remo (RowErg), pista o campo abierto, estructura, rueda abdominal y colchoneta.'
+            },
+            {
+                title: 'Sumo Deadlift High Pull & Ring Muscle',
+                format: '5 RONDAS POR TIEMPO · CAP 16 MIN',
+                rmRef: '65% 1RM SDHP + Anillas',
+                blocks: [
+                    { name: '5 RONDAS DE CADERA EXPLOSIVA', desc: 'Extender cadera antes de encoger hombros y halar codos arriba y afuera (CF-L2 p.6):', items: ['15 Sumo Deadlift High Pulls con barra', '10 Ring Dips en anillas (PRO: 5 Ring Muscle-Ups)', '15 Goblet Squats con Kettlebell (24 / 20 kg)', '200m Run en pista'] }
+                ],
+                pro: 'Barra SDHP 95 / 65 lb · KB 24 / 20 kg · Ring Muscle-Ups / Dips',
+                open: 'Barra SDHP 65 / 45 lb · KB 14 / 12 kg · Ring Dips con banda',
+                equip: 'Barra 20/15 kg, discos (25, 15, 10, 5 lb), anillas, Kettlebells, bandas y pista.'
+            },
+            {
+                title: 'Dumbbell Lunges, SkiErg & C2B',
+                format: 'FOR TIME · CAP 18 MIN',
+                rmRef: 'Mancuernas 50 / 35 lb (o 15 kg)',
+                blocks: [
+                    { name: 'ESCALERA DESCENDENTE 30 - 20 - 10', desc: 'Entre cada escalón realizar 25m de caminata en estocadas con mancuernas:', items: ['30 - 20 - 10 Cal SkiErg', '30 - 20 - 10 Chest-to-Bar Pull-Ups', 'Después de cada ronda: 25m Dumbbell Walking Lunges (soportes disponibles)'] }
+                ],
+                pro: 'Par de Mancuernas 50 / 35 lb (o 15 kg) · C2B Pull-Ups',
+                open: 'Par de Mancuernas 30 / 20 lb · Pull-Ups regulares o con banda',
+                equip: 'SkiErg, estructura, mancuernas (50, 35, 30, 20 lb y 15 kg), soportes lunges y pista.'
+            },
+            {
+                title: 'Heavy Snatch Singles & Sprint Triplet',
+                format: 'EMOM 10M + FOR TIME 10M',
+                rmRef: '80% – 90% 1RM Squat Snatch',
+                blocks: [
+                    { name: 'PARTE A · EMOM 10 MINUTOS', desc: '1 levantamiento cada minuto cuidando línea media del pie:', items: ['1 Squat Snatch (subiendo del 75% al 90% 1RM)'] },
+                    { name: 'PARTE B · 3 RONDAS A TOPE (Cap 10 min)', desc: 'Velocidad máxima de transición:', items: ['12 Power Snatches (95 / 65 lb)', '15 Box Jumps (24 / 20")', '18 Cal Bicicleta de CrossFit'] }
+                ],
+                pro: 'Barra Parte B: 95 / 65 lb (20kg+25lb/lado H · 15kg+15lb/lado M)',
+                open: 'Barra Parte B: 65 / 45 lb',
+                equip: 'Barra 20/15 kg, discos (45, 35, 25, 15, 10, 5 lb), cajón y CrossFit Bike.'
+            },
+            {
+                title: 'Monterrey Box Total Engine Test',
+                format: 'FOR TIME · CAP 25 MIN',
+                rmRef: 'Prueba Integral de Box (70% RM)',
+                blocks: [
+                    { name: 'PRUEBA COMPLETA DE CAPACIDAD DE TRABAJO', desc: 'Combina pista, trineo, barra, cuerda y máquinas del box:', items: ['800m Run en pista + 50m Sled Push', '21 Thrusters (115 / 80 lb) + 3 Subidas a Cuerda Grande', '1000m Remo + 50m Sandbag Lunges (75 lb / 20 kg)', '15 Power Cleans (135 / 95 lb) + 15 Handstand Push-Ups en soportes', '50 Cal SkiErg + Bicicleta de CrossFit'] }
+                ],
+                pro: 'Barra 115→135 lb (H) / 80→95 lb (M) · Sandbag 75 lb · Sled 4x45 lb',
+                open: 'Barra 85→95 lb (H) / 55→65 lb (M) · Saco 20 / 10 kg · Sled 2x45 lb',
+                equip: 'Pista, Sled, barra 20/15 kg, discos (45 a 5 lb), cuerda grande, remo, Sandbag 75 lb/sacos, soportes HSPU, SkiErg y Bike.'
+            }
+        ];
+
+        return specs.map((s, idx) => {
+            const num = String(idx + 1).padStart(2, '0');
+            return {
+                id: `iwod-${num}`,
+                code: `INDIVIDUAL WOD #${num}`,
+                title: s.title,
+                format: s.format,
+                rmRef: s.rmRef,
+                blocks: s.blocks,
+                weights: { pro: s.pro, open: s.open },
+                equipment: s.equip
+            };
+        });
+    }
+
+    // =========================================
     // GENERADOR DE LOS 100 HYROX NUMERADOS (#001 – #100)
     // =========================================
     buildHyrox100Catalog() {
-        // Los eventos más recientes primero (#001 Madrid, #002 Tokio, #003 Barcelona...) + serie completa hasta #100
         const cities = [
             { city: 'HYROX Madrid', tag: 'ESPAÑA · TEMPORADA RECIENTE', focus: 'Simulación Oficial Estándar · Pista Abierta', variant: 'standard' },
             { city: 'HYROX Tokio', tag: 'JAPÓN · TEMPORADA RECIENTE', focus: 'Edición Velocidad & Transiciones Explosivas', variant: 'speed' },
@@ -593,7 +1311,7 @@ class OfflineToolsManager {
                 title: base.city,
                 tag: base.tag,
                 focus: base.focus,
-                runNote: `Intercalar **${runDist}** antes de cada una de las 8 estaciones numeradas:`,
+                runNote: `Intercalar ${runDist} antes de cada una de las 8 estaciones numeradas:`,
                 stations: [
                     { num: '01', name: '1000m SkiErg', ind: '1000m completos manteniendo damper 6–8', part: '1000m entre los dos (relevos cada 250m)' },
                     { num: '02', name: '50m Sled Push (Empuje de Trineo)', ind: '50m en tramos de 12.5m o 25m en pista', part: '50m repartidos (cambio cada 12.5m)' },
@@ -766,13 +1484,11 @@ class OfflineToolsManager {
     // EVENTOS E INTERACCIÓN DE MÓDULOS
     // =========================================
     bindEvents() {
-        // Abrir / cerrar menú lateral
         this.fab?.addEventListener('click', () => this.togglePanel(true));
         this.collapseBtn?.addEventListener('click', () => this.togglePanel(false));
         this.overlay?.addEventListener('click', () => this.togglePanel(false));
         this.miniExpandBtn?.addEventListener('click', () => this.togglePanel(true));
 
-        // Navegación principal de módulos (Music, Movilidad, Rutinas, HYROX, Calc)
         this.moduleNav?.querySelectorAll('.offline-mod-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const mod = btn.dataset.module;
@@ -787,7 +1503,6 @@ class OfflineToolsManager {
             });
         });
 
-        // Controles del reproductor
         this.btnToggle?.addEventListener('click', () => this.togglePlay());
         this.miniPlayBtn?.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -861,8 +1576,8 @@ class OfflineToolsManager {
         if (!this.sectionTitleEl) return;
         const titles = {
             music: 'Workout Music <span>🎵</span>',
-            mobility: 'Movilidad & Activación <span>🤸</span>',
-            wods: 'Rutinas Exigentes <span>🏋️</span>',
+            mobility: 'Movilidad & Calentamiento <span>🤸</span>',
+            wods: 'Rutinas Exigentes (60) <span>🏋️</span>',
             hyrox: 'HYROX 100 Series <span>⚡</span>',
             calc: 'Calculadoras Box <span>🧮</span>'
         };
@@ -884,15 +1599,15 @@ class OfflineToolsManager {
             activeKey = this.selectedCategory;
         } else if (this.activeModule === 'mobility') {
             tabs = [
-                { key: 'walks', label: 'Caminatas' },
-                { key: 'partner', label: 'En Parejas' },
-                { key: 'bands_kb', label: 'Bandas & KB' }
+                { key: 'walks', label: 'Caminatas (6)' },
+                { key: 'partner', label: 'En Parejas (6)' },
+                { key: 'bands_kb', label: 'CF-L2 & KB (6)' }
             ];
             activeKey = this.mobilityCategory;
         } else if (this.activeModule === 'wods') {
             tabs = [
-                { key: 'partner', label: '🤝 Partner WODs' },
-                { key: 'individual', label: '🔥 Individuales' }
+                { key: 'partner', label: '🤝 Partner (30)' },
+                { key: 'individual', label: '🔥 Individual (30)' }
             ];
             activeKey = this.wodsCategory;
         } else if (this.activeModule === 'hyrox') {
@@ -934,7 +1649,6 @@ class OfflineToolsManager {
     renderModuleBody() {
         if (!this.trackListEl) return;
 
-        // Mostrar reproductor completo en Music o cuando haya una canción cargada
         if (this.playerDock) {
             const showPlayer = this.activeModule === 'music' || Boolean(this.currentTrack);
             this.playerDock.style.display = showPlayer ? 'flex' : 'none';
@@ -1018,165 +1732,427 @@ class OfflineToolsManager {
     }
 
     // =========================================
-    // RENDER: MOVILIDAD Y ACTIVACIÓN
+    // RENDER: MOVILIDAD (CON BUSCADOR Y DESPLEGABLES)
     // =========================================
     renderMobilityList() {
-        const list = this.mobilityData[this.mobilityCategory] || [];
-        this.trackListEl.innerHTML = list.map(item => `
-            <article class="wod-routine-card">
-                <div class="wod-card-top">
-                    <span class="wod-code-badge">${item.code}</span>
-                    <span class="wod-format-badge">${item.duration}</span>
-                </div>
-                <h4 class="wod-card-title">${item.title}</h4>
-                <p class="wod-focus-note">🎯 <strong>Enfoque:</strong> ${item.focus}</p>
-                <ul class="wod-steps-list">
-                    ${item.steps.map(s => `<li>${s}</li>`).join('')}
-                </ul>
-                <div class="wod-equip-footer">
-                    <span class="equip-label">🧰 Material requerido:</span> ${item.equipment}
-                </div>
-            </article>
-        `).join('');
+        const q = (this.searchQueries.mobility || '').trim().toLowerCase();
+        this.trackListEl.innerHTML = `
+            <div class="offline-search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="mobility-search-input" class="offline-search-input" placeholder="Buscar movilidad (ej. oso, cadera, hombro, barra, anillas...)" value="${this.escapeAttr(this.searchQueries.mobility)}">
+                <button type="button" id="mobility-search-clear" class="search-clear-btn" style="display: ${q ? 'inline-flex' : 'none'};" aria-label="Limpiar búsqueda">✕</button>
+            </div>
+            <div id="mobility-cards-container" class="collapsible-list-wrap"></div>
+        `;
+
+        const inputEl = document.getElementById('mobility-search-input');
+        const clearBtn = document.getElementById('mobility-search-clear');
+
+        inputEl?.addEventListener('input', () => {
+            this.searchQueries.mobility = inputEl.value;
+            if (clearBtn) clearBtn.style.display = inputEl.value.trim() ? 'inline-flex' : 'none';
+            this.renderMobilityCardsOnly();
+        });
+
+        clearBtn?.addEventListener('click', () => {
+            this.searchQueries.mobility = '';
+            if (inputEl) {
+                inputEl.value = '';
+                inputEl.focus();
+            }
+            clearBtn.style.display = 'none';
+            this.renderMobilityCardsOnly();
+        });
+
+        this.renderMobilityCardsOnly();
+    }
+
+    renderMobilityCardsOnly() {
+        const container = document.getElementById('mobility-cards-container');
+        if (!container) return;
+
+        const q = (this.searchQueries.mobility || '').trim().toLowerCase();
+        // Si hay búsqueda activa, busca en las 3 categorías de movilidad; si no, muestra la pestaña activa
+        const sourceList = q
+            ? [...this.mobilityData.walks, ...this.mobilityData.partner, ...this.mobilityData.bands_kb]
+            : (this.mobilityData[this.mobilityCategory] || []);
+
+        const filtered = sourceList.filter(item => {
+            if (!q) return true;
+            const hay = `${item.code} ${item.title} ${item.duration} ${item.focus} ${item.equipment} ${item.steps.join(' ')}`.toLowerCase();
+            return hay.includes(q);
+        });
+
+        if (!filtered.length) {
+            container.innerHTML = `<div class="offline-empty-msg">No se encontraron ejercicios con "${this.escapeHtml(this.searchQueries.mobility)}".</div>`;
+            return;
+        }
+
+        container.innerHTML = filtered.map(item => {
+            const isOpen = this.expandedCards.has(item.code);
+            return `
+                <article class="wod-routine-card collapsible-card ${isOpen ? 'expanded' : ''}" data-card-id="${item.code}">
+                    <div class="wod-summary-trigger" role="button" tabindex="0" aria-expanded="${isOpen}">
+                        <div class="wod-card-top">
+                            <span class="wod-code-badge">${item.code}</span>
+                            <div class="wod-top-right">
+                                <span class="wod-format-badge">${item.duration}</span>
+                                <span class="card-chevron">▾</span>
+                            </div>
+                        </div>
+                        <h4 class="wod-card-title">${item.title}</h4>
+                        <div class="wod-format-sub">🎯 ${item.focus}</div>
+                    </div>
+
+                    <div class="wod-collapsible-body">
+                        <ul class="wod-steps-list">
+                            ${item.steps.map(s => `<li>${s}</li>`).join('')}
+                        </ul>
+                        <div class="wod-equip-footer">
+                            <span class="equip-label">🧰 Material requerido:</span> ${item.equipment}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }).join('');
+
+        this.bindCollapsibleCards(container);
     }
 
     // =========================================
-    // RENDER: RUTINAS EXIGENTES (PARTNER / INDIVIDUAL)
+    // RENDER: 60 WODS DESPLEGABLES (30 PARTNER + 30 INDIVIDUAL)
     // =========================================
     renderWodsList() {
+        const q = (this.searchQueries.wods || '').trim().toLowerCase();
+        this.trackListEl.innerHTML = `
+            <div class="offline-search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="wods-search-input" class="offline-search-input" placeholder="Buscar WOD (#01–#30, cluster, cuerda, sled, sandbag, fran...)" value="${this.escapeAttr(this.searchQueries.wods)}">
+                <button type="button" id="wods-search-clear" class="search-clear-btn" style="display: ${q ? 'inline-flex' : 'none'};" aria-label="Limpiar búsqueda">✕</button>
+            </div>
+            <div id="wods-cards-container" class="collapsible-list-wrap"></div>
+        `;
+
+        const inputEl = document.getElementById('wods-search-input');
+        const clearBtn = document.getElementById('wods-search-clear');
+
+        inputEl?.addEventListener('input', () => {
+            this.searchQueries.wods = inputEl.value;
+            if (clearBtn) clearBtn.style.display = inputEl.value.trim() ? 'inline-flex' : 'none';
+            this.renderWodsCardsOnly();
+        });
+
+        clearBtn?.addEventListener('click', () => {
+            this.searchQueries.wods = '';
+            if (inputEl) {
+                inputEl.value = '';
+                inputEl.focus();
+            }
+            clearBtn.style.display = 'none';
+            this.renderWodsCardsOnly();
+        });
+
+        this.renderWodsCardsOnly();
+    }
+
+    renderWodsCardsOnly() {
+        const container = document.getElementById('wods-cards-container');
+        if (!container) return;
+
+        const q = (this.searchQueries.wods || '').trim().toLowerCase();
         const list = this.wodsData[this.wodsCategory] || [];
-        this.trackListEl.innerHTML = list.map(wod => `
-            <article class="wod-routine-card">
-                <div class="wod-card-top">
-                    <span class="wod-code-badge">${wod.code}</span>
-                    <span class="wod-rm-pill">📊 ${wod.rmRef}</span>
-                </div>
-                <h4 class="wod-card-title">${wod.title}</h4>
-                <div class="wod-format-sub">${wod.format}</div>
 
-                <div class="wod-blocks-wrap">
-                    ${wod.blocks.map(b => `
-                        <div class="wod-block-box">
-                            <div class="wod-block-header">${b.name}</div>
-                            <p class="wod-block-desc">${b.desc}</p>
-                            <ul class="wod-steps-list">
-                                ${b.items.map(it => `<li>${it}</li>`).join('')}
-                            </ul>
+        const filtered = list.filter(wod => {
+            if (!q) return true;
+            const blockText = wod.blocks.map(b => `${b.name} ${b.desc} ${b.items.join(' ')}`).join(' ');
+            const hay = `${wod.code} ${wod.title} ${wod.format} ${wod.rmRef} ${wod.weights.pro} ${wod.weights.open} ${wod.equipment} ${blockText}`.toLowerCase();
+            return hay.includes(q);
+        });
+
+        if (!filtered.length) {
+            container.innerHTML = `<div class="offline-empty-msg">No se encontraron rutinas con "${this.escapeHtml(this.searchQueries.wods)}".</div>`;
+            return;
+        }
+
+        container.innerHTML = filtered.map(wod => {
+            const isOpen = this.expandedCards.has(wod.id);
+            return `
+                <article class="wod-routine-card collapsible-card ${isOpen ? 'expanded' : ''}" data-card-id="${wod.id}">
+                    <div class="wod-summary-trigger" role="button" tabindex="0" aria-expanded="${isOpen}">
+                        <div class="wod-card-top">
+                            <span class="wod-code-badge">${wod.code}</span>
+                            <div class="wod-top-right">
+                                <span class="wod-rm-pill">📊 ${wod.rmRef}</span>
+                                <span class="card-chevron">▾</span>
+                            </div>
                         </div>
-                    `).join('')}
-                </div>
-
-                <div class="wod-weights-grid">
-                    <div class="weight-tier tier-pro">
-                        <span class="tier-badge">🔥 PRO / RX</span>
-                        <p>${wod.weights.pro}</p>
+                        <h4 class="wod-card-title">${wod.title}</h4>
+                        <div class="wod-format-sub">${wod.format}</div>
                     </div>
-                    <div class="weight-tier tier-open">
-                        <span class="tier-badge">⚡ OPEN / SCALED</span>
-                        <p>${wod.weights.open}</p>
-                    </div>
-                </div>
 
-                <div class="wod-equip-footer">
-                    <span class="equip-label">🧰 Material requerido:</span> ${wod.equipment}
-                </div>
-            </article>
-        `).join('');
+                    <div class="wod-collapsible-body">
+                        <div class="wod-blocks-wrap">
+                            ${wod.blocks.map(b => `
+                                <div class="wod-block-box">
+                                    <div class="wod-block-header">${b.name}</div>
+                                    <p class="wod-block-desc">${b.desc}</p>
+                                    <ul class="wod-steps-list">
+                                        ${b.items.map(it => `<li>${it}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="wod-weights-grid">
+                            <div class="weight-tier tier-pro">
+                                <span class="tier-badge">🔥 PRO / RX</span>
+                                <p>${wod.weights.pro}</p>
+                            </div>
+                            <div class="weight-tier tier-open">
+                                <span class="tier-badge">⚡ OPEN / SCALED</span>
+                                <p>${wod.weights.open}</p>
+                            </div>
+                        </div>
+
+                        <div class="wod-equip-footer">
+                            <span class="equip-label">🧰 Material requerido:</span> ${wod.equipment}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }).join('');
+
+        this.bindCollapsibleCards(container);
+    }
+
+    bindCollapsibleCards(container) {
+        container.querySelectorAll('.wod-routine-card.collapsible-card').forEach(card => {
+            const trigger = card.querySelector('.wod-summary-trigger');
+            const id = card.dataset.cardId;
+            if (!trigger || !id) return;
+
+            const toggle = () => {
+                const nowOpen = !card.classList.contains('expanded');
+                card.classList.toggle('expanded', nowOpen);
+                trigger.setAttribute('aria-expanded', String(nowOpen));
+                if (nowOpen) this.expandedCards.add(id);
+                else this.expandedCards.delete(id);
+            };
+
+            trigger.addEventListener('click', toggle);
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggle();
+                }
+            });
+        });
     }
 
     // =========================================
-    // RENDER: HYROX (#001 – #100)
+    // RENDER: HYROX (#001 – #100 CON BUSCADOR Y DROPDOWN CUSTOM UX)
     // =========================================
     renderHyroxView() {
         const currentWorkout = this.hyroxCatalog.find(h => h.number === this.selectedHyroxNumber) || this.hyroxCatalog[0];
-        const quickList = this.hyroxCatalog.slice(0, 12);
+        const q = (this.searchQueries.hyrox || '').trim().toLowerCase();
+        const quickList = this.hyroxCatalog.slice(0, 8);
 
         this.trackListEl.innerHTML = `
-            <div class="hyrox-selector-bar">
-                <div class="hyrox-selector-top">
-                    <span class="hyrox-counter-label">CATÁLOGO 100 HYROX OFICIALES</span>
-                    <select id="hyrox-select-100" class="hyrox-select-input" aria-label="Seleccionar HYROX #001 a #100">
-                        ${this.hyroxCatalog.map(h => `
-                            <option value="${h.number}" ${h.number === currentWorkout.number ? 'selected' : ''}>
-                                ${h.code} — ${h.title}
-                            </option>
-                        `).join('')}
-                    </select>
+            <div class="hyrox-ux-controls">
+                <!-- Buscador en vivo de los 100 HYROX -->
+                <div class="offline-search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="hyrox-search-input" class="offline-search-input" placeholder="Buscar HYROX por ciudad o #001–#100 (ej. Madrid, Tokio, 045...)" value="${this.escapeAttr(this.searchQueries.hyrox)}">
+                    <button type="button" id="hyrox-search-clear" class="search-clear-btn" style="display: ${q ? 'inline-flex' : 'none'};" aria-label="Limpiar búsqueda">✕</button>
                 </div>
+
+                <!-- Selector Desplegable Custom UX -->
+                <div class="hyrox-custom-dropdown" id="hyrox-custom-dropdown">
+                    <button type="button" class="hyrox-dropdown-trigger ${this.hyroxDropdownOpen ? 'open' : ''}" id="hyrox-dropdown-btn" aria-expanded="${this.hyroxDropdownOpen}">
+                        <div class="dropdown-trigger-left">
+                            <span class="dropdown-num-pill">⚡ ${currentWorkout.code}</span>
+                            <span class="dropdown-city-name">${currentWorkout.title}</span>
+                        </div>
+                        <span class="dropdown-chevron">▾</span>
+                    </button>
+
+                    <div class="hyrox-dropdown-menu" id="hyrox-dropdown-menu" style="display: ${this.hyroxDropdownOpen ? 'flex' : 'none'};">
+                        ${this.hyroxCatalog.map(h => `
+                            <button type="button" class="hyrox-dropdown-option ${h.number === currentWorkout.number ? 'selected' : ''}" data-hnum="${h.number}">
+                                <span class="opt-code">#${String(h.number).padStart(3, '0')}</span>
+                                <span class="opt-title">${h.title}</span>
+                                <span class="opt-focus">${h.focus.split('·')[0]}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Chips rápidos de sedes recientes -->
                 <div class="hyrox-quick-chips">
                     ${quickList.map(h => `
-                        <button type="button" class="hyrox-chip ${h.number === currentWorkout.number ? 'active' : ''}" data-hnum="${h.number}">
+                        <button type="button" class="hyrox-chip ${h.number === currentWorkout.number && !q ? 'active' : ''}" data-hnum="${h.number}">
                             #${String(h.number).padStart(2, '0')} ${h.title.replace('HYROX ', '')}
                         </button>
                     `).join('')}
                 </div>
             </div>
 
-            <article class="wod-routine-card hyrox-featured-card">
-                <div class="wod-card-top">
-                    <span class="wod-code-badge hyrox-badge">⚡ ${currentWorkout.code}</span>
-                    <span class="wod-rm-pill">${this.hyroxMode === 'partner' ? '🤝 VERSIÓN PARTNER (DOUBLES)' : '🏃 VERSIÓN INDIVIDUAL'}</span>
-                </div>
-                <h4 class="wod-card-title">${currentWorkout.title}</h4>
-                <div class="wod-format-sub">${currentWorkout.tag} · ${currentWorkout.focus}</div>
-
-                <div class="hyrox-run-banner">
-                    🏃 <strong>Protocolo de Carrera:</strong> ${currentWorkout.runNote.replace(/\*\*(.*?)\*\*/g, '$1')}
-                    ${this.hyroxMode === 'partner' ? '<br><em>En Partner: los dos corren juntos cada tramo y dividen el trabajo de las estaciones.</em>' : ''}
-                </div>
-
-                <div class="hyrox-stations-list">
-                    ${currentWorkout.stations.map(st => `
-                        <div class="hyrox-station-row">
-                            <span class="station-num">${st.num}</span>
-                            <div class="station-body">
-                                <div class="station-name">${st.name}</div>
-                                <div class="station-spec">
-                                    ${this.hyroxMode === 'partner' ? `<strong>Partner:</strong> ${st.part}` : `<strong>Individual:</strong> ${st.ind}`}
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <div class="wod-weights-grid">
-                    <div class="weight-tier tier-pro">
-                        <span class="tier-badge">🔥 PESOS PRO (BOX)</span>
-                        <p>${currentWorkout.weights.pro}</p>
-                    </div>
-                    <div class="weight-tier tier-open">
-                        <span class="tier-badge">⚡ PESOS OPEN (BOX)</span>
-                        <p>${currentWorkout.weights.open}</p>
-                    </div>
-                </div>
-
-                <div class="wod-equip-footer">
-                    <span class="equip-label">🧰 Material requerido:</span> ${currentWorkout.equipment}
-                </div>
-            </article>
+            <div id="hyrox-results-container" class="collapsible-list-wrap"></div>
         `;
 
-        const selectEl = document.getElementById('hyrox-select-100');
-        selectEl?.addEventListener('change', () => {
-            this.selectedHyroxNumber = parseInt(selectEl.value, 10) || 1;
-            this.renderHyroxView();
+        const searchInput = document.getElementById('hyrox-search-input');
+        const clearBtn = document.getElementById('hyrox-search-clear');
+        const dropdownBtn = document.getElementById('hyrox-dropdown-btn');
+        const dropdownMenu = document.getElementById('hyrox-dropdown-menu');
+
+        searchInput?.addEventListener('input', () => {
+            this.searchQueries.hyrox = searchInput.value;
+            if (clearBtn) clearBtn.style.display = searchInput.value.trim() ? 'inline-flex' : 'none';
+            this.renderHyroxCardsOnly();
+        });
+
+        clearBtn?.addEventListener('click', () => {
+            this.searchQueries.hyrox = '';
+            if (searchInput) {
+                searchInput.value = '';
+                searchInput.focus();
+            }
+            clearBtn.style.display = 'none';
+            this.renderHyroxCardsOnly();
+        });
+
+        dropdownBtn?.addEventListener('click', () => {
+            this.hyroxDropdownOpen = !this.hyroxDropdownOpen;
+            dropdownBtn.classList.toggle('open', this.hyroxDropdownOpen);
+            if (dropdownMenu) dropdownMenu.style.display = this.hyroxDropdownOpen ? 'flex' : 'none';
+        });
+
+        this.trackListEl.querySelectorAll('.hyrox-dropdown-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                const num = parseInt(opt.dataset.hnum, 10) || 1;
+                this.selectedHyroxNumber = num;
+                this.hyroxDropdownOpen = false;
+                this.searchQueries.hyrox = '';
+                this.expandedHyroxSet.add(num);
+                this.renderHyroxView();
+            });
         });
 
         this.trackListEl.querySelectorAll('.hyrox-chip').forEach(chip => {
             chip.addEventListener('click', () => {
-                this.selectedHyroxNumber = parseInt(chip.dataset.hnum, 10) || 1;
+                const num = parseInt(chip.dataset.hnum, 10) || 1;
+                this.selectedHyroxNumber = num;
+                this.hyroxDropdownOpen = false;
+                this.searchQueries.hyrox = '';
+                this.expandedHyroxSet.add(num);
                 this.renderHyroxView();
+            });
+        });
+
+        this.renderHyroxCardsOnly();
+    }
+
+    renderHyroxCardsOnly() {
+        const container = document.getElementById('hyrox-results-container');
+        if (!container) return;
+
+        const q = (this.searchQueries.hyrox || '').trim().toLowerCase();
+        let listToRender = [];
+
+        if (q) {
+            listToRender = this.hyroxCatalog.filter(h => {
+                const hay = `${h.code} ${h.number} ${h.title} ${h.tag} ${h.focus}`.toLowerCase();
+                return hay.includes(q);
+            }).slice(0, 25);
+        } else {
+            const current = this.hyroxCatalog.find(h => h.number === this.selectedHyroxNumber) || this.hyroxCatalog[0];
+            this.expandedHyroxSet.add(current.number);
+            listToRender = [current];
+        }
+
+        if (!listToRender.length) {
+            container.innerHTML = `<div class="offline-empty-msg">No se encontró ningún HYROX con "${this.escapeHtml(this.searchQueries.hyrox)}".</div>`;
+            return;
+        }
+
+        container.innerHTML = listToRender.map(h => {
+            const isOpen = this.expandedHyroxSet.has(h.number) || listToRender.length === 1;
+            return `
+                <article class="wod-routine-card hyrox-featured-card collapsible-card ${isOpen ? 'expanded' : ''}" data-hyrox-num="${h.number}">
+                    <div class="wod-summary-trigger" role="button" tabindex="0" aria-expanded="${isOpen}">
+                        <div class="wod-card-top">
+                            <span class="wod-code-badge hyrox-badge">⚡ ${h.code}</span>
+                            <div class="wod-top-right">
+                                <span class="wod-rm-pill">${this.hyroxMode === 'partner' ? '🤝 PARTNER (DOUBLES)' : '🏃 INDIVIDUAL'}</span>
+                                <span class="card-chevron">▾</span>
+                            </div>
+                        </div>
+                        <h4 class="wod-card-title">${h.title}</h4>
+                        <div class="wod-format-sub">${h.tag} · ${h.focus}</div>
+                    </div>
+
+                    <div class="wod-collapsible-body">
+                        <div class="hyrox-run-banner">
+                            🏃 <strong>Protocolo de Carrera:</strong> ${h.runNote}
+                            ${this.hyroxMode === 'partner' ? '<br><em>En Partner: ambos corren juntos cada tramo y dividen el trabajo de las estaciones.</em>' : ''}
+                        </div>
+
+                        <div class="hyrox-stations-list">
+                            ${h.stations.map(st => `
+                                <div class="hyrox-station-row">
+                                    <span class="station-num">${st.num}</span>
+                                    <div class="station-body">
+                                        <div class="station-name">${st.name}</div>
+                                        <div class="station-spec">
+                                            ${this.hyroxMode === 'partner' ? `<strong>Partner:</strong> ${st.part}` : `<strong>Individual:</strong> ${st.ind}`}
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="wod-weights-grid">
+                            <div class="weight-tier tier-pro">
+                                <span class="tier-badge">🔥 PESOS PRO (BOX)</span>
+                                <p>${h.weights.pro}</p>
+                            </div>
+                            <div class="weight-tier tier-open">
+                                <span class="tier-badge">⚡ PESOS OPEN (BOX)</span>
+                                <p>${h.weights.open}</p>
+                            </div>
+                        </div>
+
+                        <div class="wod-equip-footer">
+                            <span class="equip-label">🧰 Material requerido:</span> ${h.equipment}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }).join('');
+
+        container.querySelectorAll('.hyrox-featured-card').forEach(card => {
+            const trigger = card.querySelector('.wod-summary-trigger');
+            const num = parseInt(card.dataset.hyroxNum, 10);
+            if (!trigger || !num) return;
+
+            trigger.addEventListener('click', () => {
+                const nowOpen = !card.classList.contains('expanded');
+                card.classList.toggle('expanded', nowOpen);
+                trigger.setAttribute('aria-expanded', String(nowOpen));
+                if (nowOpen) this.expandedHyroxSet.add(num);
+                else this.expandedHyroxSet.delete(num);
             });
         });
     }
 
     // =========================================
     // RENDER: CALCULADORAS (% RM + DISCOS & IMC)
+    // Sin flechas y permitiendo borrar/escribir libremente
     // =========================================
     calculatePlateLoad(targetLb, barKg) {
         const barLb = barKg === 20 ? 45 : 35;
         let perSide = (targetLb - barLb) / 2;
-        if (perSide <= 0) return 'Solo barra vacía (' + barKg + ' kg / ' + barLb + ' lb)';
+        if (perSide <= 0) return `Solo barra vacía (${barKg} kg / ${barLb} lb)`;
 
         const availablePlates = [45, 35, 25, 15, 10, 5];
         const loaded = [];
@@ -1193,19 +2169,14 @@ class OfflineToolsManager {
 
     renderCalcView() {
         if (this.calcCategory === 'rm') {
-            const { oneRm, unit, barKg, customPct } = this.rmState;
-            const targetVal = Math.round(oneRm * (customPct / 100));
-            const targetLb = unit === 'lb' ? targetVal : Math.round(targetVal * 2.20462);
-            const targetKg = unit === 'kg' ? targetVal : Math.round(targetVal / 2.20462);
-            const plateBreakdown = this.calculatePlateLoad(targetLb, barKg);
-            const percentages = [95, 90, 85, 80, 75, 70, 65, 60, 50];
+            const { oneRmRaw, unit, barKg, customPct } = this.rmState;
 
             this.trackListEl.innerHTML = `
                 <div class="calc-card">
                     <div class="calc-row-grid">
                         <label class="calc-field">
                             <span>Tu 1RM Máximo</span>
-                            <input type="number" id="calc-rm-input" class="calc-input" value="${oneRm}" min="10" max="1000">
+                            <input type="text" inputmode="decimal" id="calc-rm-input" class="calc-input" placeholder="Ej. 185" value="${this.escapeAttr(oneRmRaw)}" autocomplete="off">
                         </label>
                         <div class="calc-field">
                             <span>Unidad</span>
@@ -1224,30 +2195,12 @@ class OfflineToolsManager {
                     </div>
 
                     <div class="calc-slider-box">
-                        <div class="calc-slider-header">
-                            <span>Porcentaje Objetivo: <strong>${customPct}% RM</strong></span>
-                            <span class="calc-highlight-val">${targetLb} lb · ${targetKg} kg</span>
-                        </div>
+                        <div class="calc-slider-header" id="calc-rm-slider-header"></div>
                         <input type="range" id="calc-rm-slider" class="player-seek-bar" min="40" max="105" step="5" value="${customPct}">
-                        <div class="calc-plate-hint">🏋️ ${plateBreakdown}</div>
+                        <div class="calc-plate-hint" id="calc-rm-plate-hint"></div>
                     </div>
 
-                    <div class="calc-rm-table">
-                        ${percentages.map(pct => {
-                            const valLb = unit === 'lb'
-                                ? Math.round(oneRm * (pct / 100))
-                                : Math.round(oneRm * (pct / 100) * 2.20462);
-                            const valKg = Math.round(valLb / 2.20462);
-                            const activeRow = pct === customPct ? 'active' : '';
-                            return `
-                                <div class="calc-rm-cell ${activeRow}" data-pct="${pct}">
-                                    <span class="rm-cell-pct">${pct}%</span>
-                                    <strong class="rm-cell-main">${valLb} lb</strong>
-                                    <span class="rm-cell-sub">${valKg} kg</span>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
+                    <div class="calc-rm-table" id="calc-rm-table"></div>
                 </div>
             `;
 
@@ -1255,27 +2208,27 @@ class OfflineToolsManager {
             const rmSlider = document.getElementById('calc-rm-slider');
 
             rmInput?.addEventListener('input', () => {
-                this.rmState.oneRm = Math.max(1, parseFloat(rmInput.value) || 0);
-                this.renderCalcView();
-                const el = document.getElementById('calc-rm-input');
-                if (el) {
-                    el.focus();
-                    el.setSelectionRange(el.value.length, el.value.length);
-                }
+                this.rmState.oneRmRaw = rmInput.value;
+                const parsed = parseFloat(rmInput.value.replace(',', '.'));
+                this.rmState.oneRm = !isNaN(parsed) && parsed > 0 ? parsed : 0;
+                this.updateRmResultsOnly();
             });
 
             rmSlider?.addEventListener('input', () => {
                 this.rmState.customPct = parseInt(rmSlider.value, 10) || 75;
-                this.renderCalcView();
+                this.updateRmResultsOnly();
             });
 
             this.trackListEl.querySelectorAll('[data-unit]').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const newUnit = btn.dataset.unit;
                     if (newUnit && newUnit !== this.rmState.unit) {
-                        this.rmState.oneRm = newUnit === 'kg'
-                            ? Math.round(this.rmState.oneRm / 2.20462)
-                            : Math.round(this.rmState.oneRm * 2.20462);
+                        if (this.rmState.oneRm > 0) {
+                            this.rmState.oneRm = newUnit === 'kg'
+                                ? Math.round(this.rmState.oneRm / 2.20462)
+                                : Math.round(this.rmState.oneRm * 2.20462);
+                            this.rmState.oneRmRaw = String(this.rmState.oneRm);
+                        }
                         this.rmState.unit = newUnit;
                         this.renderCalcView();
                     }
@@ -1289,68 +2242,25 @@ class OfflineToolsManager {
                 });
             });
 
-            this.trackListEl.querySelectorAll('.calc-rm-cell').forEach(cell => {
-                cell.addEventListener('click', () => {
-                    this.rmState.customPct = parseInt(cell.dataset.pct, 10) || 75;
-                    this.renderCalcView();
-                });
-            });
+            this.updateRmResultsOnly();
         } else {
-            // Calculadora de IMC y Rango de Peso Adecuado
-            const { heightCm, weightKg } = this.bmiState;
-            const hMeters = Math.max(0.5, heightCm / 100);
-            const bmi = weightKg / (hMeters * hMeters);
-            const bmiStr = bmi.toFixed(1);
-
-            const minHealthyKg = (18.5 * hMeters * hMeters).toFixed(1);
-            const maxHealthyKg = (24.9 * hMeters * hMeters).toFixed(1);
-            const minAthleteKg = (20.5 * hMeters * hMeters).toFixed(1);
-            const maxAthleteKg = (26.5 * hMeters * hMeters).toFixed(1);
-
-            let statusLabel = 'Peso Adecuado / Saludable';
-            let statusColor = '#00e676';
-            if (bmi < 18.5) {
-                statusLabel = 'Bajo Peso (por debajo del rango)';
-                statusColor = '#38bdf8';
-            } else if (bmi >= 25 && bmi <= 26.8) {
-                statusLabel = 'Rango Atleta Fuerza / Ligero Sobrepeso IMC';
-                statusColor = '#fbbf24';
-            } else if (bmi > 26.8) {
-                statusLabel = 'Por encima del rango recomendado';
-                statusColor = '#f87171';
-            }
+            // Calculadora de IMC y Rango de Peso Adecuado (Permite borrar y escribir libremente)
+            const { heightRaw, weightRaw } = this.bmiState;
 
             this.trackListEl.innerHTML = `
                 <div class="calc-card">
                     <div class="calc-row-grid two-cols">
                         <label class="calc-field">
                             <span>Altura (cm)</span>
-                            <input type="number" id="calc-bmi-height" class="calc-input" value="${heightCm}" min="100" max="230">
+                            <input type="text" inputmode="decimal" id="calc-bmi-height" class="calc-input" placeholder="Ej. 174" value="${this.escapeAttr(heightRaw)}" autocomplete="off">
                         </label>
                         <label class="calc-field">
                             <span>Peso Actual (kg)</span>
-                            <input type="number" id="calc-bmi-weight" class="calc-input" value="${weightKg}" min="30" max="220" step="0.5">
+                            <input type="text" inputmode="decimal" id="calc-bmi-weight" class="calc-input" placeholder="Ej. 76" value="${this.escapeAttr(weightRaw)}" autocomplete="off">
                         </label>
                     </div>
 
-                    <div class="bmi-result-banner" style="border-color: ${statusColor}">
-                        <div class="bmi-score-col">
-                            <span class="bmi-kicker">TU IMC ACTUAL</span>
-                            <strong class="bmi-number" style="color: ${statusColor}">${bmiStr}</strong>
-                            <span class="bmi-status-pill" style="color: ${statusColor}">${statusLabel}</span>
-                        </div>
-                    </div>
-
-                    <div class="bmi-ranges-box">
-                        <div class="bmi-range-item">
-                            <span class="range-title">✅ Rango de Peso Adecuado (Estándar 18.5 – 24.9)</span>
-                            <strong class="range-values">${minHealthyKg} kg — ${maxHealthyKg} kg</strong>
-                        </div>
-                        <div class="bmi-range-item athlete">
-                            <span class="range-title">🏋️ Rango Atleta Box / Masa Muscular (20.5 – 26.5)</span>
-                            <strong class="range-values">${minAthleteKg} kg — ${maxAthleteKg} kg</strong>
-                        </div>
-                    </div>
+                    <div id="calc-bmi-results-wrap" class="bmi-results-dynamic"></div>
                 </div>
             `;
 
@@ -1358,25 +2268,126 @@ class OfflineToolsManager {
             const wInput = document.getElementById('calc-bmi-weight');
 
             hInput?.addEventListener('input', () => {
-                this.bmiState.heightCm = Math.max(100, parseFloat(hInput.value) || 170);
-                this.renderCalcView();
-                const el = document.getElementById('calc-bmi-height');
-                if (el) {
-                    el.focus();
-                    el.setSelectionRange(el.value.length, el.value.length);
-                }
+                this.bmiState.heightRaw = hInput.value;
+                const parsed = parseFloat(hInput.value.replace(',', '.'));
+                this.bmiState.heightCm = !isNaN(parsed) && parsed > 0 ? parsed : 0;
+                this.updateBmiResultsOnly();
             });
 
             wInput?.addEventListener('input', () => {
-                this.bmiState.weightKg = Math.max(25, parseFloat(wInput.value) || 70);
-                this.renderCalcView();
-                const el = document.getElementById('calc-bmi-weight');
-                if (el) {
-                    el.focus();
-                    el.setSelectionRange(el.value.length, el.value.length);
-                }
+                this.bmiState.weightRaw = wInput.value;
+                const parsed = parseFloat(wInput.value.replace(',', '.'));
+                this.bmiState.weightKg = !isNaN(parsed) && parsed > 0 ? parsed : 0;
+                this.updateBmiResultsOnly();
             });
+
+            this.updateBmiResultsOnly();
         }
+    }
+
+    updateRmResultsOnly() {
+        const headerEl = document.getElementById('calc-rm-slider-header');
+        const plateEl = document.getElementById('calc-rm-plate-hint');
+        const tableEl = document.getElementById('calc-rm-table');
+        if (!headerEl || !plateEl || !tableEl) return;
+
+        const { oneRm, unit, barKg, customPct } = this.rmState;
+        const targetVal = Math.round(oneRm * (customPct / 100));
+        const targetLb = unit === 'lb' ? targetVal : Math.round(targetVal * 2.20462);
+        const targetKg = unit === 'kg' ? targetVal : Math.round(targetVal / 2.20462);
+        const plateBreakdown = this.calculatePlateLoad(targetLb, barKg);
+        const percentages = [95, 90, 85, 80, 75, 70, 65, 60, 50];
+
+        headerEl.innerHTML = `
+            <span>Porcentaje Objetivo: <strong>${customPct}% RM</strong></span>
+            <span class="calc-highlight-val">${targetLb} lb · ${targetKg} kg</span>
+        `;
+        plateEl.textContent = `🏋️ ${plateBreakdown}`;
+
+        tableEl.innerHTML = percentages.map(pct => {
+            const valLb = unit === 'lb'
+                ? Math.round(oneRm * (pct / 100))
+                : Math.round(oneRm * (pct / 100) * 2.20462);
+            const valKg = Math.round(valLb / 2.20462);
+            const activeRow = pct === customPct ? 'active' : '';
+            return `
+                <div class="calc-rm-cell ${activeRow}" data-pct="${pct}">
+                    <span class="rm-cell-pct">${pct}%</span>
+                    <strong class="rm-cell-main">${valLb} lb</strong>
+                    <span class="rm-cell-sub">${valKg} kg</span>
+                </div>
+            `;
+        }).join('');
+
+        tableEl.querySelectorAll('.calc-rm-cell').forEach(cell => {
+            cell.addEventListener('click', () => {
+                this.rmState.customPct = parseInt(cell.dataset.pct, 10) || 75;
+                const slider = document.getElementById('calc-rm-slider');
+                if (slider) slider.value = this.rmState.customPct;
+                this.updateRmResultsOnly();
+            });
+        });
+    }
+
+    updateBmiResultsOnly() {
+        const wrap = document.getElementById('calc-bmi-results-wrap');
+        if (!wrap) return;
+
+        const { heightCm, weightKg } = this.bmiState;
+        if (!heightCm || heightCm < 50 || !weightKg || weightKg < 15) {
+            wrap.innerHTML = `
+                <div class="bmi-result-banner" style="border-color: rgba(59, 176, 214, 0.35)">
+                    <div class="bmi-score-col">
+                        <span class="bmi-kicker">INGRESA TUS DATOS</span>
+                        <span class="bmi-status-pill" style="color: var(--text-muted)">Escribe tu altura en cm (ej. 174) y tu peso en kg (ej. 76)</span>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+
+        const hMeters = heightCm > 3 ? heightCm / 100 : heightCm;
+        const bmi = weightKg / (hMeters * hMeters);
+        const bmiStr = bmi.toFixed(1);
+
+        const minHealthyKg = (18.5 * hMeters * hMeters).toFixed(1);
+        const maxHealthyKg = (24.9 * hMeters * hMeters).toFixed(1);
+        const minAthleteKg = (20.5 * hMeters * hMeters).toFixed(1);
+        const maxAthleteKg = (26.5 * hMeters * hMeters).toFixed(1);
+
+        let statusLabel = 'Peso Adecuado / Saludable';
+        let statusColor = '#00e676';
+        if (bmi < 18.5) {
+            statusLabel = 'Bajo Peso (por debajo del rango)';
+            statusColor = '#38bdf8';
+        } else if (bmi >= 25 && bmi <= 26.8) {
+            statusLabel = 'Rango Atleta Fuerza / Masa Muscular';
+            statusColor = '#fbbf24';
+        } else if (bmi > 26.8) {
+            statusLabel = 'Por encima del rango recomendado';
+            statusColor = '#f87171';
+        }
+
+        wrap.innerHTML = `
+            <div class="bmi-result-banner" style="border-color: ${statusColor}">
+                <div class="bmi-score-col">
+                    <span class="bmi-kicker">TU IMC ACTUAL</span>
+                    <strong class="bmi-number" style="color: ${statusColor}">${bmiStr}</strong>
+                    <span class="bmi-status-pill" style="color: ${statusColor}">${statusLabel}</span>
+                </div>
+            </div>
+
+            <div class="bmi-ranges-box">
+                <div class="bmi-range-item">
+                    <span class="range-title">✅ Rango de Peso Adecuado (Estándar 18.5 – 24.9)</span>
+                    <strong class="range-values">${minHealthyKg} kg — ${maxHealthyKg} kg</strong>
+                </div>
+                <div class="bmi-range-item athlete">
+                    <span class="range-title">🏋️ Rango Atleta Box / Masa Muscular (20.5 – 26.5)</span>
+                    <strong class="range-values">${minAthleteKg} kg — ${maxAthleteKg} kg</strong>
+                </div>
+            </div>
+        `;
     }
 
     // =========================================
@@ -1508,6 +2519,17 @@ class OfflineToolsManager {
         const m = Math.floor(seconds / 60);
         const s = Math.floor(seconds % 60);
         return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    escapeHtml(str) {
+        return String(str || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    escapeAttr(str) {
+        return this.escapeHtml(str).replace(/"/g, '&quot;');
     }
 }
 

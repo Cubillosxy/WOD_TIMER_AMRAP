@@ -1675,85 +1675,89 @@ body.state-finished .timer-clock {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin-top: 6px;
+    gap: 12px;
+    margin-top: 10px;
 }
 
 .clock-stopwatch-trigger {
-    width: 34px;
-    height: 34px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--text-muted);
+    border: 1.5px solid rgba(59, 176, 214, 0.42);
+    background: rgba(59, 176, 214, 0.08);
+    color: #3bb0d6;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.25s ease;
-    opacity: 0.65;
+    opacity: 0.88;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .clock-stopwatch-trigger:hover,
 .clock-stopwatch-trigger.active {
     opacity: 1;
-    color: var(--accent-cyan);
-    border-color: rgba(59, 176, 214, 0.45);
-    background: rgba(59, 176, 214, 0.1);
-    box-shadow: 0 0 12px rgba(59, 176, 214, 0.2);
+    color: #ffffff;
+    border-color: #3bb0d6;
+    background: rgba(59, 176, 214, 0.24);
+    box-shadow: 0 0 18px rgba(59, 176, 214, 0.35);
+    transform: scale(1.06);
 }
 
 .clock-stopwatch-box {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 6px 14px;
+    gap: 18px;
+    padding: 10px 22px;
     border-radius: 999px;
-    background: rgba(13, 17, 23, 0.72);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(13, 17, 23, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(59, 176, 214, 0.3);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
 }
 
 .clock-stopwatch-display {
     font-family: var(--font-mono);
-    font-size: 1.25rem;
+    font-size: 2.15rem;
     font-weight: 700;
-    color: var(--text-main);
-    letter-spacing: 1px;
-    min-width: 78px;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    min-width: 125px;
     text-align: center;
 }
 
 .clock-stopwatch-actions {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 .clock-sw-btn {
-    padding: 4px 10px;
+    padding: 7px 14px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
     font-family: var(--font-heading);
-    font-size: 0.65rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .clock-sw-btn:hover {
-    color: var(--text-main);
-    border-color: var(--accent-cyan);
+    color: #3bb0d6;
+    border-color: #3bb0d6;
+    background: rgba(59, 176, 214, 0.14);
 }
 
 .clock-sw-btn.active {
-    background: rgba(59, 176, 214, 0.2);
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
+    background: rgba(59, 176, 214, 0.25);
+    border-color: #3bb0d6;
+    color: #3bb0d6;
 }
 
 /* =========================================
@@ -2315,4 +2319,287 @@ body.state-finished .timer-clock {
     font-family: var(--font-mono);
     font-size: 0.86rem;
     color: var(--text-main);
+}
+
+.bmi-results-dynamic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* =========================================
+   BUSCADORES, TARJETAS DESPLEGABLES Y DROPDOWN UX HYROX
+   ========================================= */
+.offline-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.42);
+    border: 1px solid rgba(59, 176, 214, 0.28);
+    border-radius: 9px;
+    padding: 0 9px;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offline-search-box:focus-within {
+    border-color: #3bb0d6;
+    box-shadow: 0 0 12px rgba(59, 176, 214, 0.22);
+}
+
+.search-icon {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-right: 6px;
+    pointer-events: none;
+}
+
+.offline-search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 4px;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.73rem;
+    outline: none;
+}
+
+.offline-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.search-clear-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 0.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.search-clear-btn:hover {
+    background: #3bb0d6;
+    color: #040b11;
+}
+
+.offline-empty-msg {
+    padding: 18px 12px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 9px;
+}
+
+.collapsible-list-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wod-routine-card.collapsible-card {
+    padding: 0;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.wod-routine-card.collapsible-card:hover {
+    border-color: rgba(59, 176, 214, 0.35);
+}
+
+.wod-routine-card.collapsible-card.expanded {
+    border-color: rgba(59, 176, 214, 0.5);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.wod-summary-trigger {
+    padding: 11px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.wod-top-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-chevron {
+    font-size: 0.85rem;
+    color: #3bb0d6;
+    transition: transform 0.25s ease;
+    line-height: 1;
+}
+
+.wod-routine-card.collapsible-card.expanded .card-chevron {
+    transform: rotate(180deg);
+}
+
+.wod-collapsible-body {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 12px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: 10px;
+}
+
+.wod-routine-card.collapsible-card.expanded .wod-collapsible-body {
+    display: flex;
+}
+
+/* Custom Dropdown UX para HYROX 100 */
+.hyrox-ux-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.hyrox-custom-dropdown {
+    position: relative;
+}
+
+.hyrox-dropdown-trigger {
+    width: 100%;
+    padding: 8px 11px;
+    border-radius: 9px;
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(15, 23, 35, 0.92));
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hyrox-dropdown-trigger:hover,
+.hyrox-dropdown-trigger.open {
+    border-color: #facc15;
+    box-shadow: 0 0 14px rgba(250, 204, 21, 0.2);
+}
+
+.dropdown-trigger-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.dropdown-num-pill {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: rgba(250, 204, 21, 0.2);
+    color: #facc15;
+    flex-shrink: 0;
+}
+
+.dropdown-city-name {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-chevron {
+    color: #facc15;
+    font-size: 0.9rem;
+    transition: transform 0.22s ease;
+}
+
+.hyrox-dropdown-trigger.open .dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+.hyrox-dropdown-menu {
+    max-height: 230px;
+    overflow-y: auto;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background: rgba(8, 12, 20, 0.98);
+    border: 1px solid rgba(250, 204, 21, 0.38);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.hyrox-dropdown-menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.hyrox-dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(250, 204, 21, 0.35);
+    border-radius: 999px;
+}
+
+.hyrox-dropdown-option {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.025);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.hyrox-dropdown-option:hover {
+    background: rgba(250, 204, 21, 0.12);
+    border-color: rgba(250, 204, 21, 0.3);
+}
+
+.hyrox-dropdown-option.selected {
+    background: rgba(250, 204, 21, 0.2);
+    border-color: #facc15;
+}
+
+.opt-code {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: #facc15;
+    flex-shrink: 0;
+}
+
+.opt-title {
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.opt-focus {
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: auto;
 }
