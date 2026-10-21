@@ -1126,13 +1126,15 @@ body.state-finished .timer-clock {
     font-weight: 700;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateX(4px);
+    color: var(--text-main);
+    opacity: 0.78;
+    transform: translateX(0);
     transition: all 0.25s ease;
 }
 
 .offline-panel-collapse:hover .collapse-text {
-    opacity: 0.9;
+    opacity: 1;
+    color: var(--accent-cyan);
     transform: translateX(0);
 }
 
