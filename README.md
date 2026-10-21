@@ -105,10 +105,13 @@ El panel izquierdo se abre desde la franja vertical `OFFLINE › › ›` y se p
 - Cada tarjeta muestra en vista resumida su número, porcentaje de `% 1RM`, título y etiquetas; al desplegarla detalla los bloques, pesos sugeridos **PRO / OPEN** y el **Material requerido** ajustado al inventario real del gimnasio:
   - *Barras olímpicas (20 kg H / 15 kg M), discos en libras (45 a 5 lb), mancuernas (55 a 20 lb + par de 15 kg), Kettlebells (24, 20, 14, 12 kg), Sandbags (75 lb y con agarres de 10/20/30 kg), Sled Push/Pull, SkiErg, Remo, Bike, Cuerda de trepar y Battle Rope, Anillas, Cajones, Balones Medicinales (20, 15, 10 lb), Rueda abdominal y Bandas (Negra, Azul, Naranja).*
 
-#### ⚡ D. Serie HYROX 100 (`#001` a `#100`)
-- **100 eventos HYROX numerados** encabezados por las sedes más recientes (**#001 Madrid**, **#002 Tokio**, **#003 Barcelona**, **#004 Chicago**, **#005 Berlín**, **#006 Londres**, **#007 CDMX**, **#008 Milán**, etc.).
-- **Buscador en tiempo real** + **Selector desplegable rápido** para saltar a cualquiera de los 100 eventos.
-- **Conmutador `Individual (Open / Pro)` vs `Partner (Doubles)`**: Ajusta automáticamente la estrategia de carrera en pista/campo abierto y el reparto de las 8 estaciones funcionales (*SkiErg, Sled Push, Sled Pull, Burpee Broad Jumps, Row, Farmers Carry, Sandbag Lunges y Wall Balls*).
+#### ⚡ D. Serie HYROX & Híbridos Variados (`#01` a `#15` — Sin Repetidos + Equivalencias de Máquinas)
+- **15 formatos HYROX y entrenamientos híbridos 100% diferentes entre sí** (eliminando clones repetitivos), encabezados por los entrenamientos reales de competencia del Box:
+  - **#01 · HYROX Box Trifecta (3 Bloques de 1 km)**: *1 km + 50m Sled + 70 Burpee Broad Jumps; 1 km + 1 km Remo + 100 Lunges; 1 km + 100 Wall Balls + 100 Abdominales*.
+  - **#02 · HYROX Competencia 7x800m (Volumen 120)**: *800m + 120m Burpees; 800m + 120m Lunges (2x20 lb); 800m + 120 DB Thrusters (2x20 lb); 800m + 120 American Swings (20 kg); 800m + 200m Farmers Carry (40 kg); 800m + 100 Push-Ups + 800m Run final*.
+  - **#03 a #15**: *Oficial 8x1km, Triple Máquina (Cero Filas), Heavy Sled & Sandbag 75, Pirámide 1200-800-400m, EMOM 36 Minutos Rotativo, Duatlón Remo & Pista, El Centurión (6x100 reps), You Go I Go 10x400m, Devil Press & Cuerda, Escalera 20-40-60-80-100, Piernas de Hierro, Grip & Tracción, 4 Mega-Bloques, Barbell Hybrid, Half Sprint, Castigo de Cuerda & Core y Gran Final Monterrey*.
+- **Tabla Integrada de Equivalencias (`Metros ⇄ Calorías ⇄ Máquina Ocupada`)**: Indica en cada estación cuántos metros o calorías hacer en **Remo**, **SkiErg**, **Bicicleta de CrossFit** o **Pista** si otra pareja tiene ocupada una máquina o el trineo.
+- **Conmutador `Individual` vs `Partner (Doubles)`**, buscador en vivo y selector desplegable rápido.
 
 #### 🧮 E. Calculadoras de Atleta (`% RM` & `IMC`)
 1. **Calculadora de `% 1RM` y Carga de Discos**:

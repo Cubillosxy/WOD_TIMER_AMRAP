@@ -1235,101 +1235,400 @@ class OfflineToolsManager {
     }
 
     // =========================================
-    // GENERADOR DE LOS 100 HYROX NUMERADOS (#001 – #100)
+    // CATÁLOGO DE 20 HYROX VARIADOS (SIN REPETIDOS + EQUIVALENCIAS DE MÁQUINAS)
     // =========================================
     buildHyrox100Catalog() {
-        const cities = [
-            { city: 'HYROX Madrid', tag: 'ESPAÑA · TEMPORADA RECIENTE', focus: 'Simulación Oficial Estándar · Pista Abierta', variant: 'standard' },
-            { city: 'HYROX Tokio', tag: 'JAPÓN · TEMPORADA RECIENTE', focus: 'Edición Velocidad & Transiciones Explosivas', variant: 'speed' },
-            { city: 'HYROX Barcelona', tag: 'ESPAÑA · TEMPORADA RECIENTE', focus: 'Edición Resistencia & Sled Heavy Drive', variant: 'heavy_sled' },
-            { city: 'HYROX Chicago', tag: 'USA · MAJOR SERIES', focus: 'Campeonato Norteamericano · Engine & Bike Split', variant: 'bike_mix' },
-            { city: 'HYROX Berlín', tag: 'ALEMANIA · TEMPLO RÁPIDO', focus: 'Ritmo de Récord Mundial · Negative Split Runs', variant: 'standard' },
-            { city: 'HYROX Londres', tag: 'UK · EXCEL ARENA', focus: 'Alta Densidad de Pierna & Grip Overload', variant: 'grip' },
-            { city: 'HYROX Ciudad de México', tag: 'MÉXICO · ALTITUD 2240M', focus: 'Capacidad Aeróbica en Hipoxia & Wall Ball Unbroken', variant: 'altitude' },
-            { city: 'HYROX Milán', tag: 'ITALIA · POWER EDITION', focus: 'Trineo Pesado + Kettlebell Farmers Intenso', variant: 'heavy_sled' },
-            { city: 'HYROX Ámsterdam', tag: 'PAÍSES BAJOS · ENGINE', focus: 'Triple Ergómetro (SkiErg + Remo + CrossFit Bike)', variant: 'bike_mix' },
-            { city: 'HYROX Las Vegas', tag: 'USA · CHAMPIONSHIP', focus: 'Final de Temporada · Estándar Pro Exigente', variant: 'standard' },
-            { city: 'HYROX París', tag: 'FRANCIA · GRAND PALAIS', focus: 'Compromiso Muscular de Tren Inferior', variant: 'grip' },
-            { city: 'HYROX Monterrey Box', tag: 'COLOMBIA · EDICIÓN ESPECIAL', focus: 'Adaptación Exigente con Cuerda, Sled y Sandbag 75 lb', variant: 'box_special' }
-        ];
-
-        const extraVenues = [
-            'Hamburgo', 'Múnich', 'Colonia', 'Frankfurt', 'Stuttgart', 'Karlsruhe',
-            'Viena', 'Zúrich', 'Ginebra', 'Estocolmo', 'Copenhague', 'Oslo',
-            'Helsinki', 'Varsovia', 'Katowice', 'Praga', 'Budapest', 'Dublín',
-            'Mánchester', 'Birmingham', 'Glasgow', 'Cardiff', 'Valencia', 'Málaga',
-            'Bilbao', 'Sevilla', 'Lisboa', 'Oporto', 'Roma', 'Turín',
-            'Bolonia', 'Rimini', 'Bruselas', 'Róterdam', 'Maastricht', 'Niza',
-            'Lyon', 'Burdeos', 'Toulouse', 'Nueva York', 'Dallas', 'Houston',
-            'Miami', 'Los Ángeles', 'Anaheim', 'San Diego', 'Seattle', 'Denver',
-            'Boston', 'Atlanta', 'Washington DC', 'Toronto', 'Vancouver', 'Montreal',
-            'Monterrey MX', 'Guadalajara', 'Bogotá', 'Medellín', 'Cali', 'Santiago',
-            'Buenos Aires', 'São Paulo', 'Río de Janeiro', 'Lima', 'Sídney', 'Melbourne',
-            'Brisbane', 'Perth', 'Auckland', 'Singapur', 'Hong Kong', 'Seúl',
-            'Busan', 'Taipéi', 'Osaka', 'Yokohama', 'Dubái', 'Abu Dabi',
-            'Doha', 'Riad', 'Ciudad del Cabo', 'Johannesburgo', 'El Cairo', 'Estambul',
-            'Atenas', 'Nicosia', 'Mallorca', 'Ibiza'
-        ];
-
-        const catalog = [];
-        for (let i = 1; i <= 100; i++) {
-            const numStr = String(i).padStart(3, '0');
-            let base;
-            if (i <= cities.length) {
-                base = cities[i - 1];
-            } else {
-                const venueName = extraVenues[(i - cities.length - 1) % extraVenues.length];
-                const variants = ['standard', 'speed', 'heavy_sled', 'bike_mix', 'grip', 'box_special'];
-                const v = variants[i % variants.length];
-                const focusMap = {
-                    standard: 'Simulación Oficial 8x1km + 8 Estaciones',
-                    speed: 'Intervalos Rápidos 8x600m + Estaciones Explosivas',
-                    heavy_sled: 'Sobrecarga de Trineo & Sandbag 75 lb',
-                    bike_mix: 'Híbrido Pista Abierta + SkiErg / Remo / Bike',
-                    grip: 'Resistencia de Agarre, Cuerda y Farmers Carry',
-                    box_special: 'Edición Especial de Box · Fuerza + Metcon'
-                };
-                base = {
-                    city: `HYROX ${venueName}`,
-                    tag: `SERIE MUNDIAL #${numStr} / 100`,
-                    focus: focusMap[v],
-                    variant: v
-                };
-            }
-
-            const runDist = base.variant === 'speed' ? '800m Run en pista/campo abierto' : '1000m Run en pista/campo abierto';
-            const station5Machine = base.variant === 'bike_mix'
-                ? '1000m Remo (o 60 Cal Bicicleta de CrossFit)'
-                : '1000m Remo (RowErg)';
-            const station4Move = base.variant === 'box_special'
-                ? '80m Burpee Broad Jumps + 2 Subidas a Cuerda Grande'
-                : '80m Burpee Broad Jumps en pista/pasillo';
-
-            catalog.push({
-                number: i,
-                code: `#${numStr} / 100`,
-                title: base.city,
-                tag: base.tag,
-                focus: base.focus,
-                runNote: `Intercalar ${runDist} antes de cada una de las 8 estaciones numeradas:`,
+        const specs = [
+            {
+                title: 'HYROX Box Trifecta (3 Bloques de 1 km)',
+                tag: 'WOD REAL DE HOY · 3x1KM + DOBLE ESTACIÓN',
+                focus: 'Trineo + Burpees · Remo + Lunges · Wall Balls + Abs',
+                runNote: '3 grandes bloques encabezados por 1 km de carrera (o máquina equivalente si está ocupada: 1000m Remo / 1000m SkiErg / 65 Cal CrossFit Bike):',
                 stations: [
-                    { num: '01', name: '1000m SkiErg', ind: '1000m completos manteniendo damper 6–8', part: '1000m entre los dos (relevos cada 250m)' },
-                    { num: '02', name: '50m Sled Push (Empuje de Trineo)', ind: '50m en tramos de 12.5m o 25m en pista', part: '50m repartidos (cambio cada 12.5m)' },
-                    { num: '03', name: '50m Sled Pull (Arrastre con Cuerda)', ind: '50m tracción con cuerda grande y trineo', part: '50m repartidos (tracción explosiva de cadera)' },
-                    { num: '04', name: station4Move, ind: '80m continuos midiendo zancada profunda', part: '80m alternando cada 10 saltos con el compañero' },
-                    { num: '05', name: station5Machine, ind: '1000m a ritmo de umbral (< 1:55/500m)', part: '1000m en relevos de 250m a máxima potencia' },
-                    { num: '06', name: '200m Farmers Carry', ind: '200m en pista con par de Kettlebells o Mancuernas', part: '200m repartidos en tramos de 50m sin soltar al suelo' },
-                    { num: '07', name: '100m Sandbag Lunges', ind: '100m zancadas tocando rodilla atrás (con soporte si necesitas)', part: '100m pasando el Sandbag al hombro sin tocar el piso' },
-                    { num: '08', name: '100 Wall Balls', ind: '100 repeticiones rompiendo paralelo al target', part: '100 repeticiones en series de 15–20 (cambio rápido)' }
+                    {
+                        num: 'B1·A',
+                        name: '1 km Run en Pista (Apertura Bloque 1)',
+                        ind: '1000m carrera en pista/campo (Equivalente: 1000m SkiErg o 65 Cal Bike)',
+                        part: '1000m juntos en pista (o dividir 1000m/70 Cal en máquina en relevos de 250m)'
+                    },
+                    {
+                        num: 'B1·B',
+                        name: '50m Sled Push/Pull + 70 Burpee Broad Jumps',
+                        ind: '25m Sled + 35 Burpee Jumps (Si Sled ocupado: 100m Farmers Carry 2x24 kg)',
+                        part: '50m Sled repartidos + 70 Burpee Broad Jumps (o Burpees sobre línea) entre los dos'
+                    },
+                    {
+                        num: 'B2·A',
+                        name: '1 km Run en Pista (Apertura Bloque 2)',
+                        ind: '1000m carrera a ritmo sostenido (Equivalente: 1000m SkiErg o 65 Cal Bike)',
+                        part: '1000m carrera juntos manteniendo el paso del compañero'
+                    },
+                    {
+                        num: 'B2·B',
+                        name: '1 km de Remo (o 70 Cal) + 100 Lunges',
+                        ind: '500m Remo (o 35 Cal Ski/Bike) + 50 Walking Lunges con saco o peso corporal',
+                        part: '1000m Remo (relevos cada 250m; si está ocupado: 1000m SkiErg o 65 Cal Bike) + 100 Lunges repartidos'
+                    },
+                    {
+                        num: 'B3·A',
+                        name: '1 km Run en Pista (Apertura Bloque 3)',
+                        ind: '1000m última carrera antes del cierre (Equivalente: 65 Cal Bike / 1000m Ski)',
+                        part: '1000m carrera juntos apretando el ritmo para el bloque final'
+                    },
+                    {
+                        num: 'B3·B',
+                        name: '100 Wall Balls + 100 Abdominales (Cash-Out)',
+                        ind: '60 Wall Balls (20/15 lb) + 60 Sit-Ups / V-Ups en colchoneta',
+                        part: '100 Wall Balls (series de 15–20) + 100 Abdominales (Sit-Ups o V-Ups) repartidos'
+                    }
                 ],
+                pro: 'Sled 4x45 lb (H) / 3x45 lb (M) · Lunges con Saco 20/10 kg · Wall Ball 20 / 15 lb · V-Ups',
+                open: 'Sled 2x45+25 lb · Lunges libres o con soportes · Wall Ball 15 / 10 lb · Sit-Ups en colchoneta',
+                equip: 'Pista abierta, Sled + discos (45, 35, 25 lb), Remo (o SkiErg / CrossFit Bike), Wall Balls (20, 15, 10 lb), sacos y colchonetas.'
+            },
+            {
+                title: 'HYROX Competencia 7x800m (Volumen 120)',
+                tag: 'COMPETENCIA RECIENTE · PAREJAS / INDIVIDUAL',
+                focus: '7 Tramos de 800m + 6 Estaciones de 120m / 120 Reps',
+                runNote: 'Iniciar con 800m Run, intercalar 800m Run después de cada estación y cerrar con 800m Run (7x800m en total). Equivalencia por tramo: 800m Remo/SkiErg o 50 Cal Bike / 55 Cal Remo-Ski:',
+                stations: [
+                    {
+                        num: '01',
+                        name: '800m Run + 120m Burpee Broad Jumps',
+                        ind: '800m Run (o 50 Cal Bike) + 60m Burpee Broad Jumps continuos',
+                        part: '800m Run juntos + 120m Burpee Broad Jumps relevando cada 10–15m'
+                    },
+                    {
+                        num: '02',
+                        name: '800m Run + 120m Lunges con Mancuernas (2x20 lb)',
+                        ind: '800m Run (o 800m SkiErg) + 60m Walking Lunges con mancuernas de 20 lb a cada lado',
+                        part: '800m Run juntos + 120m Lunges cargando par de mancuernas de 20 lb (cambio cada 20–30m)'
+                    },
+                    {
+                        num: '03',
+                        name: '800m Run + 120 Thrusters con Mancuernas (2x20 lb)',
+                        ind: '800m Run (o 55 Cal Remo) + 60 Dumbbell Thrusters (2x20 lb)',
+                        part: '800m Run juntos + 120 Dumbbell Thrusters con mancuernas de 20 lb (series rápidas de 12–15)'
+                    },
+                    {
+                        num: '04',
+                        name: '800m Run + 120 American KB Swings (20 kg)',
+                        ind: '800m Run (o 50 Cal Bike) + 60 American Swings sobre la cabeza (20 / 14 kg)',
+                        part: '800m Run juntos + 120 American Kettlebell Swings con 20 kg (relevos de 15–20 reps)'
+                    },
+                    {
+                        num: '05',
+                        name: '800m Run + 200m Farmers Carry (40 kg totales)',
+                        ind: '800m Run (o 800m Remo) + 100m Farmers Carry con 2x20 kg KB (40 kg totales)',
+                        part: '800m Run juntos + 200m Farmers Carry con 40 kg (2x20 kg KB o 2x45 lb discos/DB)'
+                    },
+                    {
+                        num: '06',
+                        name: '800m Run + 100 Push-Ups + 800m Run Final',
+                        ind: '800m Run + 60 Push-Ups pecho al piso + 800m Run final (o 55 Cal máquina)',
+                        part: '800m Run + 100 Push-Ups repartidos + 800m Run final a sprint cruzando meta juntos'
+                    }
+                ],
+                pro: 'Lunges & Thrusters: 2x20 lb DB (o 2x15 kg en Pro+) · American Swing: 20 kg (H) / 14 kg (M) · Farmers: 40 kg (2x20 kg KB)',
+                open: 'Lunges & Thrusters: 2x15 o 10 lb · American Swing: 14 / 12 kg · Farmers: 2x14 o 12 kg KB',
+                equip: 'Pista abierta (o Remo/SkiErg/Bike para equivalencias), mancuernas de 20 lb (y 15 kg), Kettlebells de 20, 14 y 12 kg, soportes para push-ups/lunges.'
+            },
+            {
+                title: 'HYROX Oficial 8x1km (Estándar Internacional)',
+                tag: 'FORMATO CLÁSICO · MADRID / BERLÍN / TOKIO',
+                focus: '8x1000m Run + 8 Estaciones Oficiales con Equivalencias',
+                runNote: 'Correr 1000m antes de cada una de las 8 estaciones (8 km totales). Si llueve o rotan máquinas: alternar 1000m Run con 1000m Remo / 1000m Ski / 65 Cal Bike:',
+                stations: [
+                    { num: '01', name: '1000m SkiErg (o 70 Cal Ski / 65 Cal Bike)', ind: '1000m completos (o 70 Cal si está ocupado usa Remo/Bike)', part: '1000m / 70 Cal entre los dos (relevos cada 250m o 18 Cal)' },
+                    { num: '02', name: '50m Sled Push (Empuje de Trineo)', ind: '50m en pista (Equivalente sin trineo: 60 Thrusters 95/65 lb)', part: '50m repartidos cambiando cada 12.5m' },
+                    { num: '03', name: '50m Sled Pull (Arrastre con Cuerda Grande)', ind: '50m tracción con cuerda (Equivalente: 40m Bear Crawl con Sandbag 75 lb)', part: '50m repartidos usando extensión de cadera y cuerda grande' },
+                    { num: '04', name: '80m Burpee Broad Jumps', ind: '80m continuos (o 55 Burpees saltando disco de 45 lb)', part: '80m alternando cada 8–10 saltos con el compañero' },
+                    { num: '05', name: '1000m Remo (o 70 Cal Remo / 65 Cal Bike)', ind: '1000m RowErg (< 1:55/500m) o 65 Cal CrossFit Bike si está ocupado', part: '1000m / 70 Cal en relevos de 250m a máxima potencia' },
+                    { num: '06', name: '200m Farmers Carry', ind: '200m con par de Kettlebells (24 / 20 / 14 kg) o Mancuernas', part: '200m en tramos de 50m sin apoyar las pesas en el suelo' },
+                    { num: '07', name: '100m Sandbag Lunges', ind: '100m zancadas con Sandbag 75 lb o saco de 20/10 kg', part: '100m pasando el saco de hombro a hombro sin tocar el piso' },
+                    { num: '08', name: '100 Wall Balls', ind: '100 lanzamientos rompiendo paralelo al target', part: '100 lanzamientos en series de 15–20 hasta vaciar el tanque' }
+                ],
+                pro: 'Sled Push: 4x45+2x35 lb · Sled Pull: 3x45+25 lb · Farmers: 2x24 kg KB (o 2x55 lb DB) · Lunges: Sandbag 75 lb / 20 kg · WB: 20 / 15 lb',
+                open: 'Sled Push: 3x45 lb · Sled Pull: 2x45 lb · Farmers: 2x20 / 14 kg KB · Lunges: Saco 20 / 10 kg · WB: 15 / 10 lb',
+                equip: 'Pista abierta, SkiErg, Sled push/pull + cuerda grande, discos (45, 35, 25 lb), Remo, CrossFit Bike, Kettlebells, Sandbag 75 lb/sacos y Wall Balls.'
+            },
+            {
+                title: 'HYROX Triple Máquina (Calorías o Metros)',
+                tag: 'ROTACIÓN DE MÁQUINAS · CERO FILAS EN EL BOX',
+                focus: 'SkiErg + Remo + CrossFit Bike + Estaciones de Piso',
+                runNote: 'Diseñado para días de grupo grande: puedes iniciar en CUALQUIER máquina disponible (SkiErg, Remo o Bike) o en pista, cumpliendo Metros o Calorías:',
+                stations: [
+                    { num: '01', name: 'Máquina A: 1000m o 70 Cal (SkiErg / Remo / Bike) + 60m Sled Push', ind: '750m (o 50 Cal) en máquina libre + 50m Sled Push', part: '1000m o 70 Cal (en Bike: 65 Cal / 2000m) + 60m Sled Push' },
+                    { num: '02', name: '800m Run en Pista + 80 Kettlebell Swings + 40 Goblet Squats', ind: '800m Run + 50 American Swings + 25 Goblet Squats (24/14 kg)', part: '800m Run juntos + 80 American Swings + 40 Goblet Squats repartidos' },
+                    { num: '03', name: 'Máquina B: 1000m o 70 Cal (Remo / Bike / SkiErg) + 80 Burpees', ind: '750m (o 50 Cal) en segunda máquina + 45 Burpees sobre línea', part: '1000m o 70 Cal en máquina diferente a la 1 + 80 Burpees saltando mancuerna' },
+                    { num: '04', name: '800m Run en Pista + 100m Sandbag Lunges + 100m Farmers Carry', ind: '800m Run + 60m Lunges + 100m Farmers Carry', part: '800m Run juntos + 100m Sandbag Lunges (75 lb/20 kg) + 100m Farmers Carry (2x24/20 kg)' },
+                    { num: '05', name: 'Máquina C: 70 Cal CrossFit Bike (o 1000m Remo/Ski) + 100 Wall Balls', ind: '45 Cal Bike + 60 Wall Balls + 30 Ab Wheel Rollouts', part: '70 Cal Bike (o 1000m Remo/Ski) + 100 Wall Balls + 50 Abdominales' }
+                ],
+                pro: 'KB 24 / 20 kg · Sandbag 75 lb · Sled 4x45 lb · Wall Ball 20 / 15 lb',
+                open: 'KB 20 / 14 kg · Saco 20 / 10 kg · Sled 2x45 lb · Wall Ball 15 / 10 lb',
+                equip: 'SkiErg, Remo, Bicicleta de CrossFit, pista, Sled, Kettlebells, Sandbag 75 lb/sacos, Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX Heavy Sled, Cuerda & Sandbag 75',
+                tag: 'FUERZA HÍBRIDA DE BOX · CARGA PESADA',
+                focus: '5 Bloques de 600m + Tracción, Cuerda y Objetos Pesados',
+                runNote: 'Cada bloque inicia con 600m Run en pista (Equivalente si prefieres máquina: 600m Remo/SkiErg o 42 Cal CrossFit Bike):',
+                stations: [
+                    { num: '01', name: '600m Run + 50m Heavy Sled Push + 4 Subidas a Cuerda Grande', ind: '600m Run + 35m Sled Push pesado + 2 Rope Climbs', part: '600m Run + 50m Sled Push pesado + 4 Subidas a la cuerda grande' },
+                    { num: '02', name: '600m Run + 60 Sandbag Over-Shoulder Cleans (75 lb / 30 kg)', ind: '600m Run + 35 Sandbag Cleans pasando el saco por encima del hombro', part: '600m Run + 60 Sandbag Cleans (75 lb / 30 kg) alternando de 5 en 5' },
+                    { num: '03', name: '600m Remo o SkiErg (o 45 Cal Bike) + 50m Sled Pull con Cuerda', ind: '600m máquina + 35m Sled Pull + 30 Push-Ups en soportes', part: '600m máquina (300m c/u) + 50m Sled Pull + 60 Push-Ups en soportes' },
+                    { num: '04', name: '600m Run + 90 seg Battle Rope Squat Waves + 200m Farmers Carry', ind: '600m Run + 60 seg Battle Rope en sentadilla + 150m Farmers (2x55/35 lb)', part: '600m Run + 90 seg Battle Rope (mientras el otro sostiene KB en rack) + 200m Farmers' },
+                    { num: '05', name: '600m Run + 80 Dumbbell Clusters / Thrusters (2x35 / 20 lb)', ind: '600m Run + 45 DB Thrusters + 30 V-Ups', part: '600m Run + 80 DB Thrusters + 60 V-Ups en colchoneta' }
+                ],
+                pro: 'Sled 5x45 lb · Sandbag 75 lb · Mancuernas 2x35 lb (o 15 kg) · Farmers 2x55 lb',
+                open: 'Sled 3x45 lb · Saco 20 / 10 kg · Mancuernas 2x20 lb · 16 Pull-Ups con banda por cuerda',
+                equip: 'Pista, Sled, cuerda grande para escalar y Battle Rope, Sandbag 75 lb, sacos (30/20/10 kg), mancuernas (55, 35, 20 lb), Remo/Ski/Bike.'
+            },
+            {
+                title: 'HYROX Pirámide 1200m – 800m – 400m',
+                tag: 'NEGATIVE SPLIT · DE MENOS A MÁS VELOCIDAD',
+                focus: 'Distancias Descendentes + Estaciones de Alta Densidad',
+                runNote: 'Las distancias de carrera/máquina bajan en cada bloque (1200m → 1000m → 800m → 600m → 400m) para acelerar el ritmo:',
+                stations: [
+                    { num: '01', name: '1200m Run (o 80 Cal Bike / 1200m Remo) + 100m Lunges + 60 Push-Ups', ind: '1200m + 60m Lunges + 40 Push-Ups', part: '1200m juntos + 100m Lunges con mancuernas de 20 lb + 60 Push-Ups' },
+                    { num: '02', name: '1000m SkiErg (o 1000m Remo / 70 Cal) + 80 Burpee Box Jump Overs', ind: '800m Ski/Remo + 45 Burpee Box Jump Overs (24/20")', part: '1000m Ski/Remo + 80 Burpee Box Jump Overs repartidos' },
+                    { num: '03', name: '800m Run + 50m Sled Push + 50m Sled Pull', ind: '800m Run + 35m Sled Push + 35m Sled Pull', part: '800m Run + 50m Sled Push + 50m Sled Pull' },
+                    { num: '04', name: '600m Remo/Bike (45 Cal) + 100 American KB Swings + 60 Sit-Ups', ind: '450m / 32 Cal + 60 Swings (24/14 kg) + 40 Sit-Ups', part: '600m / 45 Cal + 100 American Swings (24/20 kg) + 60 Sit-Ups' },
+                    { num: '05', name: '400m Sprint Final + 100 Wall Balls', ind: '400m Sprint + 65 Wall Balls', part: '400m Sprint + 100 Wall Balls sin dejar caer el balón al suelo' }
+                ],
+                pro: 'Lunges 2x20 lb · Cajón 24 / 20" · KB 24 / 20 kg · Wall Ball 20 / 15 lb',
+                open: 'Lunges libres · Step-overs en cajón · KB 14 / 12 kg · Wall Ball 15 / 10 lb',
+                equip: 'Pista, SkiErg, Remo, CrossFit Bike, cajón, Sled, Kettlebells, mancuernas 20 lb, Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX EMOM 36 Minutos (Circuito de 6 Estaciones)',
+                tag: 'FORMATO POR TIEMPO FIJO · IDEAL GRUPOS GRANDES',
+                focus: '6 Vueltas a 6 Estaciones (5 min Trabajo / 1 min Transición)',
+                runNote: 'Cada pareja o atleta inicia en una estación distinta y rota cada 6 minutos (no nadie bloquea ninguna máquina):',
+                stations: [
+                    { num: 'E1', name: 'Bloque Remo: 1000m Remo (o 70 Cal) + Máximos Wall Balls en tiempo restante', ind: '750m Remo (o 50 Cal) + AMRAP Wall Balls en los 5 min', part: '1000m Remo (o 70 Cal) entre los dos + AMRAP Wall Balls' },
+                    { num: 'E2', name: 'Bloque Pista & Sled: 400m Run + 50m Sled Push + AMRAP Burpees', ind: '400m Run + 25m Sled Push + AMRAP Burpees', part: '400m Run juntos + 50m Sled Push + AMRAP Burpee Broad Jumps' },
+                    { num: 'E3', name: 'Bloque SkiErg & Core: 1000m SkiErg (o 70 Cal) + 60 V-Ups / Ab-Wheel', ind: '750m SkiErg + 35 V-Ups / 20 Ab-Wheel Rollouts', part: '1000m SkiErg + 60 V-Ups + 30 Ab-Wheel Rollouts' },
+                    { num: 'E4', name: 'Bloque Mancuernas: 400m Run + 60 DB Thrusters (2x20 lb) + 60m Lunges', ind: '400m Run + 35 DB Thrusters + 40m Lunges', part: '400m Run + 60 DB Thrusters (2x20 lb) + 60m DB Walking Lunges' },
+                    { num: 'E5', name: 'Bloque CrossFit Bike & KB: 65 Cal Bike + 80 American KB Swings', ind: '42 Cal Bike + 50 American Swings (24/14 kg)', part: '65 Cal CrossFit Bike + 80 American Swings (24/20 kg)' },
+                    { num: 'E6', name: 'Bloque Grip & Cuerda: 200m Farmers Carry + 4 Cuerdas + Battle Rope', ind: '150m Farmers + 2 Rope Climbs + Battle Rope hasta el pitido', part: '200m Farmers Carry (40 kg) + 4 Subidas a Cuerda + Battle Rope Squat Waves' }
+                ],
+                pro: 'Wall Ball 20/15 lb · Mancuernas 2x20 lb (o 35 lb) · KB 24/20 kg · Sled 4x45 lb',
+                open: 'Wall Ball 15/10 lb · Mancuernas 2x15/10 lb · KB 14/12 kg · Sled 2x45 lb',
+                equip: 'Remo, SkiErg, CrossFit Bike, Sled, pista, mancuernas 20 lb, Kettlebells, cuerda grande, rueda abdominal y Wall Balls.'
+            },
+            {
+                title: 'HYROX Duatlón Remo & Pista (4x1km Alternado)',
+                tag: 'RESISTENCIA AERÓBICA PURA · MOTOR DE FONDO',
+                focus: 'Alternar 1 km Pista y 1 km Remo/Ski + Estaciones de Volumen',
+                runNote: 'Los bloques impares abren con 1 km Run en pista y los bloques pares abren con 1 km en Remo o SkiErg (o 65 Cal Bike):',
+                stations: [
+                    { num: '01', name: '1 km Run en Pista + 80m Burpee Broad Jumps + 50 Push-Ups', ind: '1 km Run + 50m Burpee Jumps + 30 Push-Ups', part: '1 km Run juntos + 80m Burpee Broad Jumps + 50 Push-Ups' },
+                    { num: '02', name: '1 km Remo (o 70 Cal Remo/Ski / 65 Cal Bike) + 100 Lunges con Saco', ind: '1 km Remo + 60 Lunges con saco (20/10 kg)', part: '1 km Remo (relevos de 250m) + 100 Lunges con Sandbag 75 lb / saco 20 kg' },
+                    { num: '03', name: '1 km Run en Pista + 50m Sled Push + 50m Sled Pull + 200m Farmers', ind: '1 km Run + 35m Sled Push + 35m Pull + 100m Farmers', part: '1 km Run + 50m Sled Push + 50m Sled Pull + 200m Farmers Carry (40 kg)' },
+                    { num: '04', name: '1 km SkiErg (o 1 km Remo / 65 Cal Bike) + 100 Wall Balls + 100 Abs', ind: '1 km SkiErg + 60 Wall Balls + 60 Sit-Ups', part: '1 km SkiErg + 100 Wall Balls + 100 Abdominales en colchoneta' }
+                ],
+                pro: 'Sandbag 75 lb · Farmers 2x24 / 20 kg · Sled 4x45 lb · Wall Ball 20 / 15 lb',
+                open: 'Saco 20 / 10 kg · Farmers 2x14 / 12 kg · Sled 2x45 lb · Wall Ball 15 / 10 lb',
+                equip: 'Pista, Remo, SkiErg, CrossFit Bike, Sled, Sandbag 75 lb/sacos, Kettlebells, Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX "El Centurión" (6 Estaciones de 100 Reps)',
+                tag: 'CHIPPER HÍBRIDO · 600 REPETICIONES + 6 TRAMOS DE 600M',
+                focus: 'Antes de cada bloque de 100 reps: 600m Run o 40 Cal Máquina',
+                runNote: 'Completar 600m Run (o 600m Remo/Ski / 40 Cal CrossFit Bike si alternan máquinas) antes de cada estación de 100 repeticiones:',
+                stations: [
+                    { num: '100·1', name: '600m Run/Máquina + 100 Calorie/Meter Sprint o Jumping Jacks con Disco + 100 Push-Ups', ind: '600m + 60 Push-Ups pecho al piso', part: '600m juntos + 100 Push-Ups repartidos en series de 10–15' },
+                    { num: '100·2', name: '600m Run/Máquina + 100 Walking Lunges (con 2x20 lb DB o Saco)', ind: '600m + 60 Lunges con mancuernas de 20 lb', part: '600m + 100 Walking Lunges con mancuernas de 20 lb o saco al hombro' },
+                    { num: '100·3', name: '600m Run/Máquina + 100 American Kettlebell Swings (20 / 14 kg)', ind: '600m + 60 American Swings', part: '600m + 100 American Kettlebell Swings repartidos' },
+                    { num: '100·4', name: '600m Run/Máquina + 100 Dumbbell Thrusters (2x20 lb)', ind: '600m + 60 DB Thrusters', part: '600m + 100 Dumbbell Thrusters (series rápidas de 10)' },
+                    { num: '100·5', name: '600m Run/Máquina + 100 Burpees (sobre línea o avanzando)', ind: '600m + 60 Burpees', part: '600m + 100 Burpees repartidos (10 y 10 sin pausa)' },
+                    { num: '100·6', name: '600m Run/Máquina + 100 Wall Balls + 100 Abdominales', ind: '600m + 60 Wall Balls + 60 Sit-Ups', part: '600m + 100 Wall Balls + 100 Sit-Ups / V-Ups para cerrar' }
+                ],
+                pro: 'Mancuernas 2x20 lb (o 30 lb) · KB 24 / 20 kg · Wall Ball 20 / 15 lb',
+                open: 'Mancuernas 2x15 / 10 lb · KB 14 / 12 kg · Wall Ball 15 / 10 lb',
+                equip: 'Pista, Remo/SkiErg/Bike, mancuernas de 20 lb, Kettlebells (24, 20, 14, 12 kg), Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX Relevos Explosivos "You Go, I Go" (10x400m)',
+                tag: 'ALTA VELOCIDAD · SPRINT HÍBRIDO',
+                focus: '10 Rondas Rápidas combinando 400m / 30 Cal + Estación Corta',
+                runNote: 'En Partner: mientras A corre 400m (o hace 30 Cal en Remo/Ski/Bike), B adelanta la estación funcional, y luego invierten roles:',
+                stations: [
+                    { num: 'R1-R2', name: 'Rondas 1 y 2: 400m Run (o 30 Cal Máquina) + 25m Sled Push + 20 Burpees', ind: '2 rondas de: 400m + 25m Sled Push + 15 Burpees', part: 'Cada integrante completa su vuelta de 400m/30 Cal + 25m Sled + 20 Burpees' },
+                    { num: 'R3-R4', name: 'Rondas 3 y 4: 400m Remo/Ski (o 28 Cal Bike) + 30 DB Thrusters (2x20 lb)', ind: '2 rondas de: 400m máquina + 20 DB Thrusters', part: 'Rondas 3 y 4 alternando máquina y 30 Thrusters con mancuernas de 20 lb' },
+                    { num: 'R5-R6', name: 'Rondas 5 y 6: 400m Run + 100m Farmers Carry (40 kg) + 25 Push-Ups', ind: '2 rondas de: 400m Run + 100m Farmers + 20 Push-Ups', part: 'Rondas 5 y 6 completando 100m Farmers Carry (2x20 kg KB) + 25 Push-Ups c/u' },
+                    { num: 'R7-R8', name: 'Rondas 7 y 8: 400m Ski/Remo (o 28 Cal Bike) + 40m Sandbag Lunges + 25 V-Ups', ind: '2 rondas de: 400m máquina + 30m Lunges + 20 V-Ups', part: 'Rondas 7 y 8 con Sandbag 75 lb / saco 20 kg y abdominales' },
+                    { num: 'R9-10', name: 'Rondas 9 y 10: 400m Run + 40 Wall Balls (80 totales en el cierre)', ind: '2 rondas de: 400m Run + 30 Wall Balls', part: 'Últimas 2 rondas a sprint completando 40 Wall Balls en cada una' }
+                ],
+                pro: 'Sled 4x45 lb · Mancuernas 2x25 / 20 lb · Farmers 2x24 / 20 kg · Sandbag 75 lb · WB 20 / 15 lb',
+                open: 'Sled 2x45 lb · Mancuernas 2x15 / 10 lb · Farmers 2x14 / 12 kg · Saco 20 / 10 kg · WB 15 / 10 lb',
+                equip: 'Pista, Remo, SkiErg, CrossFit Bike, Sled, mancuernas, Kettlebells, Sandbag 75 lb/sacos, Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX Devil Press, Cuerda & Trineo (6x750m)',
+                tag: 'EDICIÓN HARDCORE BOX · GIMNASIA + POTENCIA',
+                focus: '6 Tramos de 750m (Pista o Máquina) + Estaciones Exigentes',
+                runNote: 'Antes de cada estación realizar 750m Run en pista (o si rotan máquinas: 750m Remo / 750m SkiErg / 50 Cal CrossFit Bike):',
+                stations: [
+                    { num: '01', name: '750m Run/Máquina + 40 Devil Press con Par de Mancuernas (35 / 20 lb)', ind: '750m + 24 Devil Press con doble mancuerna', part: '750m + 40 Devil Press repartidos de 5 en 5' },
+                    { num: '02', name: '750m Run/Máquina + 50m Sled Push + 50m Sled Pull con Cuerda', ind: '750m + 35m Sled Push + 35m Sled Pull', part: '750m + 50m Sled Push + 50m Sled Pull entre los dos' },
+                    { num: '03', name: '750m Run/Máquina + 6 Subidas a Cuerda Grande + 80m Lunges con Mancuernas', ind: '750m + 3 Rope Climbs + 50m DB Lunges (2x20 lb)', part: '750m + 6 Rope Climbs + 80m Lunges con mancuernas de 20 lb' },
+                    { num: '04', name: '750m Run/Máquina + 80 Box Jump Overs (24 / 20") + 80 American Swings', ind: '750m + 45 Box Jump Overs + 45 KB Swings (24/14 kg)', part: '750m + 80 Box Jump Overs + 80 American Swings (24/20 kg)' },
+                    { num: '05', name: '750m Run/Máquina + 200m Farmers Carry + 60 Ab-Wheel Rollouts', ind: '750m + 120m Farmers + 35 Ab-Wheel Rollouts', part: '750m + 200m Farmers Carry (2x24/20 kg) + 60 Rueda Abdominal' },
+                    { num: '06', name: '750m Run/Máquina + 100 Wall Balls', ind: '750m + 65 Wall Balls', part: '750m + 100 Wall Balls para terminar' }
+                ],
+                pro: 'Devil Press 2x35 / 20 lb · Sled 4x45 lb · KB 24 / 20 kg · Wall Ball 20 / 15 lb',
+                open: 'Devil Press 2x20 / 12 lb · 24 Pull-Ups con banda por cuerda · KB 14 / 12 kg · WB 15 / 10 lb',
+                equip: 'Pista, Remo/Ski/Bike, mancuernas (35, 20 lb), Sled, cuerda grande, cajón, Kettlebells, rueda abdominal y Wall Balls.'
+            },
+            {
+                title: 'HYROX Escalera Ascendente (20 – 40 – 60 – 80 – 100)',
+                tag: 'VOLUMEN PROGRESIVO · 5 BLOQUES DE 800M',
+                focus: 'Las repeticiones suben de 20 en 20 en cada estación',
+                runNote: 'Antes de cada escalón completar 800m Run en pista (Equivalente en máquina: 800m Remo / 800m SkiErg / 52 Cal CrossFit Bike):',
+                stations: [
+                    { num: '20s', name: '800m Run/Máquina + 20m Sled Push Pesado + 20m Sled Pull + 20 Devil Press', ind: '800m + 20m Push + 20m Pull + 12 Devil Press', part: '800m + 20m Sled Push + 20m Sled Pull + 20 Devil Press (2x35/20 lb)' },
+                    { num: '40s', name: '800m Run/Máquina + 40 Sandbag Cleans (75 lb / 20 kg) + 40 Push-Ups', ind: '800m + 25 Sandbag Cleans + 25 Push-Ups', part: '800m + 40 Sandbag Over-Shoulder Cleans + 40 Push-Ups' },
+                    { num: '60s', name: '800m Run/Máquina + 60 Dumbbell Thrusters (2x20 lb) + 60m Burpee Broad Jumps', ind: '800m + 40 DB Thrusters + 40m Burpee Jumps', part: '800m + 60 DB Thrusters (2x20 lb) + 60m Burpee Broad Jumps' },
+                    { num: '80s', name: '800m Run/Máquina + 80 American KB Swings (20 kg) + 80m Lunges con Mancuernas', ind: '800m + 50 American Swings + 50m DB Lunges', part: '800m + 80 American Swings (20 kg) + 80m Lunges (2x20 lb)' },
+                    { num: '100s', name: '800m Run/Máquina + 100 Wall Balls + 100 Abdominales', ind: '800m + 65 Wall Balls + 65 Sit-Ups', part: '800m + 100 Wall Balls + 100 Sit-Ups / V-Ups en colchoneta' }
+                ],
+                pro: 'Sandbag 75 lb · Mancuernas 2x20 lb (Devil Press 35/20 lb) · KB 20 / 14 kg · WB 20 / 15 lb',
+                open: 'Saco 20 / 10 kg · Mancuernas 2x15 / 10 lb · KB 14 / 12 kg · WB 15 / 10 lb',
+                equip: 'Pista, Remo/Ski/Bike, Sled, Sandbag 75 lb/sacos, mancuernas (35, 20 lb), Kettlebells (20, 14, 12 kg), Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX Piernas de Hierro (Squat, Sled, Lunges & Bike)',
+                tag: 'ESPECIAL TREN INFERIOR · RESISTENCIA MUSCULAR',
+                focus: 'Combina Bicicleta de CrossFit, Remo, Pista y Sobrecarga de Pierna',
+                runNote: 'Alterna carrera en pista con CrossFit Bike y Remo para exigir al máximo cuádriceps y glúteos:',
+                stations: [
+                    { num: '01', name: '1 km Run + 50m Sled Push + 50 Goblet Squats con Kettlebell (24 / 20 kg)', ind: '1 km Run + 35m Sled Push + 35 Goblet Squats', part: '1 km Run juntos + 50m Sled Push + 50 KB Goblet Squats' },
+                    { num: '02', name: '70 Cal CrossFit Bike (o 1000m Remo/Ski) + 100m Walking Lunges (2x20 lb DB)', ind: '45 Cal Bike + 60m DB Walking Lunges', part: '70 Cal Bike (relevos cada 15 Cal) + 100m Lunges con mancuernas de 20 lb' },
+                    { num: '03', name: '800m Run + 80 Dumbbell Thrusters (2x20 lb) + 60 Box Jump Overs', ind: '800m Run + 50 DB Thrusters + 40 Box Jump Overs', part: '800m Run + 80 DB Thrusters + 60 Box Jump Overs (24/20")' },
+                    { num: '04', name: '1000m Remo (o 70 Cal Ski/Bike) + 100m Sandbag Lunges (75 lb / 20 kg)', ind: '750m Remo + 60m Sandbag Lunges', part: '1000m Remo + 100m Sandbag Lunges pasando el saco sin tocar el suelo' },
+                    { num: '05', name: '800m Run + 100 Wall Balls + 90 seg Battle Rope en Sentadilla Isométrica', ind: '800m Run + 65 Wall Balls + 60 seg Battle Rope Squat', part: '800m Run + 100 Wall Balls + 90 seg Battle Rope Squat Waves' }
+                ],
+                pro: 'KB 24 / 20 kg · Mancuernas 2x20 lb · Sandbag 75 lb · Wall Ball 20 / 15 lb',
+                open: 'KB 14 / 12 kg · Mancuernas 2x15 / 10 lb · Saco 20 / 10 kg · Wall Ball 15 / 10 lb',
+                equip: 'Pista, CrossFit Bike, Remo, SkiErg, Sled, Kettlebells, mancuernas 20 lb, cajón, Sandbag 75 lb/sacos, cuerda grande y Wall Balls.'
+            },
+            {
+                title: 'HYROX Grip & Tracción (Sled Pull, Remo, Farmers & Barra)',
+                tag: 'ESPECIAL CADENA POSTERIOR & AGARRE',
+                focus: '5 Bloques de 800m + Tracción Pesada, Kettlebells y Estructura',
+                runNote: 'Cada bloque inicia con 800m Run (o 800m SkiErg / 52 Cal CrossFit Bike si la pista está ocupada):',
+                stations: [
+                    { num: '01', name: '800m Run + 75m Sled Pull con Cuerda Grande + 40 Pull-Ups en Estructura', ind: '800m + 50m Sled Pull + 25 Pull-Ups', part: '800m + 75m Sled Pull + 40 Pull-Ups repartidos' },
+                    { num: '02', name: '1000m Remo (o 70 Cal Ski/Bike) + 200m Farmers Carry Pesado (2x24 kg / 2x55 lb)', ind: '750m Remo + 150m Farmers Carry', part: '1000m Remo + 200m Farmers Carry sin soltar (cambio cada 50m)' },
+                    { num: '03', name: '800m Run + 100 American Kettlebell Swings (20 / 24 kg) + 50 Toes-to-Bar', ind: '800m + 60 American Swings + 30 Toes-to-Bar', part: '800m + 100 American Swings + 50 Toes-to-Bar (o V-Ups)' },
+                    { num: '04', name: '1000m SkiErg (o 65 Cal Bike / 1000m Remo) + 80m Burpee Broad Jumps', ind: '750m SkiErg + 50m Burpee Broad Jumps', part: '1000m SkiErg + 80m Burpee Broad Jumps' },
+                    { num: '05', name: '800m Run + 200m Sandbag Carry (75 lb) + 100 Abdominales', ind: '800m + 120m Sandbag Carry + 60 Sit-Ups', part: '800m + 200m Sandbag Carry al pecho/hombro + 100 Sit-Ups' }
+                ],
+                pro: 'Farmers 2x55 lb DB o 2x24 kg KB · Swings 24 / 20 kg · Sandbag 75 lb · Pull-Ups / T2B libres',
+                open: 'Farmers 2x20 / 14 kg KB · Swings 14 / 12 kg · Saco 20 kg · Pull-Ups con banda azul/negra',
+                equip: 'Pista, Sled + cuerda grande, estructura, bandas, Remo, SkiErg, Bike, Kettlebells, mancuernas 55 lb, Sandbag 75 lb y colchonetas.'
+            },
+            {
+                title: 'HYROX 4 Mega-Bloques (1 km Run + 1 km Máquina + Estación)',
+                tag: 'FONDO AERÓBICO EXTREMO · DOBLE CARDIO POR BLOQUE',
+                focus: 'Cada uno de los 4 bloques une Carrera + Máquina + Volumen Funcional',
+                runNote: 'En cada bloque se hace primero el tramo de carrera y enseguida la máquina asignada (si está ocupada, puedes usar cualquiera de las 3: Remo, SkiErg o Bike por calorías equivalentes):',
+                stations: [
+                    { num: 'M1', name: 'Bloque 1: 800m Run + 800m SkiErg (o 55 Cal) + 50m Sled Push + 60 Burpees', ind: '600m Run + 600m Ski + 35m Sled + 40 Burpees', part: '800m Run juntos + 800m SkiErg (400m c/u) + 50m Sled Push + 60 Burpees' },
+                    { num: 'M2', name: 'Bloque 2: 800m Run + 800m Remo (o 55 Cal) + 100m Lunges (2x20 lb) + 80 Push-Ups', ind: '600m Run + 600m Remo + 60m Lunges + 45 Push-Ups', part: '800m Run juntos + 800m Remo + 100m DB Lunges (2x20 lb) + 80 Push-Ups' },
+                    { num: 'M3', name: 'Bloque 3: 800m Run + 55 Cal CrossFit Bike (o 800m Remo/Ski) + 100 KB Swings + 200m Farmers', ind: '600m Run + 38 Cal Bike + 60 Swings + 120m Farmers', part: '800m Run + 55 Cal Bike + 100 American Swings (20 kg) + 200m Farmers (40 kg)' },
+                    { num: 'M4', name: 'Bloque 4: 800m Run + 55 Cal Máquina Libre + 100 Wall Balls + 100 Abdominales', ind: '600m Run + 38 Cal Máquina + 60 Wall Balls + 60 Sit-Ups', part: '800m Run + 55 Cal Máquina + 100 Wall Balls + 100 Abdominales' }
+                ],
+                pro: 'Sled 4x45 lb · Lunges 2x20 lb · KB 20 / 24 kg · Farmers 40 kg · Wall Ball 20 / 15 lb',
+                open: 'Sled 2x45 lb · Lunges libres · KB 14 / 12 kg · Farmers 2x14 kg · Wall Ball 15 / 10 lb',
+                equip: 'Pista, SkiErg, Remo, CrossFit Bike, Sled, mancuernas 20 lb, Kettlebells, Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX Barbell & Functional Hybrid (Con Barra Olímpica)',
+                tag: 'CROSSFIT MEETS HYROX · BARRA + PISTA + MÁQUINAS',
+                focus: 'Sustituye e integra estaciones con Thrusters, Power Cleans y Sumo High Pull',
+                runNote: 'Ideal cuando hay barras olímpicas listas en el box: intercala 800m Run (o 55 Cal en Remo/Ski/Bike) antes de cada estación:',
+                stations: [
+                    { num: '01', name: '800m Run/Máquina + 60 Barbell Thrusters (75 / 55 lb) + 40 Burpees sobre la Barra', ind: '800m + 35 Thrusters + 25 Bar-Facing Burpees', part: '800m + 60 Thrusters con barra + 40 Burpees saltando la barra' },
+                    { num: '02', name: '800m Remo o SkiErg (o 55 Cal Bike) + 50m Sled Push + 50m Sled Pull', ind: '800m máquina + 35m Sled Push + 35m Sled Pull', part: '800m máquina + 50m Sled Push + 50m Sled Pull' },
+                    { num: '03', name: '800m Run + 60 Power Cleans (95 / 65 lb) + 80m Front Rack Barbell/Sandbag Lunges', ind: '800m + 35 Power Cleans + 50m Lunges', part: '800m + 60 Power Cleans + 80m Lunges con barra o Sandbag 75 lb' },
+                    { num: '04', name: '800m SkiErg o Bike (55 Cal) + 80 Sumo Deadlift High Pulls (75 / 55 lb) + 200m Farmers', ind: '800m + 45 SDHP + 120m Farmers Carry', part: '800m + 80 Sumo Deadlift High Pulls + 200m Farmers Carry (40 kg)' },
+                    { num: '05', name: '800m Run + 100 Wall Balls + 80 Abdominales', ind: '800m + 60 Wall Balls + 50 V-Ups', part: '800m + 100 Wall Balls + 80 V-Ups / Sit-Ups' }
+                ],
+                pro: 'Barra Thruster/SDHP 75/55 lb · Power Clean 95/65 lb · Sandbag 75 lb · WB 20/15 lb',
+                open: 'Barra 55/35 lb · Power Clean 75/45 lb · Saco 20/10 kg · WB 15/10 lb',
+                equip: 'Barras 20/15 kg, discos (25, 15, 10, 5 lb), pista, Remo, SkiErg, Bike, Sled, Sandbag 75 lb, Kettlebells y Wall Balls.'
+            },
+            {
+                title: 'HYROX Half Sprint (Medio HYROX Explosivo)',
+                tag: 'FORMATO CORTO 22–28 MIN · INTENSIDAD MÁXIMA',
+                focus: '4 Bloques de 600m + Combinación Doble de Estaciones Rápidas',
+                runNote: 'Versión rápida para clases de 45–60 min. Cada bloque abre con 600m Run (o 42 Cal en Remo / SkiErg / CrossFit Bike):',
+                stations: [
+                    { num: '01', name: '600m Run/Máquina + 600m SkiErg (o 42 Cal Remo/Bike) + 50m Sled Push', ind: '600m Run + 500m Ski + 35m Sled Push', part: '600m Run + 600m SkiErg + 50m Sled Push' },
+                    { num: '02', name: '600m Run/Máquina + 50m Sled Pull + 60m Burpee Broad Jumps', ind: '600m Run + 35m Sled Pull + 40m Burpee Jumps', part: '600m Run + 50m Sled Pull + 60m Burpee Broad Jumps' },
+                    { num: '03', name: '600m Run/Máquina + 600m Remo (o 42 Cal Bike) + 150m Farmers Carry (40 kg)', ind: '600m Run + 500m Remo + 100m Farmers', part: '600m Run + 600m Remo + 150m Farmers Carry (2x20 kg KB)' },
+                    { num: '04', name: '600m Run/Máquina + 80m Lunges (2x20 lb DB o Saco) + 75 Wall Balls', ind: '600m Run + 50m Lunges + 50 Wall Balls', part: '600m Run + 80m Lunges + 75 Wall Balls a ritmo unbroken' }
+                ],
+                pro: 'Sled 4x45 lb · Farmers 2x24 / 20 kg · Lunges Sandbag 75 lb o 2x20 lb DB · WB 20 / 15 lb',
+                open: 'Sled 2x45 lb · Farmers 2x14 / 12 kg · Lunges saco 20/10 kg · WB 15 / 10 lb',
+                equip: 'Pista, SkiErg, Remo, CrossFit Bike, Sled, Kettlebells, mancuernas 20 lb, Sandbag 75 lb/sacos y Wall Balls.'
+            },
+            {
+                title: 'HYROX Castigo de Cuerda & Core (5x800m)',
+                tag: 'CORE + CARDIO · ESTABILIDAD DE LÍNEA MEDIA',
+                focus: 'Integra Abdominales, Rueda Abdominal y Battle Rope en cada estación',
+                runNote: 'Completar 800m Run (o 55 Cal en Remo / SkiErg / CrossFit Bike) al inicio de cada uno de los 5 bloques:',
+                stations: [
+                    { num: '01', name: '800m Run/Máquina + 50m Sled Push + 50 V-Ups en Colchoneta', ind: '800m + 35m Sled Push + 30 V-Ups', part: '800m + 50m Sled Push + 50 V-Ups repartidos' },
+                    { num: '02', name: '800m Run/Máquina + 80m Burpee Broad Jumps + 40 Ab-Wheel Rollouts', ind: '800m + 50m Burpee Jumps + 25 Rueda Abdominal', part: '800m + 80m Burpee Broad Jumps + 40 Ab-Wheel Rollouts' },
+                    { num: '03', name: '800m Remo/Ski (o 55 Cal Bike) + 100m Lunges (2x20 lb) + 90s Battle Rope Waves', ind: '800m máquina + 60m Lunges + 60s Battle Rope', part: '800m máquina + 100m DB Lunges + 90s Battle Rope Squat Waves' },
+                    { num: '04', name: '800m Run/Máquina + 100 American KB Swings (20 kg) + 150m Overhead Plate Carry', ind: '800m + 60 Swings + 100m Overhead Carry (45/25 lb)', part: '800m + 100 American Swings + 150m caminata con disco de 45/25 lb sobre la cabeza' },
+                    { num: '05', name: '800m Run/Máquina + 100 Wall Balls + 100 Sit-Ups', ind: '800m + 60 Wall Balls + 60 Sit-Ups', part: '800m + 100 Wall Balls + 100 Sit-Ups' }
+                ],
+                pro: 'Disco Overhead 45 / 25 lb · KB 24 / 20 kg · Mancuernas 2x20 lb · WB 20 / 15 lb',
+                open: 'Disco Overhead 25 / 15 lb · KB 14 / 12 kg · Lunges libres · WB 15 / 10 lb',
+                equip: 'Pista, Remo/Ski/Bike, Sled, colchonetas, rueda abdominal, mancuernas 20 lb, cuerda grande, Kettlebells, discos y Wall Balls.'
+            },
+            {
+                title: 'HYROX Gran Final Monterrey Box (Endurance 45 Min)',
+                tag: 'SIMULACIÓN ÉLITE DE COMPETENCIA · 6 BLOQUES COMPLETOS',
+                focus: 'Combina lo mejor de 1km, 800m, Máquinas, Trineo, Mancuernas y Wall Balls',
+                runNote: 'Prueba reina del box: puedes hacer los tramos de cardio en Pista o alternando Remo, SkiErg y CrossFit Bike según disponibilidad:',
+                stations: [
+                    { num: '01', name: '1 km Run + 50m Sled Push + 70 Burpee Broad Jumps', ind: '1 km Run + 35m Sled Push + 45 Burpee Jumps', part: '1 km Run juntos + 50m Sled Push + 70 Burpee Broad Jumps' },
+                    { num: '02', name: '800m Run + 1000m Remo (o 70 Cal Ski/Bike) + 100m Lunges (2x20 lb DB)', ind: '800m Run + 750m Remo + 60m DB Lunges', part: '800m Run + 1000m Remo + 100m Lunges con mancuernas de 20 lb' },
+                    { num: '03', name: '800m Run + 100 Dumbbell Thrusters (2x20 lb) + 50m Sled Pull con Cuerda', ind: '800m Run + 60 DB Thrusters + 35m Sled Pull', part: '800m Run + 100 DB Thrusters (2x20 lb) + 50m Sled Pull' },
+                    { num: '04', name: '800m Run + 1000m SkiErg (o 65 Cal Bike) + 120 American KB Swings (20 kg)', ind: '800m Run + 750m SkiErg + 70 American Swings', part: '800m Run + 1000m SkiErg + 120 American Swings (20 kg)' },
+                    { num: '05', name: '800m Run + 200m Farmers Carry (40 kg) + 100 Push-Ups', ind: '800m Run + 120m Farmers + 60 Push-Ups', part: '800m Run + 200m Farmers Carry (2x20 kg KB) + 100 Push-Ups' },
+                    { num: '06', name: '1 km Run Final + 100 Wall Balls + 100 Abdominales', ind: '1 km Run + 65 Wall Balls + 65 Abdominales', part: '1 km Run + 100 Wall Balls + 100 Abdominales (Sit-Ups / V-Ups)' }
+                ],
+                pro: 'Sled 4x45 lb · Mancuernas 2x20 lb · KB 20 / 24 kg · Farmers 40 kg · Wall Ball 20 / 15 lb',
+                open: 'Sled 2x45 lb · Mancuernas 2x15 / 10 lb · KB 14 / 12 kg · Farmers 2x14 kg · Wall Ball 15 / 10 lb',
+                equip: 'Pista abierta, Sled + cuerda grande, Remo, SkiErg, CrossFit Bike, mancuernas de 20 lb, Kettlebells (24, 20, 14, 12 kg), Wall Balls y colchonetas.'
+            }
+        ];
+
+        return specs.map((s, idx) => {
+            const num = idx + 1;
+            const numStr = String(num).padStart(2, '0');
+            return {
+                number: num,
+                code: `HYROX #${numStr}`,
+                title: s.title,
+                tag: s.tag,
+                focus: s.focus,
+                runNote: s.runNote,
+                stations: s.stations,
                 weights: {
-                    pro: 'Sled Push: 4x45 lb + 2x35 lb (H) / 3x45 lb (M) · Sled Pull: 3x45 lb + 25 lb (H) / 2x45 lb + 25 lb (M) · Farmers: 2x24 kg KB o 2x55 lb DB (H) / 2x20 kg KB (M) · Lunges: Sandbag 75 lb (H) / Saco 20 kg (M) · Wall Ball: 20 lb (H) / 15 lb (M)',
-                    open: 'Sled Push: 3x45 lb (H) / 2x45 lb (M) · Sled Pull: 2x45 lb (H) / 1x45 lb + 25 lb (M) · Farmers: 2x20 kg KB (H) / 2x14 kg o 12 kg KB (M) · Lunges: Saco 20 kg (H) / Saco 10 kg (M) · Wall Ball: 15 lb (H) / 10 lb (M)'
+                    pro: s.pro,
+                    open: s.open
                 },
-                equipment: 'Pista o campo abierto, SkiErg, Sled push/pull + cuerda grande, discos (45, 35, 25 lb), Remo / CrossFit Bike, Kettlebells (24, 20, 14, 12 kg) o Mancuernas (55 lb), Sandbag 75 lb / sacos con agarres (30, 20, 10 kg) y Wall Balls (20, 15, 10 lb).'
-            });
-        }
-        return catalog;
+                equipment: s.equip
+            };
+        });
     }
 
     // =========================================
@@ -1578,7 +1877,7 @@ class OfflineToolsManager {
             music: 'Workout Music <span>🎵</span>',
             mobility: 'Movilidad & Calentamiento <span>🤸</span>',
             wods: 'Rutinas Exigentes (60) <span>🏋️</span>',
-            hyrox: 'HYROX 100 Series <span>⚡</span>',
+            hyrox: 'HYROX & Híbridos (15) <span>⚡</span>',
             calc: 'Calculadoras Box <span>🧮</span>'
         };
         this.sectionTitleEl.innerHTML = titles[this.activeModule] || titles.music;
@@ -1950,19 +2249,19 @@ class OfflineToolsManager {
     }
 
     // =========================================
-    // RENDER: HYROX (#001 – #100 CON BUSCADOR Y DROPDOWN CUSTOM UX)
+    // RENDER: HYROX (15 VARIADOS + EQUIVALENCIAS DE MÁQUINAS + BUSCADOR)
     // =========================================
     renderHyroxView() {
         const currentWorkout = this.hyroxCatalog.find(h => h.number === this.selectedHyroxNumber) || this.hyroxCatalog[0];
         const q = (this.searchQueries.hyrox || '').trim().toLowerCase();
-        const quickList = this.hyroxCatalog.slice(0, 8);
+        const equivOpen = this.expandedCards.has('hyrox-equiv-guide');
 
         this.trackListEl.innerHTML = `
             <div class="hyrox-ux-controls">
-                <!-- Buscador en vivo de los 100 HYROX -->
+                <!-- Buscador en vivo de HYROX (estaciones, distancias, máquinas) -->
                 <div class="offline-search-box">
                     <span class="search-icon">🔍</span>
-                    <input type="text" id="hyrox-search-input" class="offline-search-input" placeholder="Buscar HYROX por ciudad o #001–#100 (ej. Madrid, Tokio, 045...)" value="${this.escapeAttr(this.searchQueries.hyrox)}">
+                    <input type="text" id="hyrox-search-input" class="offline-search-input" placeholder="Buscar por distancia o ejercicio (ej. 800m, 1km, thruster, remo, sled, 120...)" value="${this.escapeAttr(this.searchQueries.hyrox)}">
                     <button type="button" id="hyrox-search-clear" class="search-clear-btn" style="display: ${q ? 'inline-flex' : 'none'};" aria-label="Limpiar búsqueda">✕</button>
                 </div>
 
@@ -1979,22 +2278,37 @@ class OfflineToolsManager {
                     <div class="hyrox-dropdown-menu" id="hyrox-dropdown-menu" style="display: ${this.hyroxDropdownOpen ? 'flex' : 'none'};">
                         ${this.hyroxCatalog.map(h => `
                             <button type="button" class="hyrox-dropdown-option ${h.number === currentWorkout.number ? 'selected' : ''}" data-hnum="${h.number}">
-                                <span class="opt-code">#${String(h.number).padStart(3, '0')}</span>
+                                <span class="opt-code">#${String(h.number).padStart(2, '0')}</span>
                                 <span class="opt-title">${h.title}</span>
-                                <span class="opt-focus">${h.focus.split('·')[0]}</span>
+                                <span class="opt-focus">${h.tag.split('·')[0]}</span>
                             </button>
                         `).join('')}
                     </div>
                 </div>
 
-                <!-- Chips rápidos de sedes recientes -->
-                <div class="hyrox-quick-chips">
-                    ${quickList.map(h => `
-                        <button type="button" class="hyrox-chip ${h.number === currentWorkout.number && !q ? 'active' : ''}" data-hnum="${h.number}">
-                            #${String(h.number).padStart(2, '0')} ${h.title.replace('HYROX ', '')}
-                        </button>
-                    `).join('')}
-                </div>
+                <!-- Guía Rápida Desplegable: Equivalencias de Máquinas (Metros ⇄ Calorías) -->
+                <article class="wod-routine-card collapsible-card ${equivOpen ? 'expanded' : ''}" id="hyrox-equiv-card" style="margin-bottom: 4px; border-color: rgba(0, 229, 255, 0.28);">
+                    <div class="wod-summary-trigger" role="button" tabindex="0" aria-expanded="${equivOpen}">
+                        <div class="wod-card-top">
+                            <span class="wod-code-badge">🔄 MÁQUINA OCUPADA · EQUIVALENCIAS</span>
+                            <div class="wod-top-right">
+                                <span class="wod-rm-pill">METROS ⇄ CALORÍAS</span>
+                                <span class="card-chevron">▾</span>
+                            </div>
+                        </div>
+                        <div class="wod-format-sub">Si otra pareja ocupa Remo, SkiErg, Bike o Sled, usa cualquiera de estos equivalentes:</div>
+                    </div>
+                    <div class="wod-collapsible-body">
+                        <ul class="wod-steps-list">
+                            <li><strong>1000m Carrera / Pista</strong> = <code>1000m Remo</code> = <code>1000m SkiErg</code> = <code>70 Cal Remo/Ski</code> = <code>65 Cal CrossFit Bike (o 2000m Bike)</code></li>
+                            <li><strong>800m Carrera / Pista</strong> = <code>800m Remo</code> = <code>800m SkiErg</code> = <code>55 Cal Remo/Ski</code> = <code>50 Cal CrossFit Bike (o 1600m Bike)</code></li>
+                            <li><strong>600m Carrera / Pista</strong> = <code>600m Remo</code> = <code>600m SkiErg</code> = <code>42 Cal Remo/Ski</code> = <code>38 Cal CrossFit Bike (o 1200m Bike)</code></li>
+                            <li><strong>400m Carrera / Pista</strong> = <code>400m Remo</code> = <code>400m SkiErg</code> = <code>30 Cal Remo/Ski</code> = <code>26 Cal CrossFit Bike (o 800m Bike)</code></li>
+                            <li><strong>50m Sled Push ocupado</strong> = <code>100m Heavy Farmers Carry (2x24 kg / 2x55 lb)</code> o <code>50 Barbell/DB Thrusters</code></li>
+                            <li><strong>50m Sled Pull ocupado</strong> = <code>40m Bear Crawl arrastrando Sandbag 75 lb</code> o <code>60 American KB Swings + 4 Cuerdas</code></li>
+                        </ul>
+                    </div>
+                </article>
             </div>
 
             <div id="hyrox-results-container" class="collapsible-list-wrap"></div>
@@ -2004,6 +2318,14 @@ class OfflineToolsManager {
         const clearBtn = document.getElementById('hyrox-search-clear');
         const dropdownBtn = document.getElementById('hyrox-dropdown-btn');
         const dropdownMenu = document.getElementById('hyrox-dropdown-menu');
+        const equivCard = document.getElementById('hyrox-equiv-card');
+
+        equivCard?.querySelector('.wod-summary-trigger')?.addEventListener('click', () => {
+            const nowOpen = !equivCard.classList.contains('expanded');
+            equivCard.classList.toggle('expanded', nowOpen);
+            if (nowOpen) this.expandedCards.add('hyrox-equiv-guide');
+            else this.expandedCards.delete('hyrox-equiv-guide');
+        });
 
         searchInput?.addEventListener('input', () => {
             this.searchQueries.hyrox = searchInput.value;
@@ -2033,19 +2355,11 @@ class OfflineToolsManager {
                 this.selectedHyroxNumber = num;
                 this.hyroxDropdownOpen = false;
                 this.searchQueries.hyrox = '';
+                this.expandedHyroxSet.clear();
                 this.expandedHyroxSet.add(num);
                 this.renderHyroxView();
-            });
-        });
-
-        this.trackListEl.querySelectorAll('.hyrox-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                const num = parseInt(chip.dataset.hnum, 10) || 1;
-                this.selectedHyroxNumber = num;
-                this.hyroxDropdownOpen = false;
-                this.searchQueries.hyrox = '';
-                this.expandedHyroxSet.add(num);
-                this.renderHyroxView();
+                const targetCard = this.trackListEl.querySelector(`[data-hyrox-num="${num}"]`);
+                targetCard?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
         });
 
@@ -2057,18 +2371,12 @@ class OfflineToolsManager {
         if (!container) return;
 
         const q = (this.searchQueries.hyrox || '').trim().toLowerCase();
-        let listToRender = [];
-
-        if (q) {
-            listToRender = this.hyroxCatalog.filter(h => {
-                const hay = `${h.code} ${h.number} ${h.title} ${h.tag} ${h.focus}`.toLowerCase();
-                return hay.includes(q);
-            }).slice(0, 25);
-        } else {
-            const current = this.hyroxCatalog.find(h => h.number === this.selectedHyroxNumber) || this.hyroxCatalog[0];
-            this.expandedHyroxSet.add(current.number);
-            listToRender = [current];
-        }
+        const listToRender = this.hyroxCatalog.filter(h => {
+            if (!q) return true;
+            const stText = h.stations.map(s => `${s.num} ${s.name} ${s.ind} ${s.part}`).join(' ');
+            const hay = `${h.code} ${h.number} ${h.title} ${h.tag} ${h.focus} ${h.runNote} ${stText} ${h.weights.pro} ${h.weights.open}`.toLowerCase();
+            return hay.includes(q);
+        });
 
         if (!listToRender.length) {
             container.innerHTML = `<div class="offline-empty-msg">No se encontró ningún HYROX con "${this.escapeHtml(this.searchQueries.hyrox)}".</div>`;
@@ -2076,7 +2384,7 @@ class OfflineToolsManager {
         }
 
         container.innerHTML = listToRender.map(h => {
-            const isOpen = this.expandedHyroxSet.has(h.number) || listToRender.length === 1;
+            const isOpen = this.expandedHyroxSet.has(h.number);
             return `
                 <article class="wod-routine-card hyrox-featured-card collapsible-card ${isOpen ? 'expanded' : ''}" data-hyrox-num="${h.number}">
                     <div class="wod-summary-trigger" role="button" tabindex="0" aria-expanded="${isOpen}">
@@ -2093,8 +2401,8 @@ class OfflineToolsManager {
 
                     <div class="wod-collapsible-body">
                         <div class="hyrox-run-banner">
-                            🏃 <strong>Protocolo de Carrera:</strong> ${h.runNote}
-                            ${this.hyroxMode === 'partner' ? '<br><em>En Partner: ambos corren juntos cada tramo y dividen el trabajo de las estaciones.</em>' : ''}
+                            🏃 <strong>Protocolo & Máquinas:</strong> ${h.runNote}
+                            ${this.hyroxMode === 'partner' ? '<br><em>En Partner: ambos corren juntos (o dividen calorías/metros en máquina) y reparten las repeticiones de estación.</em>' : ''}
                         </div>
 
                         <div class="hyrox-stations-list">
@@ -2139,8 +2447,12 @@ class OfflineToolsManager {
                 const nowOpen = !card.classList.contains('expanded');
                 card.classList.toggle('expanded', nowOpen);
                 trigger.setAttribute('aria-expanded', String(nowOpen));
-                if (nowOpen) this.expandedHyroxSet.add(num);
-                else this.expandedHyroxSet.delete(num);
+                if (nowOpen) {
+                    this.expandedHyroxSet.add(num);
+                    this.selectedHyroxNumber = num;
+                } else {
+                    this.expandedHyroxSet.delete(num);
+                }
             });
         });
     }
