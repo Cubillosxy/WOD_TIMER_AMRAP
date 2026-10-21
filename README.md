@@ -1,205 +1,230 @@
-<!-- SEO: WOD Timer - CrossFit workout timer, EMOM timer, AMRAP timer, Tabata timer, macOS workout app -->
+<!--
+  _____    _          _          ____      _     _ _ _           
+ | ____|__| |_      _(_)_ __    / ___|   _| |__ (_) | | ___  ___ 
+ |  _| / _` \ \ /\ / / | '_ \  | |  | | | | '_ \| | | |/ _ \/ __|
+ | |__| (_| |\ V  V /| | | | | | |__| |_| | |_) | | | | (_) \__ \
+ |_____\__,_| \_/\_/ |_|_| |_|  \____\__,_|_.__/|_|_|_|\___/|___/
+-->
 
 <div align="center">
 
-# WOD Timer
+# 🏋️‍♂️ AMRAP BOX — WOD Timer & Offline Tools
 
-**WOD Timer is a CrossFit workout timer for EMOM, AMRAP, For Time, Time Cap, Tabata, and clock mode in the browser or as a macOS desktop app.**
+**Sistema integral de cronometraje para CrossFit & Functional Training con suite Offline de Música, Retos, Movilidad CF-L2, 60 WODs de Box, Serie HYROX 100 y Calculadoras de Atleta.**
 
+![Platform: Web & macOS](https://img.shields.io/badge/Platform-Web%20%7C%20macOS%20(Tauri%202)-00e5ff.svg)
+![Mode: 100% Local & Offline Ready](https://img.shields.io/badge/Offline%20Vault-IndexedDB%20Cached-10b981.svg)
+![Workouts: 60 WODs + 100 HYROX](https://img.shields.io/badge/Programaci%C3%B3n-60%20WODs%20%2B%20100%20HYROX-f59e0b.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Platform: Web and macOS](https://img.shields.io/badge/Platform-Web%20%7C%20macOS-0f766e.svg)
-![Dependencies: Minimal](https://img.shields.io/badge/Dependencies-Minimal-111827.svg)
-![Built with Tauri](https://img.shields.io/badge/Desktop-Tauri%202-2563eb.svg)
-
-English | [简体中文](./README.zh-CN.md)
 
 </div>
 
 ---
 
-## Why WOD Timer?
+## 📸 Vista Previa del Sistema
 
-| Common problem | How WOD Timer solves it |
-| --- | --- |
-| Generic stopwatch apps do not match actual WOD formats | Built-in modes cover EMOM, AMRAP, For Time, Time Cap, Tabata, and a plain clock |
-| Switching between workout formats is slow | Mode tabs let you jump between formats without changing apps |
-| Small mobile timers are hard to read during training | Large full-screen display keeps time visible across the room |
-| Standard timers feel flat and easy to ignore | Audio cues and a 3D animated background create stronger workout rhythm |
-| Browser-only tools are awkward to launch like real apps | The project also ships as a macOS desktop app via Tauri |
+### 1. Pantalla Principal Renderizada (`AMRAP BOX`)
+Vista general con la esfera 3D interactiva de partículas, selector central de modos (`CLOCK`, `TABATA`, `FOR TIME`, `EMOM`, `AMRAP`), pestaña lateral sutil `OFFLINE` y el **Mini-Player flotante** en la esquina inferior izquierda reproduciendo en segundo plano:
 
-> **TL;DR** — WOD Timer is a focused workout timer for common CrossFit-style sessions. It is small, local, readable, and easy to ship as both a web page and a Mac app.
+<div align="center">
+  <img src="./assets/screenshots/amrap-box-home.png" alt="AMRAP BOX - Pantalla Principal Renderizada" width="95%" />
+</div>
 
-## Key Features
+### 2. Menú Lateral Desplegable (`Offline Tools`)
+Detalle del panel lateral izquierdo desplegado con acceso rápido a **🎵 Music**, **🤸 Movilidad**, **🏋️ Rutinas**, **⚡ HYROX** y **🧮 Calc**, estado de almacenamiento local `✓ LISTO`, tarjetas de retos (*Challenge Songs*) y reproductor completo con modo secuencial `AUTO`:
 
-### Workout Modes
+<div align="center">
+  <img src="./assets/screenshots/offline-tools-sidebar.png" alt="AMRAP BOX - Detalle del Menú Lateral Offline Tools" width="85%" />
+</div>
 
-- **Clock mode** keeps a large wall-clock style display visible when you are not running a workout.
-- **Time Cap mode** counts down from a fixed cap in minutes.
-- **For Time mode** acts like a workout stopwatch.
-- **AMRAP mode** counts down a fixed working window.
-- **EMOM mode** handles repeating intervals plus round count.
-- **Tabata mode** supports alternating work and rest rounds.
+---
 
-### Training Feedback
+## ⚙️ ¿Cómo Funciona el Proyecto?
 
-- **Audio countdown cues** call out the final seconds of a round.
-- **Start, rest, and completion tones** give clearer phase transitions.
-- **Visual warning state** highlights the last five seconds.
-
-### Desktop Packaging
-
-- **Browser-first frontend** keeps the app simple to understand and easy to tweak.
-- **macOS desktop app** is packaged with Tauri for normal app-style launching.
-- **GitHub Release workflow** can build and publish a `.dmg` from a version tag.
-
-## Data Safety / How It Works
-
-WOD Timer runs locally. There is no backend, no account system, and no workout data sync.
+El proyecto está diseñado bajo una arquitectura **Local-First (sin servidores externos ni cuentas)** ideal para pantallas de Box, televisores o MacBooks en pista. Se compone de dos grandes bloques que funcionan de forma simultánea:
 
 ```text
-User input
-   |
-   v
-HTML / CSS / JavaScript UI
-   |
-   +--> AudioManager (tones and countdown cues)
-   |
-   +--> ParticleBackground (Three.js visual layer)
-   |
-   +--> Tauri shell on macOS (optional desktop wrapper)
++-----------------------------------------------------------------------------------+
+|                           AMRAP BOX · WOD TIMER ENGINE                            |
++-----------------------------------------+-----------------------------------------+
+| 1. MOTOR PRINCIPAL DE TIEMPO (Derecha)  | 2. SUITE OFFLINE TOOLS (Panel Izquierdo)|
+| --------------------------------------- | --------------------------------------- |
+| • CLOCK + Cronómetro Minimalista Oculto | • 🎵 Workout Music (Tabata/Retos/Mixes) |
+| • TABATA (Trabajo / Descanso / Rondas)  | • 🤸 Movilidad (Caminatas/Parejas/CF-L2)|
+| • FOR TIME (Cronómetro + Time Cap)      | • 🏋️ Rutinas (30 Partner + 30 Indiv.)   |
+| • EMOM (Intervalos + Rondas automáticas)| • ⚡ HYROX 100 (Individual & Doubles)   |
+| • AMRAP (Cuenta regresiva de bloque)    | • 🧮 Calc (% 1RM + Discos / IMC)        |
+| • Web Audio API + Esfera 3D (Three.js)  | • Bóveda Persistente en IndexedDB       |
++-----------------------------------------+-----------------------------------------+
 ```
 
-## Quick Start
+### ⏱️ 1. Modos del Temporizador Principal (`script.js` + `audio_manager.js`)
 
-### Use The Mac App
+| Modo | Configuración | Funcionamiento |
+| :--- | :--- | :--- |
+| **CLOCK** | Hora actual (`12H` / `24H` + Segundos) | Muestra el reloj digital de pared en formato gigante. Incluye debajo un **botón de cronómetro minimalista** que despliega un cronómetro auxiliar rápido con `START / PAUSE` y `RESET` sin salir del reloj. |
+| **TABATA** | `ROUNDS`, `WORK (SEC)`, `REST (SEC)` | Alterna automáticamente bloques de trabajo (rojo/naranja) y descanso (azul/verde) con alertas acústicas en los últimos 3 segundos. |
+| **FOR TIME** | `TIME CAP (MIN)` | Cuenta ascendente para medir el tiempo total de ejecución hasta alcanzar el *Time Cap* configurado. |
+| **EMOM** | `EVERY (SEC)`, `ROUNDS` | Reinicia el intervalo cada minuto (o segundos configurados) avanzando automáticamente de ronda hasta completar el total. |
+| **AMRAP** | `TIME (MIN)` | Cuenta regresiva continua de alta visibilidad para completar la mayor cantidad de rondas o repeticiones posibles. |
 
-Download the latest macOS installer from [GitHub Releases](https://github.com/gaoryan86/wod-timer/releases).
+- **Cuenta regresiva de preparación (`PREPARE`)**: Antes de iniciar cualquier WOD se ejecuta un conteo previo con avisos sonoros `3, 2, 1, GO!`.
+- **Temas Visuales Dinámicos**: Selector de paletas de color y control de densidad de partículas 3D en el menú de configuración superior derecho.
 
-### Run In The Browser
+---
 
-Open `wod_timer.html` directly in a browser.
+### 🧰 2. Menú Lateral `Offline Tools` (`offline_tools.js` + `workout_library_data.js`)
 
-### Build The macOS App
+El panel izquierdo se abre desde la franja vertical `OFFLINE › › ›` y se pliega con `OCULTAR ‹ ‹ ‹`. Cuenta con **5 módulos especializados**:
+
+#### 🎵 A. Workout Music & Reproductor Persistente
+- **Tabata Songs**: Canciones y videos cronometrados con guías de `WORK` y `REST` integradas.
+- **Challenge Songs (Canciones de Reto)**:
+  1. **Dale Don Dale (Don Omar)**: Un abdominal (*sit-up*) por cada *"dale"*.
+  2. **Gasolina (Daddy Yankee)**: Un burpee / sentadilla por cada *"gasolina"* *(incluye video)*.
+  3. **Who Let the Dogs Out (Baha Men)**: Un burpee / sentadilla por cada ladrido *(incluye video)*.
+  4. **Thunderstruck (AC/DC)**: Sentadilla con salto por cada *"thunder"*.
+  5. **Azul (Cristian Castro)**: Una sentadilla / burpee por cada *"azul"*.
+  6. **Bring Sally Up (Moby)**: Cuando diga *"up"* se sube y cuando diga *"down"* se baja manteniendo isometría abajo. **PRO: con disco**.
+- **Music (Sesiones de Entrenamiento)**: Mezclas de **30 minutos**, **10 minutos**, tracks de alta energía y todos los retos unificados.
+- **Modo `AUTO` y Mini-Player**:
+  - Al activar **`AUTO`**, el reproductor salta automáticamente a la siguiente pista de la lista actual al terminar.
+  - Si es **video (`.mp4`)**, despliega el visor de video; si es **audio (`.m4a`)**, muestra el reproductor compacto.
+  - Al cerrar el panel lateral, aparece un **Mini-Player flotante** abajo a la izquierda para pausar/reanudar o pasar de canción sin interrumpir el reloj.
+- **Bóveda Offline (`IndexedDB`)**: Los archivos multimedia están optimizados en el repositorio y, al reproducirse por primera vez, se guardan automáticamente en la base de datos local del navegador (`wod_offline_media_vault_v1`), marcándose con **`✓ LISTO`** para reproducción instantánea sin recargas.
+
+#### 🤸 B. Movilidad & Warm-up (con Buscador y Tarjetas Desplegables)
+- **18 protocolos estructurados** en 3 categorías:
+  - **Caminatas Dinámicas (6)**: *Monster Walk*, *Bear Crawl + Inchworm*, *Spiderman Walk*, *Overhead Plate Duck Walk*, *Caminata de Granjero Asimétrica*, *Frankenstein & Quad Walk*.
+  - **Movilidad en Parejas (6)**: *Partner Banded Hip Distraction*, *apertura torácica asistida en PVC*, *isquios PNF*, *rotación interna/externa con KB*, *estiramiento dorsal en estructura*, *sentadilla profunda cara a cara*.
+  - **CF-L2 & Kettlebell (6)**: Basado en la *Guía de Entrenamiento CrossFit Nivel 2 (CF-L2)* para corrección de fallos comunes en sentadilla, *overhead*, *rack frontal* y bisagra lumbar.
+
+#### 🏋️ C. Rutinas de Box — 60 WODs Desplegables y Numerados
+- **30 Partner WODs (`PARTNER WOD #01` al `#30`)** + **30 Individual WODs (`INDIVIDUAL WOD #01` al `#30`)**.
+- Incluye en el cierre de parejas (`#30`) el benchmark real del box: **`Trifecta 45s Switch & Cash-Out`** (*Bloque A: 24 rondas cambiando cada 45s de 4 Wall Balls + 4 Pull-Ups + 4 American Swings + 4 Burpees; Bloque B: AMRAP 12' de 11 Clusters + Sync V-Ups; Bloque C: 39 Power Cleans + 45 Toes-to-Bar*).
+- Cada tarjeta muestra en vista resumida su número, porcentaje de `% 1RM`, título y etiquetas; al desplegarla detalla los bloques, pesos sugeridos **PRO / OPEN** y el **Material requerido** ajustado al inventario real del gimnasio:
+  - *Barras olímpicas (20 kg H / 15 kg M), discos en libras (45 a 5 lb), mancuernas (55 a 20 lb + par de 15 kg), Kettlebells (24, 20, 14, 12 kg), Sandbags (75 lb y con agarres de 10/20/30 kg), Sled Push/Pull, SkiErg, Remo, Bike, Cuerda de trepar y Battle Rope, Anillas, Cajones, Balones Medicinales (20, 15, 10 lb), Rueda abdominal y Bandas (Negra, Azul, Naranja).*
+
+#### ⚡ D. Serie HYROX 100 (`#001` a `#100`)
+- **100 eventos HYROX numerados** encabezados por las sedes más recientes (**#001 Madrid**, **#002 Tokio**, **#003 Barcelona**, **#004 Chicago**, **#005 Berlín**, **#006 Londres**, **#007 CDMX**, **#008 Milán**, etc.).
+- **Buscador en tiempo real** + **Selector desplegable rápido** para saltar a cualquiera de los 100 eventos.
+- **Conmutador `Individual (Open / Pro)` vs `Partner (Doubles)`**: Ajusta automáticamente la estrategia de carrera en pista/campo abierto y el reparto de las 8 estaciones funcionales (*SkiErg, Sled Push, Sled Pull, Burpee Broad Jumps, Row, Farmers Carry, Sandbag Lunges y Wall Balls*).
+
+#### 🧮 E. Calculadoras de Atleta (`% RM` & `IMC`)
+1. **Calculadora de `% 1RM` y Carga de Discos**:
+   - Ingresa tu `1RM` (en `lb` o `kg`) y elige el tipo de barra (**Hombre 20 kg / 44 lb** o **Mujer 15 kg / 33 lb**).
+   - Calcula automáticamente la tabla completa desde **50% hasta 100% del 1RM** y te indica exactamente **qué discos de libras (`45, 35, 25, 15, 10, 5 lb`) montar a cada lado de la barra**.
+2. **Calculadora de `IMC` y Rango de Peso Adecuado**:
+   - Ingresa tu **Altura (`cm`)** y **Peso (`kg`)** libremente con el teclado.
+   - Muestra tu **IMC exacto**, clasificación atlética/saludable y el **rango de peso recomendado** en kilogramos para tu estatura.
+
+---
+
+## 🚀 Cómo Rodar el Proyecto
+
+Puedes ejecutar **AMRAP BOX — WOD Timer** de **3 maneras** según tu necesidad:
+
+### Opción 1: Ejecución Rápida en Navegador (Servidor Web Local) — *Recomendado*
+
+Para que la bóveda `IndexedDB` y la carga de audio/video funcionen con máximo rendimiento en cualquier navegador moderno (Chrome, Brave, Safari, Edge):
 
 ```bash
-npm install && npm run app:build
+# 1. Entra a la carpeta del proyecto
+cd WOD_TIMER_AMRAP
+
+# 2. Levanta un servidor estático ligero (elige cualquiera de estos dos):
+python3 -m http.server 8080
+# o con Node.js:
+npx serve . -l 8080
 ```
 
-### Run The App In Development
+Luego abre en tu navegador:
+👉 **`http://localhost:8080/wod_timer.html`** (o `http://localhost:8080/`)
+
+> **Nota:** También puedes abrir directamente el archivo `wod_timer.html` con doble clic en tu navegador.
+
+---
+
+### Opción 2: Modo Desarrollo como Aplicación Nativa de macOS (Tauri 2)
+
+Si deseas ejecutar o modificar la aplicación de escritorio nativa para macOS:
+
+#### Requisitos previos:
+- **Node.js** `>= 18` y **npm**
+- **Rust & Cargo** (`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`)
+- **Xcode Command Line Tools** (`xcode-select --install`)
+
+#### Comandos:
+```bash
+# 1. Instalar dependencias de Node / Tauri CLI
+npm install
+
+# 2. Preparar los archivos estáticos en la carpeta dist/
+npm run app:prepare
+
+# 3. Iniciar la aplicación nativa de macOS en modo desarrollo
+npm run app:dev
+```
+
+---
+
+### Opción 3: Compilar el Instalador `.app` / `.dmg` para macOS
+
+Para generar el ejecutable final de macOS listo para instalar en la computadora del Box:
 
 ```bash
-npm install && npm run app:dev
+npm install
+npm run app:prepare
+npm run app:build
 ```
 
-## Example Output
+El paquete compilado quedará disponible en:
+- `src-tauri/target/release/bundle/macos/` (`.app`)
+- `src-tauri/target/release/bundle/dmg/` (`.dmg`)
 
-```text
-Modes: CLOCK | TIME CAP | FOR TIME | AMRAP | EMOM | TABATA
+---
 
-Status: PREPARE
-Timer : 00:00:00
-Round : ROUND 1 / 10
+## 🗜️ Gestión y Compresión de Archivos Multimedia (`assets/media/`)
 
-[ RESET ]   [ START ]
+Para mantener el repositorio ligero sin perder calidad de audio ni video en el Box, el proyecto incluye un script automatizado en macOS (`scripts/compress-media.mjs`) que utiliza las herramientas nativas de Apple (`afconvert` para AAC `.m4a` y `avconvert` para H.264 `.mp4`):
+
+```bash
+# Comprime automáticamente nuevos audios o videos colocados en assets/media/
+npm run media:compress
 ```
 
-## Requirements
+---
 
-- macOS if you want the packaged desktop app
-- Node.js and npm if you want to build locally
-- Rust toolchain if you want to build the Tauri app yourself
-- Internet access for the current frontend asset setup, because the UI loads Google Fonts and Three.js from remote CDNs
-
-## Configuration
-
-| Mode | Inputs | Defaults | Behavior |
-| --- | --- | --- | --- |
-| Clock | None | N/A | Shows the current time |
-| Time Cap | `CAP (MIN)` | `5` | Counts down from a fixed cap |
-| For Time | None | N/A | Counts up like a stopwatch |
-| AMRAP | `TIME (MIN)` | `10` | Counts down a work window |
-| EMOM | `EVERY (SEC)`, `ROUNDS` | `60`, `10` | Repeats intervals and tracks rounds |
-| Tabata | Internal settings in code | `20 / 10 / 8` | Alternates work and rest |
-
-## Architecture
+## 📂 Estructura del Proyecto
 
 ```text
 .
-├── wod_timer.html
-├── style.css
-├── script.js
-├── audio_manager.js
-├── background_3d.js
-├── package.json
+├── wod_timer.html              # Entrada principal HTML de la aplicación
+├── index.html                  # Espejo HTML para despliegue estático directo
+├── style.css                   # Estilos generales, temas, panel Offline Tools y responsive
+├── script.js                   # Lógica principal del temporizador, modos y cronómetro CLOCK
+├── offline_tools.js            # Lógica del panel Offline Tools, reproductor, IndexedDB, HYROX y Calculadoras
+├── workout_library_data.js     # Base de datos local: 18 Movilidad, 60 WODs (Partner/Indiv) y generador HYROX 100
+├── audio_manager.js            # Sintetizador de sonidos y beeps (Web Audio API)
+├── background_3d.js            # Motor visual de esfera de partículas 3D (Three.js)
+├── assets/
+│   ├── logo_clean.png          # Logo oficial de AMRAP BOX
+│   ├── screenshots/            # Capturas de pantalla referenciadas en este README
+│   │   ├── amrap-box-home.png
+│   │   └── offline-tools-sidebar.png
+│   └── media/                  # Biblioteca multimedia comprimida (offline-ready)
+│       ├── tabata/             # Videos y canciones de Tabata
+│       ├── challenges/         # Audios y videos de Challenge Songs
+│       └── music/              # Mixes de 30 min, 10 min y canciones de entrenamiento
 ├── scripts/
-│   └── prepare-app.mjs
-└── src-tauri/
-    ├── src/main.rs
-    ├── tauri.conf.json
-    └── icons/
+│   ├── prepare-app.mjs         # Empaqueta los archivos web y assets dentro de dist/ para Tauri
+│   └── compress-media.mjs      # Comprime pistas de audio/video nativamente en macOS
+└── src-tauri/                  # Configuración y código Rust para empaquetado macOS (Tauri 2)
 ```
-
-- `wod_timer.html` defines the timer UI.
-- `script.js` holds workout mode logic, timers, transitions, and UI state.
-- `audio_manager.js` generates local audio cues with Web Audio.
-- `background_3d.js` renders the animated particle background with Three.js.
-- `src-tauri/` packages the frontend as a macOS desktop app.
-
-## Use Cases
-
-- CrossFit athletes who want a simple fullscreen WOD timer
-- Coaches running EMOM, AMRAP, or Tabata sessions in a gym
-- Home gym users who want a timer without logging into a service
-- Developers who want a small Tauri example wrapping a static frontend
-- Makers who want to fork and customize a timer for their own training style
-
-## FAQ
-
-<details>
-<summary>Do I need the macOS app to use WOD Timer?</summary>
-
-No. You can open `wod_timer.html` directly in a browser and use the timer without building the desktop app.
-
-</details>
-
-<details>
-<summary>Does this project send workout data to a server?</summary>
-
-No. The project is local-only. It does not include a backend, cloud sync, or user accounts.
-
-</details>
-
-<details>
-<summary>Why are <code>node_modules</code> and <code>src-tauri/target</code> not committed?</summary>
-
-Those folders are generated build artifacts and dependency caches. They are large, reproducible, and should stay out of the repository.
-
-</details>
-
-<details>
-<summary>How do I publish a new downloadable version?</summary>
-
-Create and push a version tag such as `v0.1.1`. The GitHub Actions workflow will build the macOS app and upload a `.dmg` to GitHub Releases.
-
-</details>
-
-<details>
-<summary>Will WOD Timer work offline?</summary>
-
-The local app logic is local, but the current frontend references Google Fonts and a Three.js CDN. If you want fully offline behavior, those assets should be vendored into the repo.
-
-</details>
-
-## Contributing
-
-Issues and pull requests are welcome. If you plan to change workout logic or packaging behavior, open a short discussion first so the timer modes and release flow stay consistent.
-
-## License
-
-Released under the [MIT License](./LICENSE).
 
 ---
 
 <div align="center">
-<strong>WOD Timer</strong> — sharp timing for hard training.
+  <strong>AMRAP BOX · Functional & CrossFit</strong><br/>
+  <sub>Made in Monterrey 🇨🇴 By Edwin C. 🦾</sub>
 </div>
