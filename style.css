@@ -28,12 +28,15 @@
 :root {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --text-muted: #888888;
+    --text-main: #ffffff;
+    --text-muted: #9ca3af;
     --border-color: #ffffff;
+    --accent-cyan: #3bb0d6;
     --accent-red: #ff3232;
     --accent-green: #00ff88;
     --accent-yellow: #ffcc00;
     --font-mono: 'Iosevka Web', 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
+    --font-heading: 'Iosevka Web', 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
 }
 
 * {
@@ -1610,10 +1613,10 @@ body.state-finished .timer-clock {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-    font-size: 0.82rem;
+    border: 1px solid rgba(59, 176, 214, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.85rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1622,24 +1625,26 @@ body.state-finished .timer-clock {
 }
 
 .player-ctrl-btn:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
+    border-color: #3bb0d6;
+    background: rgba(59, 176, 214, 0.22);
+    color: #3bb0d6;
     transform: scale(1.06);
 }
 
 .player-ctrl-btn.player-ctrl-main {
     width: 40px;
     height: 40px;
-    background: var(--accent-cyan);
-    border-color: var(--accent-cyan);
-    color: #061018;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 14px rgba(59, 176, 214, 0.35);
+    background: #3bb0d6;
+    border: 1px solid #56c5e8;
+    color: #040b11;
+    font-size: 0.98rem;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(59, 176, 214, 0.4);
 }
 
 .player-ctrl-btn.player-ctrl-main:hover {
     background: #56c5e8;
-    color: #061018;
+    color: #040b11;
 }
 
 @media (max-width: 600px) {
