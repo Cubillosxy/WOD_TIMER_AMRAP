@@ -208,6 +208,104 @@
             </main>
         </section>
 
+        <!-- MENU OCULTABLE IZQUIERDO: OFFLINE TOOLS & MINI REPRODUCTOR -->
+        <div class="offline-dock" id="offline-dock">
+            <button class="offline-fab" id="offline-tools-fab" type="button" aria-label="Abrir Offline Tools" title="Abrir Offline Tools · Workout Music">
+                <div class="collapse-content">
+                    <span class="collapse-text">OFFLINE</span>
+                    <div class="collapse-arrows">
+                        <span>›</span>
+                        <span>›</span>
+                        <span>›</span>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Mini reproductor flotante visible cuando el panel está cerrado y hay música/video cargado -->
+            <div class="offline-mini-bar" id="offline-mini-bar" style="display: none;">
+                <button class="mini-bar-btn" id="mini-bar-play" type="button" aria-label="Play / Pause" title="Play / Pause">▶</button>
+                <div class="mini-bar-info" id="mini-bar-expand" title="Abrir reproductor">
+                    <span class="mini-bar-title" id="mini-bar-title">Sin reproducir</span>
+                    <span class="mini-bar-time" id="mini-bar-time">00:00 / 00:00</span>
+                </div>
+                <button class="mini-bar-btn" id="mini-bar-next" type="button" aria-label="Siguiente canción" title="Siguiente">⏭</button>
+                <div class="mini-bar-progress">
+                    <div class="mini-bar-progress-fill" id="mini-bar-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="offline-overlay" id="offline-tools-overlay"></div>
+
+        <aside class="offline-panel" id="offline-tools-panel" aria-label="Offline Tools">
+            <button class="offline-panel-collapse" id="offline-tools-collapse" type="button" aria-label="Ocultar Offline Tools" title="Ocultar panel">
+                <div class="collapse-content">
+                    <span class="collapse-text">OCULTAR</span>
+                    <div class="collapse-arrows">
+                        <span>‹</span>
+                        <span>‹</span>
+                        <span>‹</span>
+                    </div>
+                </div>
+            </button>
+
+            <div class="offline-panel-inner">
+                <header class="offline-panel-header">
+                    <div class="offline-header-top">
+                        <span class="offline-header-kicker">OFFLINE TOOLS</span>
+                        <span class="offline-status-dot" id="offline-status-dot" title="100% Offline Ready"></span>
+                    </div>
+                    <h3 class="offline-panel-title">Workout Music <span>🎵</span></h3>
+                </header>
+
+                <!-- Pestañas de categorías -->
+                <div class="offline-tabs" id="offline-music-tabs" role="tablist">
+                    <button class="offline-tab active" data-category="tabata" type="button" role="tab">Tabata Songs</button>
+                    <button class="offline-tab" data-category="challenges" type="button" role="tab">Challenge Songs</button>
+                    <button class="offline-tab" data-category="music" type="button" role="tab">Music</button>
+                </div>
+
+                <!-- Lista de canciones de la categoría activa -->
+                <div class="offline-panel-body" id="offline-track-list">
+                    <!-- Inyectado dinámicamente por offline_tools.js -->
+                </div>
+
+                <!-- Mini Reproductor Integrado (Audio + Video condicional + Botón AUTO) -->
+                <div class="offline-player-dock" id="offline-player-dock">
+                    <!-- Visor de Video (solo se muestra cuando la pista activa es .mp4) -->
+                    <div class="player-video-stage" id="player-video-stage" style="display: none;">
+                        <video id="workout-media-video" class="workout-video-el" playsinline preload="metadata"></video>
+                        <button class="video-pip-btn" id="btn-video-fullscreen" type="button" title="Pantalla completa de video">⛶</button>
+                    </div>
+
+                    <!-- Recordatorio del reto activo (cuando es Challenge Song) -->
+                    <div class="player-challenge-banner" id="player-challenge-banner" style="display: none;"></div>
+
+                    <div class="player-meta-row">
+                        <div class="player-track-texts">
+                            <span class="player-track-title" id="player-track-title">Selecciona una canción</span>
+                            <span class="player-track-sub" id="player-track-sub">Tabata · Challenges · Workout Music</span>
+                        </div>
+                        <button class="player-auto-btn active" id="btn-player-auto" type="button" title="Saltar automáticamente a la siguiente canción de esta lista">
+                            AUTO
+                        </button>
+                    </div>
+
+                    <div class="player-seek-row">
+                        <span class="player-time" id="player-time-current">00:00</span>
+                        <input type="range" id="player-seek-bar" class="player-seek-bar" min="0" max="100" value="0" step="0.1" aria-label="Progreso de canción">
+                        <span class="player-time" id="player-time-total">00:00</span>
+                    </div>
+
+                    <div class="player-controls-row">
+                        <button class="player-ctrl-btn" id="btn-player-prev" type="button" aria-label="Anterior" title="Anterior en la lista">⏮</button>
+                        <button class="player-ctrl-btn player-ctrl-main" id="btn-player-toggle" type="button" aria-label="Reproducir / Pausar" title="Reproducir / Pausar">▶</button>
+                        <button class="player-ctrl-btn" id="btn-player-next" type="button" aria-label="Siguiente" title="Siguiente en la lista">⏭</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
         <footer class="global-footer"></footer>
     </div>
 
@@ -219,6 +317,7 @@
     <script src="assets/three.min.js"></script>
     <script src="background_3d.js"></script>
     <script src="audio_manager.js"></script>
+    <script src="offline_tools.js"></script>
     <script src="script.js"></script>
 </body>
 

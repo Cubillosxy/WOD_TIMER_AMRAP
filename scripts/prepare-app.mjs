@@ -12,6 +12,7 @@ const filesToCopy = [
   "back.html",
   "background_3d.js",
   "index.html",
+  "offline_tools.js",
   "script.js",
   "style.css",
   "wod_timer.html",

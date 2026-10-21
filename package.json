@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "media:compress": "node ./scripts/compress-media.mjs",
     "app:prepare": "node ./scripts/prepare-app.mjs",
     "app:dev": "npm run app:prepare && tauri dev",
     "app:build": "tauri build"

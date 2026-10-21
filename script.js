@@ -155,6 +155,15 @@ class WodTimer {
         window.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT') return;
 
+            if (e.code === 'Escape' && window.offlineTools && window.offlineTools.isOpen) {
+                window.offlineTools.togglePanel(false);
+                return;
+            }
+
+            if (e.target.closest && e.target.closest('#offline-tools-panel, #offline-dock')) {
+                return;
+            }
+
             if (e.code === 'Space') {
                 e.preventDefault();
                 if (this.viewTimer.style.display !== 'none') {
