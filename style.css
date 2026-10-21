@@ -715,7 +715,7 @@ body.state-finished .timer-clock {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 0.65rem 1rem;
+    padding: 0.35rem 0.75rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -726,21 +726,21 @@ body.state-finished .timer-clock {
 .footer-credit {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.3rem 0.75rem;
-    background: rgba(10, 10, 10, 0.65);
+    gap: 0.3rem;
+    padding: 0.16rem 0.52rem;
+    background: rgba(10, 10, 10, 0.62);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 9999px;
     font-family: var(--font-mono);
-    font-size: clamp(0.64rem, 1.1vw, 0.74rem);
+    font-size: clamp(0.52rem, 0.78vw, 0.6rem);
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.62);
-    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.56);
+    letter-spacing: 0.03em;
     pointer-events: auto;
     user-select: none;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
     transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
@@ -762,7 +762,7 @@ body.state-finished .timer-clock {
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.22rem;
     transition: color 0.15s ease;
 }
 
@@ -782,15 +782,15 @@ body.state-finished .timer-clock {
 
 .flag-co {
     display: block;
-    width: 12px;
-    height: 8px;
+    width: 10px;
+    height: 6.7px;
     border-radius: 1px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     overflow: hidden;
 }
 
 .footer-robot-icon {
-    font-size: 0.9em;
+    font-size: 0.85em;
     line-height: 1;
     display: inline-block;
     transition: transform 0.25s ease;
@@ -800,18 +800,18 @@ body.state-finished .timer-clock {
 
 @media (max-width: 600px) {
     .global-footer {
-        padding: 0.35rem 0.6rem;
+        padding: 0.25rem 0.5rem;
     }
 
     .footer-credit {
-        padding: 0.24rem 0.55rem;
-        gap: 0.35rem;
-        font-size: 0.64rem;
+        padding: 0.14rem 0.45rem;
+        gap: 0.25rem;
+        font-size: 0.5rem;
     }
 
     .flag-co {
-        width: 11px;
-        height: 7.3px;
+        width: 9px;
+        height: 6px;
     }
 }
 
