@@ -2490,7 +2490,7 @@ class OfflineToolsManager {
                 <div class="calc-card">
                     <div class="calc-row-grid">
                         <label class="calc-field">
-                            <span>Tu 1RM Máximo (solo discos)</span>
+                            <span>RM máximo (discos)</span>
                             <input type="text" inputmode="decimal" id="calc-rm-input" class="calc-input" placeholder="Ej. 180" value="${this.escapeAttr(oneRmRaw)}" autocomplete="off">
                         </label>
                         <div class="calc-field">
