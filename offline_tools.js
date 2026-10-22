@@ -2462,8 +2462,8 @@ class OfflineToolsManager {
     // RENDER: CALCULADORAS (% RM + DISCOS & IMC)
     // Sin flechas y permitiendo borrar/escribir libremente
     // =========================================
-    calculatePlateLoad(discsLb, barKg) {
-        const barLb = barKg === 20 ? 45 : 35;
+    calculatePlateLoad(discsLb, barKg, totalLb) {
+        const barLb = Math.round(barKg * 2.20462);
         let perSide = discsLb / 2;
         if (perSide <= 0) return `Solo barra vacía (${barKg} kg / ${barLb} lb)`;
 
@@ -2475,11 +2475,10 @@ class OfflineToolsManager {
                 perSide -= p;
             }
         }
-        const totalWithBarLb = Math.round(discsLb + barLb);
-        const totalWithBarKg = Math.round(totalWithBarLb / 2.20462);
+        const totalKg = Math.round(totalLb / 2.20462);
         return loaded.length
-            ? `Por lado (${Math.round(discsLb / 2)} lb): ${loaded.join(' + ')} · Total c/barra ${barKg}kg: ${totalWithBarLb} lb (${totalWithBarKg} kg)`
-            : `Menos de 5lb por lado · Total c/barra ${barKg}kg: ${totalWithBarLb} lb`;
+            ? `Por lado (${Math.round(discsLb / 2)} lb): ${loaded.join(' + ')} · Total c/barra ${barKg}kg: ${Math.round(totalLb)} lb (${totalKg} kg)`
+            : `Menos de 5lb por lado · Total c/barra ${barKg}kg: ${Math.round(totalLb)} lb (${totalKg} kg)`;
     }
 
     renderCalcView() {
@@ -2607,29 +2606,32 @@ class OfflineToolsManager {
         if (!headerEl || !plateEl || !tableEl) return;
 
         const { oneRm, unit, barKg, customPct } = this.rmState;
-        const targetVal = Math.round(oneRm * (customPct / 100));
-        const targetLb = unit === 'lb' ? targetVal : Math.round(targetVal * 2.20462);
-        const targetKg = unit === 'kg' ? targetVal : Math.round(targetVal / 2.20462);
-        const plateBreakdown = this.calculatePlateLoad(targetLb, barKg);
+        const barLb = barKg * 2.20462;
+        const inputDiscsLb = unit === 'lb' ? oneRm : oneRm * 2.20462;
+        const total1RmLb = oneRm > 0 ? inputDiscsLb + barLb : 0;
+
+        const targetTotalLb = total1RmLb * (customPct / 100);
+        const targetDiscsLb = Math.max(0, Math.round(targetTotalLb - barLb));
+        const targetDiscsKg = Math.max(0, Math.round(targetDiscsLb / 2.20462));
+        const plateBreakdown = this.calculatePlateLoad(targetDiscsLb, barKg, targetTotalLb);
         const percentages = [95, 90, 85, 80, 75, 70, 65, 60, 50];
 
         headerEl.innerHTML = `
-            <span>Objetivo <strong>${customPct}% RM</strong> <em>(solo discos)</em></span>
-            <span class="calc-highlight-val">${targetLb} lb · ${targetKg} kg</span>
+            <span>Objetivo <strong>${customPct}% RM</strong> <em>(discos a montar)</em></span>
+            <span class="calc-highlight-val">${targetDiscsLb} lb · ${targetDiscsKg} kg</span>
         `;
         plateEl.textContent = `🏋️ ${plateBreakdown}`;
 
         tableEl.innerHTML = percentages.map(pct => {
-            const valLb = unit === 'lb'
-                ? Math.round(oneRm * (pct / 100))
-                : Math.round(oneRm * (pct / 100) * 2.20462);
-            const valKg = Math.round(valLb / 2.20462);
+            const cellTotalLb = total1RmLb * (pct / 100);
+            const cellDiscsLb = Math.max(0, Math.round(cellTotalLb - barLb));
+            const perSideLb = Math.round(cellDiscsLb / 2);
             const activeRow = pct === customPct ? 'active' : '';
             return `
                 <div class="calc-rm-cell ${activeRow}" data-pct="${pct}">
                     <span class="rm-cell-pct">${pct}%</span>
-                    <strong class="rm-cell-main">${valLb} lb</strong>
-                    <span class="rm-cell-sub">${valKg} kg · ${Math.round(valLb / 2)} lb/lado</span>
+                    <strong class="rm-cell-main">${cellDiscsLb} lb</strong>
+                    <span class="rm-cell-sub">${perSideLb} lb/lado · Total ${Math.round(cellTotalLb)} lb</span>
                 </div>
             `;
         }).join('');
