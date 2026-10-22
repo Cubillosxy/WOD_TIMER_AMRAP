@@ -1635,11 +1635,20 @@ class OfflineToolsManager {
     // BÓVEDA DE DESCOMPRESIÓN ÚNICA (INDEXEDDB)
     // =========================================
     loadReadySet() {
+        const localAll = [
+            ...(this.playlists?.tabata || []),
+            ...(this.playlists?.challenges || []),
+            ...(this.playlists?.music || [])
+        ].map(t => t.src);
+
+        if (window.location.protocol === 'file:') {
+            return localAll;
+        }
         try {
             const raw = localStorage.getItem('wod_ready_tracks_v1');
-            return raw ? JSON.parse(raw) : [];
+            return raw ? JSON.parse(raw) : localAll;
         } catch {
-            return [];
+            return localAll;
         }
     }
 
