@@ -120,17 +120,17 @@ El panel izquierdo se abre desde la franja vertical `OFFLINE › › ›` y se p
 - Cada tarjeta muestra en vista resumida su número, porcentaje de `% 1RM`, título y formato; al desplegarla detalla los bloques, pesos sugeridos **PRO / OPEN** y el **Material requerido** ajustado al inventario real del gimnasio.
 
 #### ⚡ D. Serie HYROX & Híbridos Variados (`#01` a `#17` — Sin Repetidos + Equivalencias de Máquinas)
-- **17 formatos HYROX y entrenamientos híbridos 100% diferentes entre sí**, encabezados por los entrenamientos reales de competencia del Box:
-  - **#01 · HYROX Box Trifecta (3 Bloques de 1 km)**: *1 km + 50m Sled + 70 Burpee Broad Jumps; 1 km + 1 km Remo + 100 Lunges; 1 km + 100 Wall Balls + 100 Abdominales*.
-  - **#02 · HYROX Competencia 7x800m (Volumen 120)**: *800m + 120m Burpees; 800m + 120m Lunges (2x20 lb); 800m + 120 DB Thrusters (2x20 lb); 800m + 120 American Swings (20 kg); 800m + 200m Farmers Carry (40 kg); 800m + 100 Push-Ups + 800m Run final*.
-  - **#03 a #17**: *Oficial 8x1km, Triple Máquina (Cero Filas), Heavy Sled & Sandbag 75, Pirámide 1200-800-400m, EMOM 36 Minutos Rotativo, Duatlón Remo & Pista, El Centurión (6x100 reps), You Go I Go 10x400m, Devil Press & Cuerda, Escalera 20-40-60-80-100, Piernas de Hierro, Grip & Tracción, 4 Mega-Bloques, Barbell Hybrid, Half Sprint, Castigo de Cuerda & Core y Gran Final Monterrey*.
+- **17 formatos HYROX y entrenamientos híbridos 100% diferentes entre sí**:
+  - **#01 a #15**: *Oficial 8x1km, Triple Máquina (Cero Filas), Heavy Sled & Sandbag 75, Pirámide 1200-800-400m, EMOM 36 Minutos Rotativo, Duatlón Remo & Pista, El Centurión (6x100 reps), You Go I Go 10x400m, Devil Press & Cuerda, Escalera 20-40-60-80-100, Piernas de Hierro, Grip & Tracción, 4 Mega-Bloques, Barbell Hybrid, Half Sprint, Castigo de Cuerda & Core y Gran Final Monterrey*.
+  - **#16 · HYROX Tunja**: *800m + 120m Burpees; 800m + 120m Lunges (2x20 lb); 800m + 120 DB Thrusters (2x20 lb); 800m + 120 American Swings (20 kg); 800m + 200m Farmers Carry (40 kg); 800m + 100 Push-Ups + 800m Run final*.
+  - **#17 · HYROX Box Trifecta (3 Bloques de 1 km)**: *1 km + 50m Sled + 70 Burpee Broad Jumps; 1 km + 1 km Remo + 100 Lunges; 1 km + 100 Wall Balls + 100 Abdominales*.
 - **Tabla Integrada de Equivalencias (`Metros ⇄ Calorías ⇄ Máquina Ocupada`)**: Indica en cada estación cuántos metros o calorías hacer en **Remo**, **SkiErg**, **Bicicleta de CrossFit** o **Pista** si otra pareja tiene ocupada una máquina o el trineo.
 - **Conmutador `Individual` vs `Partner (Doubles)`**, buscador en vivo y selector desplegable rápido.
 
 #### 🧮 E. Calculadoras de Atleta (`% RM` & `IMC`)
 1. **Calculadora de `% 1RM` y Carga de Discos**:
-   - Ingresa tu `1RM` (en `lb` o `kg`) y elige el tipo de barra (**Hombre 20 kg / 45 lb** o **Mujer 15 kg / 35 lb**).
-   - Calcula automáticamente la tabla desde **50% hasta 100% del 1RM** y te indica exactamente **qué discos de libras (`45, 35, 25, 15, 10, 5 lb`) montar a cada lado de la barra**.
+   - Ingresa **`Tu 1RM Máximo (solo discos)`** (en `lb` o `kg`) y elige el tipo de barra (**Hombre 20 kg / 45 lb** o **Mujer 15 kg / 35 lb**).
+   - Calcula automáticamente la tabla desde **50% hasta 95% del 1RM (solo discos y libras por lado)**, muestra el total sumando la barra y te indica exactamente **qué discos de libras (`45, 35, 25, 15, 10, 5 lb`) montar a cada lado**.
 2. **Calculadora de `IMC` y Rango de Peso Adecuado**:
    - Ingresa tu **Altura (`cm`)** y **Peso (`kg`)** libremente con el teclado.
    - Muestra tu **IMC exacto**, clasificación y el **rango de peso recomendado** en kilogramos para tu estatura.

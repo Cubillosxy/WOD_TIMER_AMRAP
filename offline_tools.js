@@ -1240,100 +1240,6 @@ class OfflineToolsManager {
     buildHyrox100Catalog() {
         const specs = [
             {
-                title: 'HYROX Box Trifecta (3 Bloques de 1 km)',
-                tag: 'WOD REAL DE HOY · 3x1KM + DOBLE ESTACIÓN',
-                focus: 'Trineo + Burpees · Remo + Lunges · Wall Balls + Abs',
-                runNote: '3 grandes bloques encabezados por 1 km de carrera (o máquina equivalente si está ocupada: 1000m Remo / 1000m SkiErg / 65 Cal CrossFit Bike):',
-                stations: [
-                    {
-                        num: 'B1·A',
-                        name: '1 km Run en Pista (Apertura Bloque 1)',
-                        ind: '1000m carrera en pista/campo (Equivalente: 1000m SkiErg o 65 Cal Bike)',
-                        part: '1000m juntos en pista (o dividir 1000m/70 Cal en máquina en relevos de 250m)'
-                    },
-                    {
-                        num: 'B1·B',
-                        name: '50m Sled Push/Pull + 70 Burpee Broad Jumps',
-                        ind: '25m Sled + 35 Burpee Jumps (Si Sled ocupado: 100m Farmers Carry 2x24 kg)',
-                        part: '50m Sled repartidos + 70 Burpee Broad Jumps (o Burpees sobre línea) entre los dos'
-                    },
-                    {
-                        num: 'B2·A',
-                        name: '1 km Run en Pista (Apertura Bloque 2)',
-                        ind: '1000m carrera a ritmo sostenido (Equivalente: 1000m SkiErg o 65 Cal Bike)',
-                        part: '1000m carrera juntos manteniendo el paso del compañero'
-                    },
-                    {
-                        num: 'B2·B',
-                        name: '1 km de Remo (o 70 Cal) + 100 Lunges',
-                        ind: '500m Remo (o 35 Cal Ski/Bike) + 50 Walking Lunges con saco o peso corporal',
-                        part: '1000m Remo (relevos cada 250m; si está ocupado: 1000m SkiErg o 65 Cal Bike) + 100 Lunges repartidos'
-                    },
-                    {
-                        num: 'B3·A',
-                        name: '1 km Run en Pista (Apertura Bloque 3)',
-                        ind: '1000m última carrera antes del cierre (Equivalente: 65 Cal Bike / 1000m Ski)',
-                        part: '1000m carrera juntos apretando el ritmo para el bloque final'
-                    },
-                    {
-                        num: 'B3·B',
-                        name: '100 Wall Balls + 100 Abdominales (Cash-Out)',
-                        ind: '60 Wall Balls (20/15 lb) + 60 Sit-Ups / V-Ups en colchoneta',
-                        part: '100 Wall Balls (series de 15–20) + 100 Abdominales (Sit-Ups o V-Ups) repartidos'
-                    }
-                ],
-                pro: 'Sled 4x45 lb (H) / 3x45 lb (M) · Lunges con Saco 20/10 kg · Wall Ball 20 / 15 lb · V-Ups',
-                open: 'Sled 2x45+25 lb · Lunges libres o con soportes · Wall Ball 15 / 10 lb · Sit-Ups en colchoneta',
-                equip: 'Pista abierta, Sled + discos (45, 35, 25 lb), Remo (o SkiErg / CrossFit Bike), Wall Balls (20, 15, 10 lb), sacos y colchonetas.'
-            },
-            {
-                title: 'HYROX Competencia 7x800m (Volumen 120)',
-                tag: 'COMPETENCIA RECIENTE · PAREJAS / INDIVIDUAL',
-                focus: '7 Tramos de 800m + 6 Estaciones de 120m / 120 Reps',
-                runNote: 'Iniciar con 800m Run, intercalar 800m Run después de cada estación y cerrar con 800m Run (7x800m en total). Equivalencia por tramo: 800m Remo/SkiErg o 50 Cal Bike / 55 Cal Remo-Ski:',
-                stations: [
-                    {
-                        num: '01',
-                        name: '800m Run + 120m Burpee Broad Jumps',
-                        ind: '800m Run (o 50 Cal Bike) + 60m Burpee Broad Jumps continuos',
-                        part: '800m Run juntos + 120m Burpee Broad Jumps relevando cada 10–15m'
-                    },
-                    {
-                        num: '02',
-                        name: '800m Run + 120m Lunges con Mancuernas (2x20 lb)',
-                        ind: '800m Run (o 800m SkiErg) + 60m Walking Lunges con mancuernas de 20 lb a cada lado',
-                        part: '800m Run juntos + 120m Lunges cargando par de mancuernas de 20 lb (cambio cada 20–30m)'
-                    },
-                    {
-                        num: '03',
-                        name: '800m Run + 120 Thrusters con Mancuernas (2x20 lb)',
-                        ind: '800m Run (o 55 Cal Remo) + 60 Dumbbell Thrusters (2x20 lb)',
-                        part: '800m Run juntos + 120 Dumbbell Thrusters con mancuernas de 20 lb (series rápidas de 12–15)'
-                    },
-                    {
-                        num: '04',
-                        name: '800m Run + 120 American KB Swings (20 kg)',
-                        ind: '800m Run (o 50 Cal Bike) + 60 American Swings sobre la cabeza (20 / 14 kg)',
-                        part: '800m Run juntos + 120 American Kettlebell Swings con 20 kg (relevos de 15–20 reps)'
-                    },
-                    {
-                        num: '05',
-                        name: '800m Run + 200m Farmers Carry (40 kg totales)',
-                        ind: '800m Run (o 800m Remo) + 100m Farmers Carry con 2x20 kg KB (40 kg totales)',
-                        part: '800m Run juntos + 200m Farmers Carry con 40 kg (2x20 kg KB o 2x45 lb discos/DB)'
-                    },
-                    {
-                        num: '06',
-                        name: '800m Run + 100 Push-Ups + 800m Run Final',
-                        ind: '800m Run + 60 Push-Ups pecho al piso + 800m Run final (o 55 Cal máquina)',
-                        part: '800m Run + 100 Push-Ups repartidos + 800m Run final a sprint cruzando meta juntos'
-                    }
-                ],
-                pro: 'Lunges & Thrusters: 2x20 lb DB (o 2x15 kg en Pro+) · American Swing: 20 kg (H) / 14 kg (M) · Farmers: 40 kg (2x20 kg KB)',
-                open: 'Lunges & Thrusters: 2x15 o 10 lb · American Swing: 14 / 12 kg · Farmers: 2x14 o 12 kg KB',
-                equip: 'Pista abierta (o Remo/SkiErg/Bike para equivalencias), mancuernas de 20 lb (y 15 kg), Kettlebells de 20, 14 y 12 kg, soportes para push-ups/lunges.'
-            },
-            {
                 title: 'HYROX Oficial 8x1km (Estándar Internacional)',
                 tag: 'FORMATO CLÁSICO · MADRID / BERLÍN / TOKIO',
                 focus: '8x1000m Run + 8 Estaciones Oficiales con Equivalencias',
@@ -1608,6 +1514,100 @@ class OfflineToolsManager {
                 pro: 'Sled 4x45 lb · Mancuernas 2x20 lb · KB 20 / 24 kg · Farmers 40 kg · Wall Ball 20 / 15 lb',
                 open: 'Sled 2x45 lb · Mancuernas 2x15 / 10 lb · KB 14 / 12 kg · Farmers 2x14 kg · Wall Ball 15 / 10 lb',
                 equip: 'Pista abierta, Sled + cuerda grande, Remo, SkiErg, CrossFit Bike, mancuernas de 20 lb, Kettlebells (24, 20, 14, 12 kg), Wall Balls y colchonetas.'
+            },
+            {
+                title: 'HYROX Tunja',
+                tag: 'EDICIÓN COMPETENCIA · 7x800M + VOLUMEN 120',
+                focus: '7 Tramos de 800m + 6 Estaciones de 120m / 120 Reps',
+                runNote: 'Iniciar con 800m Run, intercalar 800m Run después de cada estación y cerrar con 800m Run (7x800m en total). Equivalencia por tramo: 800m Remo/SkiErg o 50 Cal Bike / 55 Cal Remo-Ski:',
+                stations: [
+                    {
+                        num: '01',
+                        name: '800m Run + 120m Burpee Broad Jumps',
+                        ind: '800m Run (o 50 Cal Bike) + 60m Burpee Broad Jumps continuos',
+                        part: '800m Run juntos + 120m Burpee Broad Jumps relevando cada 10–15m'
+                    },
+                    {
+                        num: '02',
+                        name: '800m Run + 120m Lunges con Mancuernas (2x20 lb)',
+                        ind: '800m Run (o 800m SkiErg) + 60m Walking Lunges con mancuernas de 20 lb a cada lado',
+                        part: '800m Run juntos + 120m Lunges cargando par de mancuernas de 20 lb (cambio cada 20–30m)'
+                    },
+                    {
+                        num: '03',
+                        name: '800m Run + 120 Thrusters con Mancuernas (2x20 lb)',
+                        ind: '800m Run (o 55 Cal Remo) + 60 Dumbbell Thrusters (2x20 lb)',
+                        part: '800m Run juntos + 120 Dumbbell Thrusters con mancuernas de 20 lb (series rápidas de 12–15)'
+                    },
+                    {
+                        num: '04',
+                        name: '800m Run + 120 American KB Swings (20 kg)',
+                        ind: '800m Run (o 50 Cal Bike) + 60 American Swings sobre la cabeza (20 / 14 kg)',
+                        part: '800m Run juntos + 120 American Kettlebell Swings con 20 kg (relevos de 15–20 reps)'
+                    },
+                    {
+                        num: '05',
+                        name: '800m Run + 200m Farmers Carry (40 kg totales)',
+                        ind: '800m Run (o 800m Remo) + 100m Farmers Carry con 2x20 kg KB (40 kg totales)',
+                        part: '800m Run juntos + 200m Farmers Carry con 40 kg (2x20 kg KB o 2x45 lb discos/DB)'
+                    },
+                    {
+                        num: '06',
+                        name: '800m Run + 100 Push-Ups + 800m Run Final',
+                        ind: '800m Run + 60 Push-Ups pecho al piso + 800m Run final (o 55 Cal máquina)',
+                        part: '800m Run + 100 Push-Ups repartidos + 800m Run final a sprint cruzando meta juntos'
+                    }
+                ],
+                pro: 'Lunges & Thrusters: 2x20 lb DB (o 2x15 kg en Pro+) · American Swing: 20 kg (H) / 14 kg (M) · Farmers: 40 kg (2x20 kg KB)',
+                open: 'Lunges & Thrusters: 2x15 o 10 lb · American Swing: 14 / 12 kg · Farmers: 2x14 o 12 kg KB',
+                equip: 'Pista abierta (o Remo/SkiErg/Bike para equivalencias), mancuernas de 20 lb (y 15 kg), Kettlebells de 20, 14 y 12 kg, soportes para push-ups/lunges.'
+            },
+            {
+                title: 'HYROX Box Trifecta (3 Bloques de 1 km)',
+                tag: 'EDICIÓN TRIFECTA · 3x1KM + DOBLE ESTACIÓN',
+                focus: 'Trineo + Burpees · Remo + Lunges · Wall Balls + Abs',
+                runNote: '3 grandes bloques encabezados por 1 km de carrera (o máquina equivalente si está ocupada: 1000m Remo / 1000m SkiErg / 65 Cal CrossFit Bike):',
+                stations: [
+                    {
+                        num: 'B1·A',
+                        name: '1 km Run en Pista (Apertura Bloque 1)',
+                        ind: '1000m carrera en pista/campo (Equivalente: 1000m SkiErg o 65 Cal Bike)',
+                        part: '1000m juntos en pista (o dividir 1000m/70 Cal en máquina en relevos de 250m)'
+                    },
+                    {
+                        num: 'B1·B',
+                        name: '50m Sled Push/Pull + 70 Burpee Broad Jumps',
+                        ind: '25m Sled + 35 Burpee Jumps (Si Sled ocupado: 100m Farmers Carry 2x24 kg)',
+                        part: '50m Sled repartidos + 70 Burpee Broad Jumps (o Burpees sobre línea) entre los dos'
+                    },
+                    {
+                        num: 'B2·A',
+                        name: '1 km Run en Pista (Apertura Bloque 2)',
+                        ind: '1000m carrera a ritmo sostenido (Equivalente: 1000m SkiErg o 65 Cal Bike)',
+                        part: '1000m carrera juntos manteniendo el paso del compañero'
+                    },
+                    {
+                        num: 'B2·B',
+                        name: '1 km de Remo (o 70 Cal) + 100 Lunges',
+                        ind: '500m Remo (o 35 Cal Ski/Bike) + 50 Walking Lunges con saco o peso corporal',
+                        part: '1000m Remo (relevos cada 250m; si está ocupado: 1000m SkiErg o 65 Cal Bike) + 100 Lunges repartidos'
+                    },
+                    {
+                        num: 'B3·A',
+                        name: '1 km Run en Pista (Apertura Bloque 3)',
+                        ind: '1000m última carrera antes del cierre (Equivalente: 65 Cal Bike / 1000m Ski)',
+                        part: '1000m carrera juntos apretando el ritmo para el bloque final'
+                    },
+                    {
+                        num: 'B3·B',
+                        name: '100 Wall Balls + 100 Abdominales (Cash-Out)',
+                        ind: '60 Wall Balls (20/15 lb) + 60 Sit-Ups / V-Ups en colchoneta',
+                        part: '100 Wall Balls (series de 15–20) + 100 Abdominales (Sit-Ups o V-Ups) repartidos'
+                    }
+                ],
+                pro: 'Sled 4x45 lb (H) / 3x45 lb (M) · Lunges con Saco 20/10 kg · Wall Ball 20 / 15 lb · V-Ups',
+                open: 'Sled 2x45+25 lb · Lunges libres o con soportes · Wall Ball 15 / 10 lb · Sit-Ups en colchoneta',
+                equip: 'Pista abierta, Sled + discos (45, 35, 25 lb), Remo (o SkiErg / CrossFit Bike), Wall Balls (20, 15, 10 lb), sacos y colchonetas.'
             }
         ];
 
@@ -2462,9 +2462,9 @@ class OfflineToolsManager {
     // RENDER: CALCULADORAS (% RM + DISCOS & IMC)
     // Sin flechas y permitiendo borrar/escribir libremente
     // =========================================
-    calculatePlateLoad(targetLb, barKg) {
+    calculatePlateLoad(discsLb, barKg) {
         const barLb = barKg === 20 ? 45 : 35;
-        let perSide = (targetLb - barLb) / 2;
+        let perSide = discsLb / 2;
         if (perSide <= 0) return `Solo barra vacía (${barKg} kg / ${barLb} lb)`;
 
         const availablePlates = [45, 35, 25, 15, 10, 5];
@@ -2475,9 +2475,11 @@ class OfflineToolsManager {
                 perSide -= p;
             }
         }
+        const totalWithBarLb = Math.round(discsLb + barLb);
+        const totalWithBarKg = Math.round(totalWithBarLb / 2.20462);
         return loaded.length
-            ? `Por lado: ${loaded.join(' + ')} (Barra ${barKg}kg)`
-            : `Barra ${barKg}kg (ajuste menor a disco de 5lb)`;
+            ? `Por lado (${Math.round(discsLb / 2)} lb): ${loaded.join(' + ')} · Total c/barra ${barKg}kg: ${totalWithBarLb} lb (${totalWithBarKg} kg)`
+            : `Menos de 5lb por lado · Total c/barra ${barKg}kg: ${totalWithBarLb} lb`;
     }
 
     renderCalcView() {
@@ -2488,8 +2490,8 @@ class OfflineToolsManager {
                 <div class="calc-card">
                     <div class="calc-row-grid">
                         <label class="calc-field">
-                            <span>Tu 1RM Máximo</span>
-                            <input type="text" inputmode="decimal" id="calc-rm-input" class="calc-input" placeholder="Ej. 185" value="${this.escapeAttr(oneRmRaw)}" autocomplete="off">
+                            <span>Tu 1RM Máximo (solo discos)</span>
+                            <input type="text" inputmode="decimal" id="calc-rm-input" class="calc-input" placeholder="Ej. 180" value="${this.escapeAttr(oneRmRaw)}" autocomplete="off">
                         </label>
                         <div class="calc-field">
                             <span>Unidad</span>
@@ -2612,7 +2614,7 @@ class OfflineToolsManager {
         const percentages = [95, 90, 85, 80, 75, 70, 65, 60, 50];
 
         headerEl.innerHTML = `
-            <span>Porcentaje Objetivo: <strong>${customPct}% RM</strong></span>
+            <span>Objetivo <strong>${customPct}% RM</strong> <em>(solo discos)</em></span>
             <span class="calc-highlight-val">${targetLb} lb · ${targetKg} kg</span>
         `;
         plateEl.textContent = `🏋️ ${plateBreakdown}`;
@@ -2627,7 +2629,7 @@ class OfflineToolsManager {
                 <div class="calc-rm-cell ${activeRow}" data-pct="${pct}">
                     <span class="rm-cell-pct">${pct}%</span>
                     <strong class="rm-cell-main">${valLb} lb</strong>
-                    <span class="rm-cell-sub">${valKg} kg</span>
+                    <span class="rm-cell-sub">${valKg} kg · ${Math.round(valLb / 2)} lb/lado</span>
                 </div>
             `;
         }).join('');
