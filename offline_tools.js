@@ -1993,19 +1993,12 @@ class OfflineToolsManager {
                 this.playingCategory === this.selectedCategory &&
                 this.playingIndex === idx;
             const activeClass = isCurrent ? 'active' : '';
-            const isReady = this.readyTracks.has(track.src);
-            const isUnpacking = this.unpackingSrc === track.src;
 
             const badgeContent = isCurrent && this.isPlaying
                 ? `<span class="track-eq"><i></i><i></i><i></i></span>`
                 : `${idx + 1}`;
 
             const tagClass = track.mediaType === 'video' ? 'tag-video' : '';
-            const readyBadge = isUnpacking
-                ? `<span class="track-tag tag-unpacking">⏳ PREP...</span>`
-                : isReady
-                    ? `<span class="track-tag tag-ready" title="Lista en caché local sin descomprimir de nuevo">✓ LISTO</span>`
-                    : '';
 
             const challengeHtml = track.challenge
                 ? `<div class="track-challenge-note">⚡ ${track.challenge}</div>`
@@ -2019,7 +2012,6 @@ class OfflineToolsManager {
                             <div class="track-title-row">
                                 <span class="track-name">${track.title}</span>
                                 <div class="track-badges-group">
-                                    ${readyBadge}
                                     <span class="track-tag ${tagClass}">${track.badge || track.mediaType.toUpperCase()}</span>
                                 </div>
                             </div>
@@ -2758,7 +2750,7 @@ class OfflineToolsManager {
         const playableUrl = await this.resolvePlayableUrl(track);
         if (this.currentTrack !== track) return;
 
-        this.trackSubEl.textContent = `${track.artist} · ${track.mediaType.toUpperCase()} · ✓ Listo`;
+        this.trackSubEl.textContent = `${track.artist} · ${track.mediaType.toUpperCase()}`;
         this.mediaEl.src = playableUrl;
         this.mediaEl.load();
         this.mediaEl.play().catch(() => {

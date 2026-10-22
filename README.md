@@ -47,7 +47,7 @@ Vista general con la esfera 3D interactiva de partículas (`assets/three.min.js`
 </div>
 
 ### 2. Menú Lateral Desplegable (`Offline Tools`)
-Detalle del panel lateral izquierdo desplegado con acceso rápido a **🎵 Music**, **🤸 Movilidad**, **🏋️ Rutinas**, **⚡ HYROX** y **🧮 Calc**, estado local `✓ LISTO`, tarjetas de retos (*Challenge Songs*) y reproductor completo con modo secuencial `AUTO`:
+Detalle del panel lateral izquierdo desplegado con acceso rápido a **🎵 Music**, **🤸 Movilidad**, **🏋️ Rutinas**, **⚡ HYROX** y **🧮 Calc**, tarjetas de retos (*Challenge Songs*) y reproductor completo con modo secuencial `AUTO`:
 
 <div align="center">
   <img src="./assets/screenshots/offline-tools-sidebar.png" alt="AMRAP BOX - Detalle del Menú Lateral Offline Tools" width="85%" />
